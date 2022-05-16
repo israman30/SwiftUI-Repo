@@ -10,7 +10,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
+            Text("Custom Card")
+                .font(.title3)
+                .fontWeight(.bold)
             CustomCardView()
+                .padding()
         }
     }
 }
@@ -37,6 +41,7 @@ struct CustomCardView: View {
             .padding(.vertical, 5)
         }
         .background(Color.white)
-        .shadow(radius: 1.5)
+        .cornerRadius(5)
+        .shadow(color: Color.gray, radius: 5, x: 0, y: 2)
     }
 }
