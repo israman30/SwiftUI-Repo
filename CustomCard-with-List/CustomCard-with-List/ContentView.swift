@@ -9,13 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            CustomCardView()
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+struct CustomCardView: View {
+    var body: some View {
+        VStack {
+            VStack {
+                Text("Super Mario Bros.")
+                Text("Mario")
+            }
+        }
     }
 }
