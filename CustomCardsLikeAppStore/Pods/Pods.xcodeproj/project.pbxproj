@@ -66,7 +66,7 @@
 		4F244E6C36B7220912B0120CD6583AD9 /* LayoutHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutHelper.swift; path = Cards/Sources/LayoutHelper.swift; sourceTree = "<group>"; };
 		567610096D1D86305E48CC08B1EAD006 /* CardArticle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardArticle.swift; path = Cards/Sources/CardArticle.swift; sourceTree = "<group>"; };
 		59DC944AF908FE3D4D2D8994A3C9FC2E /* Pods-CustomCardsLikeAppStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CustomCardsLikeAppStore-dummy.m"; sourceTree = "<group>"; };
-		5C08AE3835639A2111ACBCE5382CE742 /* Player */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Player; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C08AE3835639A2111ACBCE5382CE742 /* Player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1CF9FE333EB37BC63F9DD56699209B /* Cards-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cards-prefix.pch"; sourceTree = "<group>"; };
 		5F217DE954C9EA8C12F858232EDB32E4 /* Player.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Player.release.xcconfig; sourceTree = "<group>"; };
 		6C98D93A85EE2CFBAB3F9C24409063E1 /* Pods-CustomCardsLikeAppStore-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CustomCardsLikeAppStore-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		830082F38B4D1A16A97FD0A03846C036 /* Player.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Sources/Player.swift; sourceTree = "<group>"; };
 		92661FBF950E045C1656181EE6962DC3 /* Pods-CustomCardsLikeAppStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CustomCardsLikeAppStore-umbrella.h"; sourceTree = "<group>"; };
 		98F288333EBAFCA6C30215918C0AA19E /* Player.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Player.modulemap; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A144F99362DC66215E7ABCE77166A296 /* Pods-CustomCardsLikeAppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CustomCardsLikeAppStore.release.xcconfig"; sourceTree = "<group>"; };
 		AA1F2C6A2EC2968896C9E92D514A088A /* CardPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardPlayer.swift; path = Cards/Sources/CardPlayer.swift; sourceTree = "<group>"; };
 		B4239326BA4D7759403BD44BE08FC9E9 /* CardGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardGroup.swift; path = Cards/Sources/CardGroup.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		E969425D9CBA6C6986A8FC4C6333E590 /* Pods-CustomCardsLikeAppStore */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CustomCardsLikeAppStore"; path = Pods_CustomCardsLikeAppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EAD3F2964F9AE18AFCC374E59FBF7D1E /* CardHighlight.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardHighlight.swift; path = Cards/Sources/CardHighlight.swift; sourceTree = "<group>"; };
-		EC7F06F364614C51E830F26C60172A0B /* Cards */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cards; path = Cards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC7F06F364614C51E830F26C60172A0B /* Cards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +170,6 @@
 				4F244E6C36B7220912B0120CD6583AD9 /* LayoutHelper.swift */,
 				05B29E19659B85BDBACFE4F98E5F2D91 /* Support Files */,
 			);
-			name = Cards;
 			path = Cards;
 			sourceTree = "<group>";
 		};
@@ -197,15 +196,14 @@
 				830082F38B4D1A16A97FD0A03846C036 /* Player.swift */,
 				C176B233D448DFE4968168B99764938D /* Support Files */,
 			);
-			name = Player;
 			path = Player;
 			sourceTree = "<group>";
 		};
 		80E6B56B48575EAB6876850808EE9A26 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EC7F06F364614C51E830F26C60172A0B /* Cards */,
-				5C08AE3835639A2111ACBCE5382CE742 /* Player */,
+				EC7F06F364614C51E830F26C60172A0B /* Cards.framework */,
+				5C08AE3835639A2111ACBCE5382CE742 /* Player.framework */,
 				E969425D9CBA6C6986A8FC4C6333E590 /* Pods-CustomCardsLikeAppStore */,
 			);
 			name = Products;
@@ -319,7 +317,7 @@
 			);
 			name = Player;
 			productName = Player;
-			productReference = 5C08AE3835639A2111ACBCE5382CE742 /* Player */;
+			productReference = 5C08AE3835639A2111ACBCE5382CE742 /* Player.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		95686D88267B7D426C897EA9E91FC217 /* Cards */ = {
@@ -338,7 +336,7 @@
 			);
 			name = Cards;
 			productName = Cards;
-			productReference = EC7F06F364614C51E830F26C60172A0B /* Cards */;
+			productReference = EC7F06F364614C51E830F26C60172A0B /* Cards.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -348,7 +346,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1330;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -468,7 +466,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Player/Player-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Player/Player-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,7 +500,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Player/Player-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Player/Player-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -537,7 +535,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Cards/Cards-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Cards/Cards-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -737,7 +735,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Cards/Cards-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Cards/Cards-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
