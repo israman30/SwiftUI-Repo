@@ -22,11 +22,21 @@ struct ContentView_Previews: PreviewProvider {
 }
 struct CustomCardView: View {
     var body: some View {
-        VStack {
-            VStack {
+        VStack(alignment: .leading) {
+            Image("world")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            VStack(alignment: .leading) {
                 Text("Super Mario Bros.")
-                Text("Mario")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Text("Explore the adventure of Mario's world")
+                    .foregroundColor(Color(.systemGray))
             }
+            .padding(.horizontal)
+            .padding(.vertical, 5)
         }
+        .background(Color.white)
+        .shadow(radius: 1.5)
     }
 }
