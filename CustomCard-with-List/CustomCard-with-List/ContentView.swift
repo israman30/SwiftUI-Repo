@@ -9,12 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        MainView()
+    }
+}
+
+struct MainView: View {
+    var body: some View {
         VStack {
-            Text("Custom Card")
-                .font(.title3)
-                .fontWeight(.bold)
-            CustomCardView()
-                .padding()
+            List {
+                Text("Custom Card")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                CustomCardView()
+                    .padding()
+                CustomCardView()
+                    .padding()
+            }.listStyle(.grouped)
+            
         }
     }
 }
