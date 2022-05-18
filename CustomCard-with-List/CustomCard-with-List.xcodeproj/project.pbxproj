@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D8A808328347DFE002AAA07 /* CustomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8A808228347DFE002AAA07 /* CustomCardView.swift */; };
 		8DA394672831E8530027A67A /* CustomCard_with_ListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA394662831E8530027A67A /* CustomCard_with_ListApp.swift */; };
 		8DA394692831E8530027A67A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA394682831E8530027A67A /* ContentView.swift */; };
 		8DA3946B2831E8580027A67A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DA3946A2831E8580027A67A /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D8A808228347DFE002AAA07 /* CustomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardView.swift; sourceTree = "<group>"; };
 		8DA394632831E8530027A67A /* CustomCard-with-List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CustomCard-with-List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA394662831E8530027A67A /* CustomCard_with_ListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard_with_ListApp.swift; sourceTree = "<group>"; };
 		8DA394682831E8530027A67A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				8DA394662831E8530027A67A /* CustomCard_with_ListApp.swift */,
 				8DA394682831E8530027A67A /* ContentView.swift */,
+				8D8A808228347DFE002AAA07 /* CustomCardView.swift */,
 				8DA3946A2831E8580027A67A /* Assets.xcassets */,
 				8DA3946C2831E8580027A67A /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				8DA394692831E8530027A67A /* ContentView.swift in Sources */,
 				8DA394672831E8530027A67A /* CustomCard_with_ListApp.swift in Sources */,
+				8D8A808328347DFE002AAA07 /* CustomCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
