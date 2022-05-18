@@ -16,14 +16,12 @@ struct ContentView: View {
 struct MainView: View {
     var body: some View {
         VStack {
-            List {
-                Text("Custom Card")
-                    .font(.title3)
-                    .fontWeight(.bold)
+            Text("Custom Card")
+                .font(.title3)
+                .fontWeight(.bold)
+            List(0..<5) { _ in
                 CustomCardView()
-                    .padding()
-                CustomCardView()
-                    .padding()
+                    .padding(.bottom)
             }.listStyle(.grouped)
             
         }
