@@ -14,6 +14,9 @@
 		4D5EBAD329691374001F1D37 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBAD229691374001F1D37 /* NetworkingTests.swift */; };
 		4D5EBADD29691374001F1D37 /* NetworkingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBADC29691374001F1D37 /* NetworkingUITests.swift */; };
 		4D5EBADF29691374001F1D37 /* NetworkingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBADE29691374001F1D37 /* NetworkingUITestsLaunchTests.swift */; };
+		4D5EBAED296E680A001F1D37 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBAEC296E680A001F1D37 /* Constants.swift */; };
+		4D5EBAF0296E6894001F1D37 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBAEF296E6894001F1D37 /* Users.swift */; };
+		4D5EBAF3296E68D1001F1D37 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBAF2296E68D1001F1D37 /* NetworkServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		4D5EBAD829691374001F1D37 /* NetworkingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5EBADC29691374001F1D37 /* NetworkingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingUITests.swift; sourceTree = "<group>"; };
 		4D5EBADE29691374001F1D37 /* NetworkingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4D5EBAEC296E680A001F1D37 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4D5EBAEF296E6894001F1D37 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		4D5EBAF2296E68D1001F1D37 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,9 @@
 		4D5EBAC029691373001F1D37 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4D5EBAF1296E68B5001F1D37 /* NetworkServices */,
+				4D5EBAEE296E6886001F1D37 /* Models */,
+				4D5EBAEB296E67FE001F1D37 /* Constants */,
 				4D5EBAC129691373001F1D37 /* NetworkingApp.swift */,
 				4D5EBAC329691373001F1D37 /* ContentView.swift */,
 				4D5EBAC529691374001F1D37 /* Assets.xcassets */,
@@ -125,6 +134,30 @@
 				4D5EBADE29691374001F1D37 /* NetworkingUITestsLaunchTests.swift */,
 			);
 			path = NetworkingUITests;
+			sourceTree = "<group>";
+		};
+		4D5EBAEB296E67FE001F1D37 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4D5EBAEC296E680A001F1D37 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		4D5EBAEE296E6886001F1D37 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D5EBAEF296E6894001F1D37 /* Users.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4D5EBAF1296E68B5001F1D37 /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				4D5EBAF2296E68D1001F1D37 /* NetworkServices.swift */,
+			);
+			path = NetworkServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +290,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D5EBAF3296E68D1001F1D37 /* NetworkServices.swift in Sources */,
+				4D5EBAF0296E6894001F1D37 /* Users.swift in Sources */,
 				4D5EBAC429691373001F1D37 /* ContentView.swift in Sources */,
 				4D5EBAC229691373001F1D37 /* NetworkingApp.swift in Sources */,
+				4D5EBAED296E680A001F1D37 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
