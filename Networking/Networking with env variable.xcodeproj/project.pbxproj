@@ -37,14 +37,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D5EBABE29691373001F1D37 /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5EBABE29691373001F1D37 /* Networking with env variable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Networking with env variable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5EBAC129691373001F1D37 /* NetworkingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingApp.swift; sourceTree = "<group>"; };
 		4D5EBAC329691373001F1D37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D5EBAC529691374001F1D37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D5EBAC829691374001F1D37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4D5EBACE29691374001F1D37 /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5EBACE29691374001F1D37 /* Networking with env variableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Networking with env variableTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5EBAD229691374001F1D37 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
-		4D5EBAD829691374001F1D37 /* NetworkingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5EBAD829691374001F1D37 /* Networking with env variableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Networking with env variableUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5EBADC29691374001F1D37 /* NetworkingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingUITests.swift; sourceTree = "<group>"; };
 		4D5EBADE29691374001F1D37 /* NetworkingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4D5EBAEC296E680A001F1D37 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -90,9 +90,9 @@
 		4D5EBABF29691373001F1D37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D5EBABE29691373001F1D37 /* Networking.app */,
-				4D5EBACE29691374001F1D37 /* NetworkingTests.xctest */,
-				4D5EBAD829691374001F1D37 /* NetworkingUITests.xctest */,
+				4D5EBABE29691373001F1D37 /* Networking with env variable.app */,
+				4D5EBACE29691374001F1D37 /* Networking with env variableTests.xctest */,
+				4D5EBAD829691374001F1D37 /* Networking with env variableUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,9 +163,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4D5EBABD29691373001F1D37 /* Networking */ = {
+		4D5EBABD29691373001F1D37 /* Networking with env variable */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D5EBAE229691374001F1D37 /* Build configuration list for PBXNativeTarget "Networking" */;
+			buildConfigurationList = 4D5EBAE229691374001F1D37 /* Build configuration list for PBXNativeTarget "Networking with env variable" */;
 			buildPhases = (
 				4D5EBABA29691373001F1D37 /* Sources */,
 				4D5EBABB29691373001F1D37 /* Frameworks */,
@@ -175,14 +175,14 @@
 			);
 			dependencies = (
 			);
-			name = Networking;
+			name = "Networking with env variable";
 			productName = Networking;
-			productReference = 4D5EBABE29691373001F1D37 /* Networking.app */;
+			productReference = 4D5EBABE29691373001F1D37 /* Networking with env variable.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4D5EBACD29691374001F1D37 /* NetworkingTests */ = {
+		4D5EBACD29691374001F1D37 /* Networking with env variableTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D5EBAE529691374001F1D37 /* Build configuration list for PBXNativeTarget "NetworkingTests" */;
+			buildConfigurationList = 4D5EBAE529691374001F1D37 /* Build configuration list for PBXNativeTarget "Networking with env variableTests" */;
 			buildPhases = (
 				4D5EBACA29691374001F1D37 /* Sources */,
 				4D5EBACB29691374001F1D37 /* Frameworks */,
@@ -193,14 +193,14 @@
 			dependencies = (
 				4D5EBAD029691374001F1D37 /* PBXTargetDependency */,
 			);
-			name = NetworkingTests;
+			name = "Networking with env variableTests";
 			productName = NetworkingTests;
-			productReference = 4D5EBACE29691374001F1D37 /* NetworkingTests.xctest */;
+			productReference = 4D5EBACE29691374001F1D37 /* Networking with env variableTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4D5EBAD729691374001F1D37 /* NetworkingUITests */ = {
+		4D5EBAD729691374001F1D37 /* Networking with env variableUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D5EBAE829691374001F1D37 /* Build configuration list for PBXNativeTarget "NetworkingUITests" */;
+			buildConfigurationList = 4D5EBAE829691374001F1D37 /* Build configuration list for PBXNativeTarget "Networking with env variableUITests" */;
 			buildPhases = (
 				4D5EBAD429691374001F1D37 /* Sources */,
 				4D5EBAD529691374001F1D37 /* Frameworks */,
@@ -211,9 +211,9 @@
 			dependencies = (
 				4D5EBADA29691374001F1D37 /* PBXTargetDependency */,
 			);
-			name = NetworkingUITests;
+			name = "Networking with env variableUITests";
 			productName = NetworkingUITests;
-			productReference = 4D5EBAD829691374001F1D37 /* NetworkingUITests.xctest */;
+			productReference = 4D5EBAD829691374001F1D37 /* Networking with env variableUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -239,7 +239,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4D5EBAB929691373001F1D37 /* Build configuration list for PBXProject "Networking" */;
+			buildConfigurationList = 4D5EBAB929691373001F1D37 /* Build configuration list for PBXProject "Networking with env variable" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -252,9 +252,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4D5EBABD29691373001F1D37 /* Networking */,
-				4D5EBACD29691374001F1D37 /* NetworkingTests */,
-				4D5EBAD729691374001F1D37 /* NetworkingUITests */,
+				4D5EBABD29691373001F1D37 /* Networking with env variable */,
+				4D5EBACD29691374001F1D37 /* Networking with env variableTests */,
+				4D5EBAD729691374001F1D37 /* Networking with env variableUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -320,12 +320,12 @@
 /* Begin PBXTargetDependency section */
 		4D5EBAD029691374001F1D37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4D5EBABD29691373001F1D37 /* Networking */;
+			target = 4D5EBABD29691373001F1D37 /* Networking with env variable */;
 			targetProxy = 4D5EBACF29691374001F1D37 /* PBXContainerItemProxy */;
 		};
 		4D5EBADA29691374001F1D37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4D5EBABD29691373001F1D37 /* Networking */;
+			target = 4D5EBABD29691373001F1D37 /* Networking with env variable */;
 			targetProxy = 4D5EBAD929691374001F1D37 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -516,7 +516,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Networking.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Networking";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Networking with env variable.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Networking with env variable";
 			};
 			name = Debug;
 		};
@@ -535,7 +535,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Networking.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Networking";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Networking with env variable.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Networking with env variable";
 			};
 			name = Release;
 		};
@@ -576,7 +576,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4D5EBAB929691373001F1D37 /* Build configuration list for PBXProject "Networking" */ = {
+		4D5EBAB929691373001F1D37 /* Build configuration list for PBXProject "Networking with env variable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D5EBAE029691374001F1D37 /* Debug */,
@@ -585,7 +585,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D5EBAE229691374001F1D37 /* Build configuration list for PBXNativeTarget "Networking" */ = {
+		4D5EBAE229691374001F1D37 /* Build configuration list for PBXNativeTarget "Networking with env variable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D5EBAE329691374001F1D37 /* Debug */,
@@ -594,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D5EBAE529691374001F1D37 /* Build configuration list for PBXNativeTarget "NetworkingTests" */ = {
+		4D5EBAE529691374001F1D37 /* Build configuration list for PBXNativeTarget "Networking with env variableTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D5EBAE629691374001F1D37 /* Debug */,
@@ -603,7 +603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D5EBAE829691374001F1D37 /* Build configuration list for PBXNativeTarget "NetworkingUITests" */ = {
+		4D5EBAE829691374001F1D37 /* Build configuration list for PBXNativeTarget "Networking with env variableUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D5EBAE929691374001F1D37 /* Debug */,
