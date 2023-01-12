@@ -15,12 +15,19 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
+            List {
                 ForEach(network.users) { user in
                     VStack(alignment: .leading) {
                         Text(user.name)
-                            .padding(5)
+                            .font(.title2)
+                        VStack(alignment: .leading) {
+                            Text(user.username)
+                            Text(user.website)
+                        }
+                        .foregroundColor(.gray)
+                        
                     }
+                    .padding(5)
                 }
             }
         }
