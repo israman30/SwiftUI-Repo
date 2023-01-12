@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var vm: UsersViewModelImplementation
+    
+    init() {
+        self._vm = StateObject(wrappedValue: UsersViewModelImplementation(services: NetworkServicesImplementation()))
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(vm.users, id: \.id) { user in
+                    VStack(alignment: .leading) {
+                        Text(user.name)
+                            .font(.title2)
+                        Text(user.website)
+                            .foregroundColor(.gray)
+                    }
+                }
+                .listRowSeparator(.hidden)
+            }
+            .listStyle(.grouped)
+            .task {
+                await vm.getUsers()
+            }
+            .navigationTitle("Fetch Stuff")
         }
-        .padding()
     }
 }
 
@@ -24,3 +42,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
