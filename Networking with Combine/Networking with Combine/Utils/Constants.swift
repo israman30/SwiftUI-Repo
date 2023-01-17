@@ -8,5 +8,5 @@
 import Foundation
 
 struct Constants {
-    static var endopint = "https://jsonplaceholder.typicode.com"
+    static var endopint = "https://jsonplaceholder.typicode.com/users"
 }

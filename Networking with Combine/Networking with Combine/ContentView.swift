@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var vm: NetworkServicesImplementation
+    
+    init() {
+        self._vm = StateObject(wrappedValue: NetworkServicesImplementation())
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(0..<10) { item in
-                    Text("\(item)")
+                ForEach(vm.users) { user in
+                    Text("\(user.name)")
                         .padding(5)
                         .font(.title3)
                 }
                 .navigationTitle("Network Combine")
+            }
+            .onAppear {
+                vm.load()
             }
         }
     }
