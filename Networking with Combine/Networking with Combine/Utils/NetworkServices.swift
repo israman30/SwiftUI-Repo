@@ -15,18 +15,6 @@ enum APIError: Error {
 protocol NetworkServices {
     func fetchUsers() -> AnyPublisher<AnyObject, Error>
 }
-
-//final class NetworkServicesImplementation: NetworkServices {
-//
-//    struct Response<T> {
-//        let value: T
-//        let response: URLResponse
-//    }
-//
-//    func fetchUsers<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {
-//
-//    }
-//}
 /**
  1. We request data from a URL, in case you need to provide a header or body you can also use a URLRequest.
  2. We make sure we are on RunLoop.main this is important if we want to perform UI updates with the result.
