@@ -56,7 +56,7 @@ class NetworkServices2 {
                 .decode(type: [T].self, decoder: JSONDecoder())
                 .receive(on: RunLoop.main)
                 .sink { completion in
-                    if let .failure(error) = completion {
+                    if case let .failure(error) = completion {
                         switch error {
                         case let decodingError as DecodingError:
                             promise(.failure(decodingError))

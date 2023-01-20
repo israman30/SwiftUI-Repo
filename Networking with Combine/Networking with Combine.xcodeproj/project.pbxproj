@@ -18,6 +18,8 @@
 		4D5EBB7029710078001F1D37 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBB6F29710078001F1D37 /* User.swift */; };
 		4D5EBB72297100E0001F1D37 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBB71297100E0001F1D37 /* NetworkServices.swift */; };
 		4D5EBB74297A3D80001F1D37 /* NetworkServices2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBB73297A3D80001F1D37 /* NetworkServices2.swift */; };
+		4D60E329297AEF5000C8C95F /* UsersFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E328297AEF5000C8C95F /* UsersFeed.swift */; };
+		4D60E32C297AF0D300C8C95F /* NetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E32B297AF0D300C8C95F /* NetworkViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		4D5EBB6F29710078001F1D37 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4D5EBB71297100E0001F1D37 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		4D5EBB73297A3D80001F1D37 /* NetworkServices2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices2.swift; sourceTree = "<group>"; };
+		4D60E328297AEF5000C8C95F /* UsersFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFeed.swift; sourceTree = "<group>"; };
+		4D60E32B297AF0D300C8C95F /* NetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +106,12 @@
 		4D5EBB402970FFA5001F1D37 /* Networking with Combine */ = {
 			isa = PBXGroup;
 			children = (
+				4D60E32A297AF0B600C8C95F /* VM */,
 				4D5EBB6E2971006E001F1D37 /* Models */,
 				4D5EBB6B2971004D001F1D37 /* Utils */,
 				4D5EBB412970FFA5001F1D37 /* Networking_with_CombineApp.swift */,
 				4D5EBB432970FFA5001F1D37 /* ContentView.swift */,
+				4D60E328297AEF5000C8C95F /* UsersFeed.swift */,
 				4D5EBB452970FFA6001F1D37 /* Assets.xcassets */,
 				4D5EBB472970FFA6001F1D37 /* Preview Content */,
 			);
@@ -153,6 +159,14 @@
 				4D5EBB6F29710078001F1D37 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4D60E32A297AF0B600C8C95F /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				4D60E32B297AF0D300C8C95F /* NetworkViewModel.swift */,
+			);
+			path = VM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,12 +299,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D60E329297AEF5000C8C95F /* UsersFeed.swift in Sources */,
 				4D5EBB72297100E0001F1D37 /* NetworkServices.swift in Sources */,
 				4D5EBB7029710078001F1D37 /* User.swift in Sources */,
 				4D5EBB442970FFA5001F1D37 /* ContentView.swift in Sources */,
 				4D5EBB422970FFA5001F1D37 /* Networking_with_CombineApp.swift in Sources */,
 				4D5EBB6D29710058001F1D37 /* Constants.swift in Sources */,
 				4D5EBB74297A3D80001F1D37 /* NetworkServices2.swift in Sources */,
+				4D60E32C297AF0D300C8C95F /* NetworkViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

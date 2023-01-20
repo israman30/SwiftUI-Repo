@@ -10,10 +10,10 @@ import SwiftUI
 struct UsersFeed: View {
     
     @StateObject private var vm: NetworkServicesImplementation
-    
-    init() {
-        self._vm = StateObject(wrappedValue: NetworkServicesImplementation())
-    }
+
+        init() {
+            self._vm = StateObject(wrappedValue: NetworkServicesImplementation())
+        }
     
     var body: some View {
         NavigationView {
