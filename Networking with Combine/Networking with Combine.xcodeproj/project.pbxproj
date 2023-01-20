@@ -20,6 +20,7 @@
 		4D5EBB74297A3D80001F1D37 /* NetworkServices2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EBB73297A3D80001F1D37 /* NetworkServices2.swift */; };
 		4D60E329297AEF5000C8C95F /* UsersFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E328297AEF5000C8C95F /* UsersFeed.swift */; };
 		4D60E32C297AF0D300C8C95F /* NetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E32B297AF0D300C8C95F /* NetworkViewModel.swift */; };
+		4D60E32E297AF1B300C8C95F /* UsersFeed2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E32D297AF1B300C8C95F /* UsersFeed2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		4D5EBB73297A3D80001F1D37 /* NetworkServices2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices2.swift; sourceTree = "<group>"; };
 		4D60E328297AEF5000C8C95F /* UsersFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFeed.swift; sourceTree = "<group>"; };
 		4D60E32B297AF0D300C8C95F /* NetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewModel.swift; sourceTree = "<group>"; };
+		4D60E32D297AF1B300C8C95F /* UsersFeed2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFeed2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				4D5EBB412970FFA5001F1D37 /* Networking_with_CombineApp.swift */,
 				4D5EBB432970FFA5001F1D37 /* ContentView.swift */,
 				4D60E328297AEF5000C8C95F /* UsersFeed.swift */,
+				4D60E32D297AF1B300C8C95F /* UsersFeed2.swift */,
 				4D5EBB452970FFA6001F1D37 /* Assets.xcassets */,
 				4D5EBB472970FFA6001F1D37 /* Preview Content */,
 			);
@@ -307,6 +310,7 @@
 				4D5EBB6D29710058001F1D37 /* Constants.swift in Sources */,
 				4D5EBB74297A3D80001F1D37 /* NetworkServices2.swift in Sources */,
 				4D60E32C297AF0D300C8C95F /* NetworkViewModel.swift in Sources */,
+				4D60E32E297AF1B300C8C95F /* UsersFeed2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
