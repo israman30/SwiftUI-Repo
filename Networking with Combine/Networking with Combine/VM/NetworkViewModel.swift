@@ -13,7 +13,7 @@ class NetworkViewModel: ObservableObject {
 
     private var cancellable = Set<AnyCancellable>()
     private var network: NetworkServices2 = .shared
-    @Published var users = [User]()
+    @Published private(set) var users = [User]()
 
     func getUsers() {
         network
