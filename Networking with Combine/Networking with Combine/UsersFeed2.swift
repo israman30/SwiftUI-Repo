@@ -9,7 +9,11 @@ import SwiftUI
 
 struct UsersFeed2: View {
     
-    @StateObject private var vm = NetworkViewModel()
+    @StateObject private var vm: NetworkViewModel
+    
+    init() {
+        self._vm = StateObject(wrappedValue: NetworkViewModel())
+    }
     
     var body: some View {
         NavigationView {

@@ -32,7 +32,11 @@ extension NetworkError: LocalizedError {
     }
 }
 
-class NetworkServices2 {
+protocol NetworkProtocol {
+    func getData<T: Decodable>(endpoint: Endpoint, type: T.Type) -> Future<[T], Error>
+}
+
+class NetworkServices2: NetworkProtocol {
     
     static let shared = NetworkServices2()
     
@@ -41,7 +45,7 @@ class NetworkServices2 {
     private var cancellables = Set<AnyCancellable>()
     private let baseUrl = Constants.endopint
     
-    func getData<T: Decodable>(endpoint: Endpoint, id: Int? = nil, type: T.Type) -> Future<[T], Error> {
+    func getData<T: Decodable>(endpoint: Endpoint, type: T.Type) -> Future<[T], Error> {
         return Future<[T], Error> { [weak self] promise in
             guard let self = self, let url = URL(string: self.baseUrl) else {
                 return promise(.failure(NetworkError.badUrl))
