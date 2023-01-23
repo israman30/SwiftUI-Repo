@@ -10,26 +10,17 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var vm = UsersViewModel()
-    @State var searchText = ""
-    
-    var filterdUser: [Users] {
-        if searchText.isEmpty {
-            return vm.users
-        } else {
-            return vm.users.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
-        }
-    }
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(filterdUser, id: \.self) { user in
+                ForEach(vm.filteredUsers, id: \.self) { user in
                     Text(user.name)
                 }
                 
             }
             .navigationTitle("Avengers")
-            .searchable(text: $searchText)
+            .searchable(text: $vm.searchText)
         }
         
     }
