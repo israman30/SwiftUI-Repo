@@ -12,14 +12,26 @@ struct ContentView: View {
     @StateObject var vm = UsersViewModel()
     @State var searchText = ""
     
+    var filterdUser: [Users] {
+        if searchText.isEmpty {
+            return vm.users
+        } else {
+            return vm.users.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
+    
     var body: some View {
         NavigationView {
-            List(vm.users, id: \.self) { user in
-                Text(user.name)
+            List {
+                ForEach(filterdUser, id: \.self) { user in
+                    Text(user.name)
+                }
+                
             }
             .navigationTitle("Avengers")
+            .searchable(text: $searchText)
         }
-        .searchable(text: $searchText)
+        
     }
 }
 
