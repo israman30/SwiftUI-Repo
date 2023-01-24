@@ -36,14 +36,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D60E338297CE8B800C8C95F /* Seach with Combine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seach with Combine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D60E338297CE8B800C8C95F /* Search with Combine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Search with Combine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D60E33B297CE8B800C8C95F /* Seach_with_CombineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seach_with_CombineApp.swift; sourceTree = "<group>"; };
 		4D60E33D297CE8B800C8C95F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D60E33F297CE8B800C8C95F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D60E342297CE8B800C8C95F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4D60E348297CE8B800C8C95F /* Seach with CombineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Seach with CombineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D60E348297CE8B800C8C95F /* Search with CombineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Search with CombineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D60E34C297CE8B800C8C95F /* Seach_with_CombineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seach_with_CombineTests.swift; sourceTree = "<group>"; };
-		4D60E352297CE8B800C8C95F /* Seach with CombineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Seach with CombineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D60E352297CE8B800C8C95F /* Search with CombineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Search with CombineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D60E356297CE8B800C8C95F /* Seach_with_CombineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seach_with_CombineUITests.swift; sourceTree = "<group>"; };
 		4D60E358297CE8B800C8C95F /* Seach_with_CombineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seach_with_CombineUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4D60E366297CE8E500C8C95F /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -88,9 +88,9 @@
 		4D60E339297CE8B800C8C95F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D60E338297CE8B800C8C95F /* Seach with Combine.app */,
-				4D60E348297CE8B800C8C95F /* Seach with CombineTests.xctest */,
-				4D60E352297CE8B800C8C95F /* Seach with CombineUITests.xctest */,
+				4D60E338297CE8B800C8C95F /* Search with Combine.app */,
+				4D60E348297CE8B800C8C95F /* Search with CombineTests.xctest */,
+				4D60E352297CE8B800C8C95F /* Search with CombineUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,9 +152,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4D60E337297CE8B800C8C95F /* Seach with Combine */ = {
+		4D60E337297CE8B800C8C95F /* Search with Combine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D60E35C297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Seach with Combine" */;
+			buildConfigurationList = 4D60E35C297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Search with Combine" */;
 			buildPhases = (
 				4D60E334297CE8B800C8C95F /* Sources */,
 				4D60E335297CE8B800C8C95F /* Frameworks */,
@@ -164,14 +164,14 @@
 			);
 			dependencies = (
 			);
-			name = "Seach with Combine";
+			name = "Search with Combine";
 			productName = "Seach with Combine";
-			productReference = 4D60E338297CE8B800C8C95F /* Seach with Combine.app */;
+			productReference = 4D60E338297CE8B800C8C95F /* Search with Combine.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4D60E347297CE8B800C8C95F /* Seach with CombineTests */ = {
+		4D60E347297CE8B800C8C95F /* Search with CombineTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D60E35F297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Seach with CombineTests" */;
+			buildConfigurationList = 4D60E35F297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Search with CombineTests" */;
 			buildPhases = (
 				4D60E344297CE8B800C8C95F /* Sources */,
 				4D60E345297CE8B800C8C95F /* Frameworks */,
@@ -182,14 +182,14 @@
 			dependencies = (
 				4D60E34A297CE8B800C8C95F /* PBXTargetDependency */,
 			);
-			name = "Seach with CombineTests";
+			name = "Search with CombineTests";
 			productName = "Seach with CombineTests";
-			productReference = 4D60E348297CE8B800C8C95F /* Seach with CombineTests.xctest */;
+			productReference = 4D60E348297CE8B800C8C95F /* Search with CombineTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4D60E351297CE8B800C8C95F /* Seach with CombineUITests */ = {
+		4D60E351297CE8B800C8C95F /* Search with CombineUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D60E362297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Seach with CombineUITests" */;
+			buildConfigurationList = 4D60E362297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Search with CombineUITests" */;
 			buildPhases = (
 				4D60E34E297CE8B800C8C95F /* Sources */,
 				4D60E34F297CE8B800C8C95F /* Frameworks */,
@@ -200,9 +200,9 @@
 			dependencies = (
 				4D60E354297CE8B800C8C95F /* PBXTargetDependency */,
 			);
-			name = "Seach with CombineUITests";
+			name = "Search with CombineUITests";
 			productName = "Seach with CombineUITests";
-			productReference = 4D60E352297CE8B800C8C95F /* Seach with CombineUITests.xctest */;
+			productReference = 4D60E352297CE8B800C8C95F /* Search with CombineUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -228,7 +228,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4D60E333297CE8B800C8C95F /* Build configuration list for PBXProject "Seach with Combine" */;
+			buildConfigurationList = 4D60E333297CE8B800C8C95F /* Build configuration list for PBXProject "Search with Combine" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -241,9 +241,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4D60E337297CE8B800C8C95F /* Seach with Combine */,
-				4D60E347297CE8B800C8C95F /* Seach with CombineTests */,
-				4D60E351297CE8B800C8C95F /* Seach with CombineUITests */,
+				4D60E337297CE8B800C8C95F /* Search with Combine */,
+				4D60E347297CE8B800C8C95F /* Search with CombineTests */,
+				4D60E351297CE8B800C8C95F /* Search with CombineUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -308,12 +308,12 @@
 /* Begin PBXTargetDependency section */
 		4D60E34A297CE8B800C8C95F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4D60E337297CE8B800C8C95F /* Seach with Combine */;
+			target = 4D60E337297CE8B800C8C95F /* Search with Combine */;
 			targetProxy = 4D60E349297CE8B800C8C95F /* PBXContainerItemProxy */;
 		};
 		4D60E354297CE8B800C8C95F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4D60E337297CE8B800C8C95F /* Seach with Combine */;
+			target = 4D60E337297CE8B800C8C95F /* Search with Combine */;
 			targetProxy = 4D60E353297CE8B800C8C95F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -504,7 +504,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seach with Combine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Seach with Combine";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Search with Combine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Search with Combine";
 			};
 			name = Debug;
 		};
@@ -523,7 +523,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seach with Combine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Seach with Combine";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Search with Combine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Search with Combine";
 			};
 			name = Release;
 		};
@@ -564,7 +564,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4D60E333297CE8B800C8C95F /* Build configuration list for PBXProject "Seach with Combine" */ = {
+		4D60E333297CE8B800C8C95F /* Build configuration list for PBXProject "Search with Combine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D60E35A297CE8B800C8C95F /* Debug */,
@@ -573,7 +573,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D60E35C297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Seach with Combine" */ = {
+		4D60E35C297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Search with Combine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D60E35D297CE8B800C8C95F /* Debug */,
@@ -582,7 +582,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D60E35F297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Seach with CombineTests" */ = {
+		4D60E35F297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Search with CombineTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D60E360297CE8B800C8C95F /* Debug */,
@@ -591,7 +591,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D60E362297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Seach with CombineUITests" */ = {
+		4D60E362297CE8B800C8C95F /* Build configuration list for PBXNativeTarget "Search with CombineUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D60E363297CE8B800C8C95F /* Debug */,
