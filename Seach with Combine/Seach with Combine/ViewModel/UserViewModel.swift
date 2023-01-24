@@ -12,6 +12,7 @@ class UsersViewModel: ObservableObject {
     @Published var users = [Users]()
     @Published var searchText = ""
     @Published var searchResult = [Users]()
+    private var cancellables = Set<AnyCancellable>()
     
     var data = [Users]()
     
@@ -31,6 +32,23 @@ class UsersViewModel: ObservableObject {
             .init(name: "Natasha"),
             .init(name: "Jeremy Rener")
         ]
+        addSubcriber()
+    }
+    
+    func addSubcriber() {
+        $searchText
+            .receive(on: RunLoop.main)
+            .sink { newUser in
+                var filteredUsers: [Users] {
+                    if self.searchText.isEmpty {
+                        return self.users
+                    } else {
+                        return self.users.filter { $0.name.localizedCaseInsensitiveContains(self.searchText) }
+                    }
+                }
+            }
+            .store(in: &cancellables)
+            
     }
     
     func searchQuery(string: String = "") {
