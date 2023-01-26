@@ -4,4 +4,10 @@
    <FileRef
       location = "group:ModuleONE/ModuleONE.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:NetworkServicesKit/NetworkServicesKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIDesignKit/UIDesignKit.xcodeproj">
+   </FileRef>
 </Workspace>
