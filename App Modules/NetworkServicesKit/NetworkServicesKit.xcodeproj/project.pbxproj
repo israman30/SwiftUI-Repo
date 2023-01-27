@@ -11,6 +11,7 @@
 		4D60E3DA29821C4A00C8C95F /* NetworkServicesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D60E3CF29821C4A00C8C95F /* NetworkServicesKit.framework */; };
 		4D60E3DF29821C4A00C8C95F /* NetworkServicesKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E3DE29821C4A00C8C95F /* NetworkServicesKitTests.swift */; };
 		4D60E3E029821C4A00C8C95F /* NetworkServicesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D60E3D229821C4A00C8C95F /* NetworkServicesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D60E3F5298309C700C8C95F /* NetworkServicesKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E3F4298309C700C8C95F /* NetworkServicesKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		4D60E3D329821C4A00C8C95F /* NetworkServicesKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NetworkServicesKit.docc; sourceTree = "<group>"; };
 		4D60E3D929821C4A00C8C95F /* NetworkServicesKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkServicesKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D60E3DE29821C4A00C8C95F /* NetworkServicesKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicesKitTests.swift; sourceTree = "<group>"; };
+		4D60E3F4298309C700C8C95F /* NetworkServicesKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicesKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 		4D60E3C529821C4A00C8C95F = {
 			isa = PBXGroup;
 			children = (
+				4D60E3F4298309C700C8C95F /* NetworkServicesKit.swift */,
 				4D60E3D129821C4A00C8C95F /* NetworkServicesKit */,
 				4D60E3DD29821C4A00C8C95F /* NetworkServicesKitTests */,
 				4D60E3D029821C4A00C8C95F /* Products */,
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D60E3D429821C4A00C8C95F /* NetworkServicesKit.docc in Sources */,
+				4D60E3F5298309C700C8C95F /* NetworkServicesKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +398,7 @@
 		4D60E3E729821C4A00C8C95F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -409,6 +414,7 @@
 		4D60E3E829821C4A00C8C95F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

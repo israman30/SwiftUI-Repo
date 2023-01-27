@@ -7,19 +7,50 @@
 
 import SwiftUI
 import UIDesignKit
+import NetworkServicesKit
 
 struct HomeView: View {
     
-    var kit = DesignKit()
+    
+    var users = [User]()
     
     var body: some View {
-        Text("Hello, World!")
-//            .foregroundColor(kit)
+        VStack {
+            Text("Hello, World!")
+                
+        }
+        .onAppear {
+//            fetchUsers()
+        }
+        
     }
+    
+    
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
+}
+
+class NetworkVM: ObservableObject {
+    @Published var users = [User]()
+    let network = NetworkServicesKitImplementation()
+    func fetchUsers() {
+        Task {
+            do {
+                let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
+                users = try await network.get(url: url)
+            } catch {
+                
+            }
+        }
+    }
+}
+
+struct User: Decodable {
+    let name: String
+    let username: String
+    let email: String
 }

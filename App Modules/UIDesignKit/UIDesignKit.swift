@@ -7,18 +7,23 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
-protocol UIDesignKit {
-    func buildYellowView() -> UIView
-}
-
-public class DesignKit: UIDesignKit {
-    
-    public init() { }
-    
-    func buildYellowView() -> UIView {
-        let uiView = UIView()
-        uiView.backgroundColor = .yellow
-        return uiView
-    }
-}
+//protocol UIDesignKit {
+//    associatedtype CustomView: View
+//    func buildYellowView() -> CustomView
+//}
+//
+//public class DesignKit: UIDesignKit {
+//    
+//    public init() { }
+//    func buildYellowView() -> some View {
+//        
+//    }
+//    
+////    func buildYellowView() some View {
+////        let uiView = View()
+////        uiView.backgroundColor = .yellow
+////        return uiView
+////    }
+//}
