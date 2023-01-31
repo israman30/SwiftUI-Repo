@@ -11,7 +11,6 @@ import NetworkServicesKit
 
 struct HomeView: View {
     
-    
     var users = [User]()
     
     var body: some View {

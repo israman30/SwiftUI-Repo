@@ -9,21 +9,11 @@ import Foundation
 import UIKit
 import SwiftUI
 
-//protocol UIDesignKit {
-//    associatedtype CustomView: View
-//    func buildYellowView() -> CustomView
-//}
-//
-//public class DesignKit: UIDesignKit {
-//    
-//    public init() { }
-//    func buildYellowView() -> some View {
-//        
-//    }
-//    
-////    func buildYellowView() some View {
-////        let uiView = View()
-////        uiView.backgroundColor = .yellow
-////        return uiView
-////    }
-//}
+struct UIDesignImplementation: View {
+    var body: some View {
+        Text("Hello World again")
+            .foregroundColor(.blue)
+            .font(.title)
+            .padding()
+    }
+}
