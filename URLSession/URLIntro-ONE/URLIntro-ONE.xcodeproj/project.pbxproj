@@ -11,6 +11,7 @@
 		4D60E40729896CA200C8C95F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E40629896CA200C8C95F /* ContentView.swift */; };
 		4D60E40929896CA300C8C95F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D60E40829896CA300C8C95F /* Assets.xcassets */; };
 		4D60E40C29896CA300C8C95F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D60E40B29896CA300C8C95F /* Preview Assets.xcassets */; };
+		4D60E41329897C9000C8C95F /* CalculatePrimeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60E41229897C9000C8C95F /* CalculatePrimeOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4D60E40629896CA200C8C95F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D60E40829896CA300C8C95F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D60E40B29896CA300C8C95F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4D60E41229897C9000C8C95F /* CalculatePrimeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatePrimeOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				4D60E40429896CA200C8C95F /* URLIntro_ONEApp.swift */,
 				4D60E40629896CA200C8C95F /* ContentView.swift */,
+				4D60E41229897C9000C8C95F /* CalculatePrimeOperation.swift */,
 				4D60E40829896CA300C8C95F /* Assets.xcassets */,
 				4D60E40A29896CA300C8C95F /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D60E40729896CA200C8C95F /* ContentView.swift in Sources */,
+				4D60E41329897C9000C8C95F /* CalculatePrimeOperation.swift in Sources */,
 				4D60E40529896CA200C8C95F /* URLIntro_ONEApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
