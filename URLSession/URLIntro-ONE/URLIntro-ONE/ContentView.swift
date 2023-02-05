@@ -10,29 +10,34 @@ import SwiftUI
 struct ContentView: View {
     
     let operation = CalculatePrimeOperation()
+    @State var calculateDisable = false
     
     var body: some View {
         VStack {
             Spacer()
-            DatePicker(selection: .constant(Date()), label: {
-                Text("Date")
-            }).labelsHidden()
             Button { calculatePrime() } label: {
                 Text("Calculate the time")
-            }
+            }.disabled(calculateDisable)
 
+            DatePicker(selection: .constant(Date()), label: {
+                Text("Date")
+            })
+            .labelsHidden()
+            .pickerStyle(.wheel)
+            
             Spacer()
         }
         .padding()
     }
     
     func calculatePrime() {
-        
+        calculateDisable = true
         DispatchQueue.global(qos: .userInitiated).async {
             for number in 0...1_000_000 {
                 let isPrimeNumber = self.isPrime(number: number)
                 print("\(number) is prime: \(isPrimeNumber)")
             }
+            self.calculateDisable = false
         }
         
 //        let queue = OperationQueue()
