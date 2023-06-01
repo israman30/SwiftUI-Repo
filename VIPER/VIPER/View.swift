@@ -28,29 +28,42 @@ class UserViewController: UIViewController, AnyView, UITableViewDelegate, UITabl
         return tv
     }()
     
+    private var users: [User] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .yellow
         tableView.delegate = self
         tableView.dataSource = self
         
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+    }
+    
     func update(with users: [User]) {
-        
+        DispatchQueue.main.async {
+            self.users = users
+            self.tableView.reloadData()
+            self.tableView.isHidden = false
+        }
     }
     
     func update(with error: String) {
-        
+        print(error)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = users[indexPath.row].name
+        return cell
     }
     
     

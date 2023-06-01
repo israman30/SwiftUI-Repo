@@ -11,6 +11,10 @@ import Foundation
 // protocol
 // reference to interactor, router, view
 
+enum FetchError: Error {
+    case failingParsingURL
+}
+
 protocol AnyPresenter {
     var routes: AnyRouter? { get set }
     var interactor: AnyInteractor? { get set }
@@ -22,12 +26,21 @@ protocol AnyPresenter {
 class UserPresenter: AnyPresenter {
     var routes: AnyRouter?
     
-    var interactor: AnyInteractor?
+    var interactor: AnyInteractor? {
+        didSet {
+            self.interactor?.getUsers()
+        }
+    }
     
     var view: AnyView?
     
     func interactorDidFetchUsers(with result: Result<[User], Error>) {
-        
+        switch result {
+        case .success(let users):
+            view?.update(with: users)
+        case .failure:
+            view?.update(with: "something went wrong")
+        }
     }
     
     

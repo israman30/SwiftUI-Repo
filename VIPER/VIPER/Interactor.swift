@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+//https://jsonplaceholder.typicode.com/users
 protocol AnyInteractor {
     var presenter: AnyPresenter? { get set }
     
@@ -18,7 +18,21 @@ class UserInteractor: AnyInteractor {
     var presenter: AnyPresenter?
     
     func getUsers() {
-        
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else { return }
+        let taks = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let data = data, error == nil else {
+                self?.presenter?.interactorDidFetchUsers(with: .failure(FetchError.failingParsingURL))
+                return
+            }
+            
+            do {
+                let entities = try JSONDecoder().decode([User].self, from: data)
+                self?.presenter?.interactorDidFetchUsers(with: .success(entities))
+            } catch {
+                self?.presenter?.interactorDidFetchUsers(with: .failure(error))
+            }
+        }
+        taks.resume()
     }
     
     
