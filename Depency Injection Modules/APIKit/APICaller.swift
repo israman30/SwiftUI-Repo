@@ -7,22 +7,10 @@
 
 import Foundation
 
-
-public class APICaller {
-    
-    static let shared = APICaller()
-    
-    private init() {}
-    
-    public func fetchUsers() {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            
-            
-        }
-        
-        task.resume()
+public class NetworkServicesKitImplementation {
+    public init() {}
+    public func get<T: Decodable>(url: URL) async throws -> T {
+        let (data, _ ) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode(T.self, from: data)
     }
 }

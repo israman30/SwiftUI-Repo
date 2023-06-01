@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import MyUKit
+import APIKit
 
 class ViewController: UIViewController {
+    
+    let network = NetworkServicesKitImplementation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +22,13 @@ class ViewController: UIViewController {
         button.backgroundColor = .systemBlue
         view.addSubview(button)
         button.center = view.center
+        
+        button.addTarget(self, action: #selector(handleOpenView), for: .touchUpInside)
+    }
+    
+    @objc func handleOpenView() {
+        let vc = UsersViewController(dataFechable: dataFetch)
+        present(vc, animated: true)
     }
 
 
