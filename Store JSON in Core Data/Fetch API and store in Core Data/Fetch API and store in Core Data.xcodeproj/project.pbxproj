@@ -15,6 +15,7 @@
 		4DDFED752A4149E400BA881D /* Fetch_API_and_store_in_Core_Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DDFED732A4149E400BA881D /* Fetch_API_and_store_in_Core_Data.xcdatamodeld */; };
 		4DDFED7F2A414BA700BA881D /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDFED7E2A414BA700BA881D /* PostListView.swift */; };
 		4DDFED812A414BE000BA881D /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDFED802A414BE000BA881D /* PostModel.swift */; };
+		4DDFED832A414C6B00BA881D /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDFED822A414C6B00BA881D /* PostViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		4DDFED742A4149E400BA881D /* Fetch_API_and_store_in_Core_Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fetch_API_and_store_in_Core_Data.xcdatamodel; sourceTree = "<group>"; };
 		4DDFED7E2A414BA700BA881D /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
 		4DDFED802A414BE000BA881D /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		4DDFED822A414C6B00BA881D /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		4DDFED7C2A414B6C00BA881D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4DDFED822A414C6B00BA881D /* PostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DDFED722A4149E400BA881D /* Persistence.swift in Sources */,
+				4DDFED832A414C6B00BA881D /* PostViewModel.swift in Sources */,
 				4DDFED812A414BE000BA881D /* PostModel.swift in Sources */,
 				4DDFED752A4149E400BA881D /* Fetch_API_and_store_in_Core_Data.xcdatamodeld in Sources */,
 				4DDFED6B2A4149E300BA881D /* ContentView.swift in Sources */,
