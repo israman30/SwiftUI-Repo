@@ -9,11 +9,20 @@ import SwiftUI
 
 struct PostListView: View {
     
-    
+    @StateObject var vm = PostViewModel()
     
     var body: some View {
-        List {
-            Text("Hello, World!")
+        VStack {
+            if vm.posts.isEmpty {
+                ProgressView()
+            } else {
+                List(vm.posts, id: \.id) { post in
+                    Text(post.title)
+                }
+            }
+        }
+        .onAppear {
+            vm.fetchRequest()
         }
         
     }
