@@ -7,12 +7,30 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 class PostViewModel: ObservableObject {
     
     @Published var posts = [PostModel]()
     
-    func fetchRequest() {
+    // MARK: - Saving Fetched JSON to Core Data
+    func saveData(context: NSManagedObjectContext) {
+        posts.forEach { post in
+            let entity = Post(context: context)
+            entity.id = Int16(post.id)
+            entity.title = post.title
+            entity.body = post.body
+        }
+        
+        do {
+            try context.save()
+            print("Success: JSON Object saved in Cored Data")
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func fetchRequest(context: NSManagedObjectContext) {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
         
         let request = URLRequest(url: url)
@@ -31,6 +49,7 @@ class PostViewModel: ObservableObject {
                 let posts = try JSONDecoder().decode([PostModel].self, from: data)
                 DispatchQueue.main.async {
                     self.posts = posts
+                    self.saveData(context: context) /// Saving context  after decode data
                 }
             } catch {
                 print(error.localizedDescription)
