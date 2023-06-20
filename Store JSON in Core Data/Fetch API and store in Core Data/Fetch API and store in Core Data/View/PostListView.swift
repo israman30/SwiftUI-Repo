@@ -28,12 +28,12 @@ struct PostListView: View {
                             }
                     } else {
                         List(vm.posts, id: \.id) { post in
-                            Text(post.title)
+                            CardView(post: post)
                         }
                     }
                 } else {
                     List(results) { post in
-                        Text(post.title ?? "No Title")
+                        CardView(fetchedData: post)
                     }
                 }
                 
@@ -62,6 +62,23 @@ struct PostListView: View {
             }
         }
         
+    }
+}
+
+struct CardView: View {
+    var post: PostModel?
+    var fetchedData: Post?
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(post == nil ? fetchedData!.title! : post!.title)
+                .font(.title2)
+                .fontWeight(.heavy)
+                .foregroundColor(Color(.label))
+            Text(post == nil ? fetchedData!.body! : post!.body)
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundColor(Color(.lightGray))
+        }
     }
 }
 
