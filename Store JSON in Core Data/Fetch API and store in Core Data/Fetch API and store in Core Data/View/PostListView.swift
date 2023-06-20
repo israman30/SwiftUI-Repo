@@ -36,32 +36,33 @@ struct PostListView: View {
                         CardView(fetchedData: post)
                     }
                 }
-                
             }
             .navigationTitle(!results.isEmpty ? "Fetched Core Data" : "Fetched JSON")
             .toolbar {
                 ToolbarItem {
                     Button {
-                        /// Clear  Core Data
-                        do {
-                            results.forEach { post in
-                                context.delete(post)
-                            }
-                            try context.save()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                        /// Clrea array Posts it will fetch again
-                        self.vm.posts.removeAll()
+                        self.clearPosts()
                     } label: {
                         Image(systemName: "arrow.clockwise.circle")
                             .font(.title)
                     }
-
                 }
             }
         }
-        
+    }
+    
+    private func clearPosts() {
+        /// Clear  Core Data
+        do {
+            results.forEach { post in
+                context.delete(post)
+            }
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+        /// Clrea array Posts it will fetch again
+        vm.posts.removeAll()
     }
 }
 
