@@ -15,7 +15,8 @@ struct User: Decodable {
 }
 
 class NetworkServices {
-    guard let url = URL(string: "https://jsonplaceholder.typicode.com/user") else { return }
+    
+    let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
     
     func getUsers() -> AnyPublisher<[User], Error> {
         URLSession.shared.dataTaskPublisher(for: url)
@@ -26,15 +27,42 @@ class NetworkServices {
     }
 }
 
+class ViewModel: ObservableObject {
+    
+    @Published var users = [User]()
+    var cancellable = Set<AnyCancellable>()
+    let network: NetworkServices
+    
+    init(_ network: NetworkServices) {
+        self.network = network
+        load()
+    }
+    
+    private func load() {
+        network.getUsers()
+            .sink { _ in
+                
+            } receiveValue: { users in
+                self.users = users
+            }
+            .store(in: &cancellable)
+    }
+}
+
 struct ContentView: View {
+    
+    @StateObject private var vm: ViewModel
+    
+    init() {
+        self._vm = StateObject(wrappedValue: ViewModel(NetworkServices()))
+    }
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            List(vm.users, id: \.id) { user in
+                Text(user.name)
+            }
         }
-        .padding()
     }
 }
 
