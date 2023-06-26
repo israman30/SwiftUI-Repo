@@ -14,7 +14,11 @@ struct User: Decodable {
     let email: String
 }
 
-class NetworkServices {
+protocol NetworkServicesProtocol {
+    func getUsers() -> AnyPublisher<[User], Error>
+}
+
+class NetworkServices: NetworkServicesProtocol {
     
     let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
     
@@ -27,13 +31,29 @@ class NetworkServices {
     }
 }
 
+class MockNetworkServices: NetworkServicesProtocol {
+    
+    let mockUsers = [
+        User(id: 0, name: "John Doe", email: "jdoe@mail.com"),
+        User(id: 1, name: "Peter Parker", email: "peter@mail.com"),
+        User(id: 2, name: "Tony Stark", email: "ironman@mail.com"),
+        User(id: 3, name: "Steve Rogers", email: "americancap@mail.com")
+    ]
+    
+    func getUsers() -> AnyPublisher<[User], Error> {
+        Just(mockUsers)
+            .tryMap { $0 } // something might fail
+            .eraseToAnyPublisher()
+    }
+}
+
 class ViewModel: ObservableObject {
     
     @Published var users = [User]()
     var cancellable = Set<AnyCancellable>()
-    let network: NetworkServices
+    let network: NetworkServicesProtocol
     
-    init(_ network: NetworkServices) {
+    init(_ network: NetworkServicesProtocol) {
         self.network = network
         load()
     }
