@@ -23,7 +23,7 @@ class CoinDataService {
                 
             }
             guard let coins = try? JSONDecoder().decode([Coin].self, from: data) else {
-                print("FAILEDr")
+                print("FAILED: \(error?.localizedDescription)")
                 return
             }
             
