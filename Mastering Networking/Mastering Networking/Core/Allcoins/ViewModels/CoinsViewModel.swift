@@ -12,6 +12,7 @@ class CoinsViewModel: ObservableObject {
     
     @Published var coins = ""
     @Published var price = ""
+    @Published var errorMessage: String?
     
     init() {
         fetchPrice(coin: "litecoin")
@@ -21,11 +22,29 @@ class CoinsViewModel: ObservableObject {
         let urlString = "https://api.coingecko.com/api/v3/simple/price?ids=\(coin)&vs_currencies=usd"
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            guard let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else { return }
-            guard let value = jsonObject[coin] as? [String:Double] else { return }
-            guard let price = value["usd"] else { return }
             DispatchQueue.main.async {
+                if let error = error {
+                    print("DEBUG: Failed with error: \(error.localizedDescription)")
+                    self.errorMessage = error.localizedDescription
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    self.errorMessage = "Bad http response"
+                    return
+                }
+                
+                guard httpResponse.statusCode == 200 else {
+                    self.errorMessage = "Failed fetching data with status code \(httpResponse.statusCode)"
+                    return
+                }
+                
+                print("DEBUG: Response status code: \(httpResponse.statusCode)")
+                
+                guard let data = data else { return }
+                guard let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else { return }
+                guard let value = jsonObject[coin] as? [String:Double] else { return }
+                guard let price = value["usd"] else { return }
                 self.coins = coin.capitalized
                 self.price = "\(price)"
             }
