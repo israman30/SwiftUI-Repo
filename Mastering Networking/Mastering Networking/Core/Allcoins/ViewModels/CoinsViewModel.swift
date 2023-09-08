@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class CoinsViewModel: ObservableObject {
     
     @Published var coins = [Coin]()
@@ -16,10 +17,16 @@ class CoinsViewModel: ObservableObject {
     private let service = CoinDataService()
     
     init() {
-        fetchCoins()
+        Task {
+            try await fetchCoins()
+        }
     }
     
-    func fetchCoins() {
+    func fetchCoins() async throws {
+        self.coins = try await service.fetchCoins()
+    }
+    
+    func fetchCoinsWithCompletion() {
         service.fetchCoinsWithResult { [weak self] result in
             switch result {
             case .success(let coins):
@@ -28,13 +35,6 @@ class CoinsViewModel: ObservableObject {
                 self?.errorMessage = error.localizedDescription
             }
         }
-//        service.fetchCoins { coins, error in
-//            if let error = error {
-//                self.errorMessage = error.localizedDescription
-//                return
-//            }
-//            self.coins = coins ?? []
-//        }
     }
     
 }
