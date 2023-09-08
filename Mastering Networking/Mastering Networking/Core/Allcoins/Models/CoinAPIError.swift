@@ -13,6 +13,7 @@ enum CoinAPIError: Error {
     case requesFailed(description: String)
     case invalidStatusCode(statusCode: Int)
     case unknownError(error: Error)
+    case badResponse
     
     var description: String {
         switch self {
@@ -21,6 +22,7 @@ enum CoinAPIError: Error {
         case let .requesFailed(description): return "Request failed \(description)"
         case let .invalidStatusCode(statusCode): return "Invalid status code \(statusCode)"
         case let .unknownError(error): return "Unknown error occured \(error.localizedDescription)"
+        case .badResponse: return "Bard response"
         }
     }
 }

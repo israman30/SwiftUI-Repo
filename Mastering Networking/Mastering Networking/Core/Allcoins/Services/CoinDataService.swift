@@ -18,7 +18,18 @@ class CoinDataService {
         guard let url = URL(string: urlString) else { return [] }
         
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await URLSession.shared.data(from: url)
+            
+            if data.isEmpty { throw CoinAPIError.invalidData }
+            
+            guard response is HTTPURLResponse else {
+                throw CoinAPIError.requesFailed(description: "Request Failed")
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode ~= 200 else {
+                throw CoinAPIError.badResponse
+            }
+            
             let coins = try JSONDecoder().decode([Coin].self, from: data)
             return coins
         } catch {
