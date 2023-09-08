@@ -27,7 +27,11 @@ struct ContentView: View {
             }
             
         }
-        .padding()
+        .overlay {
+            if let error = vm.errorMessage {
+                Text(error)
+            }
+        }
     }
 }
 
