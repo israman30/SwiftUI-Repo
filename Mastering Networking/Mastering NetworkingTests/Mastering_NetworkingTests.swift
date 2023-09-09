@@ -9,13 +9,23 @@ import XCTest
 @testable import Mastering_Networking
 
 final class Mastering_NetworkingTests: XCTestCase {
+    
+    var coinsViewModel: CoinsViewModel!
 
-    override func setUpWithError() throws {
+    @MainActor override func setUpWithError() throws {
+        coinsViewModel = CoinsViewModel()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
+        coinsViewModel = nil
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    func testFetchRequestWithNoError() async {
+        let expectaion = XCTestExpectation(description: #function)
+        let service = CoinDataService()
+        expectaion.fulfill()
     }
     
     func testSample() async throws {
