@@ -15,7 +15,18 @@
 		4D1B6FD12AAA0DA2008865E7 /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1B6FD02AAA0DA2008865E7 /* CoinDataService.swift */; };
 		4D1B6FD32AAA3FE3008865E7 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1B6FD22AAA3FE3008865E7 /* Coin.swift */; };
 		4D1B6FD52AAAA005008865E7 /* CoinAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1B6FD42AAAA005008865E7 /* CoinAPIError.swift */; };
+		4D1B6FDE2AAB9A46008865E7 /* Mastering_NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1B6FDD2AAB9A46008865E7 /* Mastering_NetworkingTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4D1B6FDF2AAB9A46008865E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D1B6FAE2AA96EEE008865E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D1B6FB52AA96EEE008865E7;
+			remoteInfo = "Mastering Networking";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4D1B6FB62AA96EEE008865E7 /* Mastering Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mastering Networking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,10 +38,19 @@
 		4D1B6FD02AAA0DA2008865E7 /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		4D1B6FD22AAA3FE3008865E7 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		4D1B6FD42AAAA005008865E7 /* CoinAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAPIError.swift; sourceTree = "<group>"; };
+		4D1B6FDB2AAB9A46008865E7 /* Mastering NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mastering NetworkingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D1B6FDD2AAB9A46008865E7 /* Mastering_NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mastering_NetworkingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4D1B6FB32AA96EEE008865E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D1B6FD82AAB9A46008865E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1B6FB82AA96EEE008865E7 /* Mastering Networking */,
+				4D1B6FDC2AAB9A46008865E7 /* Mastering NetworkingTests */,
 				4D1B6FB72AA96EEE008865E7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1B6FB62AA96EEE008865E7 /* Mastering Networking.app */,
+				4D1B6FDB2AAB9A46008865E7 /* Mastering NetworkingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +157,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		4D1B6FDC2AAB9A46008865E7 /* Mastering NetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D1B6FDD2AAB9A46008865E7 /* Mastering_NetworkingTests.swift */,
+			);
+			path = "Mastering NetworkingTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,6 +185,24 @@
 			productReference = 4D1B6FB62AA96EEE008865E7 /* Mastering Networking.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4D1B6FDA2AAB9A46008865E7 /* Mastering NetworkingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D1B6FE12AAB9A46008865E7 /* Build configuration list for PBXNativeTarget "Mastering NetworkingTests" */;
+			buildPhases = (
+				4D1B6FD72AAB9A46008865E7 /* Sources */,
+				4D1B6FD82AAB9A46008865E7 /* Frameworks */,
+				4D1B6FD92AAB9A46008865E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D1B6FE02AAB9A46008865E7 /* PBXTargetDependency */,
+			);
+			name = "Mastering NetworkingTests";
+			productName = "Mastering NetworkingTests";
+			productReference = 4D1B6FDB2AAB9A46008865E7 /* Mastering NetworkingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -167,6 +215,10 @@
 				TargetAttributes = {
 					4D1B6FB52AA96EEE008865E7 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					4D1B6FDA2AAB9A46008865E7 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 4D1B6FB52AA96EEE008865E7;
 					};
 				};
 			};
@@ -184,6 +236,7 @@
 			projectRoot = "";
 			targets = (
 				4D1B6FB52AA96EEE008865E7 /* Mastering Networking */,
+				4D1B6FDA2AAB9A46008865E7 /* Mastering NetworkingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -195,6 +248,13 @@
 			files = (
 				4D1B6FC12AA96EEE008865E7 /* Preview Assets.xcassets in Resources */,
 				4D1B6FBE2AA96EEE008865E7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D1B6FD92AAB9A46008865E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +274,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D1B6FD72AAB9A46008865E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D1B6FDE2AAB9A46008865E7 /* Mastering_NetworkingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4D1B6FE02AAB9A46008865E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D1B6FB52AA96EEE008865E7 /* Mastering Networking */;
+			targetProxy = 4D1B6FDF2AAB9A46008865E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4D1B6FC22AA96EEE008865E7 /* Debug */ = {
@@ -389,6 +465,42 @@
 			};
 			name = Release;
 		};
+		4D1B6FE22AAB9A46008865E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9TBJCK73T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.israman.somenews.Mastering-NetworkingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mastering Networking.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mastering Networking";
+			};
+			name = Debug;
+		};
+		4D1B6FE32AAB9A46008865E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9TBJCK73T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.israman.somenews.Mastering-NetworkingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mastering Networking.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mastering Networking";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -406,6 +518,15 @@
 			buildConfigurations = (
 				4D1B6FC52AA96EEE008865E7 /* Debug */,
 				4D1B6FC62AA96EEE008865E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D1B6FE12AAB9A46008865E7 /* Build configuration list for PBXNativeTarget "Mastering NetworkingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D1B6FE22AAB9A46008865E7 /* Debug */,
+				4D1B6FE32AAB9A46008865E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
