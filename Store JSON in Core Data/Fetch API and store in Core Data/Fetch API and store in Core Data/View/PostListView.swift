@@ -24,7 +24,10 @@ struct PostListView: View {
                     if vm.posts.isEmpty {
                         ProgressView()
                             .onAppear {
-                                vm.fetchRequest(context: context)
+//                                vm.fetchRequest(context: context)
+                                Task {
+                                    try await vm.fetchRequestWithConcurrency(context: context)
+                                }
                             }
                     } else {
                         List(vm.posts, id: \.id) { post in
