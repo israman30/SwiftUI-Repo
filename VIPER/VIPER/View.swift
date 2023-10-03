@@ -35,8 +35,6 @@ class UserViewController: UIViewController, AnyView, UITableViewDelegate, UITabl
         view.backgroundColor = .yellow
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
     }
     
     override func viewDidLayoutSubviews() {

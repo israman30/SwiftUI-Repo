@@ -17,9 +17,11 @@ protocol AnyInteractor {
 class UserInteractor: AnyInteractor {
     var presenter: AnyPresenter?
     
+    var task: URLSessionTask!
+    
     func getUsers() {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else { return }
-        let taks = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data, error == nil else {
                 self?.presenter?.interactorDidFetchUsers(with: .failure(FetchError.failingParsingURL))
                 return
@@ -32,7 +34,12 @@ class UserInteractor: AnyInteractor {
                 self?.presenter?.interactorDidFetchUsers(with: .failure(error))
             }
         }
-        taks.resume()
+        task.resume()
+        self.task = task
+    }
+    
+    deinit {
+        task.cancel()
     }
     
     
