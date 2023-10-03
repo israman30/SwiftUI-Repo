@@ -7,7 +7,27 @@
 
 import SwiftUI
 
-// "https://jsonplaceholder.typicode.com/users"
+// "https://pokeapi.co/api/v2/pokemon?limit=20"
+
+struct Pokemon: Decodable, Identifiable {
+    var id = UUID().uuidString
+    let name: String
+}
+
+final class NetworkServices {
+    func fetchData() async throws -> [Pokemon] {
+        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=20") else {
+            fatalError("DEBUG: Bad url address")
+        }
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, (200...300).contains(response.statusCode) else {
+            fatalError("DEBUG: Bad response with")
+        }
+        
+        return try JSONDecoder().decode([Pokemon].self, from: data)
+    }
+}
 
 struct ContentView: View {
     var body: some View {
