@@ -79,7 +79,7 @@ final class PokemonInteractor {
         }
         
         guard let response = response as? HTTPURLResponse, (200...300).contains(response.statusCode) else {
-            fatalError("DEBUG: Bad response with")
+            fatalError("DEBUG: Bad response with \(APIError.badResponse)")
         }
         
         return try JSONDecoder().decode(PokemonList.self, from: data).results
