@@ -103,27 +103,11 @@ class PokemonRouter {
         let detailView = PokemonDetail(pokemon: pokemon)
         let hostingController = UIHostingController(rootView: detailView)
         
-        if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            keyWindow.rootViewController?.present(hostingController, animated: true)
+        let application = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive })
+        
+        if let keyWindow = application as? UIWindowScene {
+            keyWindow.keyWindow?.rootViewController?.present(hostingController, animated: true)
         }
-//        if let window = UIApplication().currentUIWindow() {
-//            window.rootViewController?.present(hostingController, animated: true)
-//        }
     }
 }
 
-
-public extension UIApplication {
-    func currentUIWindow() -> UIWindow? {
-        let connectedScenes = UIApplication.shared.connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .compactMap { $0 as? UIWindowScene }
-        
-        let window = connectedScenes.first?
-            .windows
-            .first { $0.isKeyWindow }
-
-        return window
-        
-    }
-}
