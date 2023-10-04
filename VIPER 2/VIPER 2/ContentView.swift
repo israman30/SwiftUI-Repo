@@ -9,6 +9,13 @@ import SwiftUI
 
 // "https://pokeapi.co/api/v2/pokemon?limit=20"
 
+enum APIError: Error {
+    case wrongAPIAddress
+    case badResponse
+    case noData
+    case errorPresenter(_ error: String)
+}
+
 struct PokemonList: Decodable {
     let results: [Pokemon]
 }
@@ -63,9 +70,13 @@ struct PokemonDetail: View {
 final class PokemonInteractor {
     func fetchData() async throws -> [Pokemon] {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=20") else {
-            fatalError("DEBUG: Bad url address")
+            fatalError("DEBUG: Bad url address: \(APIError.wrongAPIAddress)")
         }
         let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard !data.isEmpty else {
+            fatalError("DEBUG: - \(APIError.noData)")
+        }
         
         guard let response = response as? HTTPURLResponse, (200...300).contains(response.statusCode) else {
             fatalError("DEBUG: Bad response with")
@@ -87,7 +98,7 @@ class PokemonPresenter: ObservableObject {
         do {
             pokemon = try await interactor.fetchData()
         } catch {
-            print(error)
+            print("\(APIError.errorPresenter(error.localizedDescription))")
         }
     }
     
