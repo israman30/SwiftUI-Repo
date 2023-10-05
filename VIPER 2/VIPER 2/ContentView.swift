@@ -26,6 +26,7 @@ struct Pokemon: Decodable, Identifiable {
     }
     let name: String
 }
+
 // MARK: - View
 struct ContentView: View {
     
@@ -88,7 +89,7 @@ final class PokemonInteractor {
 
 // MARK: - PRESENTER
 @MainActor
-class PokemonPresenter: ObservableObject {
+final class PokemonPresenter: ObservableObject {
     
     @Published var pokemon = [Pokemon]()
     private var interactor = PokemonInteractor()
@@ -108,7 +109,7 @@ class PokemonPresenter: ObservableObject {
 }
 
 // MARK: - ROUTE
-class PokemonRouter {
+final class PokemonRouter {
     
     func navigate(to pokemon: Pokemon) {
         let detailView = PokemonDetail(pokemon: pokemon)
