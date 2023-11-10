@@ -32,8 +32,16 @@ class UserViewModel: ObservableObject {
     var totalPages = 0
     var page = 1
     
+    func loadMoreContent(user: User) async {
+        let userIndex = self.users.index(self.users.endIndex, offsetBy: -1)
+        if userIndex == user.id, (page + 1) <= totalPages {
+            page += 1
+            try! await getUsers()
+        }
+    }
+    
     func getUsers() async throws {
-        guard let url = URL(string: "https://reqres.in/api/users?page=2") else {
+        guard let url = URL(string: "https://reqres.in/api/users?page=\(page)") else {
             fatalError("Wrnog url")
         }
         let (data, _) = try await URLSession.shared.data(from: url)
