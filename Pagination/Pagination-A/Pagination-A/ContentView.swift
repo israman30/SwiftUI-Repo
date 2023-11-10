@@ -26,11 +26,11 @@ struct User: Decodable, Hashable {
 }
 
 @MainActor
-class UserViewModel: ObservableObject {
+final class UserViewModel: ObservableObject {
     @Published var users: [User] = []
     
-    var totalPages = 0
-    var page = 1
+    private var totalPages = 0
+    private var page = 1
     
     func loadMoreContent(user: User) async {
         let userIndex = self.users.index(self.users.endIndex, offsetBy: -1)
@@ -40,7 +40,7 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    func getUsers() async throws {
+    private func getUsers() async throws {
         guard let url = URL(string: "https://reqres.in/api/users?page=\(page)") else {
             fatalError("Wrnog url")
         }
@@ -66,6 +66,11 @@ struct ContentView: View {
     var body: some View {
         List(vm.users, id: \.id) { user in
             UserView(user: user)
+                .onAppear {
+                    Task {
+                        await vm.loadMoreContent(user: user)
+                    }
+                }
         }
         .listStyle(.grouped)
         .task {
