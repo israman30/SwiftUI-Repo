@@ -9,6 +9,7 @@ import SwiftUI
 
 // https://reqres.in/api/users?page=2
 
+// MARK: - User Model
 struct UserList: Decodable {
     let page: Int
     let per_page: Int
@@ -25,6 +26,11 @@ struct User: Decodable, Hashable {
     let avatar: URL
 }
 
+// MARK: - UserViewModel takes care of logic
+/**
+ ViewModel contains fetch `API` data from the internet
+ loadMoreContent takes care of load more users when `paging` scrolls
+ */
 @MainActor
 final class UserViewModel: ObservableObject {
     @Published var users: [User] = []
@@ -59,6 +65,7 @@ final class UserViewModel: ObservableObject {
     
 }
 
+// MARK: - View
 struct ContentView: View {
     
     @StateObject var vm = UserViewModel()
