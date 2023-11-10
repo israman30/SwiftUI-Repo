@@ -42,7 +42,7 @@ final class UserViewModel: ObservableObject {
     
     private func getUsers() async throws {
         guard let url = URL(string: "https://reqres.in/api/users?page=\(page)") else {
-            fatalError("Wrnog url")
+            fatalError("Wrong url")
         }
         let (data, _) = try await URLSession.shared.data(from: url)
         do {
