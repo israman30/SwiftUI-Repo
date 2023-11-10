@@ -40,10 +40,11 @@ struct UserView: View {
                 }
                 
             })
-            .foregroundColor(.white)
+            .foregroundColor(.black)
         })
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-        .background(Color.black)
+        .foregroundColor(.black)
+        .background(Color.white)
         .cornerRadius(10.0)
         .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 0)
         .padding(.horizontal, 10)

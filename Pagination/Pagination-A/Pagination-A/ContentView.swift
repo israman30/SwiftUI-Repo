@@ -65,12 +65,12 @@ struct ContentView: View {
     
     var body: some View {
         List(vm.users, id: \.id) { user in
-            Text(user.email)
+            UserView(user: user)
         }
+        .listStyle(.grouped)
         .task {
             await vm.load()
         }
-        .padding()
     }
 }
 
