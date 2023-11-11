@@ -4,6 +4,8 @@
 //
 //  Created by Israel Manzo on 11/10/23.
 //
+// 219d19ee586b4a049fafb28d3ecb7707
+// https://newsapi.org/v2/top-headlines?country=us&apiKey=219d19ee586b4a049fafb28d3ecb7707
 
 import SwiftUI
 
