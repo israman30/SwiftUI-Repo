@@ -80,7 +80,7 @@ struct Articles: Codable, Identifiable {
 class NetworkServices {
     
     func getArticles(page: Int) async throws -> [Articles] {
-        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=219d19ee586b4a049fafb28d3ecb7707") else {
+        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=219d19ee586b4a049fafb28d3ecb7707&page=\(page)") else {
             fatalError("Wrong url")
         }
         let (data, response) = try await URLSession.shared.data(from: url)
