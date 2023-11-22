@@ -54,6 +54,10 @@ struct CardView: View {
     }
 }
 
+struct Endpoint {
+    static let baseURL = URL(string: "")
+}
+
 struct ArticlesList: Decodable {
     let articles: [Articles]
 }
