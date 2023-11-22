@@ -1,3 +1,7 @@
+### To consider:
+1. How risky is it? What has the original author done to mitigate risk?
+2. What was the intention? When the original author changed the code, what was s/he attempting to accomplish?
+
 ## Arlo's Commit Notation Cheat Sheet:
 - F!! | Feature > 8 LoC
 - F - | Feature <= 8 LoC
