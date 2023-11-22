@@ -14,6 +14,8 @@
 - a - | Automatic formatting/generation
 - e - | Environment (non-code) changes that affect development setup
 - t - | Test-only
-- _*  | Known to be broken, or can't check now. 
+- _*  | Known to be broken, or can't check now
+
+_note: Any commit message starting with # will be ignored_ 
 
 _ref https://github.com/RefactoringCombos/ArlosCommitNotation_
