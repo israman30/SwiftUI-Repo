@@ -42,9 +42,24 @@
 
    _Unit testing is so much easier with dependency injection. Dependency injection makes it very easy to replace an object's dependencies with mock objects, making unit tests easier to set up and isolate behavior._
 
+#### DI Samples
+
+```swift
+// Some Network layer
+protocol NetworkProtocol {
+   func load() -> String
+}
+
+final class NetworkServices: NetworkProtocol {
+   func load() -> String {}
+}
+
+```
+
 #### 3. Networking
 
 #### 4. Pagination
+
 
 #### 5. Searching
 
