@@ -27,8 +27,7 @@
            .shadow(color: Color.gray, radius: 5, x: 0, y: 2)
            .padding(.bottom, 5)
       }
-  }
-```
+   }```
 
 <p align="center">
  <img src="/img/Mario-bros.png" width="250">
