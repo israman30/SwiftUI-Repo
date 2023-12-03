@@ -28,9 +28,9 @@
                 .padding(.bottom, 5)
            }
        }
-```
 
-	![Alt text](img/Mario-bros.png)
+
+![Alt text](img/Mario-bros.png)
 
 2. Dependency Injection
 
