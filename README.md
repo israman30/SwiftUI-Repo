@@ -29,8 +29,9 @@
            }
        }
 
-
-![Alt text](img/Mario-bros.png)
+<p align="center">
+ <img src="/img/Mario-bros.png" width="250"> <img src="/img/two.png" width="250"> <img src="/img/three.png" width="250">
+</p>
 
 2. Dependency Injection
 
