@@ -29,7 +29,7 @@
            }
        }
 
-	![Alt text](img/mario-bros.png)
+	![Alt text](img/Mario-bros.png)
 
 2. Dependency Injection
 
