@@ -5,7 +5,7 @@
 1. Creating a custom Card
 
    ```CustomCardView``` ```SwiftUI``` declares the custom card.
-   ```swift
+   ```swiftui
 	struct CustomCardView: View {
     	    var body: some View {
         	VStack(alignment: .leading) {
