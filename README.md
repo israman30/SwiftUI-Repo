@@ -35,11 +35,11 @@
 
 2. Dependency Injection
 
-_A design pattern achieved by designing your code in a way that your objects or functions receive objects that they depend on, instead of creating their own. For example, instead of creating a service around user defaults inside your view models, you should be passed an instance of such service._
+   _A design pattern achieved by designing your code in a way that your objects or functions receive objects that they depend on, instead of creating their own. For example, instead of creating a service around user defaults inside your view models, you should be passed an instance of such service._
 
-_By injecting the dependencies of an object, the responsibilities and requirements of a class or structure become more clear and more transparent. By injecting a request manager into a view controller, we understand that the view controller depends on the request manager and we can assume that the view controller is responsible for request managing and/or handling._
+   _By injecting the dependencies of an object, the responsibilities and requirements of a class or structure become more clear and more transparent. By injecting a request manager into a view controller, we understand that the view controller depends on the request manager and we can assume that the view controller is responsible for request managing and/or handling._
 
-_Unit testing is so much easier with dependency injection. Dependency injection makes it very easy to replace an object's dependencies with mock objects, making unit tests easier to set up and isolate behavior._
+   _Unit testing is so much easier with dependency injection. Dependency injection makes it very easy to replace an object's dependencies with mock objects, making unit tests easier to set up and isolate behavior._
 
 3. Networking
 
