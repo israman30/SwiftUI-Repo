@@ -55,6 +55,47 @@ final class NetworkServices: NetworkProtocol {
 }
 
 ```
+With NO DI
+
+```swift
+class ViewModelWithNoDependencyInjection {
+   var services: NetworkProtocol = NetworkServices()
+}
+```
+
+Initializer DI
+
+```swift
+class ViewModelWithInitializerInjection {
+   private var services: NetworkProtocol
+   
+   init(services: NetworkProtocol) {
+      self.services = services
+   }
+
+   func fetchingData() -> String {
+      services.load()
+   }
+}
+```
+
+Property Injection
+
+```swift
+class ViewModelWithPropertyInjection {
+   var services: NetworkProtocol?
+}
+```
+Method Injection
+
+```swift
+class ViewModelWithMethodInjection {
+   func fetchingData(with services: NetworkProtocol) -> String {
+      services.load()
+   }
+}
+```
+
 
 #### 3. Networking
 
