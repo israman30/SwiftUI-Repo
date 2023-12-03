@@ -46,6 +46,7 @@
 7. async/await
 
 8. Modularization
+
    _Modularization is a software design technique that lets you separate an app's features into many smaller, independent modules. To achieve modularization, one must think out of the box._
 
 
