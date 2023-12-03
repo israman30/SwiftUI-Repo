@@ -33,7 +33,7 @@
  <img src="/img/Mario-bros.png" width="250">
 </p>
 
-2. Dependency Injection
+#### 2. Dependency Injection
 
    _A design pattern achieved by designing your code in a way that your objects or functions receive objects that they depend on, instead of creating their own. For example, instead of creating a service around user defaults inside your view models, you should be passed an instance of such service._
 
@@ -41,18 +41,17 @@
 
    _Unit testing is so much easier with dependency injection. Dependency injection makes it very easy to replace an object's dependencies with mock objects, making unit tests easier to set up and isolate behavior._
 
-3. Networking
+#### 3. Networking
 
-4. Pagination
+#### 4. Pagination
 
-5. Searching
+#### 5. Searching
 
-6. Data persisting
+#### 6. Data persisting
 
+#### 7. async/await
 
-7. async/await
-
-8. Modularization
+#### 8. Modularization
 
    _Modularization is a software design technique that lets you separate an app's features into many smaller, independent modules. To achieve modularization, one must think out of the box._
 
