@@ -113,4 +113,4 @@ class ViewModelWithMethodInjection {
    _Modularization is a software design technique that lets you separate an app's features into many smaller, independent modules. To achieve modularization, one must think out of the box._
 
 
-_created by Israel Manzo 2021, updated on 2023_
+<h5>_created by Israel Manzo 2021, updated on 2023_</h5>
