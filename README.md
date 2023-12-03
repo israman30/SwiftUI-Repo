@@ -1,6 +1,6 @@
 # SwiftUI-Repo
 
-## The repository is grounded in samples and blueprints of iOS methodologies, offering insights into the development of applications, frameworks, and playgrounds.
+### The repository is grounded in samples and blueprints of iOS methodologies, offering insights into the development of applications, frameworks, and playgrounds.
 
 1. Creating a custom Card
 
@@ -44,6 +44,9 @@
 6. Data persisting
 
 7. async/await
+
+8. Modularization
+   _Modularization is a software design technique that lets you separate an app's features into many smaller, independent modules. To achieve modularization, one must think out of the box._
 
 
 _created by Israel Manzo 2021, updated on 2023_
