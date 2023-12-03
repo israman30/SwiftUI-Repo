@@ -5,7 +5,7 @@
 1. Creating a custom Card
 
    ```CustomCardView``` ```SwiftUI``` declares the custom card.
-   swift```
+   ```swift
 	struct CustomCardView: View {
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,8 +27,7 @@
         .shadow(color: Color.gray, radius: 5, x: 0, y: 2)
         .padding(.bottom, 5)
     }
-}
-```
+}```
 
 2. Dependency Injection
 
