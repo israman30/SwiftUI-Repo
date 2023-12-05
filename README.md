@@ -99,6 +99,12 @@ class ViewModelWithMethodInjection {
 
 #### 3. Networking
 
+_Exchanging information via 'http' (Hypertext Transfer Protocol), one of the most used protocols_
+
+- Concurrent
+- Serial
+
+
 #### 4. Pagination
 
 
