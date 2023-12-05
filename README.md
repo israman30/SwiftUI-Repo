@@ -209,6 +209,57 @@ final class NetworkLayer {
 
 #### 4. Pagination
 
+_The process of breaking up a large dataset into smaller, manageable chunks or pages_
+
+#### _Implementing pagination_
+```swift
+final class ViewModel: ObservableObject {
+   @Published var users: [User] = []
+    
+    private var totalPages = 0
+    private var page = 1
+
+   // Load more users method
+    func loadMoreData(with user: User) async {
+      // get users last index
+      let userIndex = self.users.index(self.users.endIndex, offsetBy: -1)
+      // check last index id and next page is not loaded then add a page
+      if userIndex == user.id, (page + 1) <= totalPages {
+         page += 1
+         try! await getUsers() // <- Use do-catch 
+      }
+    }
+   
+   // Fetch Users
+    func getUsers() async throws { ... }
+
+}
+```
+
+#### _Using pagination_
+
+```swift
+struct ContentView: View {
+    
+    @StateObject var vm = UserViewModel()
+    
+    var body: some View {
+        List(vm.users, id: \.id) { user in
+            UserView(user: user)
+                .onAppear {
+                    Task {
+                       // load more users when the UserView row appears
+                        await vm.loadMoreData(with: user)
+                    }
+                }
+        }
+        .task {
+            // get users
+            await vm.getUsers()
+        }
+    }
+}
+```
 
 #### 5. Searching
 
