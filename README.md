@@ -104,6 +104,108 @@ _Exchanging information via 'http' (Hypertext Transfer Protocol), one of the mos
 - Concurrent
 - Serial
 
+### Build a Network layer
+
+#### _Blueprint for network implementation (concurrent)_
+```swift
+protocol DataServicesProtocol {
+    func fetchCoins() async throws -> [SomeData]
+}
+```
+#### _Error handling_
+```swift
+enum APIError: Error {
+    case invalidData
+    case jsonParsinFailure
+    case requesFailed(description: String)
+    case invalidStatusCode(statusCode: Int)
+    case unknownError(error: Error)
+    case badResponse
+    
+    var description: String {
+        switch self {
+        case .invalidData: return "Invalis Data"
+        case .jsonParsinFailure: return "Failed parse JSON"
+        case let .requesFailed(description): return "Request failed \(description)"
+        case let .invalidStatusCode(statusCode): return "Invalid status code \(statusCode)"
+        case let .unknownError(error): return "Unknown error occured \(error.localizedDescription)"
+        case .badResponse: return "Bard response"
+        }
+    }
+}
+```
+
+#### _protocol implementation_ 
+```swift
+final class NetworkLayer: DataServicesProtocol {
+    
+    func fetchData(urlString: String) async throws -> [SomeData] {
+        guard let url = URL(string: urlString) else { return [] }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+            
+            if data.isEmpty { throw APIError.invalidData }
+            
+            guard response is HTTPURLResponse else {
+                throw APIError.requesFailed(description: "Request Failed")
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode ~= 200 else {
+                throw APIError.badResponse
+            }
+            
+            let someData = try JSONDecoder().decode([SomeData].self, from: data)
+            return someData
+        } catch {
+            print("DEBUG: Error \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+}
+```
+
+#### Using : ```Result<Data, Error>``` (serial)
+
+```swift
+final class NetworkLayer {
+   func fetchDataWithResult(with urlString: String, completion: @escaping(Result<[SomeData], APIError>)->Void) {
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(.unknownError(error: error)))
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(.requesFailed(description: "Request Failed")))
+                return
+            }
+            
+            guard httpResponse.statusCode == 200 else {
+                completion(.failure(.invalidStatusCode(statusCode: httpResponse.statusCode)))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let coins = try JSONDecoder().decode([SomeData].self, from: data)
+                DispatchQueue.main.async {
+                    completion(.success(coins))
+                }
+            } catch {
+                print("DEBUG: Failed to dedcode with error: \(error)")
+                completion(.failure(.jsonParsinFailure))
+            }
+            
+        }.resume()
+    }
+}
+```
 
 #### 4. Pagination
 
