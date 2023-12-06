@@ -263,6 +263,77 @@ struct ContentView: View {
 
 #### 5. Searching
 
+_Employing ``` Combine``` allows us the opportunity to execute actions through subscribers during the search process._ 
+
+```swift 
+import Combine
+```
+
+_Leveraging a ViewModel, encapsulating the logic will execute the search event._
+
+```swift
+final class UserViewModel: ObservableObject  {
+   @Published var users = [Users]()
+   @Published var searchText = ""
+   @Published var searchResult = [Users]()
+   private var cancellables = Set<AnyCancellable>()
+
+   var data = [Users]()
+    
+    // Filtering users implementation
+   var filteredUsers: [Users] {
+      if searchText.isEmpty {
+         return users
+      } else {
+         return users.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+      }
+   }
+
+   init() {
+      addSubcriber()
+   }
+
+   // Adding a subcriber for filtered users
+    func addSubcriber() {
+        $searchText
+            .receive(on: RunLoop.main)
+            .sink { newUser in
+                var filteredUsers: [Users] {
+                    if self.searchText.isEmpty {
+                        return self.users
+                    } else {
+                        return self.users.filter { $0.name.localizedCaseInsensitiveContains(self.searchText) }
+                    }
+                }
+            }
+            .store(in: &cancellables)   
+    }
+    
+    // Search query method
+    func searchQuery(string: String = "") {
+        searchResult = string.isEmpty ? data : data.filter { $0.name.contains(string) }
+    }
+}
+```
+
+_Implementing searching._
+```swift
+struct ContentView: View {
+    
+   @StateObject var vm = UsersViewModel()
+    
+   var body: some View {
+        NavigationView {
+            List {
+               ...
+            }
+            // Performing search for search text
+            .searchable(text: $vm.searchText)
+        }
+    }
+}
+```
+
 #### 6. Data persisting
 
 #### 7. async/await
