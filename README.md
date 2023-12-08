@@ -336,6 +336,126 @@ struct ContentView: View {
 
 #### 6. Data persisting
 
+_PPersisting data is achieved through various methods, such as Core Data, Realm, SwiftData, or SQLite._
+
+_For this scenario, we will utilize native data persistence methods like Core Data._
+
+#### _Create a Persistance layer_
+
+```swift
+struct PersistentContainer {
+
+   static let shared = PersistentContainer()
+
+   static var preview: PersistentContainer = {
+
+      let result = PersistentContainer(inMemory: true)
+      let viewContext = result.container.viewContext
+
+      do {
+         try viewContext.save()
+      } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+         let nsError = error as NSError
+         fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+      }
+        return result
+   }()
+
+   let container: NSPersistentContainer
+
+   init(inMemory: Bool = false) {
+        container = NSPersistentContainer(name: "App_name")
+        if inMemory {
+            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+        }
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+
+}
+```
+
+#### _Implementing the saving of context when fetching data from the internet, with the ViewModel encapsulating this process.._
+
+```swift
+@Published private(set) var posts = [Post]()
+
+// MARK: - Saving context entities
+private func saveData(context: NSManagedObjectContext) {
+   posts.forEach { post in
+      let entity = Post(context: context)
+      entity.id = Int16(post.id)
+      entity.title = post.title
+      entity.body = post.body
+   }
+        
+   do {
+      try context.save()
+      print("SUCCESS: JSON Object saved in Cored Data")
+   } catch {
+      print(error.localizedDescription)
+   }
+}
+
+// MARK: - `getData()` from Network Layer then saving in Core Data using `saveData(context:)`
+func getData(context: NSManagedObjectContext) async {
+   do {
+      self.posts = try await services.fetchData()
+      saveData(context: context)
+   } catch {
+      print("DEBUG: - Error : Some error handling - ")
+   }
+}
+```
+
+#### _Once saved the data whe need to Fetch the Data and display it on the View._
+
+```swift
+struct ContentView: View {
+
+   // Get the context
+   @Environment(\.managedObjectContext) var context
+   // Access ViewModel
+   @StateObject var vm = PostViewModel()
+    // Fetching data from Core Data
+   @FetchRequest(entity: Post.entity(), sortDescriptors: []) var results: FetchedResults<Post>
+
+   var body: some View {
+      if vm.posts.isEmpty {
+         List(results) {
+            // Render from context
+            RowView()
+               .onAppear {
+                  Task {
+                     try await getData(context: context)
+                  }
+               }
+         }
+      } else {
+         List(vm.posts) {
+            // Fetch data or display a message
+         }
+      }
+   }
+}
+```
 #### 7. async/await
 
 #### 8. Modularization
