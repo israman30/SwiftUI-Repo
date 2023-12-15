@@ -32,7 +32,7 @@ extension UIColor {
             return nil
         }
         
-        self.init(red: r, green: g, blue: b, alpha: a)
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
     // Creating custom color method
