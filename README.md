@@ -18,6 +18,7 @@ t - | Test-only
 _* | Known to be broken, or can't check now
 note: Any commit message starting with # will be ignored
 ```
+_source: [Arlo commit notation](https://github.com/RefactoringCombos/ArlosCommitNotation)_
 
 #### 1. Creating a custom Card
 
