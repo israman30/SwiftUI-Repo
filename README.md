@@ -3,7 +3,7 @@
 ### The repository is grounded in samples and blueprints of iOS methodologies, offering insights into the development of applications, frameworks, and playgrounds.
 
 #### Arlo's Commit Notation Cheat Sheet:
-```C#
+```
 F!! | Feature > 8 LoC
 F - | Feature <= 8 LoC
 B!! | Bug Fix > 8 LoC
