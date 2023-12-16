@@ -14,21 +14,26 @@ struct ContentView: View {
     @State var blueColor = 0.0
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            Slider(value: $redcolor, in: 0...10, step: 0.5)
-            Text("\(redcolor)")
-            Slider(value: $greenColor, in: 0...10, step: 0.5)
-            Text("\(greenColor)")
-            Slider(value: $blueColor, in: 0...10, step: 0.5)
-            Text("\(blueColor)")
+        Form {
+            
             Circle()
-                .foregroundStyle(Color(UIColor(red: redcolor, green: greenColor, blue: blueColor, alpha: 1.0)))
+                .foregroundStyle(Color(red: redcolor, green: greenColor, blue: blueColor))
+            Section("Color") {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                
+                Text("Hello, world!")
+                Slider(value: $redcolor, in: 0...100, step: 0.5)
+                Text("\(redcolor)")
+                Slider(value: $greenColor, in: 0...100, step: 0.5)
+                Text("\(greenColor)")
+                Slider(value: $blueColor, in: 0...100, step: 0.5)
+                Text("\(blueColor)")
+            }
+            
         }
-        .padding()
+        
     }
 }
 
