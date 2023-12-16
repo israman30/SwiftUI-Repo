@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DB2C45C2B2D225F00290F3B /* RGB_generatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2C45B2B2D225F00290F3B /* RGB_generatorApp.swift */; };
+		4DB2C45E2B2D225F00290F3B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2C45D2B2D225F00290F3B /* ContentView.swift */; };
+		4DB2C4602B2D226000290F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DB2C45F2B2D226000290F3B /* Assets.xcassets */; };
+		4DB2C4632B2D226000290F3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DB2C4622B2D226000290F3B /* Preview Assets.xcassets */; };
+		4DB2C46D2B2D226000290F3B /* RGB_generatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2C46C2B2D226000290F3B /* RGB_generatorTests.swift */; };
+		4DB2C4772B2D226000290F3B /* RGB_generatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2C4762B2D226000290F3B /* RGB_generatorUITests.swift */; };
+		4DB2C4792B2D226000290F3B /* RGB_generatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2C4782B2D226000290F3B /* RGB_generatorUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DB2C4692B2D226000290F3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DB2C4502B2D225F00290F3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DB2C4572B2D225F00290F3B;
+			remoteInfo = "RGB generator";
+		};
+		4DB2C4732B2D226000290F3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DB2C4502B2D225F00290F3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DB2C4572B2D225F00290F3B;
+			remoteInfo = "RGB generator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4DB2C4582B2D225F00290F3B /* RGB generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RGB generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB2C45B2B2D225F00290F3B /* RGB_generatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB_generatorApp.swift; sourceTree = "<group>"; };
+		4DB2C45D2B2D225F00290F3B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4DB2C45F2B2D226000290F3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DB2C4622B2D226000290F3B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4DB2C4682B2D226000290F3B /* RGB generatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RGB generatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB2C46C2B2D226000290F3B /* RGB_generatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB_generatorTests.swift; sourceTree = "<group>"; };
+		4DB2C4722B2D226000290F3B /* RGB generatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RGB generatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB2C4762B2D226000290F3B /* RGB_generatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB_generatorUITests.swift; sourceTree = "<group>"; };
+		4DB2C4782B2D226000290F3B /* RGB_generatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB_generatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DB2C4552B2D225F00290F3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DB2C4652B2D226000290F3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DB2C46F2B2D226000290F3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DB2C44F2B2D225F00290F3B = {
+			isa = PBXGroup;
+			children = (
+				4DB2C45A2B2D225F00290F3B /* RGB generator */,
+				4DB2C46B2B2D226000290F3B /* RGB generatorTests */,
+				4DB2C4752B2D226000290F3B /* RGB generatorUITests */,
+				4DB2C4592B2D225F00290F3B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DB2C4592B2D225F00290F3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DB2C4582B2D225F00290F3B /* RGB generator.app */,
+				4DB2C4682B2D226000290F3B /* RGB generatorTests.xctest */,
+				4DB2C4722B2D226000290F3B /* RGB generatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DB2C45A2B2D225F00290F3B /* RGB generator */ = {
+			isa = PBXGroup;
+			children = (
+				4DB2C45B2B2D225F00290F3B /* RGB_generatorApp.swift */,
+				4DB2C45D2B2D225F00290F3B /* ContentView.swift */,
+				4DB2C45F2B2D226000290F3B /* Assets.xcassets */,
+				4DB2C4612B2D226000290F3B /* Preview Content */,
+			);
+			path = "RGB generator";
+			sourceTree = "<group>";
+		};
+		4DB2C4612B2D226000290F3B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4DB2C4622B2D226000290F3B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4DB2C46B2B2D226000290F3B /* RGB generatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				4DB2C46C2B2D226000290F3B /* RGB_generatorTests.swift */,
+			);
+			path = "RGB generatorTests";
+			sourceTree = "<group>";
+		};
+		4DB2C4752B2D226000290F3B /* RGB generatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4DB2C4762B2D226000290F3B /* RGB_generatorUITests.swift */,
+				4DB2C4782B2D226000290F3B /* RGB_generatorUITestsLaunchTests.swift */,
+			);
+			path = "RGB generatorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DB2C4572B2D225F00290F3B /* RGB generator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DB2C47C2B2D226000290F3B /* Build configuration list for PBXNativeTarget "RGB generator" */;
+			buildPhases = (
+				4DB2C4542B2D225F00290F3B /* Sources */,
+				4DB2C4552B2D225F00290F3B /* Frameworks */,
+				4DB2C4562B2D225F00290F3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RGB generator";
+			productName = "RGB generator";
+			productReference = 4DB2C4582B2D225F00290F3B /* RGB generator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DB2C4672B2D226000290F3B /* RGB generatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DB2C47F2B2D226000290F3B /* Build configuration list for PBXNativeTarget "RGB generatorTests" */;
+			buildPhases = (
+				4DB2C4642B2D226000290F3B /* Sources */,
+				4DB2C4652B2D226000290F3B /* Frameworks */,
+				4DB2C4662B2D226000290F3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DB2C46A2B2D226000290F3B /* PBXTargetDependency */,
+			);
+			name = "RGB generatorTests";
+			productName = "RGB generatorTests";
+			productReference = 4DB2C4682B2D226000290F3B /* RGB generatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4DB2C4712B2D226000290F3B /* RGB generatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DB2C4822B2D226000290F3B /* Build configuration list for PBXNativeTarget "RGB generatorUITests" */;
+			buildPhases = (
+				4DB2C46E2B2D226000290F3B /* Sources */,
+				4DB2C46F2B2D226000290F3B /* Frameworks */,
+				4DB2C4702B2D226000290F3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DB2C4742B2D226000290F3B /* PBXTargetDependency */,
+			);
+			name = "RGB generatorUITests";
+			productName = "RGB generatorUITests";
+			productReference = 4DB2C4722B2D226000290F3B /* RGB generatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DB2C4502B2D225F00290F3B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					4DB2C4572B2D225F00290F3B = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					4DB2C4672B2D226000290F3B = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 4DB2C4572B2D225F00290F3B;
+					};
+					4DB2C4712B2D226000290F3B = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 4DB2C4572B2D225F00290F3B;
+					};
+				};
+			};
+			buildConfigurationList = 4DB2C4532B2D225F00290F3B /* Build configuration list for PBXProject "RGB generator" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4DB2C44F2B2D225F00290F3B;
+			productRefGroup = 4DB2C4592B2D225F00290F3B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DB2C4572B2D225F00290F3B /* RGB generator */,
+				4DB2C4672B2D226000290F3B /* RGB generatorTests */,
+				4DB2C4712B2D226000290F3B /* RGB generatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DB2C4562B2D225F00290F3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DB2C4632B2D226000290F3B /* Preview Assets.xcassets in Resources */,
+				4DB2C4602B2D226000290F3B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DB2C4662B2D226000290F3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DB2C4702B2D226000290F3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DB2C4542B2D225F00290F3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DB2C45E2B2D225F00290F3B /* ContentView.swift in Sources */,
+				4DB2C45C2B2D225F00290F3B /* RGB_generatorApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DB2C4642B2D226000290F3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DB2C46D2B2D226000290F3B /* RGB_generatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DB2C46E2B2D226000290F3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DB2C4792B2D226000290F3B /* RGB_generatorUITestsLaunchTests.swift in Sources */,
+				4DB2C4772B2D226000290F3B /* RGB_generatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DB2C46A2B2D226000290F3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DB2C4572B2D225F00290F3B /* RGB generator */;
+			targetProxy = 4DB2C4692B2D226000290F3B /* PBXContainerItemProxy */;
+		};
+		4DB2C4742B2D226000290F3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DB2C4572B2D225F00290F3B /* RGB generator */;
+			targetProxy = 4DB2C4732B2D226000290F3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4DB2C47A2B2D226000290F3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4DB2C47B2B2D226000290F3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4DB2C47D2B2D226000290F3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RGB generator/Preview Content\"";
+				DEVELOPMENT_TEAM = G9TBJCK73T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.israman.somenews.RGB-generator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4DB2C47E2B2D226000290F3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RGB generator/Preview Content\"";
+				DEVELOPMENT_TEAM = G9TBJCK73T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.israman.somenews.RGB-generator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4DB2C4802B2D226000290F3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9TBJCK73T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.israman.somenews.RGB-generatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RGB generator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RGB generator";
+			};
+			name = Debug;
+		};
+		4DB2C4812B2D226000290F3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9TBJCK73T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.israman.somenews.RGB-generatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RGB generator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RGB generator";
+			};
+			name = Release;
+		};
+		4DB2C4832B2D226000290F3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9TBJCK73T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.israman.somenews.RGB-generatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "RGB generator";
+			};
+			name = Debug;
+		};
+		4DB2C4842B2D226000290F3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9TBJCK73T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.israman.somenews.RGB-generatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "RGB generator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DB2C4532B2D225F00290F3B /* Build configuration list for PBXProject "RGB generator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DB2C47A2B2D226000290F3B /* Debug */,
+				4DB2C47B2B2D226000290F3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DB2C47C2B2D226000290F3B /* Build configuration list for PBXNativeTarget "RGB generator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DB2C47D2B2D226000290F3B /* Debug */,
+				4DB2C47E2B2D226000290F3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DB2C47F2B2D226000290F3B /* Build configuration list for PBXNativeTarget "RGB generatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DB2C4802B2D226000290F3B /* Debug */,
+				4DB2C4812B2D226000290F3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DB2C4822B2D226000290F3B /* Build configuration list for PBXNativeTarget "RGB generatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DB2C4832B2D226000290F3B /* Debug */,
+				4DB2C4842B2D226000290F3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DB2C4502B2D225F00290F3B /* Project object */;
+}
