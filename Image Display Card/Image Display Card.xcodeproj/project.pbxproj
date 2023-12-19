@@ -11,6 +11,7 @@
 		4DB2C4942B311F2700290F3B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2C4932B311F2700290F3B /* ContentView.swift */; };
 		4DB2C4962B311F2800290F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DB2C4952B311F2800290F3B /* Assets.xcassets */; };
 		4DB2C4992B311F2800290F3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DB2C4982B311F2800290F3B /* Preview Assets.xcassets */; };
+		4DB2C4A02B31219600290F3B /* CustomImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2C49F2B31219600290F3B /* CustomImageCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4DB2C4932B311F2700290F3B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4DB2C4952B311F2800290F3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DB2C4982B311F2800290F3B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4DB2C49F2B31219600290F3B /* CustomImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				4DB2C4912B311F2700290F3B /* Image_Display_CardApp.swift */,
 				4DB2C4932B311F2700290F3B /* ContentView.swift */,
+				4DB2C49F2B31219600290F3B /* CustomImageCard.swift */,
 				4DB2C4952B311F2800290F3B /* Assets.xcassets */,
 				4DB2C4972B311F2800290F3B /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB2C4A02B31219600290F3B /* CustomImageCard.swift in Sources */,
 				4DB2C4942B311F2700290F3B /* ContentView.swift in Sources */,
 				4DB2C4922B311F2700290F3B /* Image_Display_CardApp.swift in Sources */,
 			);
