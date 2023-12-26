@@ -10,7 +10,15 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        GridView()
+        GridView(rows: 4, columns: 4) {
+            VStack {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                Text("Title herer it is the test for test porpuse")
+            }
+            
+        }
     }
 }
 
@@ -21,33 +29,28 @@ struct ContentView: View {
 // Add count for column
 // Add spacing
 // Add data
-struct GridView: View {
+struct GridView<Content: View>: View {
     
-    var data = Array(1...100).map { $0 }
-    
-    var columns: [GridItem] {
-        Array(repeating: GridItem(.flexible()), count: 3)
-    }
-    
-//    let columns = [
-//        GridItem(.flexible()),
-//        GridItem(.flexible()),
-//        GridItem(.flexible())
-//    ]
+    let rows: Int
+    let columns: Int
+    let content: () -> Content
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(data, id: \.self) { item in
-                    VStack {
-                        Text("Test \(item)")
-                        Image(systemName: "person.fill")
+        LazyVStack {
+            ForEach(0..<rows, id: \.self) { row in
+                HStack {
+                    ForEach(0..<columns, id: \.self) { column in
+                        content()
                     }
-                    .padding()
                 }
             }
         }
-        .padding(.horizontal)
+    }
+    
+    init(rows: Int, columns: Int, @ViewBuilder content: @escaping () -> Content) {
+        self.rows = rows
+        self.columns = columns
+        self.content = content
     }
 }
 
