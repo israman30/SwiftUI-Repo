@@ -18,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            GridView(rows: 1, columns: 1) {
+            GridView(columns: 2) {
                 ForEach(post, id: \.self) { post in
                     SomeView(post: post)
                 }
@@ -63,26 +63,22 @@ struct SomeView: View {
 // Add data
 struct GridView<Content: View>: View {
     
-    let rows: Int
     let columns: Int
     let content: () -> Content
     
+    var adaptiveColumns: [GridItem] {
+        Array(repeating: GridItem(.flexible()), count: columns)
+    }
+    
     var body: some View {
         ScrollView {
-            LazyVStack {
-                ForEach(0..<rows, id: \.self) { row in
-                    HStack {
-                        ForEach(0..<columns, id: \.self) { column in
-                            content()
-                        }
-                    }
-                }
+            LazyVGrid(columns: adaptiveColumns) {
+                content()
             }
         }
     }
     
-    init(rows: Int, columns: Int, @ViewBuilder content: @escaping () -> Content) {
-        self.rows = rows
+    init(columns: Int, @ViewBuilder content: @escaping () -> Content) {
         self.columns = columns
         self.content = content
     }
