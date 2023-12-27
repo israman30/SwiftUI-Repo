@@ -17,13 +17,16 @@ struct ContentView: View {
     ]
     
     var body: some View {
-        GridView(rows: 1, columns: 1) {
-            ForEach(post, id: \.self) { post in
-                VStack {
+        NavigationView {
+            GridView(rows: 1, columns: 1) {
+                ForEach(post, id: \.self) { post in
                     SomeView(post: post)
                 }
             }
+            .padding()
+            .navigationTitle("Grid View")
         }
+        
     }
 }
 
