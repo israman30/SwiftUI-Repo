@@ -9,21 +9,50 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var post = [
+        Post(image: "person.fill", title: "Title one", body: "This is some body text for test number one", date: "12/12/2024"),
+        Post(image: "person.fill", title: "Title two", body: "This is some body text for test number two", date: "12/10/2024"),
+        Post(image: "person.fill", title: "Title three", body: "This is some body text for test number three", date: "12/11/2024"),
+        Post(image: "person.fill", title: "Title four", body: "This is some body text for test number four", date: "12/01/2024")
+    ]
+    
     var body: some View {
-        GridView(rows: 4, columns: 4) {
-            VStack {
-                Image(systemName: "person.fill")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                Text("Title herer it is the test for test porpuse")
+        GridView(rows: 1, columns: 1) {
+            ForEach(post, id: \.self) { post in
+                VStack {
+                    SomeView(post: post)
+                }
             }
-            
         }
     }
 }
 
 #Preview {
     ContentView()
+}
+
+// MARK: - Object Section
+struct Post: Hashable {
+    let image: String
+    let title: String
+    let body: String
+    let date: String
+}
+
+struct SomeView: View {
+
+    var post: Post?
+    
+    var body: some View {
+        VStack {
+            Image(systemName: post?.image ?? "")
+                .resizable()
+                .frame(width: 50, height: 50)
+            Text(post?.title ?? "")
+            Text(post?.body ?? "")
+        }
+        
+    }
 }
 
 // Add count for column
@@ -36,11 +65,13 @@ struct GridView<Content: View>: View {
     let content: () -> Content
     
     var body: some View {
-        LazyVStack {
-            ForEach(0..<rows, id: \.self) { row in
-                HStack {
-                    ForEach(0..<columns, id: \.self) { column in
-                        content()
+        ScrollView {
+            LazyVStack {
+                ForEach(0..<rows, id: \.self) { row in
+                    HStack {
+                        ForEach(0..<columns, id: \.self) { column in
+                            content()
+                        }
                     }
                 }
             }
