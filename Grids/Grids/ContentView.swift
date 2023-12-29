@@ -61,26 +61,4 @@ struct SomeView: View {
 // Add count for column
 // Add spacing
 // Add data
-struct GridView<Content: View>: View {
-    
-    let columns: Int
-    let content: () -> Content
-    
-    var adaptiveColumns: [GridItem] {
-        Array(repeating: GridItem(.flexible()), count: columns)
-    }
-    
-    var body: some View {
-        ScrollView {
-            LazyVGrid(columns: adaptiveColumns) {
-                content()
-            }
-        }
-    }
-    
-    init(columns: Int, @ViewBuilder content: @escaping () -> Content) {
-        self.columns = columns
-        self.content = content
-    }
-}
 
