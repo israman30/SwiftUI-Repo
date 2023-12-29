@@ -35,11 +35,7 @@ struct LikeView: View {
     
     var body: some View {
         Button {
-            self.isAnimating = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
-                self.isAnimating = false
-                self.isLiked.toggle()
-            }
+            self.executeButtonAnimation()
         } label: {
             VStack {
                 Image(systemName: isLiked ? "heart.fill" : "heart")
@@ -50,9 +46,14 @@ struct LikeView: View {
             }
             .scaleEffect(isAnimating ? animationScale : 1)
             .animation(.easeInOut(duration: animationDuration), value: animationDuration)
-            
         }
-        
-            
+    }
+    
+    private func executeButtonAnimation() {
+        self.isAnimating = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+            self.isAnimating = false
+            self.isLiked.toggle()
+        }
     }
 }
