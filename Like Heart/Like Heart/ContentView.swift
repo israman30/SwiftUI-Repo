@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var isLiked = false
+    
     var body: some View {
-        LikeView()
+        LikeView(isLiked: $isLiked)
     }
 }
 
@@ -19,20 +22,34 @@ struct ContentView: View {
 
 struct LikeView: View {
     
-    @State var isLiked = false
-    @State var scaleValue = 1.0
+    @Binding var isLiked: Bool
+    @State var animationAmount = 1.0
+    
+    private let animationDuration = 0.1
+    
+    private var animationScale: CGFloat {
+        isLiked ? 0.7 : 1.3
+    }
+    
+    @State private var isAnimating = false
     
     var body: some View {
         Button {
-            self.isLiked.toggle()
+            self.isAnimating = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+                self.isAnimating = false
+                self.isLiked.toggle()
+            }
         } label: {
-            Image(systemName: isLiked ? "heart.fill" : "heart")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .scaleEffect(isLiked ? 1.2 : 1)
-                .animation(.linear(duration: 0.2), value: isLiked)
-                .brightness(isLiked ? -0.05 : 0)
-                .foregroundStyle(isLiked ? .red : .gray)
+            VStack {
+                Image(systemName: isLiked ? "heart.fill" : "heart")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
+                    .foregroundStyle(isLiked ? .red : .gray)
+            }
+            .scaleEffect(isAnimating ? animationScale : 1)
+            .animation(.easeInOut(duration: animationDuration), value: animationDuration)
             
         }
         
