@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var isLiked = false
     
     var body: some View {
-        LikeView(isLiked: $isLiked)
+        HeartLikeView(isLiked: $isLiked)
     }
 }
 
@@ -20,7 +20,7 @@ struct ContentView: View {
     ContentView()
 }
 
-struct LikeView: View {
+struct HeartLikeView: View {
     
     @Binding var isLiked: Bool
     @State var animationAmount = 1.0
