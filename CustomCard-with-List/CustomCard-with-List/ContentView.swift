@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+struct Post: Hashable {
+    let image: String
+    let title: String
+    let body: String
+    let date: String
+}
+
 struct ContentView: View {
     var body: some View {
         MainView()
@@ -14,13 +21,21 @@ struct ContentView: View {
 }
 
 struct MainView: View {
+    
+    @State var post = [
+            Post(image: "world", title: "Title one", body: "This is some body text for test number one", date: "12/12/2024"),
+            Post(image: "world", title: "Title two", body: "This is some body text for test number two", date: "12/10/2024"),
+            Post(image: "world", title: "Title three", body: "This is some body text for test number three", date: "12/11/2024"),
+            Post(image: "world", title: "Title four", body: "This is some body text for test number four", date: "12/01/2024")
+        ]
+    
     var body: some View {
         VStack {
             Text("Custom Card")
                 .font(.title3)
                 .fontWeight(.bold)
-            List(0..<5) { _ in
-                CustomCardView()
+            List(post, id: \.self) { post in
+                CustomCardView(content: post)
             }.listStyle(.grouped)
             
         }

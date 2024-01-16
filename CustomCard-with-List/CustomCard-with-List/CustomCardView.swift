@@ -7,12 +7,19 @@
 
 import SwiftUI
 
-struct CustomCardView: View {
+struct CustomCardView<T: Identifiable>: View {
+    
+    var content: T
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Image("world")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            if let image = content as? Image {
+//                Image("\(image)")
+                Image("\(image)")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            
             VStack(alignment: .leading) {
                 Text("Super Mario Bros.")
                     .font(.title)
@@ -30,8 +37,8 @@ struct CustomCardView: View {
     }
 }
 
-struct CustomCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomCardView()
-    }
-}
+//struct CustomCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomCardView()
+//    }
+//}
