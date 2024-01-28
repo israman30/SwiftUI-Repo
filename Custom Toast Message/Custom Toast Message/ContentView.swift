@@ -9,12 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var execute = false
     @State var isVisible = false
     
     var body: some View {
         VStack {
-            CustomToastView(text: "Toast", isVisible: $isVisible)
+            CustomToastView(text: "This is a very Toast long message just for testing", isVisible: $isVisible)
             
             Button {
                 self.isVisible = true
@@ -50,17 +49,18 @@ struct CustomToastView: View {
             Text(text)
                 .font(.title3)
         }
-        .padding()
+        .padding(.vertical, 10)
+        .padding(.horizontal, 25)
         .background(Color(.systemGray5))
         .cornerRadius(15.0)
         .shadow(radius: 10, y: 7)
         .onAppear(perform: delayText)
-        .transition(AnyTransition.opacity.animation(.easeInOut(duration:0.5)))
+        .transition(AnyTransition.opacity.animation(.easeInOut(duration:0.3)))
     }
     
     private func delayText() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            withAnimation(.easeInOut(duration: 0.5)) {
+            withAnimation(.easeInOut(duration: 0.3)) {
                 self.isVisible = false
             }
         }
