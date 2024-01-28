@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isVisible = false
+    
     var body: some View {
-        CustomToastView()
+        VStack(spacing: 50) {
+            
+            if isVisible {
+                CustomToastView(text: "Toast Message")
+            }
+            
+            Button {
+                isVisible = true
+            } label: {
+                Text("Tap me")
+                    .font(.title)
+            }
+            .buttonStyle(.borderedProminent)
+        }
     }
 }
 
@@ -19,10 +35,13 @@ struct ContentView: View {
 
 
 struct CustomToastView: View {
+    
+    var text: String
+    
     var body: some View {
         VStack {
-            Text("Hello, world!")
-                .font(.title)
+            Text(text)
+                .font(.title3)
         }
         .padding()
         .background(Color(.systemGray5))
