@@ -34,6 +34,8 @@ struct ContentView: View {
 struct CustomToastView: View {
     var text: String
     @Binding var isVisible: Bool
+    var delayedAnimation: CGFloat = 2
+    var animationDuration: CGFloat = 0.3
     
     var body: some View {
         VStack {
@@ -55,12 +57,12 @@ struct CustomToastView: View {
         .cornerRadius(15.0)
         .shadow(radius: 10, y: 7)
         .onAppear(perform: delayText)
-        .transition(AnyTransition.opacity.animation(.easeInOut(duration:0.3)))
+        .transition(AnyTransition.opacity.animation(.easeInOut(duration: animationDuration)))
     }
     
     private func delayText() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            withAnimation(.easeInOut(duration: 0.3)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayedAnimation) {
+            withAnimation(.easeInOut(duration: animationDuration)) {
                 self.isVisible = false
             }
         }
