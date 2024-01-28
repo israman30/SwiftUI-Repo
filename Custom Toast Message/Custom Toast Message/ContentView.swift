@@ -14,6 +14,9 @@ struct ContentView: View {
                 .font(.title)
         }
         .padding()
+        .background(Color(.systemGray5))
+        .cornerRadius(15.0)
+        .shadow(radius: 10, y: 7)
     }
 }
 
