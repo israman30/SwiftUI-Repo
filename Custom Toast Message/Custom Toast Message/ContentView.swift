@@ -9,23 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var isVisible = false
-    
     var body: some View {
-        VStack(spacing: 50) {
-            
-            if isVisible {
-                CustomToastView(text: "Toast Message")
-            }
-            
-            Button {
-                isVisible = true
-            } label: {
-                Text("Tap me")
-                    .font(.title)
-            }
-            .buttonStyle(.borderedProminent)
-        }
+        CustomToastView(text: "Toast")
     }
 }
 
@@ -35,17 +20,42 @@ struct ContentView: View {
 
 
 struct CustomToastView: View {
-    
+    @State private var isVisible = false
     var text: String
     
     var body: some View {
         VStack {
-            Text(text)
-                .font(.title3)
+            if isVisible {
+                VStack {
+                    Text(text)
+                        .font(.title3)
+                }
+                .padding()
+                .background(Color(.systemGray5))
+                .cornerRadius(15.0)
+                .shadow(radius: 10, y: 7)
+                .onAppear(perform: delayText)
+            }
+            Button {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    self.isVisible = true
+                }
+            } label: {
+                Text("Tap me")
+            }
+            .padding(.vertical)
+            .buttonStyle(.borderedProminent)
+            Spacer()
         }
-        .padding()
-        .background(Color(.systemGray5))
-        .cornerRadius(15.0)
-        .shadow(radius: 10, y: 7)
+        
+        
+    }
+    
+    private func delayText() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.isVisible = false
+            }
+        }
     }
 }
