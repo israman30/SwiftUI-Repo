@@ -9,6 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        CustomToastView()
+    }
+}
+
+#Preview {
+    ContentView()
+}
+
+
+struct CustomToastView: View {
+    var body: some View {
         VStack {
             Text("Hello, world!")
                 .font(.title)
@@ -18,8 +29,4 @@ struct ContentView: View {
         .cornerRadius(15.0)
         .shadow(radius: 10, y: 7)
     }
-}
-
-#Preview {
-    ContentView()
 }
