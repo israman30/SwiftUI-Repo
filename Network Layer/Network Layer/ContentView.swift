@@ -27,7 +27,7 @@ public struct NetworkAPIRequest {
     var queryParmans: [String:Any]?
     var body: Data?
     
-    public init(resource: String, method: NetworkMethod, headers: [String : String]? = nil, queryParmans: [String : Any]? = nil, body: Data? = nil) {
+    public init(resource: String, method: NetworkMethod = .GET, headers: [String : String]? = nil, queryParmans: [String : Any]? = nil, body: Data? = nil) {
         self.resource = resource
         self.method = method
         self.headers = headers
@@ -42,11 +42,13 @@ public protocol NetworkingProtocol {
 
 public final class NetworkServices: NetworkingProtocol {
     
+    public static let `default` = NetworkServices()
+    
     private let configuration = URLSessionConfiguration.default
     private let session: URLSession
-    public var baseURL = ""
+    public var baseURL = "https://jsonplaceholder.typicode.com"
     
-    private init() {
+    init() {
         configuration.timeoutIntervalForRequest = 60
         configuration.httpAdditionalHeaders = ["Content-Type":"application/json"]
         session = URLSession(configuration: configuration)
@@ -75,7 +77,7 @@ public final class NetworkServices: NetworkingProtocol {
         }
         let urlRequest = getURLRequest(url: url, request: request)
         do {
-            let (data, resource) = try await session.data(for: urlRequest)
+            let (data, _) = try await session.data(for: urlRequest)
             if let model = try? JSONDecoder().decode(T.self, from: data) {
                 return .success(model)
             }
@@ -87,6 +89,24 @@ public final class NetworkServices: NetworkingProtocol {
     }
 }
 
+@MainActor
+class ViewModel: ObservableObject {
+    @Published var response: Result<[Post], Error>?
+    @Published var isLoading = false
+    private let networkServices: NetworkServices
+    
+    init(networkServices: NetworkServices) {
+        self.networkServices = networkServices
+    }
+    
+    func getPosts() async {
+        let request = NetworkAPIRequest(resource: "POST")
+        let response: Result<[Post], Error> = await networkServices.doTask(api: request)
+        self.response = response
+        self.isLoading = false
+    }
+}
+
 struct Post: Decodable {
     var id: Int
     var userId: Int
@@ -95,14 +115,40 @@ struct Post: Decodable {
 }
 
 struct ContentView: View {
+    
+    @StateObject private var vm: ViewModel
+    
+    init() {
+        self._vm = StateObject(wrappedValue: ViewModel(networkServices: NetworkServices()))
+    }
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if vm.isLoading {
+                ProgressView()
+            } else {
+                if let response = vm.response {
+                    switch response {
+                    case .success(let posts):
+                        ScrollView {
+                            ForEach(posts, id: \.id) { post in
+                                VStack {
+                                    Text(post.title)
+                                }
+                            }
+                        }
+                    case .failure(let fail):
+                        Text(fail.localizedDescription)
+                    }
+                }
+            }
         }
         .padding()
+        .onAppear {
+            Task {
+                await vm.getPosts()
+            }
+        }
     }
 }
 

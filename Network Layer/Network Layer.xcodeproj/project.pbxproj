@@ -14,6 +14,7 @@
 		4D5C09962B560DBD00882087 /* Network_LayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C09952B560DBD00882087 /* Network_LayerTests.swift */; };
 		4D5C09A02B560DBD00882087 /* Network_LayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C099F2B560DBD00882087 /* Network_LayerUITests.swift */; };
 		4D5C09A22B560DBD00882087 /* Network_LayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C09A12B560DBD00882087 /* Network_LayerUITestsLaunchTests.swift */; };
+		4D5C09AF2B574A8C00882087 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C09AE2B574A8C00882087 /* Blob.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		4D5C099B2B560DBD00882087 /* Network LayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Network LayerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5C099F2B560DBD00882087 /* Network_LayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network_LayerUITests.swift; sourceTree = "<group>"; };
 		4D5C09A12B560DBD00882087 /* Network_LayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network_LayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4D5C09AE2B574A8C00882087 /* Blob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				4D5C09842B560DBC00882087 /* Network_LayerApp.swift */,
 				4D5C09862B560DBC00882087 /* ContentView.swift */,
+				4D5C09AE2B574A8C00882087 /* Blob.swift */,
 				4D5C09882B560DBD00882087 /* Assets.xcassets */,
 				4D5C098A2B560DBD00882087 /* Preview Content */,
 			);
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D5C09AF2B574A8C00882087 /* Blob.swift in Sources */,
 				4D5C09872B560DBC00882087 /* ContentView.swift in Sources */,
 				4D5C09852B560DBC00882087 /* Network_LayerApp.swift in Sources */,
 			);
