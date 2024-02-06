@@ -40,10 +40,8 @@ struct HomeView: View {
                         isFocusedText = true
                     }
                 List(vm.results) { address in
-                    VStack {
-                        Text(address.title)
-                        Text(address.subtitle)
-                    }
+                    RowMapAddress(address: address)
+                        .listRowBackground(Color(.systemGray6))
                     
                 }
                 .listStyle(.plain)
@@ -57,4 +55,22 @@ struct HomeView: View {
 
 #Preview {
     HomeView(vm: ViewModel())
+}
+
+struct RowMapAddress: View {
+    
+    let address: AddressResult
+    
+    var body: some View {
+        NavigationLink {
+            MapView(address)
+        } label: {
+            VStack(alignment: .leading) {
+                Text(address.title)
+                Text(address.subtitle)
+                    .font(.caption)
+            }
+        }
+        .padding()
+    }
 }
