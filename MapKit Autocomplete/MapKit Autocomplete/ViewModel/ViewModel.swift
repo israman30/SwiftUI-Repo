@@ -37,3 +37,26 @@ class ViewModel: NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
         // ---
     }
 }
+
+@MainActor
+class MapViewModel: ObservableObject {
+    @Published var region = MKCoordinateRegion()
+    @Published private(set) var annotaion: [AnnotationItem] = []
+    
+    func getPlaces(from address: AddressResult) {
+        let request = MKLocalSearch.Request()
+        let title = address.title
+        let subtitle = address.subtitle
+        
+        request.naturalLanguageQuery = subtitle.contains(title) ? subtitle : title + ", " + subtitle
+        
+        Task {
+            let response = try await MKLocalSearch(request: request).start()
+            
+            annotaion = response.mapItems.map {
+                AnnotationItem(latitude: $0.placemark.coordinate.latitude, longitude: $0.placemark.coordinate.longitude)
+            }
+            self.region = response.boundingRegion
+        }
+    }
+}
