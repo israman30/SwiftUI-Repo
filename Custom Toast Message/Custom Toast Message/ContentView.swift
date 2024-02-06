@@ -58,6 +58,7 @@ struct CustomToastView: View {
         .shadow(radius: 10, y: 7)
         .onAppear(perform: delayText)
         .transition(AnyTransition.opacity.animation(.easeInOut(duration: animationDuration)))
+        .accessibilityIdentifier("Toast_Text")
     }
     
     private func delayText() {
