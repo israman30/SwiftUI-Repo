@@ -28,10 +28,11 @@ struct HomeView: View {
                         HStack {
                             Spacer()
                             Button {
-                                
+                                self.vm.searchText = ""
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                             }
+                            .padding()
                         }
                         
                     }
@@ -45,7 +46,11 @@ struct HomeView: View {
                     }
                     
                 }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
             }
+            .background(Color(.systemGray5))
+            .edgesIgnoringSafeArea(.bottom)
         }
     }
 }
