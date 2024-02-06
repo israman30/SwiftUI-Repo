@@ -11,6 +11,8 @@
 		4D7826B22B71CBF50034AC4D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7826B12B71CBF50034AC4D /* ContentView.swift */; };
 		4D7826B42B71CBF80034AC4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D7826B32B71CBF80034AC4D /* Assets.xcassets */; };
 		4D7826B72B71CBF80034AC4D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D7826B62B71CBF80034AC4D /* Preview Assets.xcassets */; };
+		4D7826BF2B71CD280034AC4D /* AddressResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7826BE2B71CD280034AC4D /* AddressResult.swift */; };
+		4D7826C22B71CDB90034AC4D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7826C12B71CDB90034AC4D /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		4D7826B12B71CBF50034AC4D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D7826B32B71CBF80034AC4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D7826B62B71CBF80034AC4D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4D7826BE2B71CD280034AC4D /* AddressResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressResult.swift; sourceTree = "<group>"; };
+		4D7826C12B71CDB90034AC4D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				4D7826AF2B71CBF50034AC4D /* MapKit_AutocompleteApp.swift */,
 				4D7826B12B71CBF50034AC4D /* ContentView.swift */,
+				4D7826C02B71CDAA0034AC4D /* ViewModel */,
+				4D7826BD2B71CD0F0034AC4D /* Model */,
 				4D7826B32B71CBF80034AC4D /* Assets.xcassets */,
 				4D7826B52B71CBF80034AC4D /* Preview Content */,
 			);
@@ -65,6 +71,22 @@
 				4D7826B62B71CBF80034AC4D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4D7826BD2B71CD0F0034AC4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4D7826BE2B71CD280034AC4D /* AddressResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4D7826C02B71CDAA0034AC4D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4D7826C12B71CDB90034AC4D /* ViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D7826B22B71CBF50034AC4D /* ContentView.swift in Sources */,
+				4D7826BF2B71CD280034AC4D /* AddressResult.swift in Sources */,
+				4D7826C22B71CDB90034AC4D /* ViewModel.swift in Sources */,
 				4D7826B02B71CBF50034AC4D /* MapKit_AutocompleteApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
