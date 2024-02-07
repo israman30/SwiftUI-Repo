@@ -42,7 +42,6 @@ struct HomeView: View {
                 List(vm.results) { address in
                     RowMapAddress(address: address)
                         .listRowBackground(Color(.systemGray6))
-                    
                 }
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)

@@ -18,13 +18,16 @@ struct MapView: View {
     }
     
     var body: some View {
-        Map(coordinateRegion: $vm.region, annotationItems: vm.annotaion) { item in
-            MapMarker(coordinate: item.coordinate)
+        VStack {
+            Map(coordinateRegion: $vm.region, annotationItems: vm.annotaion) { item in
+                MapMarker(coordinate: item.coordinate)
+            }
+            .onAppear {
+                self.vm.getPlaces(from: address)
+            }
+            .ignoresSafeArea()
         }
-        .onAppear {
-            self.vm.getPlaces(from: address)
-        }
-        .ignoresSafeArea()
+        
     }
 }
 
