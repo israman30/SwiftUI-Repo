@@ -14,6 +14,7 @@
 		4D31BF2E2BB62FF000B11CE2 /* EmailFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF2D2BB62FF000B11CE2 /* EmailFieldView.swift */; };
 		4D31BF302BB630DE00B11CE2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF2F2BB630DE00B11CE2 /* Utils.swift */; };
 		4D31BF322BB632DE00B11CE2 /* PasswordFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */; };
+		4D31BF342BB6344C00B11CE2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF332BB6344C00B11CE2 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		4D31BF2D2BB62FF000B11CE2 /* EmailFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFieldView.swift; sourceTree = "<group>"; };
 		4D31BF2F2BB630DE00B11CE2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFieldView.swift; sourceTree = "<group>"; };
+		4D31BF332BB6344C00B11CE2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				4D31BF212BB62DC400B11CE2 /* ContentView.swift */,
 				4D31BF2D2BB62FF000B11CE2 /* EmailFieldView.swift */,
 				4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */,
+				4D31BF332BB6344C00B11CE2 /* LoginView.swift */,
 				4D31BF2F2BB630DE00B11CE2 /* Utils.swift */,
 				4D31BF232BB62DC500B11CE2 /* Assets.xcassets */,
 				4D31BF252BB62DC500B11CE2 /* Preview Content */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D31BF342BB6344C00B11CE2 /* LoginView.swift in Sources */,
 				4D31BF2E2BB62FF000B11CE2 /* EmailFieldView.swift in Sources */,
 				4D31BF222BB62DC400B11CE2 /* ContentView.swift in Sources */,
 				4D31BF202BB62DC400B11CE2 /* AuthenticationApp.swift in Sources */,
