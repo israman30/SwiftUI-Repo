@@ -18,6 +18,7 @@
 		4D31BF362BB6367D00B11CE2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF352BB6367D00B11CE2 /* HomeView.swift */; };
 		4D31BF382BB6382D00B11CE2 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF372BB6382D00B11CE2 /* SignupView.swift */; };
 		4D31BF3A2BB639D700B11CE2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */; };
+		4D31BF3C2BB63F8900B11CE2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF3B2BB63F8900B11CE2 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		4D31BF352BB6367D00B11CE2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4D31BF372BB6382D00B11CE2 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4D31BF3B2BB63F8900B11CE2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */,
 				4D31BF332BB6344C00B11CE2 /* LoginView.swift */,
 				4D31BF352BB6367D00B11CE2 /* HomeView.swift */,
+				4D31BF3B2BB63F8900B11CE2 /* HomeViewModel.swift */,
 				4D31BF372BB6382D00B11CE2 /* SignupView.swift */,
 				4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */,
 				4D31BF2F2BB630DE00B11CE2 /* Utils.swift */,
@@ -161,6 +164,7 @@
 				4D31BF342BB6344C00B11CE2 /* LoginView.swift in Sources */,
 				4D31BF362BB6367D00B11CE2 /* HomeView.swift in Sources */,
 				4D31BF2E2BB62FF000B11CE2 /* EmailFieldView.swift in Sources */,
+				4D31BF3C2BB63F8900B11CE2 /* HomeViewModel.swift in Sources */,
 				4D31BF222BB62DC400B11CE2 /* ContentView.swift in Sources */,
 				4D31BF382BB6382D00B11CE2 /* SignupView.swift in Sources */,
 				4D31BF202BB62DC400B11CE2 /* AuthenticationApp.swift in Sources */,

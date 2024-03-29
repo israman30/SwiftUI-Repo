@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @StateObject var vm: ViewModel
+    
     var body: some View {
         VStack {
             Text("Info text")
@@ -32,5 +35,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(vm: .init())
 }
