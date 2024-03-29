@@ -13,20 +13,20 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Text("Info text")
+            Text(vm.infoText)
                 .multilineTextAlignment(.center)
                 .font(.callout)
             
             Button("Fetch Data") {
-                
+                vm.fetchSecureDate()
             }
             
             Button("Reset") {
-                
+                vm.resetInfoText()
             }
             
             Button("Logout") {
-                
+                vm.logout()
             }
         }
         .navigationTitle("Home")
