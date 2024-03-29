@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @StateObject var vm: ViewModel
+    
     var body: some View {
         VStack(spacing: 20) {
-            EmailFieldView(input: .constant("johndoe@mail.com"))
-            PasswordFieldView(input: .constant("xxxxxxx"))
+            EmailFieldView(input: $vm.email)
+            PasswordFieldView(input: $vm.password)
             
             Button("Submit") {
-                
+                vm.loginTapped()
             }
             .buttonStyle(.borderedProminent)
             
             Button("Sign Up") {
-                
+                vm.signupTapped()
             }
             .buttonStyle(.bordered)
         }
@@ -28,5 +31,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(vm: .init())
 }

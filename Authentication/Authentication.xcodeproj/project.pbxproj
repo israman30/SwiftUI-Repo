@@ -16,6 +16,8 @@
 		4D31BF322BB632DE00B11CE2 /* PasswordFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */; };
 		4D31BF342BB6344C00B11CE2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF332BB6344C00B11CE2 /* LoginView.swift */; };
 		4D31BF362BB6367D00B11CE2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF352BB6367D00B11CE2 /* HomeView.swift */; };
+		4D31BF382BB6382D00B11CE2 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF372BB6382D00B11CE2 /* SignupView.swift */; };
+		4D31BF3A2BB639D700B11CE2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFieldView.swift; sourceTree = "<group>"; };
 		4D31BF332BB6344C00B11CE2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4D31BF352BB6367D00B11CE2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4D31BF372BB6382D00B11CE2 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */,
 				4D31BF332BB6344C00B11CE2 /* LoginView.swift */,
 				4D31BF352BB6367D00B11CE2 /* HomeView.swift */,
+				4D31BF372BB6382D00B11CE2 /* SignupView.swift */,
+				4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */,
 				4D31BF2F2BB630DE00B11CE2 /* Utils.swift */,
 				4D31BF232BB62DC500B11CE2 /* Assets.xcassets */,
 				4D31BF252BB62DC500B11CE2 /* Preview Content */,
@@ -156,9 +162,11 @@
 				4D31BF362BB6367D00B11CE2 /* HomeView.swift in Sources */,
 				4D31BF2E2BB62FF000B11CE2 /* EmailFieldView.swift in Sources */,
 				4D31BF222BB62DC400B11CE2 /* ContentView.swift in Sources */,
+				4D31BF382BB6382D00B11CE2 /* SignupView.swift in Sources */,
 				4D31BF202BB62DC400B11CE2 /* AuthenticationApp.swift in Sources */,
 				4D31BF322BB632DE00B11CE2 /* PasswordFieldView.swift in Sources */,
 				4D31BF302BB630DE00B11CE2 /* Utils.swift in Sources */,
+				4D31BF3A2BB639D700B11CE2 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
