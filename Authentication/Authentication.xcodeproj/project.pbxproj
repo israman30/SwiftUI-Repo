@@ -20,6 +20,9 @@
 		4D31BF3A2BB639D700B11CE2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */; };
 		4D31BF3C2BB63F8900B11CE2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF3B2BB63F8900B11CE2 /* HomeViewModel.swift */; };
 		4D31BF3E2BB6438600B11CE2 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF3D2BB6438600B11CE2 /* SignupViewModel.swift */; };
+		4D31BF442BB6466600B11CE2 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF432BB6466600B11CE2 /* NetworkHandler.swift */; };
+		4D31BF462BB7819B00B11CE2 /* AccessToke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF452BB7819B00B11CE2 /* AccessToke.swift */; };
+		4D31BF482BB789AE00B11CE2 /* AccessTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF472BB789AE00B11CE2 /* AccessTokenStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4D31BF3B2BB63F8900B11CE2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4D31BF3D2BB6438600B11CE2 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		4D31BF432BB6466600B11CE2 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		4D31BF452BB7819B00B11CE2 /* AccessToke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToke.swift; sourceTree = "<group>"; };
+		4D31BF472BB789AE00B11CE2 /* AccessTokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,15 +77,10 @@
 			children = (
 				4D31BF1F2BB62DC400B11CE2 /* AuthenticationApp.swift */,
 				4D31BF212BB62DC400B11CE2 /* ContentView.swift */,
-				4D31BF2D2BB62FF000B11CE2 /* EmailFieldView.swift */,
-				4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */,
-				4D31BF332BB6344C00B11CE2 /* LoginView.swift */,
-				4D31BF352BB6367D00B11CE2 /* HomeView.swift */,
-				4D31BF3B2BB63F8900B11CE2 /* HomeViewModel.swift */,
-				4D31BF3D2BB6438600B11CE2 /* SignupViewModel.swift */,
-				4D31BF372BB6382D00B11CE2 /* SignupView.swift */,
-				4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */,
-				4D31BF2F2BB630DE00B11CE2 /* Utils.swift */,
+				4D31BF422BB6463300B11CE2 /* Network */,
+				4D31BF412BB645DD00B11CE2 /* Util */,
+				4D31BF402BB6459C00B11CE2 /* View */,
+				4D31BF3F2BB6458A00B11CE2 /* ViewModel */,
 				4D31BF232BB62DC500B11CE2 /* Assets.xcassets */,
 				4D31BF252BB62DC500B11CE2 /* Preview Content */,
 			);
@@ -92,6 +93,46 @@
 				4D31BF262BB62DC500B11CE2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4D31BF3F2BB6458A00B11CE2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4D31BF3B2BB63F8900B11CE2 /* HomeViewModel.swift */,
+				4D31BF392BB639D700B11CE2 /* LoginViewModel.swift */,
+				4D31BF3D2BB6438600B11CE2 /* SignupViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4D31BF402BB6459C00B11CE2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4D31BF352BB6367D00B11CE2 /* HomeView.swift */,
+				4D31BF332BB6344C00B11CE2 /* LoginView.swift */,
+				4D31BF372BB6382D00B11CE2 /* SignupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D31BF412BB645DD00B11CE2 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4D31BF2D2BB62FF000B11CE2 /* EmailFieldView.swift */,
+				4D31BF312BB632DE00B11CE2 /* PasswordFieldView.swift */,
+				4D31BF2F2BB630DE00B11CE2 /* Utils.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		4D31BF422BB6463300B11CE2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4D31BF432BB6466600B11CE2 /* NetworkHandler.swift */,
+				4D31BF452BB7819B00B11CE2 /* AccessToke.swift */,
+				4D31BF472BB789AE00B11CE2 /* AccessTokenStorage.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,9 +213,12 @@
 				4D31BF3E2BB6438600B11CE2 /* SignupViewModel.swift in Sources */,
 				4D31BF382BB6382D00B11CE2 /* SignupView.swift in Sources */,
 				4D31BF202BB62DC400B11CE2 /* AuthenticationApp.swift in Sources */,
+				4D31BF462BB7819B00B11CE2 /* AccessToke.swift in Sources */,
+				4D31BF482BB789AE00B11CE2 /* AccessTokenStorage.swift in Sources */,
 				4D31BF322BB632DE00B11CE2 /* PasswordFieldView.swift in Sources */,
 				4D31BF302BB630DE00B11CE2 /* Utils.swift in Sources */,
 				4D31BF3A2BB639D700B11CE2 /* LoginViewModel.swift in Sources */,
+				4D31BF442BB6466600B11CE2 /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
