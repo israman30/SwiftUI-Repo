@@ -11,7 +11,10 @@ import Security
 struct AccessTokenStorage {
     private let accessKey = "com.some.auth_class_token"
     
+    @discardableResult
     func save(_ token: AccessToken) -> Bool {
+        
+        _ = get()
         
         guard let data = try? JSONEncoder().encode(token) else {
             return false
@@ -39,5 +42,15 @@ struct AccessTokenStorage {
         guard let data = item as? Data else { return nil }
         
         return try? JSONDecoder().decode(AccessToken.self, from: data)
+    }
+    
+    @discardableResult
+    func delete() -> Bool {
+        let deleteQuery: [CFString:Any] = [
+            kSecClass:kSecClassGenericPassword,
+            kSecAttrAccount: accessKey
+        ]
+        let status = SecItemDelete(deleteQuery as CFDictionary)
+        return status == errSecSuccess
     }
 }

@@ -23,6 +23,7 @@
 		4D31BF442BB6466600B11CE2 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF432BB6466600B11CE2 /* NetworkHandler.swift */; };
 		4D31BF462BB7819B00B11CE2 /* AccessToke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF452BB7819B00B11CE2 /* AccessToke.swift */; };
 		4D31BF482BB789AE00B11CE2 /* AccessTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF472BB789AE00B11CE2 /* AccessTokenStorage.swift */; };
+		4D31BF4A2BB78D5D00B11CE2 /* NetworkRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF492BB78D5D00B11CE2 /* NetworkRoutes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		4D31BF432BB6466600B11CE2 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		4D31BF452BB7819B00B11CE2 /* AccessToke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToke.swift; sourceTree = "<group>"; };
 		4D31BF472BB789AE00B11CE2 /* AccessTokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenStorage.swift; sourceTree = "<group>"; };
+		4D31BF492BB78D5D00B11CE2 /* NetworkRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRoutes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				4D31BF1F2BB62DC400B11CE2 /* AuthenticationApp.swift */,
 				4D31BF212BB62DC400B11CE2 /* ContentView.swift */,
+				4D31BF492BB78D5D00B11CE2 /* NetworkRoutes.swift */,
 				4D31BF422BB6463300B11CE2 /* Network */,
 				4D31BF412BB645DD00B11CE2 /* Util */,
 				4D31BF402BB6459C00B11CE2 /* View */,
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D31BF4A2BB78D5D00B11CE2 /* NetworkRoutes.swift in Sources */,
 				4D31BF342BB6344C00B11CE2 /* LoginView.swift in Sources */,
 				4D31BF362BB6367D00B11CE2 /* HomeView.swift in Sources */,
 				4D31BF2E2BB62FF000B11CE2 /* EmailFieldView.swift in Sources */,
