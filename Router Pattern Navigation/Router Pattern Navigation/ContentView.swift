@@ -21,7 +21,7 @@ class Router: ObservableObject {
     
     enum Route: Hashable {
         case viewA
-        case viewB
+        case viewB(String)
         case viewC
     }
     
@@ -31,11 +31,11 @@ class Router: ObservableObject {
     func view(for router: Route) -> some View {
         switch router {
         case .viewA:
-            EmptyView()
-        case .viewB:
-            EmptyView()
+            ViewA()
+        case .viewB(let str):
+            ViewB(description: str)
         case .viewC:
-            EmptyView()
+            ViewC()
         }
     }
     
@@ -69,13 +69,67 @@ struct RouterView<Content: View>: View {
                     router.view(for: route)
                 }
         }
+        .environmentObject(router)
     }
 }
 
 struct Home: View {
     var body: some View {
-        Text("Home View")
-            .font(.largeTitle)
-            .fontWeight(.heavy)
+        VStack {
+            RouterView {
+                ViewA()
+            }
+        }
+    }
+}
+
+struct ViewA: View {
+    @EnvironmentObject var router: Router
+    
+    var body: some View {
+        VStack() {
+            Button("Go to View B") {
+                router.navigate(to: .viewB("Got here from A"))
+            }
+            Button("Go to View C") {
+                router.navigate(to: .viewC)
+            }
+        }
+        .navigationTitle("View A")
+    }
+}
+struct ViewB: View {
+    
+    @EnvironmentObject var router: Router
+    
+    let description: String
+    
+    var body: some View {
+        VStack() {
+            Text(description)
+            Button("Go to View A") {
+                router.navigate(to: .viewA)
+            }
+            Button("Go to View C") {
+                router.navigate(to: .viewC)
+            }
+        }
+        .navigationTitle("View B")
+    }
+}
+
+struct ViewC: View {
+    @EnvironmentObject var router: Router
+    
+    var body: some View {
+        VStack() {
+            Button("Go to View B") {
+                router.navigate(to: .viewB("Got here from C"))
+            }
+            Button("Go back") {
+                router.navigateBack()
+            }
+        }
+        .navigationTitle("View C")
     }
 }
