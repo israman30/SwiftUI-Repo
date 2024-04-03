@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  Router Pattern Navigation
 //
 //  Created by Israel Manzo on 4/3/24.
@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct Home: View {
     var body: some View {
-        Home()
+        VStack {
+            RouterView {
+                ViewA()
+            }
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    Home()
 }
-
-
-
