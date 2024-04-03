@@ -11,6 +11,7 @@
 		4D31BF802BBE219000B11CE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF7F2BBE219000B11CE2 /* ContentView.swift */; };
 		4D31BF822BBE219100B11CE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D31BF812BBE219100B11CE2 /* Assets.xcassets */; };
 		4D31BF852BBE219100B11CE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D31BF842BBE219100B11CE2 /* Preview Assets.xcassets */; };
+		4D31BF8C2BBE21FA00B11CE2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BF8B2BBE21FA00B11CE2 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4D31BF7F2BBE219000B11CE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D31BF812BBE219100B11CE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D31BF842BBE219100B11CE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4D31BF8B2BBE21FA00B11CE2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				4D31BF7D2BBE219000B11CE2 /* Coordinator_Pattern_NavigationApp.swift */,
 				4D31BF7F2BBE219000B11CE2 /* ContentView.swift */,
+				4D31BF8B2BBE21FA00B11CE2 /* Coordinator.swift */,
 				4D31BF812BBE219100B11CE2 /* Assets.xcassets */,
 				4D31BF832BBE219100B11CE2 /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				4D31BF802BBE219000B11CE2 /* ContentView.swift in Sources */,
 				4D31BF7E2BBE219000B11CE2 /* Coordinator_Pattern_NavigationApp.swift in Sources */,
+				4D31BF8C2BBE21FA00B11CE2 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
