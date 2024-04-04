@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SheetView.swift
 //  Coordinator Pattern Navigation
 //
 //  Created by Israel Manzo on 4/3/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SheetView: View {
     var body: some View {
-        HomeView()
+        Text("This is a sheet")
     }
 }
 
 #Preview {
-    ContentView()
+    SheetView()
 }
