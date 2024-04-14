@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct Auth_CoordinatorApp: App {
+    
+    @StateObject private var appCoordinator = AppCoordinator(path: NavigationPath())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $appCoordinator.path) {
+                appCoordinator.view()
+                    .navigationDestination(for: AuthCoordinator.self) { coordinator in
+                        coordinator.view()
+                    }
+            }
+            .environmentObject(appCoordinator)
+            
         }
     }
 }

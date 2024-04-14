@@ -38,7 +38,7 @@ final class AuthCoordinator: Hashable {
         case .login:
             loginView()
         case .forgotPassword:
-            forgotPassword()
+            forgotPasswordView()
         }
     }
     
@@ -54,12 +54,14 @@ final class AuthCoordinator: Hashable {
         let loginView = LoginView(output: .init(goToMain: {
             self.output?.goToMain()
         }, goToForgotPassword: {
-            self.gotToForgotPasswordSite()
+            self.push(
+                AuthCoordinator(page: .forgotPassword, navigationPath: self.$navigationPath)
+            )
         }))
         return loginView
     }
     
-    private func forgotPassword() -> some View {
+    private func forgotPasswordView() -> some View {
         let forgotPassword = ForgotPasswordView(output: .init(goToForgotPasswordSite: {
             self.gotToForgotPasswordSite()
         }))

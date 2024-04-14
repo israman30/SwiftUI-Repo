@@ -14,6 +14,8 @@
 		4D31BFB22BCB51F100B11CE2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BFB12BCB51F100B11CE2 /* LoginView.swift */; };
 		4D31BFB42BCB52E300B11CE2 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BFB32BCB52E300B11CE2 /* ForgotPasswordView.swift */; };
 		4D31BFB62BCB53C300B11CE2 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BFB52BCB53C300B11CE2 /* AuthCoordinator.swift */; };
+		4D31BFB82BCB579E00B11CE2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BFB72BCB579E00B11CE2 /* AppCoordinator.swift */; };
+		4D31BFBA2BCB57E100B11CE2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BFB92BCB57E100B11CE2 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		4D31BFB12BCB51F100B11CE2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4D31BFB32BCB52E300B11CE2 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		4D31BFB52BCB53C300B11CE2 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		4D31BFB72BCB579E00B11CE2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		4D31BFB92BCB57E100B11CE2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				4D31BFB12BCB51F100B11CE2 /* LoginView.swift */,
 				4D31BFB32BCB52E300B11CE2 /* ForgotPasswordView.swift */,
 				4D31BFB52BCB53C300B11CE2 /* AuthCoordinator.swift */,
+				4D31BFB72BCB579E00B11CE2 /* AppCoordinator.swift */,
+				4D31BFB92BCB57E100B11CE2 /* MainView.swift */,
 				4D31BFA72BCB51E000B11CE2 /* Assets.xcassets */,
 				4D31BFA92BCB51E000B11CE2 /* Preview Content */,
 			);
@@ -146,6 +152,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D31BFB82BCB579E00B11CE2 /* AppCoordinator.swift in Sources */,
+				4D31BFBA2BCB57E100B11CE2 /* MainView.swift in Sources */,
 				4D31BFB62BCB53C300B11CE2 /* AuthCoordinator.swift in Sources */,
 				4D31BFB22BCB51F100B11CE2 /* LoginView.swift in Sources */,
 				4D31BFA62BCB51DF00B11CE2 /* ContentView.swift in Sources */,
