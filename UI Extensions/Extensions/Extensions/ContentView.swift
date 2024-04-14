@@ -37,6 +37,7 @@ struct ContentView: View {
     ContentView()
 }
 
+// MARK: - square frame extentension with alignment
 extension View {
     func frame(square lenght: CGFloat?, alignment: Alignment = .center) -> some View {
         self.frame(width: lenght, height: lenght, alignment: alignment)
@@ -50,5 +51,31 @@ extension View {
         case false:
             self
         }
+    }
+}
+
+// MARK: - onAppear() view modifier for calling it only once
+struct OnAppearModifier: ViewModifier {
+    @State private var isCalled = false
+    private let action: (() -> ())?
+    
+    init(action: (() -> Void)? = nil) {
+        self.action = action
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .onAppear {
+                if !isCalled {
+                    isCalled = true
+                    action?()
+                }
+            }
+    }
+}
+
+extension View {
+    func firstApperance() -> some View {
+        self
     }
 }
