@@ -17,6 +17,8 @@ struct ContentView: View {
         }
         .padding()
         .background(Color.yellow)
+        .alignment(at: .top)
+        .alignment(at: .leading)
     }
 }
 
