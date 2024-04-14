@@ -13,6 +13,7 @@
 		4D31BFAB2BCB51E000B11CE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D31BFAA2BCB51E000B11CE2 /* Preview Assets.xcassets */; };
 		4D31BFB22BCB51F100B11CE2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BFB12BCB51F100B11CE2 /* LoginView.swift */; };
 		4D31BFB42BCB52E300B11CE2 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BFB32BCB52E300B11CE2 /* ForgotPasswordView.swift */; };
+		4D31BFB62BCB53C300B11CE2 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31BFB52BCB53C300B11CE2 /* AuthCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4D31BFAA2BCB51E000B11CE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D31BFB12BCB51F100B11CE2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4D31BFB32BCB52E300B11CE2 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		4D31BFB52BCB53C300B11CE2 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				4D31BFA52BCB51DF00B11CE2 /* ContentView.swift */,
 				4D31BFB12BCB51F100B11CE2 /* LoginView.swift */,
 				4D31BFB32BCB52E300B11CE2 /* ForgotPasswordView.swift */,
+				4D31BFB52BCB53C300B11CE2 /* AuthCoordinator.swift */,
 				4D31BFA72BCB51E000B11CE2 /* Assets.xcassets */,
 				4D31BFA92BCB51E000B11CE2 /* Preview Content */,
 			);
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D31BFB62BCB53C300B11CE2 /* AuthCoordinator.swift in Sources */,
 				4D31BFB22BCB51F100B11CE2 /* LoginView.swift in Sources */,
 				4D31BFA62BCB51DF00B11CE2 /* ContentView.swift in Sources */,
 				4D31BFB42BCB52E300B11CE2 /* ForgotPasswordView.swift in Sources */,
