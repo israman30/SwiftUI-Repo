@@ -30,6 +30,9 @@ struct ContentView: View {
         }
         .padding()
         .background(Color.yellow)
+        .firstApperance {
+            print("Should called once")
+        }
     }
 }
 
@@ -75,7 +78,7 @@ struct OnAppearModifier: ViewModifier {
 }
 
 extension View {
-    func firstApperance() -> some View {
-        self
+    func firstApperance(action: (() -> Void)? = nil) -> some View {
+        self.modifier(OnAppearModifier(action: action))
     }
 }
