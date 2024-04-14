@@ -15,6 +15,8 @@
 		4D31C00C2BCCA08700B11CE2 /* ViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C00B2BCCA08700B11CE2 /* ViewA.swift */; };
 		4D31C00E2BCCA09A00B11CE2 /* ViewB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C00D2BCCA09A00B11CE2 /* ViewB.swift */; };
 		4D31C0102BCCA0AC00B11CE2 /* ViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C00F2BCCA0AC00B11CE2 /* ViewC.swift */; };
+		4D31C0122BCCA16500B11CE2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C0112BCCA16500B11CE2 /* Coordinator.swift */; };
+		4D31C0142BCCA1F500B11CE2 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C0132BCCA1F500B11CE2 /* DisplayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		4D31C00B2BCCA08700B11CE2 /* ViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewA.swift; sourceTree = "<group>"; };
 		4D31C00D2BCCA09A00B11CE2 /* ViewB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewB.swift; sourceTree = "<group>"; };
 		4D31C00F2BCCA0AC00B11CE2 /* ViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewC.swift; sourceTree = "<group>"; };
+		4D31C0112BCCA16500B11CE2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4D31C0132BCCA1F500B11CE2 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				4D31C00B2BCCA08700B11CE2 /* ViewA.swift */,
 				4D31C00D2BCCA09A00B11CE2 /* ViewB.swift */,
 				4D31C00F2BCCA0AC00B11CE2 /* ViewC.swift */,
+				4D31C0132BCCA1F500B11CE2 /* DisplayView.swift */,
+				4D31C0112BCCA16500B11CE2 /* Coordinator.swift */,
 				4D31BFFF2BCC9E6700B11CE2 /* Assets.xcassets */,
 				4D31C0012BCC9E6700B11CE2 /* Preview Content */,
 			);
@@ -154,7 +160,9 @@
 				4D31C00A2BCCA06B00B11CE2 /* MainView.swift in Sources */,
 				4D31C00C2BCCA08700B11CE2 /* ViewA.swift in Sources */,
 				4D31C0102BCCA0AC00B11CE2 /* ViewC.swift in Sources */,
+				4D31C0142BCCA1F500B11CE2 /* DisplayView.swift in Sources */,
 				4D31BFFC2BCC9E6600B11CE2 /* CoordinatorsApp.swift in Sources */,
+				4D31C0122BCCA16500B11CE2 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
