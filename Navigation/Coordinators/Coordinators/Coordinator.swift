@@ -13,6 +13,7 @@ enum Pages: String, Identifiable {
     case viewA
     case viewB
     case viewC
+    case viewLast
     
     var id: String {
         self.rawValue
@@ -87,6 +88,8 @@ class Coordinator: ObservableObject {
             ViewB()
         case .viewC:
             ViewC()
+        case .viewLast:
+            ViewLast()
         }
     }
     

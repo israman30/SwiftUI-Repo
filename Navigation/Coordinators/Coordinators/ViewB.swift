@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ViewB: View {
+    @EnvironmentObject private var coordinator: Coordinator
+    
     var body: some View {
-        Text("View B")
-            .font(.largeTitle)
+        List {
+            Button("Go to View Last") {
+                coordinator.push(.viewLast)
+            }
+        }
     }
 }
 
