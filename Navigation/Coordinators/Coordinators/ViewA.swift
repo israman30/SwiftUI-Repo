@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ViewA: View {
+    @EnvironmentObject private var coordinator: Coordinator
+    
     var body: some View {
-        Text("View A")
-            .font(.largeTitle)
+        List {
+            Button("Push to B") {
+                coordinator.push(.viewB)
+            }
+            Button("Push to C") {
+                coordinator.push(.viewC)
+            }
+        }.navigationTitle("View A")
     }
 }
 

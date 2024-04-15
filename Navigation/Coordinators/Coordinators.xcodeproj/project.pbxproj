@@ -17,6 +17,7 @@
 		4D31C0102BCCA0AC00B11CE2 /* ViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C00F2BCCA0AC00B11CE2 /* ViewC.swift */; };
 		4D31C0122BCCA16500B11CE2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C0112BCCA16500B11CE2 /* Coordinator.swift */; };
 		4D31C0142BCCA1F500B11CE2 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C0132BCCA1F500B11CE2 /* DisplayView.swift */; };
+		4D31C0162BCCA48F00B11CE2 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31C0152BCCA48F00B11CE2 /* CoordinatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		4D31C00F2BCCA0AC00B11CE2 /* ViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewC.swift; sourceTree = "<group>"; };
 		4D31C0112BCCA16500B11CE2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4D31C0132BCCA1F500B11CE2 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		4D31C0152BCCA48F00B11CE2 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				4D31C00F2BCCA0AC00B11CE2 /* ViewC.swift */,
 				4D31C0132BCCA1F500B11CE2 /* DisplayView.swift */,
 				4D31C0112BCCA16500B11CE2 /* Coordinator.swift */,
+				4D31C0152BCCA48F00B11CE2 /* CoordinatorView.swift */,
 				4D31BFFF2BCC9E6700B11CE2 /* Assets.xcassets */,
 				4D31C0012BCC9E6700B11CE2 /* Preview Content */,
 			);
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D31BFFE2BCC9E6600B11CE2 /* ContentView.swift in Sources */,
+				4D31C0162BCCA48F00B11CE2 /* CoordinatorView.swift in Sources */,
 				4D31C00E2BCCA09A00B11CE2 /* ViewB.swift in Sources */,
 				4D31C00A2BCCA06B00B11CE2 /* MainView.swift in Sources */,
 				4D31C00C2BCCA08700B11CE2 /* ViewA.swift in Sources */,

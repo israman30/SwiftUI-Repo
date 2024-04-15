@@ -9,6 +9,7 @@ import SwiftUI
 
 /// Create pages
 enum Pages: String, Identifiable {
+    case main
     case viewA
     case viewB
     case viewC
@@ -47,11 +48,11 @@ class Coordinator: ObservableObject {
         path.append(page)
     }
     
-    func present(_ sheet: Sheet) {
+    func present(sheet: Sheet) {
         self.sheet = sheet
     }
     
-    func present(_ fullScreenSheet: FullScreenSheet) {
+    func present(fullScreenSheet: FullScreenSheet) {
         self.fullScreenSheet = fullScreenSheet
     }
     
@@ -78,6 +79,8 @@ class Coordinator: ObservableObject {
     @ViewBuilder
     func build(_ page: Pages) -> some View {
         switch page {
+        case .main:
+            MainView()
         case .viewA:
             ViewA()
         case .viewB:
