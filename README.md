@@ -20,6 +20,39 @@ note: Any commit message starting with # will be ignored
 ```
 _source: [Arlo commit notation](https://github.com/RefactoringCombos/ArlosCommitNotation)_
 
+#### Xcode keyboard shortcuts
+Keyboard shortcuts in Xcode are designed to streamline your workflow, enabling you to perform tasks more efficiently.
+
+| key    | do   |
+| -------- | ------- |
+| Cmd + B  | Build project |
+| Cmd + R  | Run project |
+| Cmd + k | Clean project |
+| Cmd + Shift + K | Clean build folder |
+| Cmd + Shift + O | Search+open file |
+| Cmd + Shift + L | Open Library |
+| Cmd + F | Search line of in code |
+| Cmd + G | Jump text to text in code |
+| Cmd + Shift + F | Search within the project |
+| Cmd + L | Search number of line of code |
+| Ctrl + 6 | Search line of code |
+| Opt + Cmd + <- | Fold block of code |
+| Opt + Cmd + -> | Unfold block of code |
+| Cmd + T | Open a new tab |
+| Cmd + W | Close current tab |
+| Cmd + Opt + [ or ] | Move line of code up/down |
+| Shift + Cmd + Y | Open/close debuge console |
+| Cmd + / | Comment code |
+| Cmd + 0 | Open/close file navigator |
+| Opt + Cmd + 0 | Open/close right navigator |
+| Ctrl + i | Fix indentation |
+| Opt + Cmd + / | Create documentation for functionality |
+| Opt + Cmd + return | Hide/show canvas |
+| Opt + Shift + Cmd + M | Hide/show mini map |
+| Shift + Ctrl | Multiple inserts |
+| Opt + drag down | add as many inserts |
+| Cmd + arrows | Simulator orientation |
+
 #### 1. Creating a custom Card
 
    ```CustomCardView``` ```SwiftUI``` declares the custom card.
