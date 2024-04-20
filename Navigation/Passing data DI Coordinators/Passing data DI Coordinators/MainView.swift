@@ -17,7 +17,7 @@ struct MainView: View {
     }
     
     var body: some View {
-        NavigationView {
+        VStack {
             Section {
                 List(vm.users, id: \.id) { user in
                     Button {
