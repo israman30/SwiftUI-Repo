@@ -11,6 +11,7 @@
 		4D2B9EF02BD3560500F1CC02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B9EEF2BD3560500F1CC02 /* Coordinator.swift */; };
 		4D2B9EF22BD3562000F1CC02 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B9EF12BD3562000F1CC02 /* CoordinatorView.swift */; };
 		4D2B9EF42BD3563600F1CC02 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B9EF32BD3563600F1CC02 /* MainView.swift */; };
+		4D2B9EF62BD35B5E00F1CC02 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B9EF52BD35B5E00F1CC02 /* Model.swift */; };
 		4DAA5F552BD352B000ACF3D8 /* Passing_data_DI_CoordinatorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAA5F542BD352B000ACF3D8 /* Passing_data_DI_CoordinatorsApp.swift */; };
 		4DAA5F572BD352B000ACF3D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAA5F562BD352B000ACF3D8 /* ContentView.swift */; };
 		4DAA5F592BD352B100ACF3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA5F582BD352B100ACF3D8 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		4D2B9EEF2BD3560500F1CC02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4D2B9EF12BD3562000F1CC02 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		4D2B9EF32BD3563600F1CC02 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		4D2B9EF52BD35B5E00F1CC02 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4DAA5F512BD352B000ACF3D8 /* Passing data DI Coordinators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Passing data DI Coordinators.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DAA5F542BD352B000ACF3D8 /* Passing_data_DI_CoordinatorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passing_data_DI_CoordinatorsApp.swift; sourceTree = "<group>"; };
 		4DAA5F562BD352B000ACF3D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				4DAA5F542BD352B000ACF3D8 /* Passing_data_DI_CoordinatorsApp.swift */,
 				4DAA5F562BD352B000ACF3D8 /* ContentView.swift */,
 				4D2B9EF32BD3563600F1CC02 /* MainView.swift */,
+				4D2B9EF52BD35B5E00F1CC02 /* Model.swift */,
 				4D2B9EED2BD3557900F1CC02 /* DetailView.swift */,
 				4D2B9EEF2BD3560500F1CC02 /* Coordinator.swift */,
 				4D2B9EF12BD3562000F1CC02 /* CoordinatorView.swift */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D2B9EF62BD35B5E00F1CC02 /* Model.swift in Sources */,
 				4D2B9EF02BD3560500F1CC02 /* Coordinator.swift in Sources */,
 				4D2B9EF42BD3563600F1CC02 /* MainView.swift in Sources */,
 				4D2B9EF22BD3562000F1CC02 /* CoordinatorView.swift in Sources */,

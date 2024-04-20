@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-enum Pages: Hashable {
+enum Pages: Hashable, Equatable {
     case main
-    case detail
+    case detail(model: Model)
 }
 
 final class Coordinator: ObservableObject {
@@ -26,8 +26,8 @@ final class Coordinator: ObservableObject {
         switch page {
         case .main:
             MainView()
-        case .detail:
-            DetailView()
+        case .detail(let model):
+            DetailView(model: model)
         }
     }
 }
