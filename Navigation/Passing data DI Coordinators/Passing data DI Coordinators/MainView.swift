@@ -12,10 +12,23 @@ struct MainView: View {
     @EnvironmentObject private var coordinator: Coordinator
     
     var body: some View {
-        VStack {
-            Button("Tap here") {
-                let model = Model(name: "Tom Sawyer")
-                coordinator.push(.detail(model: model))
+        NavigationView {
+            List {
+                Section {
+                    Button("Tap here") {
+                        let model = Model(name: "Tom Sawyer")
+                        coordinator.push(.detail(model: model))
+                    }
+                }
+                Section {
+                    let model = Model(name: "Tom Sawyer")
+                    NavigationLink {
+                        EmptyView()
+                    } label: {
+                        Text("Go to detail too")
+                    }
+
+                }
             }
         }
     }
@@ -23,4 +36,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environmentObject(Coordinator())
 }
