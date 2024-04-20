@@ -10,25 +10,30 @@ import SwiftUI
 struct MainView: View {
     
     @EnvironmentObject private var coordinator: Coordinator
+    @StateObject var vm: UsersViewModel
+    
+    init() {
+        self._vm = StateObject(wrappedValue: UsersViewModel(services: NetworkServices()))
+    }
     
     var body: some View {
         NavigationView {
-            List {
-                Section {
-                    Button("Tap here") {
-                        let model = Model(name: "Tom Sawyer")
-                        coordinator.push(.detail(model: model))
-                    }
-                }
-                Section {
-                    let model = Model(name: "Tom Sawyer")
-                    NavigationLink {
-                        EmptyView()
+            Section {
+                List(vm.users, id: \.id) { user in
+                    Button {
+                        coordinator.push(.detail(user: user))
                     } label: {
-                        Text("Go to detail too")
+                        HStack {
+                            Text(user.name)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
                     }
-
                 }
+                .navigationTitle("Coordinators")
+            }
+            .task {
+                await vm.getUsers()
             }
         }
     }

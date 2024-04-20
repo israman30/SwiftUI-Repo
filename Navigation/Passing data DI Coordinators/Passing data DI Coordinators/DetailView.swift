@@ -9,13 +9,16 @@ import SwiftUI
 
 struct DetailView: View {
     
-    let model: Model
+    let user: Users
     
     var body: some View {
-        Text("Hello, \(model.name)")
+        Form {
+            Text("Hello, \(user.name)")
+            Text("Eamil: \(user.email)")
+        }
     }
 }
 
 #Preview {
-    DetailView(model: Model(name: "John Doe"))
+    DetailView(user: Users(id: 0, name: "John Doe", email: "johndoe@mail.com"))
 }

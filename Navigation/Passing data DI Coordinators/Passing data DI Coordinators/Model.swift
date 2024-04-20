@@ -10,3 +10,9 @@ import Foundation
 struct Model: Hashable, Equatable{
     var name: String
 }
+
+struct Users: Decodable, Hashable, Equatable {
+    let id: Int
+    let name: String
+    let email: String
+}
