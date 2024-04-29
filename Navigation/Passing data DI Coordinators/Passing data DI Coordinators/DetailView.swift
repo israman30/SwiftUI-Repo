@@ -10,11 +10,22 @@ import SwiftUI
 struct DetailView: View {
     
     let user: Users
+    @EnvironmentObject private var coordinator: Coordinator
+    @State var isPresented = false
     
     var body: some View {
         Form {
             Text("Hello, \(user.name)")
             Text("Eamil: \(user.email)")
+            
+            Section {
+                Button {
+                    coordinator.push(sheet: .sheet)
+                } label: {
+                    Text("Present Sheer")
+                }
+            }
+            
         }
     }
 }

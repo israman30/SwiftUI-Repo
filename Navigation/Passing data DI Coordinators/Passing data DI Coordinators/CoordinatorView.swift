@@ -17,6 +17,9 @@ struct CoordinatorView: View {
                 .navigationDestination(for: Pages.self) { page in
                     coordinator.build(page)
                 }
+                .sheet(item: $coordinator.sheet) { sheet in
+                    coordinator.present(sheet)
+                }
         }
         .environmentObject(coordinator)
     }

@@ -12,14 +12,22 @@ enum Pages: Hashable, Equatable {
     case detail(user: Users)
 }
 
+enum Sheet: String, CaseIterable, Identifiable {
+    case sheet
+    
+    var id: String {
+        self.rawValue
+    }
+}
+
 final class Coordinator: ObservableObject {
     
     @Published var path = NavigationPath()
+    @Published var sheet: Sheet?
     
     func push(_ page: Pages) {
         path.append(page)
     }
-    
     
     @ViewBuilder
     func build(_ page: Pages) -> some View {
@@ -29,5 +37,17 @@ final class Coordinator: ObservableObject {
         case .detail(let user):
             DetailView(user: user)
         }
+    }
+    
+    @ViewBuilder
+    func present(_ sheet: Sheet) -> some View {
+        switch sheet {
+        case .sheet:
+            SheetViewSample()
+        }
+    }
+    
+    func push(sheet: Sheet) {
+        path.append(sheet)
     }
 }
