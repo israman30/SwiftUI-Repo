@@ -52,6 +52,8 @@ Keyboard shortcuts in Xcode are designed to streamline your workflow, enabling y
 | Shift + Ctrl | Multiple inserts |
 | Opt + drag down | add as many inserts |
 | Cmd + arrows | Simulator orientation |
+| Ctrl + M | Split a long expression |
+| Cmd + M | hide window in tool bar |
 
 #### 1. Creating a custom Card
 
