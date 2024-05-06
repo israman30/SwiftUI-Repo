@@ -12,8 +12,6 @@ struct Users: Identifiable, Hashable {
     var id: String {
         name
     }
-    
-    
 }
 
 class ViewModel: ObservableObject {
@@ -41,7 +39,6 @@ struct ContentView: View {
                     NavigationLink(value: users) {
                         Text(users.name)
                     }
-                    
                 }
             }
             .navigationDestination(for: Users.self) { user in
