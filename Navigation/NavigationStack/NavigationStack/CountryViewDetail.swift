@@ -24,6 +24,9 @@ struct CountryViewDetail: View {
         }
         .padding()
         .navigationTitle("Country")
+        .navigationDestination(for: City.self) { city in
+            Text(city.name)
+        }
     }
 }
 
