@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Users: Identifiable {
+struct Users: Identifiable, Hashable {
     let name: String
     var id: String {
         name
@@ -38,8 +38,14 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(sample, id: \.id) { users in
-                    Text(users.name)
+                    NavigationLink(value: users) {
+                        Text(users.name)
+                    }
+                    
                 }
+            }
+            .navigationDestination(for: Users.self) { user in
+                Text(user.name)
             }
             .navigationTitle("Navigation Stack")
         }
