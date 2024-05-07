@@ -13,6 +13,7 @@
 		4D55C9BF2BE8659500E7C5EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D55C9BE2BE8659500E7C5EF /* Preview Assets.xcassets */; };
 		4D55C9C62BE99BEB00E7C5EF /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C9C52BE99BEB00E7C5EF /* CountryView.swift */; };
 		4D55C9C92BE99FE400E7C5EF /* CountryViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C9C82BE99FE400E7C5EF /* CountryViewDetail.swift */; };
+		4D55C9CB2BE9A64700E7C5EF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C9CA2BE9A64700E7C5EF /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4D55C9BE2BE8659500E7C5EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D55C9C52BE99BEB00E7C5EF /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		4D55C9C82BE99FE400E7C5EF /* CountryViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewDetail.swift; sourceTree = "<group>"; };
+		4D55C9CA2BE9A64700E7C5EF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				4D55C9B92BE8659400E7C5EF /* ContentView.swift */,
 				4D55C9C52BE99BEB00E7C5EF /* CountryView.swift */,
 				4D55C9C82BE99FE400E7C5EF /* CountryViewDetail.swift */,
+				4D55C9CA2BE9A64700E7C5EF /* Router.swift */,
 				4D55C9BB2BE8659500E7C5EF /* Assets.xcassets */,
 				4D55C9BD2BE8659500E7C5EF /* Preview Content */,
 			);
@@ -145,6 +148,7 @@
 			files = (
 				4D55C9C92BE99FE400E7C5EF /* CountryViewDetail.swift in Sources */,
 				4D55C9C62BE99BEB00E7C5EF /* CountryView.swift in Sources */,
+				4D55C9CB2BE9A64700E7C5EF /* Router.swift in Sources */,
 				4D55C9BA2BE8659400E7C5EF /* ContentView.swift in Sources */,
 				4D55C9B82BE8659400E7C5EF /* NavigationStackApp.swift in Sources */,
 			);

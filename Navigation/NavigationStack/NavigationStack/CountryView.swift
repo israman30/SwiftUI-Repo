@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MODEL
+// MARK: - MODEL -
 struct Country: Identifiable, Hashable {
     let name: String
     let flag: String
@@ -41,9 +41,13 @@ struct City: Identifiable, Hashable {
     ]}
 }
 
+// MARK: - VIEW -
 struct CountryView: View {
+    
+    @EnvironmentObject var router: Router
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.path) {
             List(Country.countries) { country in
                 NavigationLink(value: country) {
                     Text(country.name)
@@ -59,4 +63,5 @@ struct CountryView: View {
 
 #Preview {
     CountryView()
+        .environmentObject(Router())
 }

@@ -25,11 +25,29 @@ struct CountryViewDetail: View {
         .padding()
         .navigationTitle("Country")
         .navigationDestination(for: City.self) { city in
-            Text(city.name)
+            CityView(city: city)
         }
     }
 }
 
 #Preview {
     CountryViewDetail(country: Country.countries[2])
+        .environmentObject(Router())
+}
+
+struct CityView: View {
+    @EnvironmentObject var router: Router
+    var city: City
+    var body: some View {
+        VStack {
+            Text(city.name)
+                .font(.largeTitle)
+            Button {
+                self.router.reset()
+            } label: {
+                Text("Back to Main")
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
 }
