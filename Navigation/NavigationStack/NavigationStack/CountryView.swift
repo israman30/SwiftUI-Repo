@@ -41,7 +41,7 @@ struct City: Identifiable, Hashable {
     ]}
 }
 
-// MARK: - VIEW -
+// MARK: - VIEW - 
 struct CountryView: View {
     
     @EnvironmentObject var router: Router
