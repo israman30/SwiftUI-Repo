@@ -6,6 +6,21 @@
 //
 
 import SwiftUI
+import Network
+
+@Observable
+final class NetworkMonitor {
+    private let networkMonitor = NWPathMonitor()
+    private let monitorQueue = DispatchQueue(label: "Wifi")
+    var isConnected = false
+    
+    init() {
+        networkMonitor.pathUpdateHandler = { path in
+            self.isConnected = path.status == .satisfied
+        }
+        networkMonitor.start(queue: monitorQueue)
+    }
+}
 
 struct ContentView: View {
     var body: some View {
