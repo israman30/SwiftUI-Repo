@@ -23,12 +23,22 @@ final class NetworkMonitor {
 }
 
 struct ContentView: View {
+    
+    @Environment(NetworkMonitor.self) private var networkMonitor
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 10) {
+            Text("Connection status")
+                .font(.title)
+            
+            Image(systemName: networkMonitor.isConnected ? "wifi" : "wifi.slash")
+                .font(.title)
+                .foregroundStyle(networkMonitor.isConnected ? .blue : .red)
+            
+            Text(networkMonitor.isConnected ? "Connected" : "No Connected")
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundStyle(networkMonitor.isConnected ? .blue : .red)
         }
         .padding()
     }
@@ -36,4 +46,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(NetworkMonitor())
 }
