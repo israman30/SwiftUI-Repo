@@ -28,3 +28,14 @@ let aSubscriber = Just("Sink value")
     .sink { value in
         print("Received value: \(value)")
     }
+
+// Assign: Assigns each received value to a property of an object.
+class SomeClass {
+    @Published var value = ""
+}
+
+let sample = SomeClass()
+let subscriptor = Just("Assign Something")
+    .assign(to: \.value, on: sample)
+
+print(sample.value)
