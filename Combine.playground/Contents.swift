@@ -176,3 +176,56 @@ let subcribingCurrentValueSubject = currentValueSubject.sink { value in
     print("Current Value Subject received: \(value)")
 }
 currentValueSubject.send("updated value")
+
+// MARK: ---- Advanced Topics ----
+
+// MARK: AnyCancellable
+/// `AnyCancellable` is a type-erased cancellable object that manages the subscription lifecycle.
+let cancellable = Just("Hello, AnyCancellable")
+    .sink { value in
+        print(value)
+    }
+
+// MARK: @Published
+/// The `@Published` property wrapper allows properties to act as publishers, making it easier to publish property changes.
+class SomeViewModel {
+    @Published var text = "Init"
+}
+
+let someViewModel = SomeViewModel()
+let subcribingSomeViewModel = someViewModel.$text.sink { newText in
+    print("Property changed: \(newText)")
+}
+someViewModel.text = "updated text"
+
+// MARK: AnyPublisher
+/// `AnyPublisher` is a type-erased publisher that allows us to hide the specific publisher type.
+func makePublisher() -> AnyPublisher<String, Never> {
+    return Just("Any Publisher function")
+        .eraseToAnyPublisher()
+}
+
+let subscribingMakePublisherFunction = makePublisher()
+    .sink { value in
+        print(value)
+    }
+
+// MARK: ReceiveOn vs SubscribeOn
+// ReceiveOn: Specifies the thread or queue on which downstream subscribers receive values.
+// SubscribeOn: Specifies the thread or queue on which the upstream publisher executes.
+let publisherReceive = Just("Combine scheduling")
+    .subscribe(on: DispatchQueue.main)
+    .receive(on: RunLoop.main)
+
+let subscribingPublisherReceive = publisherReceive.sink { value in
+    print("Received value: \(value)")
+}
+
+// MARK: EraseToAnyPublisher
+/// `eraseToAnyPublisher` converts a specific publisher type to a generic `AnyPublisher`.
+let publisherErasePublisher = Just("Erase Publisher")
+    .eraseToAnyPublisher()
+
+let subcribingPublisherErasePublisher = publisherErasePublisher.sink { value in
+    print("Received value: \(value)")
+}
