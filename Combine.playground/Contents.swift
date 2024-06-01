@@ -266,3 +266,115 @@ let subscribeMap = numberMap
     .sink { value in
         print("Transformed value: \(value)")
     }
+
+// MARK: Filter
+/// The `filter` operator emits only values that meet certain criteria, determined by a predicate function.
+let numberFiltering = [1, 2, 3, 4].publisher
+let subcriberFiltering = numberFiltering
+    .filter { $0 % 2 == 0 }
+    .sink { value in
+        print("Even number: \(value)")
+    }
+
+// MARK: FlatMap
+/// The `flatMap` operator transforms each value into a new publisher and flattens these inner publishers into a single output publisher. This is useful for handling nested data or creating a chain of publishers.
+struct User {
+    let id: Int
+    let name: String
+}
+
+let users: [User] = [
+    .init(id: 0, name: "John Doe"),
+    .init(id: 1, name: "Peter Pan")
+]
+
+let userPublisher = PassthroughSubject<Int, Never>()
+
+let usbscriberUser = userPublisher
+    .flatMap { id -> AnyPublisher<String, Never> in
+        if let user = users.first(where: { $0.id == id }) {
+            return Just(user.name)
+                .eraseToAnyPublisher()
+        } else {
+            return Just("Unknown user")
+                .eraseToAnyPublisher()
+        }
+    }
+    .sink { name in
+        print("User name: \(name)")
+    }
+// Emit User IDs
+userPublisher.send(0)
+userPublisher.send(1)
+userPublisher.send(2)
+userPublisher.send(3)
+
+// MARK: CompactMap
+/// Similar to `map`, but skips any nil results.
+let words = ["1", "2", "three", "4"].publisher
+let subscribeWords = words
+    .compactMap { Int($0) } // Convert to integers, skipping invalid conversions
+    .sink { value in
+        print("Valid integer: \(value)")
+    }
+
+// MARK: Reduce
+/// The `reduce` operator aggregates all emitted values into a single value, often used for summarizing data.
+let numberReduce = [1, 2, 3 , 4].publisher
+let subscriberReduce = numberReduce
+    .reduce(0) { sum, value in
+        sum + value
+    }
+    .sink { result in
+        print("Sum of numbers: \(result)")
+    }
+
+// MARK: Scan
+/// Similar to `reduce`, but emits intermediate results as well.
+let numberScan = [1, 2, 3, 4].publisher
+let subscriberScan = numberScan
+    .scan(0) { sum, value in
+        sum + value
+    }
+    .sink { result in
+        print("Current sum: \(result)")
+    }
+
+// MARK: Understanding Schedulers in iOS Combine
+/**
+ Schedulers in Combine control where and when publishers and subscribers execute their operations.
+ They help ensure that data processing and UI updates happen on the appropriate threads, enhancing responsiveness and performance.
+ */
+// MARK: 1. DispatchQueue Scheduler
+// Background Queue Processing
+
+// Custom background queue
+let backgroundQueue = DispatchQueue(label: "com.example.customQueue")
+
+let backgroundPublisher = [1, 2, 3, 4, 5].publisher
+let subscriberBackground = backgroundPublisher
+    .subscribe(on: DispatchQueue.global(qos: .background)) // Switch to background queue
+//    .subscribe(on: backgroundQueue) // Use the custom queue
+    .receive(on: DispatchQueue.main) // Switch back to the main thread
+    .sink { value in
+        print("Received on background thread: \(value)")
+    }
+
+// MARK: 2. RunLoop Scheduler
+// Main RunLoop Scheduler
+
+let backgroundPublisherRunLoop = [1, 2, 3, 4, 5].publisher
+let subscriberRunLoop = backgroundPublisherRunLoop
+    .receive(on: RunLoop.main) // Ensure the main thread receives the values
+    .sink { value in
+            print("Received on main thread: \(value)")
+        }
+
+// Timer with RunLoop Scheduler
+// A timer publisher emitting every second on the main RunLoop
+let timerPublisher = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+let subscription = timerPublisher
+    .sink { _ in
+        print("Timer fired!")
+    }
+subscription.cancel()
