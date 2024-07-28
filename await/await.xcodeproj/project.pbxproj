@@ -11,6 +11,7 @@
 		4D0991FE2AB0D324001CA453 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0991FD2AB0D324001CA453 /* ContentView.swift */; };
 		4D0992002AB0D325001CA453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D0991FF2AB0D325001CA453 /* Assets.xcassets */; };
 		4D0992032AB0D325001CA453 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D0992022AB0D325001CA453 /* Preview Assets.xcassets */; };
+		4D6CAEEA2C55CED100DEE983 /* Async Await Advance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6CAEE92C55CED100DEE983 /* Async Await Advance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4D0991FD2AB0D324001CA453 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D0991FF2AB0D325001CA453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D0992022AB0D325001CA453 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4D6CAEE92C55CED100DEE983 /* Async Await Advance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async Await Advance.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				4D0991FB2AB0D324001CA453 /* awaitApp.swift */,
 				4D0991FD2AB0D324001CA453 /* ContentView.swift */,
+				4D6CAEE92C55CED100DEE983 /* Async Await Advance.swift */,
 				4D0991FF2AB0D325001CA453 /* Assets.xcassets */,
 				4D0992012AB0D325001CA453 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D6CAEEA2C55CED100DEE983 /* Async Await Advance.swift in Sources */,
 				4D0991FE2AB0D324001CA453 /* ContentView.swift in Sources */,
 				4D0991FC2AB0D324001CA453 /* awaitApp.swift in Sources */,
 			);
