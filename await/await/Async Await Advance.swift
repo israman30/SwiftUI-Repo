@@ -71,3 +71,34 @@ func fetching() {
         }
     }
 }
+
+
+// MARK: - Using Task Groups
+
+func fetchMultipleDataWithGroup(urls: [String]) async throws -> [Data] {
+    return try await withThrowingTaskGroup(of: Data.self) { group in
+        for url in urls {
+            group.addTask {
+                try await Network().fetchData(url: url)
+            }
+        }
+        
+        var results: [Data] = []
+        for try await result in group {
+            results.append(result)
+        }
+        return results
+    }
+}
+
+func fetchingGroup() {
+    Task {
+        do {
+            let urls = ["https://example.com/1", "https://example.com/2", "https://example.com/3"]
+            let data = try await fetchMultipleDataWithGroup(urls: urls)
+            print("Fetched data: \(data)")
+        } catch {
+            print("Error fetching data: \(error)")
+        }
+    }
+}
