@@ -59,3 +59,23 @@ ContentView(viewModel: sharedViewModel)
 // Technical Insight:
 
 /// `@ObservedObject` does not manage the object’s lifecycle. It simply observes the object for published changes. By injecting the viewModel, you have control over its creation and scope, allowing for better memory management.
+
+
+// MARK: - Leveraging `Lazy` Loading with LazyVStack and LazyHStack
+// Efficiently Rendering Large Data Sets
+
+/// Standard `VStack` and `HStack` load all their child views immediately, which can be problematic with large data sets.
+
+// Optimized Usage:
+ScrollView {
+    LazyVStack(alignment: .leading, spacing: 10, pinnedViews: [.sectionHeaders]) {
+        ForEach(largeDataSet) { item in
+            DataRowView(item: item)
+        }
+    }
+}
+
+// Technical Details:
+/// `LazyVStack` and `LazyHStack` only create views as needed, based on the visible content area.
+/// The pinnedViews parameter allows for efficient handling of section headers and footers.
+// This `lazy` loading reduces initial memory consumption and improves performance when scrolling.
