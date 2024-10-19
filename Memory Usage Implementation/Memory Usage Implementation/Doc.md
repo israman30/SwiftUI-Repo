@@ -29,3 +29,33 @@
 // Avoid Unnecessary Object Creation and Retention
 
 /// When using `@StateObject`, `SwiftUI` initializes the object only once for the lifetime of the view, even when the view is recreated due to state changes. Overusing `@StateObject` can lead to excessive memory usage if not managed properly.
+
+// Incorrect Usage Example:
+struct ContentView: View {
+    @StateObject private var viewModel = LargeDataViewModel()
+
+    var body: some View {
+        // UI that uses viewModel
+    }
+}
+// In this example, every instance of ContentView holds its own LargeDataViewModel, potentially leading to multiple copies of a heavy object in memory.
+
+// Optimized Approach:
+/// Use `@ObservedObject` when the view model is provided from a parent view or injected, avoiding unnecessary instantiation.
+/// Consider singleton patterns or shared instances when appropriate.
+struct ContentView: View {
+    @ObservedObject var viewModel: LargeDataViewModel
+
+    var body: some View {
+        // UI that uses viewModel
+    }
+}
+
+// Elsewhere in your app, inject the shared viewModel
+let sharedViewModel = LargeDataViewModel()
+
+ContentView(viewModel: sharedViewModel)
+
+// Technical Insight:
+
+/// `@ObservedObject` does not manage the object’s lifecycle. It simply observes the object for published changes. By injecting the viewModel, you have control over its creation and scope, allowing for better memory management.
