@@ -79,3 +79,81 @@ ScrollView {
 /// `LazyVStack` and `LazyHStack` only create views as needed, based on the visible content area.
 /// The pinnedViews parameter allows for efficient handling of section headers and footers.
 // This `lazy` loading reduces initial memory consumption and improves performance when scrolling.
+
+
+// MARK: - Efficient Image Loading and Caching
+// Avoid Loading Full-Size Images When Not Necessary Loading high-resolution images can consume significant memory. Displaying thumbnails or lower-resolution images where appropriate can mitigate this.
+
+// Implementation:
+struct ThumbnailView: View {
+    let imageURL: URL
+
+    var body: some View {
+        AsyncImage(url: imageURL) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .scaledToFit()
+            } else if phase.error != nil {
+                // Handle error
+                Color.red
+            } else {
+                // Placeholder
+                ProgressView()
+            }
+        }
+        .frame(width: 100, height: 100)
+    }
+}
+
+// Advanced Image Caching:
+// Implementing a custom image cache to avoid redundant network or disk fetches:
+class ImageCache {
+    static let shared = ImageCache()
+
+    private init() {}
+
+    private let cache = NSCache<NSURL, UIImage>()
+
+    func image(for url: NSURL) -> UIImage? {
+        return cache.object(forKey: url)
+    }
+
+    func insertImage(_ image: UIImage?, for url: NSURL) {
+        guard let image = image else { return }
+        cache.setObject(image, forKey: url)
+    }
+}
+
+// Usage in a View:
+struct CachedAsyncImage: View {
+    let url: URL
+
+    @State private var uiImage: UIImage?
+
+    var body: some View {
+        if let uiImage = uiImage {
+            Image(uiImage: uiImage)
+                .resizable()
+        } else {
+            AsyncImage(url: url) { phase in
+                if let image = phase.image {
+                    let uiImage = image.asUIImage()
+                    ImageCache.shared.insertImage(uiImage, for: url as NSURL)
+                    self.uiImage = uiImage
+                    image.resizable()
+                } else if phase.error != nil {
+                    Color.red
+                } else {
+                    ProgressView()
+                }
+            }
+        }
+    }
+}
+
+// Technical Insight:
+
+// - `NSCache` is thread-safe and automatically purges cached items to free up memory.
+// - By caching images, you minimize memory usage by preventing multiple instances of the same image in memory.
+// - Ensure that image caching strategies do not retain images longer than necessary.
