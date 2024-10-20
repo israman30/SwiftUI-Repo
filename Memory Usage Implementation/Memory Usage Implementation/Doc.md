@@ -157,3 +157,41 @@ struct CachedAsyncImage: View {
 // - `NSCache` is thread-safe and automatically purges cached items to free up memory.
 // - By caching images, you minimize memory usage by preventing multiple instances of the same image in memory.
 // - Ensure that image caching strategies do not retain images longer than necessary.
+
+
+// MARK: - Offloading Heavy Computations
+// Avoid Performing Intensive Tasks in the View Body
+
+// Computations in the body property of a view are re-executed whenever the view updates, which can lead to performance issues and increased memory usage.
+
+// Inefficient Example:
+struct ContentView: View {
+    var body: some View {
+        let processedData = heavyComputation()
+        return Text("Data: \(processedData)")
+    }
+}
+
+// Optimized Approach:
+// Use background threads to perform heavy computations and update the UI upon completion.
+struct ContentView: View {
+    @State private var processedData: String = ""
+
+    var body: some View {
+        Text("Data: \(processedData)")
+            .onAppear {
+                DispatchQueue.global(qos: .userInitiated).async {
+                    let data = heavyComputation()
+                    DispatchQueue.main.async {
+                        self.processedData = data
+                    }
+                }
+            }
+    }
+}
+
+// Technical Details:
+
+/// Using `DispatchQueue.global` offloads the computation to a background thread, preventing the UI from blocking.
+// Updating @State properties on the main thread ensures UI updates are thread-safe.
+/// Consider using `OperationQueue` or `Combine’s Publishers` for more complex`asynchronous` tasks.
