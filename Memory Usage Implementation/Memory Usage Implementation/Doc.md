@@ -195,3 +195,79 @@ struct ContentView: View {
 /// Using `DispatchQueue.global` offloads the computation to a background thread, preventing the UI from blocking.
 // Updating @State properties on the main thread ensures UI updates are thread-safe.
 /// Consider using `OperationQueue` or `Combine’s Publishers` for more complex`asynchronous` tasks.
+
+
+// MARK: - Prefer Value Types Over Reference Types
+// Utilizing Swift’s Copy-on-Write Semantics
+
+// Value types like struct and enum in Swift benefit from copy-on-write optimizations, reducing unnecessary memory copying and allocations.
+
+// Example:
+struct DataModel {
+    var items: [Item]
+}
+// Technical Insight:
+
+/// `Arrays`, `dictionaries`, and `other collections` in Swift are `value types` with `copy-on-write behavior`.
+// Modifying a value type only copies the data if it has been shared elsewhere, reducing memory footprint.
+// Reference types (class) can lead to unintended sharing and retain cycles if not managed carefully.
+
+// MARK: - Explicit Resource Cleanup
+// Ensure Deallocation of Unused Resources
+
+// For heavy objects like media players, database connections, or large data buffers, explicitly releasing resources when they’re no longer needed is crucial.
+
+// Implementation:
+class VideoPlayerViewModel: ObservableObject {
+    private var player: AVPlayer?
+
+    func setupPlayer(with url: URL) {
+        player = AVPlayer(url: url)
+    }
+
+    func cleanup() {
+        player?.pause()
+        player = nil
+    }
+}
+
+struct VideoPlayerView: View {
+    @StateObject var viewModel = VideoPlayerViewModel()
+
+    var body: some View {
+        VideoPlayer(player: viewModel.player)
+            .onDisappear {
+                viewModel.cleanup()
+            }
+    }
+}
+
+// Technical Details:
+
+// Setting player to nil allows ARC to deallocate the AVPlayer instance if there are no other strong references.
+// Pausing the player before deallocation ensures that any playing media is properly stopped.
+// Be cautious with onDisappear, as it may not always be called in certain navigation scenarios; consider using Task cancellation tokens in Swift concurrency.
+
+// MARK: - Minimizing Unnecessary View Updates
+// Using Equatable Views to Optimize Rendering
+
+// SwiftUI’s diffing algorithm can be optimized by conforming views to Equatable when appropriate.
+
+// Implementation:
+struct EquatableContentView: View, Equatable {
+    let data: DataModel
+
+    static func == (lhs: EquatableContentView, rhs: EquatableContentView) -> Bool {
+        return lhs.data.id == rhs.data.id
+    }
+
+    var body: some View {
+        // UI that uses data
+    }
+}
+
+// Technical Insight:
+
+/// By conforming to `Equatable`, SwiftUI can skip rendering the view if the data hasn’t changed, reducing `CPU and memory usage`.
+/// Only use `Equatable` when you can provide a meaningful and `efficient == implementation`.
+// Be careful with complex data models; deep equality checks can negate performance benefits.
