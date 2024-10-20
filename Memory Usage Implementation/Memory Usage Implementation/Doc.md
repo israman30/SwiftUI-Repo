@@ -271,3 +271,122 @@ struct EquatableContentView: View, Equatable {
 /// By conforming to `Equatable`, SwiftUI can skip rendering the view if the data hasn’t changed, reducing `CPU and memory usage`.
 /// Only use `Equatable` when you can provide a meaningful and `efficient == implementation`.
 // Be careful with complex data models; deep equality checks can negate performance benefits.
+
+// MARK: - Profiling with Instruments
+// Identifying Memory Leaks and Bottlenecks
+
+// Instruments is a powerful tool for profiling memory usage, leaks, and performance issues.
+
+// Steps for Effective Profiling:
+
+// 1. Launch Instruments from Xcode:
+
+/// - `Product > Profile (⌘I) to build and run your app in Instruments`.
+/// - Alternatively, use the standalone Instruments app.
+
+// 2. Select Appropriate Templates:
+
+/// - Allocations: For tracking memory allocations and object lifecycles.
+/// - Leaks: For detecting memory leaks and objects that are not properly deallocated.
+/// - Time Profiler: For identifying performance bottlenecks.
+
+// 3. Configure Recording Options:
+/// - Enable Record Reference Counts for detailed allocation information.
+/// - Set up custom instruments or filters to focus on specific areas.
+///
+// 4. Run and Interact with Your App:
+/// - Perform actions that are memory-intensive or suspected of causing issues.
+/// - Monitor the live memory graph and allocation summaries.
+
+// 5. Analyze the Data:
+// Allocations Instrument:
+/// - Examine the heap growth over time.
+/// - Identify spikes in memory usage.
+/// - Use the allocation list to see which objects are consuming the most memory.
+
+// Leaks Instrument:
+/// - Look for persistent objects that should have been deallocated.
+/// - Use the call tree to trace where leaked objects were allocated.
+
+// Advanced Analysis:
+// Retain Cycles Detection:
+/// - Use the `Memory Graph Debugger` in Xcode to visualize object relationships.
+/// - Identify strong reference cycles that prevent deallocation.
+
+// Snapshot Comparison:
+/// - Take `snapshots` at different times and compare them to see which objects remain in memory.
+
+// Example Scenario:
+// Suppose your app experiences a memory spike when navigating to a certain view. Using Instruments, you can:
+
+/// - Start a profiling session and navigate to the problematic view.
+/// - Observe the memory allocation increase.
+/// - Use the Allocations instrument to drill down into the objects allocated during that time.
+/// - Identify if large data structures or media files are being held in memory unnecessarily.
+
+// Using `@Environment` and Dependency Injection
+// Sharing Data Efficiently Across Views
+
+// The environment in SwiftUI allows for passing shared data down the view hierarchy without manual propagation.
+
+// Implementation:
+
+class SharedDataModel: ObservableObject {
+    @Published var commonData: String = ""
+}
+
+struct ParentView: View {
+    @StateObject var sharedData = SharedDataModel()
+
+    var body: some View {
+        ChildView()
+            .environmentObject(sharedData)
+    }
+}
+
+struct ChildView: View {
+    @EnvironmentObject var sharedData: SharedDataModel
+
+    var body: some View {
+        Text(sharedData.commonData)
+    }
+}
+
+// Technical Insight:
+
+/// `@EnvironmentObject allows for a single instance of data to be used by multiple views, reducing redundant storage`.
+/// `Changes to the @Published properties in the ObservableObject automatically trigger view updates`.
+/// `Be cautious with the scope of your environment objects to prevent unintended data sharing or conflicts`.
+
+// MARK: - Optimizing Navigation and View Lifecycles
+
+// Ensuring Views Are Deallocated When Not Needed
+
+// When using navigation views, modal presentations, or sheets, it’s important to avoid retaining views longer than necessary.
+
+// Potential Issue:
+/// - `Views presented modally or via navigation links may not be deallocated if there are strong references preventing ARC from cleaning up`.
+
+// Optimized Approach:
+/// - Avoid `strong` references back to parent views or view models unless necessary.
+/// - Use `weak` references where appropriate.
+
+// Example:
+class DetailViewModel: ObservableObject {
+    weak var parentViewModel: ParentViewModel?
+    // ...
+}
+
+struct DetailView: View {
+    @ObservedObject var viewModel: DetailViewModel
+
+    var body: some View {
+        // UI components
+    }
+}
+
+// Technical Insight:
+
+// - Weak references prevent retain cycles between objects.
+// - In Swift, declaring a property as weak requires it to be an optional, as the reference can become nil.
+// - Ensure that any closure properties within view models or other classes capture self weakly if they might outlive the object.
