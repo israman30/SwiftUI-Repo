@@ -42,3 +42,32 @@ final class NetworkManager: APIClient {
         return decodedData
     }
 }
+
+// MARK: - Usage
+
+struct SampleObject: Decodable, Identifiable {
+  var id = UUID()
+  let name: String
+}
+
+class ViewModel: ObservableObject {
+    @Published var someObject: [SampleObject] = []
+    private let apiClient: APIClient
+
+    init(apiClient: APIClient = NetworkManager()) {
+        self.apiClient = apiClient
+    }
+    
+    func fetchData() async {
+        guard let url = URL(string: "https://api.example.com/data") else { return }
+        
+        do {
+            let fetchedData: [SampleObject] = try await apiClient.get(url: url)
+            DispatchQueue.main.async {
+                self.someObject = fetchedData
+            }
+        } catch {
+            print("Error fetching data: \(error.localizedDescription)")
+        }
+    }
+}
