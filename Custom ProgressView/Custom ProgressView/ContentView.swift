@@ -26,6 +26,12 @@ struct DefaultProgressView: View {
     }
 }
 
+struct CustomPodgressView: View {
+    var body: some View {
+        ProgressView()
+    }
+}
+
 #Preview {
     ContentView()
 }
