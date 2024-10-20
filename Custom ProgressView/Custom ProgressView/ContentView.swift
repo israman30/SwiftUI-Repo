@@ -12,6 +12,7 @@ struct ContentView: View {
         VStack {
             DefaultProgressView()
             CustomProgressView()
+            AsyncProgressView()
         }
         .padding()
     }
