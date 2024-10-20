@@ -50,24 +50,30 @@ struct SampleObject: Decodable, Identifiable {
   let name: String
 }
 
-class ViewModel: ObservableObject {
-    @Published var someObject: [SampleObject] = []
-    private let apiClient: APIClient
-
-    init(apiClient: APIClient = NetworkManager()) {
-        self.apiClient = apiClient
+final class ViewModel: ObservableObject {
+    
+    let url = URL(string: "https://api.example.com/data")!
+    
+    let someManage = NetworkManager()
+    
+    @Published private(set) var myData = "Data"
+    
+    private var tasks: [Task<Void, Never>] = []
+    
+    func callData() {
+        let task = Task {
+            do {
+                myData = try await someManage.get(url: url)
+            } catch {
+                // Error handling
+                print(error)
+            }
+        }
+        tasks.append(task)
     }
     
-    func fetchData() async {
-        guard let url = URL(string: "https://api.example.com/data") else { return }
-        
-        do {
-            let fetchedData: [SampleObject] = try await apiClient.get(url: url)
-            DispatchQueue.main.async {
-                self.someObject = fetchedData
-            }
-        } catch {
-            print("Error fetching data: \(error.localizedDescription)")
-        }
+    func cancelTask() {
+        tasks.forEach { $0.cancel() }
+        tasks = []
     }
 }
