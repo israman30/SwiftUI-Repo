@@ -42,16 +42,12 @@ class Coordinator: ObservableObject {
         path.append(page)
     }
     
-    func push(_ sheet: Sheet) {
+    func present(_ sheet: Sheet) {
         self.sheet = sheet
     }
     
-    func dismiss(sheet: Sheet) {
-        self.sheet = nil
-    }
-    
     func dismiss() {
-        path.removeLast()
+        self.sheet = nil
     }
     
     @ViewBuilder
@@ -70,7 +66,7 @@ class Coordinator: ObservableObject {
     func build(sheet: Sheet) -> some View {
         switch sheet {
         case .infoChannel:
-            EmptyView()
+            SheetView()
         }
     }
 }

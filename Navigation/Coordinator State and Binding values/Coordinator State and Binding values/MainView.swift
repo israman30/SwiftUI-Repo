@@ -36,7 +36,7 @@ struct MainView: View {
             
             Section {
                 Button("Present Sheet") {
-                    
+                    coordinator.present(.infoChannel)
                 }
                 
                 Button("Present Full Screen Sheet") {
