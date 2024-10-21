@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserView: View {
     
-    @State var isUserLoggedIn: Bool = false
+    @Binding var isUserLoggedIn: Bool
     
     var body: some View {
         VStack {
@@ -31,5 +31,5 @@ struct UserView: View {
 }
 
 #Preview {
-    UserView()
+    UserView(isUserLoggedIn: .constant(false))
 }

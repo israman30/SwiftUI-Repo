@@ -10,16 +10,27 @@ import SwiftUI
 struct MainView: View {
     
     @EnvironmentObject var coordinator: Coordinator
+    @State var isUserLoggedIn: Bool = true
     
     var body: some View {
         List {
             Section {
-                Button("Detail View") {
+                Button {
                     coordinator.push(.detail)
+                } label: {
+                    Text("Detail View")
+                        .foregroundStyle(Color(.label))
+                        .font(.title2)
+                        .padding(5)
                 }
                 
-                Button("User View") {
-                    coordinator.push(.user)
+                Button {
+                    coordinator.push(.user($isUserLoggedIn))
+                } label: {
+                    Text("User View")
+                        .foregroundStyle(Color(.label))
+                        .font(.title2)
+                        .padding(5)
                 }
             }
             

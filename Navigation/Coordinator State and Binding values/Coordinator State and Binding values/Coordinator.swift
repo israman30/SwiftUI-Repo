@@ -7,13 +7,22 @@
 
 import SwiftUI
 
-enum Page: String {
+enum Page: Hashable, Equatable {
     case home
     case detail
-    case user
+    case user(_ isUserLoggedIn: Binding<Bool>)
     
-    var id: String {
-        self.rawValue
+    static func == (lhs: Page, rhs: Page) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        switch self {
+        case .user(let isUserLoggedIn):
+            hasher.combine(isUserLoggedIn.wrappedValue)
+        default:
+            break
+        }
     }
 }
 
@@ -35,8 +44,8 @@ class Coordinator: ObservableObject {
             MainView()
         case .detail:
             DetailView()
-        case .user:
-            UserView()
+        case .user(let isUserLoggedIn):
+            UserView(isUserLoggedIn: isUserLoggedIn)
         }
     }
 }
