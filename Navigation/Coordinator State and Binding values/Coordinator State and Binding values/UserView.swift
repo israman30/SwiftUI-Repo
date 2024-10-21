@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct UserView: View {
+    
+    @State var isUserLoggedIn: Bool = false
+    
     var body: some View {
         VStack {
+            HStack {
+                Circle()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(isUserLoggedIn ? .green : .red)
+                
+                Text(isUserLoggedIn ? "User is logged in" : "User is logged out")
+                    .font(.title)
+            }
             Text("John Doe")
                 .font(.largeTitle)
             
