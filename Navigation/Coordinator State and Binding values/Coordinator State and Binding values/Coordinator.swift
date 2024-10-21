@@ -26,11 +26,28 @@ enum Page: Hashable, Equatable {
     }
 }
 
+enum Sheet: Hashable, Equatable, Identifiable {
+    case infoChannel
+    
+    var id: String {
+        UUID().uuidString
+    }
+}
+
 class Coordinator: ObservableObject {
     @Published var path = NavigationPath()
+    @Published var sheet: Sheet?
     
     func push(_ page: Page) {
         path.append(page)
+    }
+    
+    func push(_ sheet: Sheet) {
+        self.sheet = sheet
+    }
+    
+    func dismiss(sheet: Sheet) {
+        self.sheet = nil
     }
     
     func dismiss() {
@@ -46,6 +63,14 @@ class Coordinator: ObservableObject {
             DetailView()
         case .user(let isUserLoggedIn):
             UserView(isUserLoggedIn: isUserLoggedIn)
+        }
+    }
+    
+    @ViewBuilder
+    func build(sheet: Sheet) -> some View {
+        switch sheet {
+        case .infoChannel:
+            EmptyView()
         }
     }
 }
