@@ -10,6 +10,7 @@ import SwiftUI
 enum Page: String {
     case home
     case detail
+    case user
     
     var id: String {
         self.rawValue
@@ -33,7 +34,9 @@ class Coordinator: ObservableObject {
             case .home:
             MainView()
         case .detail:
-            Text("Detail")
+            DetailView()
+        case .user:
+            UserView()
         }
     }
 }

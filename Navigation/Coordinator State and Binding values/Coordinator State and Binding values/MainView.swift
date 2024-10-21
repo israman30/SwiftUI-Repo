@@ -14,12 +14,12 @@ struct MainView: View {
     var body: some View {
         List {
             Section {
-                Button("Detail View 1") {
+                Button("Detail View") {
                     coordinator.push(.detail)
                 }
                 
-                Button("Detail View 2") {
-//                    Text("Detail")
+                Button("User View") {
+                    coordinator.push(.user)
                 }
             }
             
@@ -32,7 +32,9 @@ struct MainView: View {
                     
                 }
             }
+            
         }
+        .navigationTitle("Coordinators")
     }
 }
 
