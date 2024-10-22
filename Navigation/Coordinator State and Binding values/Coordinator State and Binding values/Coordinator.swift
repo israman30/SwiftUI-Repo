@@ -27,10 +27,21 @@ enum Page: Hashable, Equatable {
 }
 
 enum Sheet: Hashable, Equatable, Identifiable {
-    case infoChannel
+    case infoChannel(_ userActivity: Binding<Bool>)
     
     var id: String {
         UUID().uuidString
+    }
+    
+    static func == (lhs: Sheet, rhs: Sheet) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        switch self {
+        case .infoChannel(let userActivity):
+            hasher.combine(userActivity.wrappedValue)
+        }
     }
 }
 
@@ -65,8 +76,8 @@ class Coordinator: ObservableObject {
     @ViewBuilder
     func build(sheet: Sheet) -> some View {
         switch sheet {
-        case .infoChannel:
-            SheetView()
+        case .infoChannel(let userActivity):
+            SheetView(userActivity: userActivity)
         }
     }
 }

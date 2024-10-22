@@ -10,7 +10,7 @@ import SwiftUI
 struct SheetView: View {
     
     @Environment(\.dismiss) var dismiss
-    @State var userActivity: Bool = false
+    @Binding var userActivity: Bool
     
     var body: some View {
         VStack {
@@ -40,5 +40,5 @@ struct SheetView: View {
 }
 
 #Preview {
-    SheetView()
+    SheetView(userActivity: .constant(true))
 }
