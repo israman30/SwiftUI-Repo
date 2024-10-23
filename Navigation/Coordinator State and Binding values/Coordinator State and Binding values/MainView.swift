@@ -11,6 +11,7 @@ struct MainView: View {
     
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var myViewModel: MyViewModel
+    @State var isUserLoggedIn: Bool = true
     
     var body: some View {
         VStack {
@@ -26,7 +27,7 @@ struct MainView: View {
                     }
                     
                     Button {
-                        coordinator.push(.user($myViewModel.isUserLoggedIn))
+                        coordinator.push(.user($isUserLoggedIn))
                     } label: {
                         Text("User View")
                             .foregroundStyle(Color(.label))

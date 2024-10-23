@@ -76,7 +76,7 @@ class Coordinator: ObservableObject {
     @ViewBuilder
     func build(sheet: Sheet, myViewModel: MyViewModel) -> some View {
         switch sheet {
-        case .infoChannel(let userActivity):
+        case .infoChannel:
             SheetView(myViewModel: myViewModel)
         }
     }
