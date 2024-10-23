@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct Coordinator_State_and_Binding_valuesApp: App {
     @StateObject var coordinator: Coordinator = .init()
+    @StateObject var myViewModel: MyViewModel = .init()
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(coordinator)
+                .environmentObject(myViewModel)
         }
     }
 }
