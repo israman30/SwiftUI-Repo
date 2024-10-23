@@ -10,15 +10,16 @@ import SwiftUI
 struct CoordinatorView: View {
     
     @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject var myViewModel: MyViewModel
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.build(.home)
+            coordinator.build(.home, myViewModel: myViewModel)
                 .navigationDestination(for: Page.self) { page in
-                    coordinator.build(page)
+                    coordinator.build(page, myViewModel: myViewModel)
                 }
                 .sheet(item: $coordinator.sheet) { sheet in
-                    coordinator.build(sheet: sheet)
+                    coordinator.build(sheet: sheet, myViewModel: myViewModel)
                 }
         }
         .environmentObject(coordinator)

@@ -62,22 +62,22 @@ class Coordinator: ObservableObject {
     }
     
     @ViewBuilder
-    func build(_ page: Page) -> some View {
+    func build(_ page: Page, myViewModel: MyViewModel) -> some View {
         switch page {
             case .home:
             MainView()
         case .detail:
             DetailView()
         case .user(let isUserLoggedIn):
-            UserView(isUserLoggedIn: isUserLoggedIn)
+            UserView(isUserLoggedIn: isUserLoggedIn, myViewModel: myViewModel)
         }
     }
     
     @ViewBuilder
-    func build(sheet: Sheet) -> some View {
+    func build(sheet: Sheet, myViewModel: MyViewModel) -> some View {
         switch sheet {
         case .infoChannel(let userActivity):
-            SheetView(userActivity: userActivity)
+            SheetView(myViewModel: myViewModel)
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct UserView: View {
     
     @Binding var isUserLoggedIn: Bool
+    var myViewModel: MyViewModel
     
     var body: some View {
         VStack {
@@ -18,18 +19,16 @@ struct UserView: View {
                     .frame(width: 20, height: 20)
                     .foregroundColor(isUserLoggedIn ? .green : .red)
                 
-                Text(isUserLoggedIn ? "User is logged in" : "User is logged out")
+                Text(myViewModel.isUserLoggedIn ? "\(myViewModel.username) is logged in" : "\(myViewModel.username) is logged out")
                     .font(.title)
             }
-            Text("John Doe")
-                .font(.largeTitle)
             
-            Text("johndoe@mail.com")
+            Text(myViewModel.text)
                 .font(.subheadline)
         }
     }
 }
 
 #Preview {
-    UserView(isUserLoggedIn: .constant(false))
+    UserView(isUserLoggedIn: .constant(false), myViewModel: .init())
 }

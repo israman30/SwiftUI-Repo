@@ -10,7 +10,7 @@ import SwiftUI
 struct SheetView: View {
     
     @Environment(\.dismiss) var dismiss
-    @Binding var userActivity: Bool
+    var myViewModel: MyViewModel
     
     var body: some View {
         VStack {
@@ -29,16 +29,17 @@ struct SheetView: View {
             HStack {
                 Circle()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(userActivity ? .green : .red)
-                Text("User activity is \(userActivity ? "active" : "not active")")
+                    .foregroundColor(myViewModel.userActivity ? .green : .red)
+                Text(myViewModel.userActivity ? "\(myViewModel.username) is logged in" : "\(myViewModel.username) is logged out")
                     .font(.title)
             }
             Text("this is a sheet")
+            Text(myViewModel.text)
             Spacer()
         }
     }
 }
 
 #Preview {
-    SheetView(userActivity: .constant(true))
+    SheetView(myViewModel: .init())
 }

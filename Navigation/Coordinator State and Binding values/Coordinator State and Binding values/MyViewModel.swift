@@ -9,6 +9,8 @@ import Foundation
 
 final class MyViewModel: ObservableObject {
     @Published var text: String = "This is data from the View Model"
+    @Published var username = "John Doe"
+    @Published var userEmail: String = "john@doe.com"
     @Published var isLoading: Bool = false
     @Published var isUserLoggedIn: Bool = true
     @Published var userActivity: Bool = true

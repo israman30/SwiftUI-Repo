@@ -10,8 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @EnvironmentObject var coordinator: Coordinator
-    @State var isUserLoggedIn: Bool = true
-    @State var userActivity: Bool = true
+    @EnvironmentObject var myViewModel: MyViewModel
     
     var body: some View {
         VStack {
@@ -27,18 +26,22 @@ struct MainView: View {
                     }
                     
                     Button {
-                        coordinator.push(.user($isUserLoggedIn))
+                        coordinator.push(.user($myViewModel.isUserLoggedIn))
                     } label: {
                         Text("User View")
                             .foregroundStyle(Color(.label))
                             .font(.title2)
                             .padding(5)
                     }
+                } header: {
+                    HStack {
+                        Text("\(myViewModel.username) - \(myViewModel.userEmail)")
+                    }
                 }
                 
                 Section {
                     Button("Present Sheet") {
-                        coordinator.present(.infoChannel($userActivity))
+                        coordinator.present(.infoChannel($myViewModel.userActivity))
                     }
                     
                     Button("Present Full Screen Sheet") {
@@ -47,10 +50,10 @@ struct MainView: View {
                 }
                 
                 Button {
-                    self.userActivity.toggle()
+                    myViewModel.userActivity.toggle()
                 } label: {
                     Text("Toggle activity")
-                        .foregroundStyle(userActivity ? .green : .red)
+                        .foregroundStyle(myViewModel.userActivity ? .green : .red)
                         .font(.title2)
                         .padding(5)
                 }
@@ -64,4 +67,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environmentObject(MyViewModel())
 }
