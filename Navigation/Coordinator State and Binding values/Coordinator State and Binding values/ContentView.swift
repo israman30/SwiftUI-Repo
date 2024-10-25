@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - Root View
 struct ContentView: View {
     var body: some View {
         CoordinatorView()
