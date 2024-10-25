@@ -34,6 +34,11 @@ struct MainView: View {
                             .font(.title2)
                             .padding(5)
                     }
+                    
+                    Button("Other Page") {
+                        coordinator.push(.secondPage)
+                    }
+                    
                 } header: {
                     HStack {
                         Text("\(myViewModel.username) - \(myViewModel.userEmail)")
@@ -46,7 +51,7 @@ struct MainView: View {
                     }
                     
                     Button("Present Full Screen Sheet") {
-                        
+                        coordinator.presentFull(.fullScreen)
                     }
                 }
                 

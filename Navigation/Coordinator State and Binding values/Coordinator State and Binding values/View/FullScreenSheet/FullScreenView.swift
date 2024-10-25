@@ -16,8 +16,11 @@ struct FullScreenView: View {
             Text("This is a full screen view!")
                 .font(.headline)
             
-            Button("Other Page") {
-                
+            Button {
+                coordinator.dismissFullScren()
+            } label: {
+                Text("Dismiss")
+                    .foregroundStyle(.red)
             }
         }
     }

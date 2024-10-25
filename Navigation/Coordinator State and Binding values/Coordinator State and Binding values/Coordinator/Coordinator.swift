@@ -11,6 +11,7 @@ enum Page: Hashable, Equatable {
     case home
     case detail
     case user(_ isUserLoggedIn: Binding<Bool>)
+    case secondPage
     
     static func == (lhs: Page, rhs: Page) -> Bool {
         lhs.hashValue == rhs.hashValue
@@ -45,9 +46,18 @@ enum Sheet: Hashable, Equatable, Identifiable {
     }
 }
 
+enum FullScreen: Hashable, Equatable, Identifiable {
+    case fullScreen
+    
+    var id: String {
+        UUID().uuidString
+    }
+}
+
 class Coordinator: ObservableObject {
     @Published var path = NavigationPath()
     @Published var sheet: Sheet?
+    @Published var fullScreen: FullScreen?
     
     func push(_ page: Page) {
         path.append(page)
@@ -57,19 +67,29 @@ class Coordinator: ObservableObject {
         self.sheet = sheet
     }
     
+    func presentFull(_ screen: FullScreen) {
+        self.fullScreen = screen
+    }
+    
     func dismiss() {
         self.sheet = nil
+    }
+    
+    func dismissFullScren() {
+        self.fullScreen = nil
     }
     
     @ViewBuilder
     func build(_ page: Page, myViewModel: MyViewModel) -> some View {
         switch page {
-            case .home:
+        case .home:
             MainView()
         case .detail:
             DetailView()
         case .user(let isUserLoggedIn):
             UserView(isUserLoggedIn: isUserLoggedIn, myViewModel: myViewModel)
+        case .secondPage:
+            SecondPageView()
         }
     }
     
@@ -78,6 +98,14 @@ class Coordinator: ObservableObject {
         switch sheet {
         case .infoChannel:
             SheetView(myViewModel: myViewModel)
+        }
+    }
+    
+    @ViewBuilder
+    func build(fullScreen: FullScreen, myViewModel: MyViewModel) -> some View {
+        switch fullScreen {
+        case .fullScreen:
+            FullScreenView()
         }
     }
 }
