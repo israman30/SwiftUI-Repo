@@ -35,10 +35,6 @@ struct MainView: View {
                             .padding(5)
                     }
                     
-                    Button("Other Page") {
-                        coordinator.push(.secondPage)
-                    }
-                    
                 } header: {
                     HStack {
                         Text("\(myViewModel.username) - \(myViewModel.userEmail)")

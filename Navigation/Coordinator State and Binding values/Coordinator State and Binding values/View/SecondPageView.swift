@@ -8,9 +8,21 @@
 import SwiftUI
 
 struct SecondPageView: View {
+    
+    @EnvironmentObject var coordinator: Coordinator
+    
     var body: some View {
-        Text("This is a second page!")
-            .font(.title)
+        VStack {
+            Text("This is a second page!")
+                .font(.title)
+            
+            Button {
+                coordinator.popToRoot()
+            } label: {
+                Text("Go to Main Page")
+            }
+            .buttonStyle(.bordered)
+        }
     }
 }
 

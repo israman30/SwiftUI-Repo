@@ -63,6 +63,14 @@ class Coordinator: ObservableObject {
         path.append(page)
     }
     
+    func dismissPage() {
+        path.removeLast()
+    }
+    
+    func popToRoot() {
+        path.removeLast(path.count)
+    }
+    
     func present(_ sheet: Sheet) {
         self.sheet = sheet
     }
@@ -71,7 +79,7 @@ class Coordinator: ObservableObject {
         self.fullScreen = screen
     }
     
-    func dismiss() {
+    func dismissSheet() {
         self.sheet = nil
     }
     
