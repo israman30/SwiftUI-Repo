@@ -29,6 +29,16 @@ struct CustomBadge: View {
                     .font(.system(size: 15))
             }
             .customBadge(count: 250)
+            
+            VStack {
+                Image(systemName: "person.crop.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+                Text("Tom")
+                    .font(.system(size: 15))
+            }
+            .badge(100)
         }
     }
 }
