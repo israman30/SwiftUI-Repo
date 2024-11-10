@@ -19,6 +19,16 @@ struct CustomBadge: View {
                     .font(.system(size: 15))
             }
             .customBadge(count: 7)
+            
+            VStack {
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+                Text("John Doe")
+                    .font(.system(size: 15))
+            }
+            .customBadge(count: 250)
         }
     }
 }
@@ -37,7 +47,7 @@ struct Badge: ViewModifier {
                 content
                 HStack(spacing: 0) {
                     Text(min(count, maxCount), format: .number)
-                    
+                    /// `count` is greater than `maxCount` display `count+`
                     if count > maxCount {
                         Text("+")
                     }
@@ -45,13 +55,13 @@ struct Badge: ViewModifier {
                 .font(.system(size: 14))
                 .foregroundStyle(.white)
                 .padding(.horizontal, 5)
-                .padding(.vertical, count > 9 ? 7 : 5) //// when the badge is a single digit, I like the badge to be close to a circle shape
+                .padding(.vertical, count > 9 ? 7 : 5) /// when the `badge` is a `single digit`, the badge should be close to a circle shape
                 .background(.red)
                 .frame(height: count > 9 ? 17 : 19)
                 .clipShape(Capsule())
             }
         } else {
-            content // else no badge display
+            content /// else no badge display
         }
     }
 }
