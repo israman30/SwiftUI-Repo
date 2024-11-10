@@ -18,7 +18,6 @@ struct CustomBadge: View {
                 Text("Home")
                     .font(.system(size: 15))
             }
-            .foregroundStyle(.blue)
             .customBadge(count: 7)
         }
     }
