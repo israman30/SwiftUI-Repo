@@ -7,17 +7,24 @@
 
 import SwiftUI
 
+class ViewModel: ObservableObject {
+    @Published var countries: [String] = []
+    
+    init () {
+        self.countries = [
+            "USA", "Canada", "Mexico", "France", "Germany", "Italy", "Spain", "UK", "Netherlands", "Sweden", "Denmark", "Ecuador", "Colombia", "Peru", "Venezuela", "Brazil", "Argentina", "Chile", "Australia", "New Zealand", "South Africa", "Zimbabwe", "Zimbabwe"
+        ]
+    }
+}
+
 struct ContentView: View {
+    @StateObject var viewModel: ViewModel = .init()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            
-            
+        List {
+            ForEach(viewModel.countries, id: \.self) { country in
+                Text(country)
+            }
         }
-        .padding()
     }
 }
 
