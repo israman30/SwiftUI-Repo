@@ -19,11 +19,24 @@ class ViewModel: ObservableObject {
 
 struct ContentView: View {
     @StateObject var viewModel: ViewModel = .init()
+    @State var searchText: String = ""
+    
     var body: some View {
-        List {
-            ForEach(viewModel.countries, id: \.self) { country in
-                Text(country)
+        NavigationView {
+            List {
+                ForEach(searchResults, id: \.self) { country in
+                    Text(country)
+                }
             }
+        }
+        .searchable(text: $searchText)
+    }
+    
+    var searchResults: [String] {
+        if searchText.isEmpty {
+            return viewModel.countries
+        } else {
+            return viewModel.countries.filter { $0.contains(searchText) }
         }
     }
 }
