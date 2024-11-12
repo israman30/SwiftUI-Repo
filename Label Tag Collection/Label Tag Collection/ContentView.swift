@@ -26,12 +26,17 @@ class ViewModel: ObservableObject {
 struct ContentView: View {
     @StateObject var viewModel: ViewModel = .init()
     @State var searchText: String = ""
+    @State var foundCounries: [Country] = []
     
     var body: some View {
         NavigationView {
             List {
+                countryTag
                 ForEach(searchResults) { country in
                     Text(country.name)
+                        .onTapGesture {
+                            foundCounries.append(country)
+                        }
                 }
             }
         }
