@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isActive = false
+    @State var isDone = false
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -38,6 +40,13 @@ struct ContentView: View {
                 .if(isActive) { content in
                     content
                         .background(Color.red)
+                }
+            
+            Text("New task")
+                .font(.title2)
+                .if(isDone) { content in
+                    content
+                        .strikethrough()
                 }
         }
         .padding()
