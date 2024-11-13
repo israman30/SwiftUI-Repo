@@ -110,3 +110,24 @@ extension View {
             }
     }
 }
+
+// MARK: - Animation Modifier -
+struct PulseAnimation: ViewModifier {
+    @State private var animatePulse = false
+    
+    func body(content: Content) -> some View {
+        content
+            .opacity(animatePulse ? 0.5 : 1)
+            .scaleEffect(animatePulse ? 1.3 : 1)
+            .onAppear {
+                withAnimation(.bouncy(duration: 0.5).repeatForever()) {
+                    animatePulse.toggle()
+                }
+            }
+    }
+}
+extension View {
+    public func pulseAnimation() -> some View {
+        modifier(PulseAnimation())
+    }
+}

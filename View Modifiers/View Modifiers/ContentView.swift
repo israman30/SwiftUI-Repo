@@ -63,6 +63,14 @@ struct ContentView: View {
                 }
                 .padding()
             }
+            
+            VStack {
+                Text("Animation")
+            }
+            .clipShape(Capsule())
+            .padding()
+            .background(Color.yellow)
+//            .pulseAnimation()
         }
         .padding()
     }
