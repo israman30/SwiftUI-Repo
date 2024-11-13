@@ -17,7 +17,17 @@ struct ContentView: View {
                 .heading1()
             
             VStack {
-                Text("Card")
+                Text("Card Shadow")
+                    .font(.title2)
+            }
+            .padding()
+            .background(Color.yellow)
+            .cardShadow()
+            
+            VStack {
+                Text("Align Modifier")
+                    .font(.title2)
+                    .fullWidth()
             }
             .padding()
             .background(Color.yellow)

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - Heading Modifier -
 struct Heading1: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -20,6 +21,7 @@ extension View {
     }
 }
 
+// MARK: - Card Shadow Modifer -
 struct CardShadow: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -30,5 +32,40 @@ struct CardShadow: ViewModifier {
 extension View {
     public func cardShadow() -> some View {
         modifier(CardShadow())
+    }
+}
+
+// MARK: - Layout Modifer -
+struct AlignModifier: ViewModifier {
+    let alignment: Alignment
+    
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: .infinity, alignment: alignment)
+    }
+}
+
+struct AlignTextModifier: ViewModifier {
+    let alignment: Alignment
+    let textAlignment: TextAlignment
+    
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: .infinity, alignment: alignment)
+            .multilineTextAlignment(textAlignment)
+    }
+}
+
+extension View {
+    func alignView(_ alignment: Alignment) -> some View {
+        modifier(AlignModifier(alignment: alignment))
+    }
+    
+    func alignText(_ alignment: Alignment, textAlignment: TextAlignment) -> some View {
+        modifier(AlignTextModifier(alignment: alignment, textAlignment: textAlignment))
+    }
+    
+    func fullWidth() -> some View {
+        frame(maxWidth: .infinity)
     }
 }
