@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isActive = false
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -32,6 +33,12 @@ struct ContentView: View {
             .padding()
             .background(Color.yellow)
             .cardShadow()
+            
+            Text("Condition")
+                .if(isActive) { content in
+                    content
+                        .background(Color.red)
+                }
         }
         .padding()
     }
