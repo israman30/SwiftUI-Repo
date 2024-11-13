@@ -19,3 +19,16 @@ extension View {
         modifier(Heading1())
     }
 }
+
+struct CardShadow: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .shadow(color: Color.black.opacity(0.16), radius: 12)
+    }
+}
+
+extension View {
+    public func cardShadow() -> some View {
+        modifier(CardShadow())
+    }
+}

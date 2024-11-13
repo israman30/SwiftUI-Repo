@@ -15,6 +15,13 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
                 .heading1()
+            
+            VStack {
+                Text("Card")
+            }
+            .padding()
+            .background(Color.yellow)
+            .cardShadow()
         }
         .padding()
     }
