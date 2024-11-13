@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var isActive = false
     @State var isDone = false
+    @State var isPresented = false
     
     var body: some View {
         VStack {
@@ -47,6 +48,11 @@ struct ContentView: View {
                 .if(isDone) { content in
                     content
                         .strikethrough()
+                }
+            
+            Text("POP UP")
+                .popUp(isPresented: $isPresented) {
+                    Text("Card")
                 }
         }
         .padding()
