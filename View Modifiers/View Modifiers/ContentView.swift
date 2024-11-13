@@ -49,11 +49,20 @@ struct ContentView: View {
                     content
                         .strikethrough()
                 }
-            
-            Text("POP UP")
-                .popUp(isPresented: $isPresented) {
+            Button {
+                self.isPresented.toggle()
+            } label: {
+                Text("POP UP")
+                    .padding(.horizontal)
+            }
+            .buttonStyle(.borderedProminent)
+            .popUp(isPresented: $isPresented) {
+                VStack {
                     Text("Card")
+                    Text("Content of the card as body for testing..")
                 }
+                .padding()
+            }
         }
         .padding()
     }
