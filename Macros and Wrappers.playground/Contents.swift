@@ -43,11 +43,15 @@ enum UserState {
     }
 }
 
+// Declare environment value
 extension EnvironmentValues {
     @Entry var userState: UserState = .loggedOut
 }
+
 struct ContentView: View {
-    var body: some View { Text("ContentView") }
+    var body: some View {
+        Text("ContentView")
+    }
 }
 /// `@main`
 struct MyApp: App {
