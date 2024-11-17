@@ -26,3 +26,36 @@ struct ThemeView: View {
             .foregroundStyle(colorTheme.primaryColor)
     }
 }
+
+// Another sample of @Emtry
+enum UserState {
+    case loggedIn
+    case loggedOut
+    case newUser
+    
+    init (isLoggedIn: Bool) {
+        switch isLoggedIn {
+        case true:
+            self = .loggedIn
+        case false:
+            self = .loggedOut
+        }
+    }
+}
+
+extension EnvironmentValues {
+    @Entry var userState: UserState = .loggedOut
+}
+struct ContentView: View {
+    var body: some View { Text("ContentView") }
+}
+/// `@main`
+struct MyApp: App {
+    @State var userState: UserState = .loggedOut
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environment(\.userState, userState)
+        }
+    }
+}
