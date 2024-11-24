@@ -4,6 +4,7 @@
 //
 //  Created by Israel Manzo on 11/23/24.
 //
+// https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-object-protocol-to-the-observable-macro
 
 import SwiftUI
 
