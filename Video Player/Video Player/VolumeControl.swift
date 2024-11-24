@@ -31,16 +31,17 @@ struct VolumeControl: View {
                         TriangleShape()
                             .frame(width: 100, height: 40)
                     }
-                    .gesture(DragGesture()
-                        .onEnded({ value in
-                            var vol = volume + value.translation.width
-                            if vol < 0{
-                                vol = 0
-                            }else if vol > 100{
-                                vol = 100
-                            }
-                            volume = vol
-                        })
+                    .gesture(
+                        DragGesture()
+                            .onEnded({ value in
+                                var vol = volume + value.translation.width
+                                if vol < 0 {
+                                    vol = 0
+                                }else if vol > 100{
+                                    vol = 100
+                                }
+                                volume = vol
+                            })
                     )
             }
             Text("\(String(format: "%.2f", volume))%")
