@@ -97,3 +97,26 @@ struct ViewPlayerLayer: View {
         }
     }
 }
+
+
+// Custom Volume slider
+struct TriangleShape: Shape{
+    var r: CGFloat = 1.5
+    nonisolated func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        let w = rect.maxX
+        let h = rect.maxY
+        
+        path.move(to: CGPoint(x: r, y: h))
+        path.addQuadCurve(to: CGPoint(x: r, y: h - 1.5*r), control: CGPoint(x: 0, y: h))
+        path.addLine(to: CGPoint(x: w - 1.5*r, y: 0.7 * r))
+        path.addQuadCurve(to: CGPoint(x: w, y: r), control: CGPoint(x: w, y: 0))
+        path.addLine(to: CGPoint(x: w, y: h - r))
+        path.addQuadCurve(to: CGPoint(x: w - r, y: h), control: CGPoint(x: w, y: h))
+        path.closeSubpath()
+        
+        return path
+    }
+    
+}
