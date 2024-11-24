@@ -20,7 +20,7 @@ struct VolumeControl: View {
                     .presentationCornerRadius(3)
                 // color gradient
                 Rectangle()
-                    .fill(LinearGradient(colors: [Color("Low"), Color("Medium"), Color("High")], startPoint: .leading, endPoint: .trailing))
+                    .fill(LinearGradient(colors: [Color.red, Color.orange, Color.yellow], startPoint: .leading, endPoint: .trailing))
                     .frame(width: 100, height: 40)
                     .mask {
                         Rectangle()
@@ -47,4 +47,8 @@ struct VolumeControl: View {
                 .font(.system(size: 12))
         }
     }
+}
+
+#Preview {
+    VolumeControl(volume: .constant(80))
 }
