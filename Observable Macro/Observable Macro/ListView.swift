@@ -15,9 +15,10 @@ struct Book: Identifiable {
     var id: String { isbm }
 }
 
-class BookViewModel: ObservableObject {
-    @Published var books: [Book] = []
-    @Published var isFavorite: Bool = false
+@Observable
+class BookViewModel {
+    var books: [Book] = []
+    var isFavorite: Bool = false
     
     init() {
         books = [
@@ -35,7 +36,7 @@ class BookViewModel: ObservableObject {
 
 struct ListView: View {
     
-    @StateObject var vm = BookViewModel()
+    @Environment(BookViewModel.self) var vm: BookViewModel
     
     var body: some View {
         NavigationView {
@@ -59,4 +60,5 @@ struct ListView: View {
 
 #Preview {
     ListView()
+        .environment(BookViewModel())
 }

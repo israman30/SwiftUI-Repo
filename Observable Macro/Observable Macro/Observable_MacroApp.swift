@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Observable_MacroApp: App {
+    @State private var vm = BookViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(vm)
         }
     }
 }
