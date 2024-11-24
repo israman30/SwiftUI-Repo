@@ -33,3 +33,12 @@ class ViewPlayerViewModel: ObservableObject {
         isPlaying = false
     }
 }
+
+class VideoPlayerLayerViewModel: ObservableObject{
+    var videoName: String
+    @Published var volume: CGFloat = 50
+    
+    init(videoURL: URL) {
+        self.videoName = videoURL.lastPathComponent
+    }
+}
