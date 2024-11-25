@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListView: View {
     
-    @Environment(BookViewModel.self) var vm: BookViewModel
+    @Environment(\.bookViewModel) private var vm: BookViewModel
     @State private var isPresented: Bool = false
     
     var body: some View {

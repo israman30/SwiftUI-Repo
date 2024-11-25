@@ -33,3 +33,6 @@ class BookViewModel {
     }
 }
 
+extension EnvironmentValues {
+    @Entry var bookViewModel = BookViewModel()
+}
