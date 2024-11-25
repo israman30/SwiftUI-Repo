@@ -37,6 +37,7 @@ class BookViewModel {
 struct ListView: View {
     
     @Environment(BookViewModel.self) var vm: BookViewModel
+    @State private var isPresented: Bool = false
     
     var body: some View {
         NavigationView {
@@ -54,6 +55,16 @@ struct ListView: View {
                 }
             }
             .navigationTitle("Books")
+            .toolbar {
+                Button {
+                    self.isPresented.toggle()
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            .sheet(isPresented: $isPresented) {
+                ChildView(book: vm)
+            }
         }
     }
 }
@@ -61,4 +72,12 @@ struct ListView: View {
 #Preview {
     ListView()
         .environment(BookViewModel())
+}
+
+struct ChildView: View {
+    @Bindable var book: BookViewModel
+    
+    var body: some View {
+        Text(book.isFavorite ? "Favorite" : "Not Favorite")
+    }
 }
