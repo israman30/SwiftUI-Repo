@@ -9,9 +9,9 @@ import SwiftUI
 
 struct UsingLazyGridView: View {
     let columns = [
-        GridItem(.fixed(90), spacing: 4),
-        GridItem(.fixed(150), spacing: 4),
-        GridItem(.fixed(75), spacing: 4)
+        GridItem(.flexible(minimum: 40, maximum: 120), spacing: 4),
+        GridItem(.flexible(minimum: 60, maximum: 240), spacing: 4),
+        GridItem(.flexible(minimum: 20, maximum: 360), spacing: 4)
     ]
     
     var body: some View {
