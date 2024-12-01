@@ -131,3 +131,27 @@ extension View {
         modifier(PulseAnimation())
     }
 }
+
+struct ShadowCustomButton: ButtonStyle {
+    var shadowColor: Color = .black
+    var shadowRadius: CGFloat = 10.0
+    var xShadow: CGFloat = 0.0
+    var yShadow: CGFloat = 5.0
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
+            .shadow(
+                color: configuration.isPressed ? shadowColor.opacity(0.4) : shadowColor.opacity(0.8),
+                radius: configuration.isPressed ? shadowRadius / 2 : shadowRadius,
+                x: xShadow, y: yShadow
+            )
+            .scaleEffect(configuration.isPressed ? 0.09 : 1.0)
+            .animation(.easeInOut(duration: 0.2), value: configuration.isPressed)
+    }
+}
+
+extension ButtonStyle where Self == ShadowCustomButton {
+    static var shadow: ShadowCustomButton { ShadowCustomButton() }
+}

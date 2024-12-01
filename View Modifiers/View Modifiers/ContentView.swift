@@ -71,6 +71,13 @@ struct ContentView: View {
             .padding()
             .background(Color.yellow)
 //            .pulseAnimation()
+            
+            Button {
+                
+            } label: {
+                Text("Button Style")
+            }
+            .buttonStyle(.shadow)
         }
         .padding()
     }
