@@ -128,3 +128,28 @@ struct SomeEndpoint: Endpoint {
         nil
     }
 }
+
+// MARK: Single endpoint
+struct SingleEndpoint: Endpoint {
+    let id: Int
+    
+    var baseURL: URL {
+        .init(string: "https://jsonplaceholder.typicode.com")!
+    }
+    
+    var path: String {
+        "/todos/\(id)"
+    }
+    
+    var method: HTTPMethod {
+        .get
+    }
+    
+    var headers: [String : String]? {
+        ["Content-Type": "application/json"]
+    }
+    
+    var parameters: [String : Any]? {
+        nil
+    }
+}
