@@ -106,8 +106,8 @@ final class NetworkManagerImplementation: NetworkManager {
     }
 }
 
-// MARK: Some Endpoint
-struct SomeEndpoint: Endpoint {
+// MARK: --- List Endpoint ---
+struct ListEndpoint: Endpoint {
     var baseURL: URL {
         .init(string: "https://jsonplaceholder.typicode.com")!
     }
@@ -129,7 +129,7 @@ struct SomeEndpoint: Endpoint {
     }
 }
 
-// MARK: Single endpoint
+// MARK: --- Single endpoint ---
 struct SingleEndpoint: Endpoint {
     let id: Int
     
@@ -151,5 +151,39 @@ struct SingleEndpoint: Endpoint {
     
     var parameters: [String : Any]? {
         nil
+    }
+}
+
+// MARK: --- Some endpoint ---
+struct Todo: Decodable {
+    let id: Int
+    let title: String
+    let completed: Bool
+}
+
+struct SomeEndpoint: Endpoint {
+    let todo: Todo
+    
+    var baseURL: URL {
+        URL(string: "https://jsonplaceholder.typicode.com")!
+    }
+    
+    var path: String {
+        "/todos"
+    }
+    
+    var method: HTTPMethod {
+        .post
+    }
+    
+    var headers: [String : String]? {
+        ["Content-Type": "application/json"]
+    }
+    
+    var parameters: [String : Any]? {
+        [
+            "title": todo.title,
+            "completed": todo.completed
+        ]
     }
 }
