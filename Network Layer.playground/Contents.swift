@@ -1,5 +1,6 @@
 import UIKit
 
+// MARK: --- NETWORK LAYER ---
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
@@ -60,13 +61,11 @@ extension NetworkError {
     }
 }
 
-protocol NetworkManager {
+protocol NetworkManagerProtocol {
     func fetch<T: Decodable>(from endpoint: Endpoint) async throws -> T
 }
 
-final class NetworkManagerImplementation: NetworkManager {
-    @MainActor
-    static let shared = NetworkManagerImplementation()
+final class NetworkManager: NetworkManagerProtocol {
     private let session: URLSession
     
     init(session: URLSession = .shared) {
@@ -154,6 +153,33 @@ struct SingleEndpoint: Endpoint {
     }
 }
 
+struct CreateTodoEndpoint: Endpoint {
+    let newTodo: Todo
+    
+    var baseURL: URL {
+        URL(string: "https://jsonplaceholder.typicode.com")!
+    }
+    
+    var path: String {
+        "/todos"
+    }
+    
+    var method: HTTPMethod {
+        .post
+    }
+    
+    var headers: [String : String]? {
+        ["Content-Type": "application/json"]
+    }
+    
+    var parameters: [String : Any]? {
+        [
+            "title": newTodo.title,
+            "completed": newTodo.completed
+        ]
+    }
+}
+
 // MARK: --- Some endpoint ---
 struct Todo: Decodable {
     let id: Int
@@ -185,5 +211,44 @@ struct SomeEndpoint: Endpoint {
             "title": todo.title,
             "completed": todo.completed
         ]
+    }
+}
+
+// MARK: -- Implementation --
+class SomeViewModel: ObservableObject {
+    @Published var todos = [Todo]()
+    @Published var error: NetworkError?
+    
+    private let networkManager: NetworkManager
+    
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
+    
+    func fetchTodos() async {
+        do {
+            self.todos = try await networkManager.fetch(from: ListEndpoint())
+        } catch {
+            self.error = .unknownError(statusCode: 0)
+        }
+    }
+    
+    func fetchSingleObject(id: Int) async {
+        do {
+            let todo: Todo = try await networkManager.fetch(from: SingleEndpoint(id: id))
+            self.todos.append(todo)
+        } catch {
+            self.error = .unknownError(statusCode: 0)
+        }
+    }
+    
+    func createObject(todo: Todo) async {
+        let newTodo = Todo(id: 0, title: todo.title, completed: false)
+        do {
+            let createdTodo: Todo = try await networkManager.fetch(from: CreateTodoEndpoint(newTodo: todo))
+            self.todos.append(createdTodo)
+        } catch {
+            self.error = .unknownError(statusCode: 0)
+        }
     }
 }
