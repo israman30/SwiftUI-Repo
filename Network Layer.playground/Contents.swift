@@ -81,6 +81,8 @@ final class NetworkManagerImplementation: NetworkManager {
             throw NetworkError.invalidateResponse
         }
         
+        try invalid(httpResponse)
+        
         do {
             let decode = JSONDecoder()
             return try decode.decode(T.self, from: data)
@@ -102,5 +104,27 @@ final class NetworkManagerImplementation: NetworkManager {
             throw NetworkError.unknownError(statusCode: response.statusCode)
         }
     }
+}
+
+// MARK: Some Endpoint
+struct SomeEndpoint: Endpoint {
+    var baseURL: URL {
+        .init(string: "https://jsonplaceholder.typicode.com")!
+    }
     
+    var path: String {
+        "/todos"
+    }
+    
+    var method: HTTPMethod {
+        .get
+    }
+    
+    var headers: [String:String]? {
+        ["Content-Type":"application/json"]
+    }
+    
+    var parameters: [String:Any]? {
+        nil
+    }
 }
