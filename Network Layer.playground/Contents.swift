@@ -1,4 +1,4 @@
-import UIKit
+import SwiftUI
 
 // MARK: --- NETWORK LAYER ---
 enum HTTPMethod: String {
@@ -181,7 +181,7 @@ struct CreateTodoEndpoint: Endpoint {
 }
 
 // MARK: --- Some endpoint ---
-struct Todo: Decodable {
+struct Todo: Decodable, Identifiable {
     let id: Int
     let title: String
     let completed: Bool
@@ -249,6 +249,35 @@ class SomeViewModel: ObservableObject {
             self.todos.append(createdTodo)
         } catch {
             self.error = .unknownError(statusCode: 0)
+        }
+    }
+}
+
+// MARK: -- View --
+
+struct ContentView: View {
+    @StateObject private var viewModel = SomeViewModel(networkManager: NetworkManager())
+    
+    var body: some View {
+        NavigationView {
+            Group {
+                if let error = viewModel.error {
+                    Text("Error: \(error.localizedDescription)")
+                } else {
+                    List(viewModel.todos) { todo in
+                        HStack {
+                            Text(todo.title)
+                            Spacer()
+                            if todo.completed {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .task {
+            await viewModel.fetchTodos()
         }
     }
 }
