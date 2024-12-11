@@ -20,12 +20,77 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.gray)
+                    .padding(.leading, 10)
+                ZStack(alignment: .leading) {
+                    HStack {
+                        Group {
+                            Text("Search for")
+                            
+                            ZStack(alignment: .leading) {
+                                Text(currentLabel)
+                                    .opacity(currentOpacity)
+                                    .offset(y: currentOffset)
+                                Text(nextLabel)
+                                    .opacity(nextOpacity)
+                                    .offset(y: nextOffset)
+                            }
+                            .onAppear {
+                                animateLabels()
+                            }
+                        }
+                        .foregroundStyle(.gray)
+                        Spacer()
+                    }
+                }
+            }
+            .frame(height: 50)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
+            .padding()
         }
-        .padding()
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    func resumeTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
+            updateLabels()
+        })
+    }
+    
+    func animateLabels() {
+        currentLabel = labels[currentIndex]
+        nextLabel = labels[(currentIndex + 1) % labels.count]
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
+            updateLabels()
+        })
+    }
+    
+    func updateLabels() {
+        withAnimation(.easeInOut(duration: 1.0)) {
+            currentOpacity = 0
+            currentOffset = -20
+            nextOpacity = 1
+            nextOffset = 0
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            currentLabel = nextLabel
+            currentOpacity = 1
+            currentOffset = 0
+            nextOpacity = 0
+            nextOffset = 20
+            currentIndex = (currentIndex + 1) % labels.count
+            nextLabel = labels[(currentIndex + 1) % labels.count]
+        }
     }
 }
 
