@@ -47,12 +47,29 @@ enum AlertComponent {
             }
         }
     }
+    
+    @ViewBuilder
+    func getButtons() -> some View {
+        switch self {
+        case .success:
+            Button("Success") {
+            }
+        case .failure:
+            Button("Failure") {
+                
+            }
+        }
+    }
 }
 
 extension View {
-    func alertObject(_ alertObject: AlertObject) -> Self {
+    func presentAlert(_ alert: Binding<AlertComponent?>, isPresented: Binding<Bool>) -> some View {
         self
-           
+            .alert(alert.wrappedValue?.title ?? "", isPresented: isPresented, actions: {
+                alert.wrappedValue?.getButtons()
+            }, message: {
+                Text(alert.wrappedValue?.message ?? "")
+            })
     }
 }
 
@@ -73,13 +90,7 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
         }
         .padding()
-        .alert(alertComponent?.title ?? "", isPresented: $isPresented, actions: {
-            Button("OK") {
-                
-            }
-        }, message: {
-            Text(alertComponent?.message ?? "")
-        })
+        .presentAlert($alertComponent, isPresented: $isPresented)
     }
 }
 
