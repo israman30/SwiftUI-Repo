@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+protocol AlertProtocol {
+    var title: String { get }
+    var message: String { get }
+    var buttons: AnyView { get }
+}
+
 struct AlertObject {
     let title: String
     let message: String
 }
 
-enum AlertComponent {
+enum AlertComponent: AlertProtocol {
     case success(_ okAction: () -> Void?, cancel: () -> Void?)
     case failure(_ failure: () -> Void?)
     
@@ -34,6 +40,10 @@ enum AlertComponent {
         }
     }
     
+    var buttons: AnyView {
+        AnyView(getButtons())
+    }
+    
     @ViewBuilder
     func getButtons() -> some View {
         switch self {
@@ -53,10 +63,10 @@ enum AlertComponent {
 }
 
 extension View {
-    func presentAlert(_ alert: Binding<AlertComponent?>, isPresented: Binding<Bool>) -> some View {
+    func presentAlert<T: AlertProtocol>(_ alert: Binding<T?>, isPresented: Binding<Bool>) -> some View {
         self
             .alert(alert.wrappedValue?.title ?? "", isPresented: isPresented, actions: {
-                alert.wrappedValue?.getButtons()
+                alert.wrappedValue?.buttons
             }, message: {
                 Text(alert.wrappedValue?.message ?? "")
             })
