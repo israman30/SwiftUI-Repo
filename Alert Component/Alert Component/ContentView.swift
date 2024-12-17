@@ -12,9 +12,54 @@ struct AlertObject {
     let message: String
 }
 
+enum AlertComponent {
+    case success
+    case failure
+    
+    var title: String {
+        switch self {
+        case .success:
+            return "Success!"
+        case .failure:
+            return "Failure!"
+        }
+    }
+    
+     var message: String {
+        switch self {
+        case .success:
+            return "Your request was successful!"
+        case .failure:
+            return "Your request failed!"
+        }
+    }
+    
+    @ViewBuilder
+    var customButton: some View {
+        switch self {
+        case .success:
+            Button("Success") {
+                
+            }
+        case .failure:
+            Button("Failure") {
+                
+            }
+        }
+    }
+}
+
+extension View {
+    func alertObject(_ alertObject: AlertObject) -> Self {
+        self
+           
+    }
+}
+
 struct ContentView: View {
     @State var isPresented: Bool = false
     @State var alertObject = AlertObject(title: "Alert title", message: "This is a message.!")
+    @State var alertComponent: AlertComponent? = .success
     
     var body: some View {
         VStack {
@@ -28,9 +73,13 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
         }
         .padding()
-        .alert(isPresented: $isPresented) {
-            Alert(title: Text(alertObject.title), message: Text(alertObject.message), dismissButton: .default(Text("Ok")))
-        }
+        .alert(alertComponent?.title ?? "", isPresented: $isPresented, actions: {
+            Button("OK") {
+                
+            }
+        }, message: {
+            Text(alertComponent?.message ?? "")
+        })
     }
 }
 
