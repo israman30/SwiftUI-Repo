@@ -13,13 +13,13 @@ struct AlertObject {
 }
 
 enum AlertComponent {
-    case success
-    case failure
+    case success(_ okAction: () -> Void?, cancel: () -> Void?)
+    case failure(_ failure: () -> Void?)
     
     var title: String {
         switch self {
         case .success:
-            return "Success!"
+            return "Ok!"
         case .failure:
             return "Failure!"
         }
@@ -35,28 +35,18 @@ enum AlertComponent {
     }
     
     @ViewBuilder
-    var customButton: some View {
-        switch self {
-        case .success:
-            Button("Success") {
-                
-            }
-        case .failure:
-            Button("Failure") {
-                
-            }
-        }
-    }
-    
-    @ViewBuilder
     func getButtons() -> some View {
         switch self {
-        case .success:
+        case .success(let okAction, let cancel):
             Button("Success") {
+                okAction()
             }
-        case .failure:
+            Button("Cancel") {
+                cancel()
+            }
+        case .failure(let failure):
             Button("Failure") {
-                
+                failure()
             }
         }
     }
@@ -76,21 +66,28 @@ extension View {
 struct ContentView: View {
     @State var isPresented: Bool = false
     @State var alertObject = AlertObject(title: "Alert title", message: "This is a message.!")
-    @State var alertComponent: AlertComponent? = .success
+    @State var alertComponent: AlertComponent? = nil
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Alert Custom Component!")
+                .font(.title2)
             Button("Show Alert") {
-                self.isPresented.toggle()
+                showAlert()
             }
             .buttonStyle(.borderedProminent)
         }
         .padding()
         .presentAlert($alertComponent, isPresented: $isPresented)
+    }
+    
+    private func showAlert() {
+        self.isPresented.toggle()
+        alertComponent = .success({
+            // action
+        }, cancel: {
+            // action
+        })
     }
 }
 
