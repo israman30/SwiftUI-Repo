@@ -157,6 +157,13 @@ extension ButtonStyle where Self == ShadowCustomButton {
 }
 
 
+// MARK: - Label View Implementation -
+protocol LabelViewContent {
+    associatedtype Content: View
+    @ViewBuilder
+    var content: Content { get }
+}
+
 struct LabelView: View {
     private let text: String
     private let icon: String?

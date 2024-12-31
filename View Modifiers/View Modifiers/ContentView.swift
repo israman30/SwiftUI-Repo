@@ -78,6 +78,9 @@ struct ContentView: View {
                 Text("Button Style")
             }
             .buttonStyle(.shadow)
+            
+            LabelView(text: "Some Label")
+                .padding(.vertical)
         }
         .padding()
     }
