@@ -81,6 +81,27 @@ struct ContentView: View {
             
             LabelView(text: "Some Label")
                 .padding(.vertical)
+            
+            CustomLabelView(
+                TextLabelViewContentView(
+                    text: "Another label"
+                )
+            )
+            
+            CustomLabelView(
+                TextIconLeftLabelView(
+                    text: "10 min running",
+                    icon: Image(systemName: "figure.walk")
+                )
+            )
+            
+            CustomLabelView(
+                TextWithLeftRightIconContent(
+                    text: "10 min running",
+                    leftIcon: Image(systemName: "figure.walk"),
+                    rightIcon: Image(systemName: "10.circle")
+                )
+            )
         }
         .padding()
     }

@@ -194,3 +194,89 @@ struct LabelView: View {
         )
     }
 }
+
+struct CustomLabelView<Content: LabelViewContent>: View {
+    var labelViewContent: Content
+    
+    init(_ labelViewContent: Content) {
+        self.labelViewContent = labelViewContent
+    }
+    
+    var body: some View {
+        labelViewContent
+            .content
+            .padding(.horizontal, 10)
+            .padding(.vertical, 5)
+            .background(
+                Capsule()
+                    .fill(Color.gray.opacity(0.2))
+            )
+    }
+}
+
+struct TextLabelViewContentView: LabelViewContent {
+    private let text: String
+    
+    init(text: String) {
+        self.text = text
+    }
+    
+    var content: some View {
+        Text(text)
+            .font(.caption)
+            .fontWeight(.medium)
+    }
+}
+
+struct TextIconLeftLabelView: LabelViewContent {
+    private let text: String
+    private let icon: Image
+    
+    init(text: String, icon: Image) {
+        self.text = text
+        self.icon = icon
+    }
+    
+    var content: some View {
+        HStack {
+            icon
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 16)
+            
+            Text(text)
+                .font(.caption)
+                .fontWeight(.medium)
+        }
+    }
+}
+
+struct TextWithLeftRightIconContent: LabelViewContent {
+    private let text: String
+    private let leftIcon: Image
+    private let rightIcon: Image
+    
+    init(text: String, leftIcon: Image, rightIcon: Image) {
+        self.text = text
+        self.leftIcon = leftIcon
+        self.rightIcon = rightIcon
+    }
+    
+    var content: some View {
+        HStack {
+            leftIcon
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 16)
+            
+            Text(text)
+                .font(.caption)
+                .fontWeight(.medium)
+            
+            rightIcon
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 16)
+        }
+    }
+}
