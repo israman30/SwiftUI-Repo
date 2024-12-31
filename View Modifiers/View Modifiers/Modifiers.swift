@@ -280,3 +280,15 @@ struct TextWithLeftRightIconContent: LabelViewContent {
         }
     }
 }
+
+extension CustomLabelView where Content == TextWithLeftRightIconContent {
+    init(text: String, leftIcon: Image, rightIcon: Image) {
+        self.init(TextWithLeftRightIconContent(text: text, leftIcon: leftIcon, rightIcon: rightIcon))
+    }
+}
+
+extension LabelViewContent where Self == TextWithLeftRightIconContent {
+    static func textWithLeftRightIcon(text: String, leftIcon: Image, rightIcon: Image) -> Self {
+        TextWithLeftRightIconContent(text: text, leftIcon: leftIcon, rightIcon: rightIcon)
+    }
+}

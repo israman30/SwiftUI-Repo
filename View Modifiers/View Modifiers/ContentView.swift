@@ -102,6 +102,22 @@ struct ContentView: View {
                     rightIcon: Image(systemName: "10.circle")
                 )
             )
+            
+            CustomLabelView(
+                text: "10 min running",
+                leftIcon: Image(systemName: "figure.walk"),
+                rightIcon: Image(systemName: "10.circle")
+            )
+
+            // or
+
+            CustomLabelView(
+                .textWithLeftRightIcon(
+                    text: "10 min running",
+                    leftIcon: Image(systemName: "figure.walk"),
+                    rightIcon: Image(systemName: "10.circle")
+                )
+            )
         }
         .padding()
     }
