@@ -155,3 +155,35 @@ struct ShadowCustomButton: ButtonStyle {
 extension ButtonStyle where Self == ShadowCustomButton {
     static var shadow: ShadowCustomButton { ShadowCustomButton() }
 }
+
+
+struct LabelView: View {
+    private let text: String
+    private let icon: String?
+    
+    init(text: String, icon: String? = nil) {
+        self.text = text
+        self.icon = icon
+    }
+    
+    var body: some View {
+        HStack {
+            if let icon {
+                Image(systemName: icon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 16)
+            }
+            
+            Text(text)
+                .font(.caption)
+                .fontWeight(.medium)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 5)
+        .background(
+            Capsule()
+                .fill(Color.gray.opacity(0.2))
+        )
+    }
+}
