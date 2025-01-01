@@ -1,6 +1,6 @@
 import Foundation
 
-struct Logger {
+struct LoggerDebug {
     
     static var isProduction: Bool {
         #if DEBUG
@@ -38,3 +38,23 @@ struct Logger {
         }
     }
 }
+
+import OSLog
+
+final class AnotherLogger: ObservableObject {
+    let logger = Logger.init(
+        subsystem: "com.myapp.models",
+        category: "myapp.debugging"
+    )
+    
+    func log() {
+        logger.log("Hello World!")
+    }
+    
+    func logError(_ error: Error) {
+        logger.error("Error: \(error)")
+    }
+}
+
+let log = AnotherLogger()
+log.log()
