@@ -18,9 +18,9 @@ enum PostState {
 @Observable
 class PostViewModel {
     var postState: PostState = .noLoaded
-    private let networkService: NetworkManager
+    private let networkService: Networking
     
-    init(networkService: NetworkManager) {
+    init(networkService: Networking) {
         self.networkService = networkService
     }
     
@@ -35,6 +35,6 @@ class PostViewModel {
     }
     
     func createPost(content: String) async throws -> Post {
-        return try await networkService.createPost(contents: content)
+        return try await networkService.createPost(content: content)
     }
 }

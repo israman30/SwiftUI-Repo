@@ -14,7 +14,12 @@ struct Post: Codable {
     let body: String
 }
 
-class NetworkManager {
+protocol Networking {
+    func fetPosts() async throws -> [Post]
+    func createPost(content: String) async throws -> Post
+}
+
+class NetworkManager: Networking {
     let urlSession: URLSession
     let baseUrl: URL = URL(string: "https://jsonplaceholder.typicode.com/")!
     
@@ -28,11 +33,11 @@ class NetworkManager {
         return try JSONDecoder().decode([Post].self, from: data)
     }
     
-    func createPost(contents: String) async throws -> Post {
+    func createPost(content: String) async throws -> Post {
         let url = baseUrl.appending(path: "posts")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let body = ["contents":contents]
+        let body = ["contents":content]
         request.httpBody = try JSONEncoder().encode(body)
         
         let (data, _) = try await urlSession.data(for: request)
