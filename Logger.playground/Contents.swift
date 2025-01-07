@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 struct LoggerDebug {
     
@@ -56,5 +56,42 @@ final class AnotherLogger: ObservableObject {
     }
 }
 
-let log = AnotherLogger()
-log.log()
+extension View {
+    func print(_ value: Any) -> Self {
+        Swift.print(value)
+        return self
+    }
+    
+    func debugAction(_ action: () -> Void) -> Self {
+        #if DEBUG
+        action()
+        #endif
+        return self
+    }
+    
+    func debugPrint(_ value: Any) -> Self {
+        debugAction { Swift.print(value) }
+    }
+}
+
+extension View {
+    func debugModifier<T: View>(_ modifier: (Self) -> T) -> some View {
+        #if DEBUG
+        return modifier(self)
+        #else
+        return self
+        #endif
+    }
+    
+    func debugBorder(_ color: Color = .red, width: CGFloat = 1) -> some View {
+        debugModifier {
+            $0.border(color, width: width)
+        }
+    }
+    
+    func debugBackground(_ color: Color = .red) -> some View {
+        debugModifier {
+            $0.background(color)
+        }
+    }
+}
