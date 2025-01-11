@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: 1. Define Steps:
+// The Steps protocol defines the steps for different navigations. These steps are used to uniquely identify the view transitions.
 protocol Steps: Equatable, Hashable { }
 
 enum ItemSteps: Steps {
@@ -54,6 +56,9 @@ extension PurchaseSteps: Identifiable {
     }
 }
 
+// MARK: 2. Add Coordinators
+// The Coordinator protocol is the backbone of this pattern. It handles navigation between different views.
+
 protocol Coordinator: ObservableObject {
     associatedtype CoordinatorSteps: Steps
     associatedtype CoordinatorView: View
@@ -62,6 +67,9 @@ protocol Coordinator: ObservableObject {
     
     func redirect(to path: CoordinatorSteps) -> CoordinatorView
 }
+
+// MARK: 3. Coordinators for Each Module:
+// Multiple coordinators are defined for managing different flows within the app, like ItemsCoordinator, WalletCoordinator, and SettingsCoordinator. Each coordinator manages its own view stack.
 
 final class ItemsCoordinator: ObservableObject {
     @Published var path: [ItemSteps] = []
@@ -164,3 +172,8 @@ final class PurchaseCoordinator: ObservableObject {
         }
     }
 }
+
+// MARK: 4. Navigation Modifier:
+// The NavigationSetupModifier centralizes the use of NavigationStack across the app. It ties a coordinator to a view's navigation stack so that any navigation changes update the UI.
+// This is where we centralised our NavigationStack within the app.
+
