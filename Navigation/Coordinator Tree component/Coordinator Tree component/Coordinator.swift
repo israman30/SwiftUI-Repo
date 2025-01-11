@@ -5,7 +5,7 @@
 //  Created by Israel Manzo on 1/10/25.
 //
 
-import Foundation
+import SwiftUI
 
 protocol Steps: Equatable, Hashable { }
 
@@ -52,4 +52,13 @@ extension PurchaseSteps: Identifiable {
         case .summary:
         }
     }
+}
+
+protocol Coordinator: ObservableObject {
+    associatedtype CoordinatorSteps: Steps
+    associatedtype CoordinatorView: View
+    
+    var path: [CoordinatorSteps] { get set }
+    
+    func redirect(to path: CoordinatorSteps) -> CoordinatorView
 }
