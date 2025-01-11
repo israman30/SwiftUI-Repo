@@ -18,7 +18,7 @@ enum WalletSteps: Steps {
     case detail
 }
 
-enum SearchSteps: Steps {
+enum SettingsSteps: Steps {
     case profile
 }
 
@@ -61,4 +61,106 @@ protocol Coordinator: ObservableObject {
     var path: [CoordinatorSteps] { get set }
     
     func redirect(to path: CoordinatorSteps) -> CoordinatorView
+}
+
+final class ItemsCoordinator: ObservableObject {
+    @Published var path: [ItemSteps] = []
+    
+    func goBack() {
+        path.removeLast()
+    }
+    
+    func navigateToDetail() {
+        path.append(.detail)
+    }
+    
+    @ViewBuilder
+    func redirect(to path: ItemSteps) -> some View {
+        switch path {
+        case .detail:
+            // TODO: - add views
+            EmptyView()
+        case .addToCart:
+            EmptyView()
+        }
+    }
+}
+
+final class WalletCoordinator: ObservableObject {
+    @Published var path: [WalletSteps] = []
+    
+    func goBack() {
+        path.removeLast()
+    }
+    
+    func navigateToDetail() {
+        path.append(.detail)
+    }
+    
+    @ViewBuilder
+    func redirect(to path: WalletSteps) -> some View {
+        switch path {
+        case .detail:
+            EmptyView()
+        }
+    }
+}
+
+final class SettingsCoordinator: ObservableObject {
+    @Published var path: [SettingsSteps] = []
+    
+    func goBack() {
+        path.removeLast()
+    }
+    
+    func navigateToProfile() {
+        path.append(.profile)
+    }
+    
+    @ViewBuilder
+    func redirect(to path: SettingsSteps) -> some View {
+        switch path {
+        case .profile:
+            EmptyView()
+        }
+    }
+}
+
+final class PurchaseCoordinator: ObservableObject {
+    unowned var parent: ItemsCoordinator
+    @Published var path: [PurchaseSteps] = []
+    
+    init(parent: ItemsCoordinator) {
+        self.parent = parent
+    }
+    
+    func navigateToPaymentMethod() {
+        path.append(.selectPaymentMethod)
+    }
+    
+    func navigateToSelectBuyItem() {
+        path.append(.buyItem)
+    }
+    
+    func navigateToPurchaseSummary() {
+        path.append(.summary)
+    }
+    
+    func goBack() {
+        path.removeLast()
+    }
+    
+    @ViewBuilder
+    func redirect(to path: PurchaseSteps) -> some View {
+        switch path {
+        case .addToCart:
+            EmptyView()
+        case .selectPaymentMethod:
+            EmptyView()
+        case .buyItem:
+            EmptyView()
+        case .summary:
+            EmptyView()
+        }
+    }
 }
