@@ -177,3 +177,21 @@ final class PurchaseCoordinator: ObservableObject {
 // The NavigationSetupModifier centralizes the use of NavigationStack across the app. It ties a coordinator to a view's navigation stack so that any navigation changes update the UI.
 // This is where we centralised our NavigationStack within the app.
 
+struct NavigationSetupModifier<CoordinatorType: Coordinator>: ViewModifier {
+    @ObservedObject var coordinator: CoordinatorType
+    
+    func body(content: Content) -> some View {
+        NavigationStack(path: $coordinator.path) {
+            content
+                .navigationDestination(for: CoordinatorType.CoordinatorSteps.self) { step in
+                    coordinator.redirect(to: step)
+                }
+        }
+    }
+}
+
+extension View {
+    func applyNavigation<CoordinatorType: Coordinator>(coordinator: CoordinatorType) -> some View {
+        modifier(NavigationSetupModifier(coordinator: coordinator))
+    }
+}
