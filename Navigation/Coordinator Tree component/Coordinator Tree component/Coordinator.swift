@@ -86,10 +86,12 @@ final class ItemsCoordinator: ObservableObject, Coordinator {
     func redirect(to path: ItemSteps) -> some View {
         switch path {
         case .detail:
-            // TODO: - add views
-            EmptyView()
+            let viewModel = DetailViewModel(coordinator: self, detailText: "Item Detail")
+            DetailView(viewModel: viewModel)
+                .navigationBarBackButtonHidden()
         case .addToCart:
-            EmptyView()
+            let coordinator = PurchaseCoordinator(parent: self)
+            coordinator.redirect(to: .addToCart)
         }
     }
 }
@@ -109,7 +111,9 @@ final class WalletCoordinator: ObservableObject, Coordinator {
     func redirect(to path: WalletSteps) -> some View {
         switch path {
         case .detail:
-            EmptyView()
+            let viewModel = WalletViewModel(coordinator: self, detailText: "Wallet Detail")
+            WalletView(viewModel: viewModel)
+                .navigationBarBackButtonHidden()
         }
     }
 }
@@ -129,7 +133,9 @@ final class SettingsCoordinator: ObservableObject, Coordinator {
     func redirect(to path: SettingsSteps) -> some View {
         switch path {
         case .profile:
-            EmptyView()
+            let viewModel = SettingsTabViewModel(coordinator: self)
+            SettingsTabView(viewModel: viewModel)
+                .navigationBarBackButtonHidden()
         }
     }
 }
@@ -162,13 +168,16 @@ final class PurchaseCoordinator: ObservableObject, Coordinator {
     func redirect(to path: PurchaseSteps) -> some View {
         switch path {
         case .addToCart:
-            EmptyView()
+            let viewModel = AddToCartViewModel(coordinator: self, detailText: "Add to Cart")
+            AddToCartView(viewModel: viewModel)
         case .selectPaymentMethod:
-            EmptyView()
+            let viewModel = PaymentMethodViewModel(coordinator: self, detailText: "Select payemnt method")
+            PaymentMethodView(viewModel: viewModel)
         case .buyItem:
-            EmptyView()
+            let viewModel = BuyItemViewModel(coordinator: self, detailText: "Buy Item")
+            BuyItemView(viewModel: viewModel)
         case .summary:
-            EmptyView()
+            Text("Purhase Summary")
         }
     }
 }
@@ -206,7 +215,18 @@ struct HomeView: View {
     
     var body: some View {
         TabView {
-            
+            ItemsTabView(viewModel: ItemsTabViewModel(coordinator: itemsCoordinator))
+                .tabItem {
+                    Label("Tab 1", systemImage: "1.circle")
+                }
+            WalletTabView(viewModel: WalletTabViewModel(coordinator: walletCoordinator))
+                .tabItem {
+                    Label("Tab 2", systemImage: "2.circle")
+                }
+            SettingsTabView(viewModel: SettingsTabViewModel(coordinator: profileCoordinator))
+                .tabItem {
+                    Label("Tab 3", systemImage: "3.circle")
+                }
         }
     }
 }
