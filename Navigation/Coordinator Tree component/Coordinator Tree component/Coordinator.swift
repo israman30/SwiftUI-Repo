@@ -71,7 +71,7 @@ protocol Coordinator: ObservableObject {
 // MARK: 3. Coordinators for Each Module:
 // Multiple coordinators are defined for managing different flows within the app, like ItemsCoordinator, WalletCoordinator, and SettingsCoordinator. Each coordinator manages its own view stack.
 
-final class ItemsCoordinator: ObservableObject {
+final class ItemsCoordinator: ObservableObject, Coordinator {
     @Published var path: [ItemSteps] = []
     
     func goBack() {
@@ -94,7 +94,7 @@ final class ItemsCoordinator: ObservableObject {
     }
 }
 
-final class WalletCoordinator: ObservableObject {
+final class WalletCoordinator: ObservableObject, Coordinator {
     @Published var path: [WalletSteps] = []
     
     func goBack() {
@@ -114,7 +114,7 @@ final class WalletCoordinator: ObservableObject {
     }
 }
 
-final class SettingsCoordinator: ObservableObject {
+final class SettingsCoordinator: ObservableObject, Coordinator {
     @Published var path: [SettingsSteps] = []
     
     func goBack() {
@@ -134,7 +134,7 @@ final class SettingsCoordinator: ObservableObject {
     }
 }
 
-final class PurchaseCoordinator: ObservableObject {
+final class PurchaseCoordinator: ObservableObject, Coordinator {
     unowned var parent: ItemsCoordinator
     @Published var path: [PurchaseSteps] = []
     
@@ -192,6 +192,229 @@ struct NavigationSetupModifier<CoordinatorType: Coordinator>: ViewModifier {
 
 extension View {
     func applyNavigation<CoordinatorType: Coordinator>(coordinator: CoordinatorType) -> some View {
-        modifier(NavigationSetupModifier(coordinator: coordinator))
+        self.modifier(NavigationSetupModifier(coordinator: coordinator))
+    }
+}
+
+// MARK: 4. Tab View:
+// The app’s main entry point is a TabView that displays different tabs for each module (Items, Wallet, Profile). Each tab is managed by its respective coordinator.
+
+struct HomeView: View {
+    @ObservedObject var itemsCoordinator = ItemsCoordinator()
+    @ObservedObject var walletCoordinator = WalletCoordinator()
+    @ObservedObject var profileCoordinator = SettingsCoordinator()
+    
+    var body: some View {
+        TabView {
+            
+        }
+    }
+}
+
+// MARK: 5. Other screen and view models:
+final class ItemsTabViewModel: ObservableObject {
+    @Published var coordinator: ItemsCoordinator
+    
+    init(coordinator: ItemsCoordinator) {
+        self.coordinator = coordinator
+    }
+}
+
+struct ItemsTabView: View {
+    @ObservedObject var viewModel: ItemsTabViewModel
+    
+    var body: some View {
+        VStack {
+            Text("Item Tab")
+            Button("Go to item details") {
+                viewModel.coordinator.navigateToDetail()
+            }
+        }
+        .applyNavigation(coordinator: viewModel.coordinator)
+    }
+}
+
+final class WalletTabViewModel: ObservableObject {
+    @Published var coordinator: WalletCoordinator
+    
+    init(coordinator: WalletCoordinator) {
+        self.coordinator = coordinator
+    }
+}
+
+struct WalletTabView: View {
+    @ObservedObject var viewModel: WalletTabViewModel
+    
+    var body: some View {
+        VStack {
+            Text("Wallet Tab")
+            Button("Go to wallet details") {
+                viewModel.coordinator.navigateToDetail()
+            }
+        }
+        .applyNavigation(coordinator: viewModel.coordinator)
+    }
+}
+
+final class SettingsTabViewModel: ObservableObject {
+    @Published var coordinator: SettingsCoordinator
+    
+    init(coordinator: SettingsCoordinator) {
+        self.coordinator = coordinator
+    }
+}
+
+struct SettingsTabView: View {
+    @ObservedObject var viewModel: SettingsTabViewModel
+    
+    var body: some View {
+        VStack {
+            Text("Settings Tab")
+            Button("Go to settings details") {
+                viewModel.coordinator.navigateToProfile()
+            }
+        }
+        .applyNavigation(coordinator: viewModel.coordinator)
+    }
+}
+
+final class AddToCartViewModel: Identifiable {
+    let id = UUID()
+    let detailText: String
+    let coordinator: PurchaseCoordinator
+    
+    init(coordinator: PurchaseCoordinator, detailText: String) {
+        self.detailText = detailText
+        self.coordinator = coordinator
+    }
+}
+
+struct AddToCartView: View {
+    @Environment(\.dismiss) var dismiss
+    let viewModel: AddToCartViewModel
+    
+    var body: some View {
+        VStack {
+            Text(viewModel.detailText)
+            Button("Select payment method") {
+                viewModel.coordinator.navigateToPaymentMethod()
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Close") {
+                    dismiss()
+                }
+            }
+        }
+        .applyNavigation(coordinator: viewModel.coordinator)
+    }
+}
+
+final class PaymentMethodViewModel: Identifiable {
+    let id = UUID()
+    let detailText: String
+    let coordinator: PurchaseCoordinator
+    
+    init(coordinator: PurchaseCoordinator, detailText: String) {
+        self.coordinator = coordinator
+        self.detailText = detailText
+    }
+}
+
+struct PaymentMethodView: View {
+    let viewModel: PaymentMethodViewModel
+    
+    var body: some View {
+        Text(viewModel.detailText)
+        Button("Buy Item") {
+            viewModel.coordinator.navigateToSelectBuyItem()
+        }
+    }
+}
+
+final class BuyItemViewModel: Identifiable {
+    let id = UUID()
+    let detailText: String
+    let coordinator: PurchaseCoordinator
+    
+    init(coordinator: PurchaseCoordinator, detailText: String) {
+        self.coordinator = coordinator
+        self.detailText = detailText
+    }
+}
+
+struct BuyItemView: View {
+    let viewModel: BuyItemViewModel
+    
+    var body: some View {
+        Text(viewModel.detailText)
+        Button("Go to Summary") {
+            viewModel.coordinator.navigateToPurchaseSummary()
+        }
+    }
+}
+
+final class DetailViewModel: Identifiable {
+    let id = UUID()
+    let detailText: String
+    var coordinator: ItemsCoordinator
+    
+    init(coordinator: ItemsCoordinator, detailText: String) {
+        self.coordinator = coordinator
+        self.detailText = detailText
+    }
+}
+
+struct DetailView: View {
+    let viewModel: DetailViewModel
+    @State private var step: ItemSteps?
+    
+    var body: some View {
+        VStack {
+            Text(viewModel.detailText)
+            Button("Add to cart") {
+                step = .addToCart
+            }
+        }
+        .fullScreenCover(item: $step) { step in
+            viewModel.coordinator.redirect(to: step)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("< Back") {
+                    viewModel.coordinator.goBack()
+                }
+            }
+        }
+    }
+}
+
+final class WalletViewModel: Identifiable {
+    let id = UUID()
+    let detailText: String
+    var coordinator: WalletCoordinator
+    
+    init(coordinator: WalletCoordinator, detailText: String) {
+        self.detailText = detailText
+        self.coordinator = coordinator
+    }
+}
+
+struct WalletView: View {
+    let viewModel: WalletViewModel
+    
+    var body: some View {
+        VStack {
+            Text(viewModel.detailText)
+                .font(.largeTitle)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("< Back") {
+                    viewModel.coordinator.goBack()
+                }
+            }
+        }
     }
 }
