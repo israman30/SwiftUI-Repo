@@ -28,6 +28,7 @@ struct ContentView: View {
                 }
             }
             .scrollPosition($scrollPosition)
+            .animation(.spring, value: scrollPosition)
             
             buttons
         }
