@@ -24,9 +24,19 @@ struct ContentView: View {
                             .fill(color)
                             .frame(width: 360, height: 240)
                             .cornerRadius(10)
+                            .onScrollVisibilityChange { isVisible in
+                                if isVisible {
+                                    print("\(color) is visible")
+                                }
+                            }
                     }
                 }
             }
+            .onScrollGeometryChange(for: CGFloat.self, of: { geometry in
+                geometry.contentOffset.y
+            }, action: { oldValue, newValue in
+                print("old value: \(oldValue), new Y offset value: \(newValue)")
+            })
             .scrollPosition($scrollPosition)
             .animation(.spring, value: scrollPosition)
             
@@ -55,7 +65,7 @@ struct ContentView: View {
             }
             
             Button {
-                
+                scrollPosition.scrollTo(id: colors[4])
             } label: {
                 Image(systemName: "arrow.up.and.down.circle.fill")
                     .resizable()
