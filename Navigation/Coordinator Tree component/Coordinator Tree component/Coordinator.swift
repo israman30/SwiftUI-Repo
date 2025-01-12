@@ -52,6 +52,7 @@ extension PurchaseSteps: Identifiable {
         case .buyItem: 
             return "buyItem"
         case .summary:
+            return "Summary"
         }
     }
 }
