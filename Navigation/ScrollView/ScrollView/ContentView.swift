@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var scrollPosition = ScrollPosition()
+    @State var visibleColor: [Color] = []
     
     let colors: [Color] = [
         .red, .green, .blue, .yellow, .cyan, .pink, .purple, .gray, .brown, .orange, .indigo, .mint, .primary, .secondary
@@ -24,6 +25,8 @@ struct ContentView: View {
                             .fill(color)
                             .frame(width: 360, height: 240)
                             .cornerRadius(10)
+                            .scaleEffect(visibleColor.contains(color) ? 1.0 : 0.8)
+                            .opacity(visibleColor.contains(color) ? 1.0 : 0.5)
                             .onScrollVisibilityChange { isVisible in
                                 if isVisible {
                                     print("\(color) is visible")
@@ -31,7 +34,15 @@ struct ContentView: View {
                             }
                     }
                 }
+                .animation(.bouncy, value: visibleColor)
+                .scrollTargetLayout()
             }
+            .onScrollTargetVisibilityChange(idType: Color.self, threshold: 0.3, { colors in
+                self.visibleColor = colors
+            })
+            .onScrollPhaseChange({ oldPhase, newPhase in
+                print("Old phase: \(oldPhase) | new phase: \(newPhase)")
+            })
             .onScrollGeometryChange(for: CGFloat.self, of: { geometry in
                 geometry.contentOffset.y
             }, action: { oldValue, newValue in
@@ -42,6 +53,7 @@ struct ContentView: View {
             
             buttons
         }
+//        .defaultScrollAnchor(.bottom)
     }
     
     private var buttons: some View {
