@@ -42,20 +42,23 @@ struct ContentView: View {
                     .animation(.bouncy, value: visibleColor)
                     .scrollTargetLayout()
                 }
+                /// track `visibility` of the elements in the view
                 .onScrollTargetVisibilityChange(idType: Color.self, threshold: 0.3, { colors in
                     self.visibleColor = colors
                 })
+                /// changin the `phase` of the `scrollView`
                 .onScrollPhaseChange({ oldPhase, newPhase in
                     print("Old phase: \(oldPhase) | new phase: \(newPhase)")
                     self.phaseChange = newPhase
                 })
+                /// tracking `position` of the scrollView
                 .onScrollGeometryChange(for: CGFloat.self, of: { geometry in
                     geometry.contentOffset.y
                 }, action: { oldValue, newValue in
                     print("old value: \(oldValue), new Y offset value: \(newValue)")
                     self.position = newValue
                 })
-                .scrollPosition($scrollPosition)
+                .scrollPosition($scrollPosition) /// update the `position` of the element when `tap`
                 .animation(.spring, value: scrollPosition)
             }
             
