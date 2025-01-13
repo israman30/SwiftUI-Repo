@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var scrollPosition = ScrollPosition()
     @State var visibleColor: [Color] = []
     @State var position: CGFloat = 0
+    @State var phaseChange: ScrollPhase = .idle
     
     let colors: [Color] = [
         .red, .green, .blue, .yellow, .cyan, .pink, .purple, .gray, .brown, .orange, .indigo, .mint, .primary, .secondary
@@ -21,6 +22,7 @@ struct ContentView: View {
         ZStack(alignment:. bottomTrailing) {
             VStack {
                 Text("\(position)")
+                Text("Phase \(phaseChange)")
                 ScrollView {
                     VStack(spacing: 24) {
                         ForEach(colors, id: \.self) { color in
@@ -45,6 +47,7 @@ struct ContentView: View {
                 })
                 .onScrollPhaseChange({ oldPhase, newPhase in
                     print("Old phase: \(oldPhase) | new phase: \(newPhase)")
+                    self.phaseChange = newPhase
                 })
                 .onScrollGeometryChange(for: CGFloat.self, of: { geometry in
                     geometry.contentOffset.y
@@ -58,7 +61,7 @@ struct ContentView: View {
             
             buttons
         }
-//        .defaultScrollAnchor(.bottom)
+//        .defaultScrollAnchor(.bottom) // set the position at the bottom of the scrollView
     }
     
     private var buttons: some View {
