@@ -86,7 +86,6 @@ struct ContentView: View {
             CustomComponent()
             
         }
-        .padding()
     }
 }
 
