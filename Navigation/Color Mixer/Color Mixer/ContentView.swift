@@ -34,6 +34,12 @@ struct ContentView: View {
                     Text("\((mix), format: .percent.precision(.fractionLength(0...2)))")
                 }
             }
+            
+            RoundedRectangle(cornerRadius: 8)
+                .fill(leftColor.mix(with: rightColor, by: mix, in: .perceptual))
+                .frame(width: 100, height: 100)
+            
+            Slider(value: $mix, in: 0...1)
         }
     }
 }
