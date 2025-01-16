@@ -35,6 +35,8 @@ struct ContentView: View {
                 value4.toggle()
             }
             .sensoryFeedback(.error, trigger: value4)
+            
+            CustomHapticsManager()
         }
     }
 }
