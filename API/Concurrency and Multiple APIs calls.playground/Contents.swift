@@ -40,3 +40,37 @@ func fecthData() {
         }
     }
 }
+
+// MARK: - 2. Using OperationQueue
+// OperationQueue is part of the Foundation framework and provides more control over task dependencies and priorities.
+
+func fetchDataUsingOperationQueue() {
+    let queue = OperationQueue()
+    queue.maxConcurrentOperationCount = 3
+    
+    let urls: [URL] = [
+        URL(string: "https://jsonplaceholder.typicode.com/todos/1")!,
+        URL(string: "https://jsonplaceholder.typicode.com/todos/2")!,
+        URL(string: "https://jsonplaceholder.typicode.com/todos/3")!
+    ]
+    
+    let completionOperation = BlockOperation {
+        print("API is completed")
+    }
+    
+    for url in urls {
+        let operation = BlockOperation {
+            let semaphore = DispatchSemaphore(value: 0)
+            URLSession.shared.dataTask(with: url) { data, _, _ in
+                if let data = data {
+                    print("Response Data: \(String(data: data, encoding: .utf8) ?? "")")
+                }
+                semaphore.signal()
+            }.resume()
+            semaphore.wait()
+        }
+        completionOperation.addDependency(operation)
+        queue.addOperation(operation)
+    }
+    queue.addOperation(completionOperation)
+}
