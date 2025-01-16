@@ -43,6 +43,14 @@ func fecthData() {
 
 // MARK: - 2. Using OperationQueue
 // OperationQueue is part of the Foundation framework and provides more control over task dependencies and priorities.
+/**
+ - `Pros`:
+   - Offers more control over task dependencies and execution order.
+   - Easy to limit concurrency.
+ - `Cons`:
+   - Verbose for simple tasks.
+   - Requires careful handling to avoid deadlocks.
+ */
 
 func fetchDataUsingOperationQueue() {
     let queue = OperationQueue()
