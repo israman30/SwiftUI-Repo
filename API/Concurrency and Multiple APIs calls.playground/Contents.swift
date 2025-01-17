@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 //MARK: - 1. Using DispatchGroup
 // DispatchGroup is a core part of Grand Central Dispatch (GCD) and is ideal for managing multiple asynchronous tasks.
@@ -81,4 +82,50 @@ func fetchDataUsingOperationQueue() {
         queue.addOperation(operation)
     }
     queue.addOperation(completionOperation)
+}
+
+// MARK: - 3. Using Combine
+// Combine provides a declarative Swift API for handling asynchronous events, making it a powerful choice for concurrent API calls.
+/**
+ - `Pros`:
+   - Declarative and modern.
+   - Error handling is built-in and clean.
+   - Works seamlessly with SwiftUI.
+ - `Cons`:
+   - Requires knowledge of Combine.
+   - Limited to iOS 13 and above.
+ */
+var cancellables = Set<AnyCancellable>()
+
+@MainActor
+func fetchDataUsingCombine() {
+    let urls: [URL] = [
+        URL(string: "https://jsonplaceholder.typicode.com/todos/1")!,
+        URL(string: "https://jsonplaceholder.typicode.com/todos/2")!,
+        URL(string: "https://jsonplaceholder.typicode.com/todos/3")!
+    ]
+    
+    let publishers = urls.map { url in
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .catch { _ in Just(Data()) }
+            .eraseToAnyPublisher()
+    }
+    
+    Publishers.MergeMany(publishers)
+        .collect()
+        .receive(on: DispatchQueue.main)
+        .sink { data in
+            switch data {
+            case .finished:
+                print("All API calls are completed")
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        } receiveValue: { dataArray in
+            dataArray.forEach { data in
+                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
+            }
+        }
+        .store(in: &cancellables)
 }
