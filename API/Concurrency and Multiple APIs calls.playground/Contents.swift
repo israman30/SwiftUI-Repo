@@ -141,6 +141,7 @@ func fetchDataUsingAsyncAwait() async throws {
     
     try await withThrowingTaskGroup(of: String?.self) { group in
         var results: [String] = []
+        results.reserveCapacity(urls.count)
         
         for urlString in urls {
             group.addTask {
