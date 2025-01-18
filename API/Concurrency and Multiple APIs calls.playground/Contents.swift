@@ -129,3 +129,34 @@ func fetchDataUsingCombine() {
         }
         .store(in: &cancellables)
 }
+
+// MARK: - 4. Using Async/Await
+// The async/await pattern simplifies asynchronous code, introduced in Swift 5.5.
+func fetchDataUsingAsyncAwait() async throws {
+    let urls = [
+        "https://jsonplaceholder.typicode.com/todos/1",
+        "https://jsonplaceholder.typicode.com/todos/2",
+        "https://jsonplaceholder.typicode.com/todos/3"
+    ]
+    
+    try await withThrowingTaskGroup(of: String?.self) { group in
+        var results: [String] = []
+        
+        for urlString in urls {
+            group.addTask {
+                try? await fetchtData(with: urlString)
+            }
+        }
+        
+        for try await result in group {
+            if let result {
+                results.append(result)
+            }
+        }
+    }
+    
+}
+
+func fetchtData(with urlString: String) async throws -> String {
+    return urlString
+}
