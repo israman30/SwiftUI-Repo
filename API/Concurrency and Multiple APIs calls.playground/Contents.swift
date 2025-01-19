@@ -145,6 +145,8 @@ func fetchDataUsingAsyncAwait() async throws {
         
         for urlString in urls {
             group.addTask {
+                // Using optional try ensures that none of the endpoints interrupt the task execution.
+                // If any task returns nil, the remaining tasks will continue to execute without being affected.  
                 try? await fetchtData(with: urlString)
             }
         }
