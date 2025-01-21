@@ -70,8 +70,6 @@ func fetchUI() {
     }
 }
 
-
-
 struct ContentView: View {
     @State var uiComponent: UIComponent?
     
@@ -84,7 +82,6 @@ struct ContentView: View {
             ExampleView(uiView: UIComponent(type: "text", alignment: "15", spacing: 10, text: "UI Component", title: "Some Title", action: "", children: nil))
             
             CustomComponent()
-            
         }
     }
 }
@@ -167,7 +164,7 @@ struct CustomComponent: View {
         self.components = [
             UIComponent(type: "text", text: "Dynamic UI Update"),
             UIComponent(type: "button", title: "Refresh", action: "refreshAction"),
-            UIComponent(type: "vstack", text: "hello"),
+            UIComponent(type: "vstack", text: "hello", title: "vstack"),
         ]
         
     }
