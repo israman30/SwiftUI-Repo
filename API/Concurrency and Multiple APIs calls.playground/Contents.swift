@@ -163,3 +163,50 @@ func fetchDataUsingAsyncAwait() async throws {
 func fetchtData(with urlString: String) async throws -> String {
     return urlString
 }
+
+// MARK: - RunLoop.main vs. DispatchQueue.main
+/**
+ `Using DispatchQueue.main:`
+ Consider the common scenario of fetching data asynchronously and updating the UI with the result. Here’s a snippet using `DispatchQueue.main` as a scheduler:
+ */
+
+class ViewModel: Decodable { }
+
+URLSession.shared
+    .dataTaskPublisher(for: URL(string: "https://example.com/data")!)
+    .map(\.data)
+    .decode(type: ViewModel.self, decoder: JSONDecoder())
+    .receive(on: DispatchQueue.main)
+    .sink { completion in
+        /// `Handle completion`
+    } receiveValue: { result in
+        /// `Update UI with result   on the main thread`
+    }
+    .store(in: &cancellables)
+
+/**
+ `Using RunLoop.main:`
+ Now, let’s explore the usage of `RunLoop.main` as a scheduler:
+ */
+URLSession.shared
+    .dataTaskPublisher(for: URL(string: "https://example.com/data")!)
+    .map(\.data)
+    .decode(type: ViewModel.self, decoder: JSONDecoder())
+    .receive(on: RunLoop.main)
+    .sink { completion in
+        /// `Handle completion`
+    } receiveValue: { result in
+        /// `Update UI with 'result' on the main thread`
+    }
+    .store(in: &cancellables)
+
+/**
+ - At first glance, it seems that `RunLoop.main` serves the same purpose as `DispatchQueue.main`. Both ensure that UI updates occur on the main thread. However, there’s a crucial difference between them.
+
+ `The Crucial Difference:`
+ `The key difference between `RunLoop.main` and `DispatchQueue.main` lies in how they handle execution during user interactions. When using `RunLoop.main`, scheduled closures are subject to delays when user interactions, such as scrolling, are ongoing. In contrast, `DispatchQueue.main` executes closures immediately.`
+ 
+ `Consider a scenario where you want to update the UI while the user is scrolling, such as displaying images. If you use `RunLoop.main`, the UI updates may be delayed until the scrolling stops, potentially affecting the user experience. On the other hand, `DispatchQueue.main` ensures immediate execution of UI updates.
+
+ `In essence, `RunLoop.main` adheres to the main thread’s run loop and respects its modes, while `DispatchQueue.main` executes tasks without interruption.`
+ */
