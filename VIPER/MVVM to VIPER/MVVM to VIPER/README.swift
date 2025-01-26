@@ -112,3 +112,29 @@ struct UserRouter {
         return UserView1(presenter: presenter)
     }
 }
+
+/**
+ `VIPER` Advantage: `VIPER` divides these responsibilities:
+
+ - `Interactor` handles data fetching and processing.
+ - `Presenter` formats the data for the View.
+ - `Router` navigates between modules, maintaining clean separation.
+ */
+
+// Unit Test Example
+/**
+```
+func testPresenterFormatting() {
+    let mockInteractor = MockUserInteractor()
+    let presenter = UserPresenter(interactor: mockInteractor)
+    
+    XCTAssertEqual(presenter.getUserName(), "Jane Doe")
+}
+
+class MockUserInteractor: UserInteractorProtocol {
+    func fetchUser() -> User {
+        return User(name: "Jane Doe", age: 30)
+    }
+}
+ ```
+*/
