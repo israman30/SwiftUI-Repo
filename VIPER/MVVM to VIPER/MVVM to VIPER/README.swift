@@ -138,3 +138,13 @@ class MockUserInteractor: UserInteractorProtocol {
 }
  ```
 */
+/** Navigation Code Example in `VIPER`:
+ ```
+class MainRouter {
+    static func navigateToDetailScreen(from view: UIViewController) {
+        let detailView = DetailRouter.createModule()
+        view.navigationController?.pushViewController(detailView, animated: true)
+    }
+}
+ ```
+*/
