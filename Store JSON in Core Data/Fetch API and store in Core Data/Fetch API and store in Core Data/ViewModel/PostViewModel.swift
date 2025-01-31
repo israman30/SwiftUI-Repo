@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import CoreData
+@preconcurrency import CoreData
 
 enum Endpoint: String {
     case posts = "https://jsonplaceholder.typicode.com/posts"
