@@ -19,17 +19,21 @@ struct ContentView: View {
         }
         .padding()
         .onAppear {
-            firabaseAnalyticsManager.trackEvent(
-                .init(
-                    name: "App Launch",
-                    properties: [
-                        "userId": "12345",
-                        "Launch Count": 1,
-                        "timestamp" : Date()
-                    ]
-                )
-            )
+            trackEvent()
         }
+    }
+    
+    private func trackEvent() {
+        firabaseAnalyticsManager.trackEvent(
+            .init(
+                name: "App Launch",
+                properties: [
+                    "userId": "12345",
+                    "Launch Count": 1,
+                    "timestamp" : Date()
+                ]
+            )
+        )
     }
 }
 

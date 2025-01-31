@@ -12,17 +12,21 @@ struct DetailView: View {
     var body: some View {
         Text("Hello, World!")
             .onAppear {
-                mixpanelAnaylitcsManager.trackEvent(
-                    .init(
-                        name: "App Launch",
-                        properties: [
-                            "userId": "342342",
-                            "Launch Count": 1,
-                            "timestamp" : Date()
-                        ]
-                    )
-                )
+                trackEvent()
             }
+    }
+    
+    private func trackEvent() {
+        mixpanelAnaylitcsManager.trackEvent(
+            .init(
+                name: "App Launch",
+                properties: [
+                    "userId": "342342",
+                    "Launch Count": 1,
+                    "timestamp" : Date()
+                ]
+            )
+        )
     }
 }
 

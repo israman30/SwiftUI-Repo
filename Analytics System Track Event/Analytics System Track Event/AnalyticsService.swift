@@ -8,16 +8,19 @@
 import Foundation
 import Observation
 
+/// `Model`
 public struct Event {
     let name: String
     let properties: [String: Any]
 }
 
+/// `protocol`
 public protocol AnalyticsService: Sendable {
     func track(_ event: Event)
     func unset(_ event: Event)
 }
 
+/// `Analytics Managers`
 @Observable
 class FirebaseAnalyticsManager {
     
@@ -54,6 +57,7 @@ class MixpanelAnalyticsManager {
     }
 }
 
+/// `Analytics Services`
 struct FirebaseAanalyticsService: AnalyticsService {
     
     init () {
