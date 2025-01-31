@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Observation
 
 public struct Event {
     let name: String
@@ -17,17 +18,48 @@ public protocol AnalyticsService: Sendable {
     func unset(_ event: Event)
 }
 
-class AnalyticsManager {
-    func trackEvent(_ event: Event) {
-        
+@Observable
+class FirebaseAnalyticsManager {
+    
+    private var firebaseServices: FirebaseAanalyticsService
+    
+    init(firebaseServices: FirebaseAanalyticsService) {
+        self.firebaseServices = firebaseServices
     }
     
-    func trackEvents(_ events: [Event]) {
-        
+    func trackEvent(_ event: Event) {
+        firebaseServices.track(event)
+    }
+    
+    func unsetEvent(_ event: Event) {
+        firebaseServices.unset(event)
     }
 }
 
-struct FirebaseAanaltics: AnalyticsService {
+@Observable
+class MixpanelAnalyticsManager {
+    
+    private var mixpanelServices: MixpanelAanalyticsSerrvice
+    
+    init(mixpanelServices: MixpanelAanalyticsSerrvice) {
+        self.mixpanelServices = mixpanelServices
+    }
+    
+    func trackEvent(_ event: Event) {
+        mixpanelServices.track(event)
+    }
+    
+    func unsetEvent(_ event: Event) {
+        mixpanelServices.unset(event)
+    }
+}
+
+struct FirebaseAanalyticsService: AnalyticsService {
+    
+    init () {
+        // initialize service
+    }
+    
     func track(_ event: Event) {
         // track event
     }
@@ -37,7 +69,12 @@ struct FirebaseAanaltics: AnalyticsService {
     }
 }
 
-struct MixpanelAanaltics: AnalyticsService {
+struct MixpanelAanalyticsSerrvice: AnalyticsService {
+    
+    init () {
+        // initialize service
+    }
+    
     func track(_ event: Event) {
         // track event
     }

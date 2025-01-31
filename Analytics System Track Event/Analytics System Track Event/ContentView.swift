@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(FirebaseAnalyticsManager.self) var firabaseAnalyticsManager
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -17,11 +19,21 @@ struct ContentView: View {
         }
         .padding()
         .onAppear {
-            
+            firabaseAnalyticsManager.trackEvent(
+                .init(
+                    name: "App Launch",
+                    properties: [
+                        "userId": "12345",
+                        "Launch Count": 1,
+                        "timestamp" : Date()
+                    ]
+                )
+            )
         }
     }
 }
 
 #Preview {
     ContentView()
+        .environment(FirebaseAnalyticsManager(firebaseServices: FirebaseAanalyticsService()))
 }

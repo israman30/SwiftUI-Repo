@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct Analytics_System_Track_EventApp: App {
+    
+    @State private var firebaseAnalyticsManagaer = FirebaseAnalyticsManager(firebaseServices: FirebaseAanalyticsService())
+    @State private var mixpanelAnalyticsManagaer = MixpanelAnalyticsManager(mixpanelServices: MixpanelAanalyticsSerrvice())
+                                                                            
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(firebaseAnalyticsManagaer)
+                .environment(mixpanelAnalyticsManagaer)
         }
     }
 }
