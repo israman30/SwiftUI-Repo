@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+import SwiftUI
 
 /// `Model`
 public struct Event {
@@ -55,6 +56,11 @@ class MixpanelAnalyticsManager {
     func unsetEvent(_ event: Event) {
         mixpanelServices.unset(event)
     }
+}
+
+extension EnvironmentValues {
+    @Entry var firebaseAnalyticsManager = FirebaseAnalyticsManager(firebaseServices: FirebaseAanalyticsService())
+    @Entry var mixpanelAnalyticsManager = MixpanelAnalyticsManager(mixpanelServices: MixpanelAanalyticsSerrvice())
 }
 
 /// `Analytics Services`

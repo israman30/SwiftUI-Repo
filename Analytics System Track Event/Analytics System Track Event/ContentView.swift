@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(FirebaseAnalyticsManager.self) var firabaseAnalyticsManager
+    @Environment(\.firebaseAnalyticsManager) var firebaseAM /// Using `macros`
     
     var body: some View {
         VStack {
