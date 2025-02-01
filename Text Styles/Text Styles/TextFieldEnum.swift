@@ -44,12 +44,26 @@ extension InputState {
     }
 }
 
+struct InputConfiguration {
+    let placeholder: String
+}
+
 struct TextFieldEnum: View {
+    private let config: InputConfiguration
+    @Binding private(set) var text: String
+    @FocusState private var isFocused: Bool
+    @State private var inputState: InputState = .idle
+    
+    init(config: InputConfiguration, text: Binding<String>) {
+        self.config = config
+        self._text = text
+    }
+    
     var body: some View {
         Text("Hello, World!")
     }
 }
 
 #Preview {
-    TextFieldEnum()
+    TextFieldEnum(config: InputConfiguration(placeholder: "placeholder"), text: .constant("text"))
 }
