@@ -9,13 +9,38 @@ import SwiftUI
 
 enum InputState: Equatable {
     case idle
-    case focused
-    case inactive
+    case focused(InputValidity)
+    case inactive(InputValidity)
     
-    enum InputValidity {
+    enum InputValidity: Equatable {
         case empty
         case valid
-        case invalid
+        case invalid(String)
+    }
+}
+
+extension InputState {
+    var tintColor: Color {
+        switch self {
+        case .idle:
+            return .secondary
+        case let .focused(validity):
+            switch validity {
+            case .empty, .valid:
+                return .blue
+            case .invalid:
+                return .red
+            }
+        case let .inactive(validity):
+            switch validity {
+            case .empty:
+                return .secondary
+            case .valid:
+                return .blue
+            case .invalid:
+                return .red
+            }
+        }
     }
 }
 
