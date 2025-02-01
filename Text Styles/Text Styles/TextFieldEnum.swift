@@ -60,10 +60,63 @@ struct TextFieldEnum: View {
     }
     
     var body: some View {
-        Text("Hello, World!")
+        ZStack(alignment: .leading) {
+            mainTextField
+            floatingLabel
+        }
+        .frame(height: 55)
+        .animation(.spring(duration: 0.2), value: inputState)
+        .onChange(of: text) { _, _ in updateState() }
+        .onChange(of: isFocused) { _, _ in updateState() }
+    }
+    
+    private var mainTextField: some View {
+        TextField("", text: $text)
+            .focused($isFocused)
+            .padding(.horizontal)
+            .frame(height: 55)
+            .background(
+                Capsule()
+                    .stroke(inputState.tintColor,
+                            lineWidth: isFocused ? 2 : 1)
+            )
+    }
+    
+    private var floatingLabel: some View {
+        Text(config.placeholder)
+            .padding(.horizontal, 5)
+            .background(.background)
+            .foregroundStyle(inputState.tintColor)
+            .padding(.leading)
+            .offset(y: labelOffset)
+            .scaleEffect(labelScale)
+            .onTapGesture {
+                isFocused = true
+            }
+    }
+    
+    func updateState() {
+        if isFocused {
+            inputState = .focused(.empty)
+        } else {
+            inputState = text.isEmpty ? .idle : .inactive(.valid)
+        }
+    }
+    var labelOffset: CGFloat {
+        switch inputState {
+        case .idle where text.isEmpty: return 0
+        default: return -32
+        }
+    }
+    
+    var labelScale: CGFloat {
+        switch inputState {
+        case .idle where text.isEmpty: return 1
+        default: return 0.85
+        }
     }
 }
 
 #Preview {
-    TextFieldEnum(config: InputConfiguration(placeholder: "placeholder"), text: .constant("text"))
+    TextFieldEnum(config: InputConfiguration(placeholder: "placeholder"), text: .constant(""))
 }
