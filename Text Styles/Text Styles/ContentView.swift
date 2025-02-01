@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var name = ""
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Spacer()
+            TextFieldEnum(config: .init(placeholder: "Enter your name"), text: $name)
             Text("Some Text styles")
                 .font(.largeTitle)
             Spacer()
