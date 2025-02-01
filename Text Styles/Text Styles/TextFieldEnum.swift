@@ -85,6 +85,9 @@ struct TextFieldEnum: View {
                         inputState.tintColor,
                         lineWidth: isFocused ? 2 : 1
                     )
+                    .onTapGesture {
+                        self.isFocused = false
+                    }
             )
     }
     
