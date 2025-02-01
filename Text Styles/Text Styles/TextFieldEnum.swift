@@ -66,8 +66,12 @@ struct TextFieldEnum: View {
         }
         .frame(height: 55)
         .animation(.spring(duration: 0.2), value: inputState)
-        .onChange(of: text) { _, _ in updateState() }
-        .onChange(of: isFocused) { _, _ in updateState() }
+        .onChange(of: text) { _, _ in
+            updateState()
+        }
+        .onChange(of: isFocused) { _, _ in
+            updateState()
+        }
     }
     
     private var mainTextField: some View {
@@ -77,8 +81,10 @@ struct TextFieldEnum: View {
             .frame(height: 55)
             .background(
                 Capsule()
-                    .stroke(inputState.tintColor,
-                            lineWidth: isFocused ? 2 : 1)
+                    .stroke(
+                        inputState.tintColor,
+                        lineWidth: isFocused ? 2 : 1
+                    )
             )
     }
     
@@ -95,24 +101,29 @@ struct TextFieldEnum: View {
             }
     }
     
-    func updateState() {
+    private func updateState() {
         if isFocused {
             inputState = .focused(.empty)
         } else {
             inputState = text.isEmpty ? .idle : .inactive(.valid)
         }
     }
-    var labelOffset: CGFloat {
+    
+    private var labelOffset: CGFloat {
         switch inputState {
-        case .idle where text.isEmpty: return 0
-        default: return -32
+        case .idle where text.isEmpty:
+            return 0
+        default:
+            return -32
         }
     }
     
-    var labelScale: CGFloat {
+    private var labelScale: CGFloat {
         switch inputState {
-        case .idle where text.isEmpty: return 1
-        default: return 0.85
+        case .idle where text.isEmpty:
+            return 1
+        default:
+            return 0.85
         }
     }
 }
