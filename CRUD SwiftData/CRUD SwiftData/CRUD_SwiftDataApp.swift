@@ -16,4 +16,9 @@ struct CRUD_SwiftDataApp: App {
         }
         .modelContainer(for: Book.self)
     }
+    
+    init() {
+        // Find the path where SQLite is located
+        print(URL.applicationSupportDirectory.path(percentEncoded: false))
+    }
 }
