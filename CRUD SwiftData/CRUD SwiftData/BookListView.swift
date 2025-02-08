@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct BookListView: View {
+    @Environment(\.modelContext) private var context
     @Query(sort: \Book.title) var books: [Book]
     @State private var isPresented: Bool = false
     
@@ -42,6 +43,12 @@ struct BookListView: View {
                                         }
                                     }
                                 }
+                            }
+                        }
+                        .onDelete { indexSet in
+                            indexSet.forEach { index in
+                                let book = books[index]
+                                context.delete(book)
                             }
                         }
                     }
