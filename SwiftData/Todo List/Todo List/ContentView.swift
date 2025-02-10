@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) var context
     @State private var showAddTodoView = false
     @Query private var items: [TodoItem]
     
@@ -42,6 +43,16 @@ struct ContentView: View {
                                 .bold()
                         }
                         .buttonStyle(.plain)
+                    }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            withAnimation {
+                                context.delete(item)
+                            }
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                                .symbolVariant(.fill)
+                        }
                     }
                 }
             }
