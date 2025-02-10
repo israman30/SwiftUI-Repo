@@ -34,7 +34,9 @@ struct ContentView: View {
                         }
                         Spacer()
                         Button {
-                            
+                            withAnimation {
+                                item.isCompleted.toggle()
+                            }
                         } label: {
                             Image(systemName: "checkmark")
                                 .symbolVariant(.fill)
