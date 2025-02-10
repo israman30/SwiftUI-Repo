@@ -6,16 +6,60 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @State private var showAddTodoView = false
+    @Query private var items: [TodoItem]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(items, id: \TodoItem.timestamp) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            if item.isImportant {
+                                Image(systemName: "exclamationmark.3")
+                                    .symbolVariant(.fill)
+                                    .foregroundStyle(.red)
+                                    .font(.largeTitle)
+                                    .bold()
+                            }
+                            Text(item.title)
+                                .font(.largeTitle)
+                                .bold()
+//                            Text("\(item.timstamp)")
+//                                .font(.callout)
+                        }
+                        Spacer()
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "checkmark")
+                                .symbolVariant(.fill)
+                                .foregroundStyle(item.isCompleted ? .green : .gray)
+                                .font(.largeTitle)
+                                .bold()
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+            .navigationTitle("Swift Data Todo")
+            .toolbar {
+                Button {
+                    showAddTodoView.toggle()
+                } label: {
+                    Label("Add", systemImage: "plus")
+                }
+            }
+            .sheet(isPresented: $showAddTodoView) {
+                NavigationStack {
+                    CreaterTodoView()
+                }
+                .presentationDetents([.medium])
+            }
         }
-        .padding()
     }
 }
 
