@@ -67,6 +67,12 @@ struct EditBookView: View {
                 }
             }
             Divider()
+            Label {
+                RatingsView(maxRating: 5, currentRating: $rating, width: 30)
+            } icon: {
+                Text("Rating")
+            }
+
         }
     }
 }
