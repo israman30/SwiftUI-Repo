@@ -11,6 +11,8 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) var context
     @State private var showAddTodoView = false
+    @State private var editTodoViewIsPresented: Bool? = nil
+    @State private var todoItem: TodoItem?
     @Query private var items: [TodoItem]
     
     var body: some View {
@@ -56,6 +58,16 @@ struct ContentView: View {
                                 .symbolVariant(.fill)
                         }
                     }
+                    .swipeActions {
+                        Button {
+                            withAnimation {
+                                todoItem = item
+                            }
+                        } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        .tint(.orange)
+                    }
                 }
             }
             .navigationTitle("Swift Data Todo")
@@ -72,6 +84,12 @@ struct ContentView: View {
                 }
                 .presentationDetents([.medium])
             }
+            .sheet(item: $todoItem) {
+                todoItem = nil
+            } content: { item in
+                UpdateTodo(item: item)
+            }
+
         }
     }
 }
