@@ -13,7 +13,10 @@ struct ContentView: View {
     @State private var showAddTodoView = false
     @State private var editTodoViewIsPresented: Bool? = nil
     @State private var todoItem: TodoItem?
-    @Query private var items: [TodoItem]
+    @Query(
+        filter: #Predicate<TodoItem> { $0.isCompleted },
+        sort: \.timestamp
+    ) private var items: [TodoItem]
     
     var body: some View {
         NavigationStack {
@@ -40,7 +43,7 @@ struct ContentView: View {
                                 item.isCompleted.toggle()
                             }
                         } label: {
-                            Image(systemName: "checkmark")
+                            Image(systemName: "checkmark.circle.fill")
                                 .symbolVariant(.fill)
                                 .foregroundStyle(item.isCompleted ? .green : .gray)
                                 .font(.largeTitle)
