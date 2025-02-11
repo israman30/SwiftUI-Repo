@@ -30,6 +30,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ChartView()
+            AreaChartView()
         }
     }
 }
@@ -43,6 +44,21 @@ struct ChartView: View {
         Chart {
             ForEach(someData) { data in
                 BarMark(
+                    x: .value("Month", data.month),
+                    y: .value("Sales", data.sales)
+                )
+            }
+        }
+        .frame(height: 300)
+        .padding()
+    }
+}
+
+struct AreaChartView: View {
+    var body: some View {
+        Chart {
+            ForEach(someData) { data in
+                AreaMark(
                     x: .value("Month", data.month),
                     y: .value("Sales", data.sales)
                 )
