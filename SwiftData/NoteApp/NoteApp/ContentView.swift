@@ -6,16 +6,33 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var context
+    @Query private var notes: [NoteItem]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(notes) { note in
+                    Text(note.title)
+                }
+            }
+            .navigationTitle("Notes")
+            .toolbar {
+                Button {
+                    addNote()
+                } label: {
+                    Label("Add Note", systemImage: "plus")
+                }
+            }
         }
-        .padding()
+    }
+    
+    func addNote() {
+        let newNote = NoteItem(title: "John Doe", content: "some content", isCompleted: true)
+        context.insert(newNote)
     }
 }
 

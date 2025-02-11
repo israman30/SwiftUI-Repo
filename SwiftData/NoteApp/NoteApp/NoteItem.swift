@@ -9,13 +9,12 @@ import Foundation
 import SwiftData
 
 @Model
-class Note {
-    var id: UUID?
+class NoteItem: Identifiable {
     var title: String
     var content: String
     var isCompleted: Bool
     
-    init(title: String = "", content: String = "", isCompleted: Bool = false) {
+    init(title: String, content: String, isCompleted: Bool) {
         self.title = title
         self.content = content
         self.isCompleted = isCompleted
