@@ -65,3 +65,42 @@ Vstack(alignment: .leading) {
 }
 .accessibilityLabel("This will be read to the user not it child element")
 ```
+### Behaviour -
+This determines how children of the UI element should be treated by accessbility tools, providing finer control over the acceesibility tree.
+
+There are three accessibility behaviour types: `contain`, `combin` and `ignore`(default).
+
+`contain` behaviour treats each child of a specified container as a separate accessibility element.
+
+Use `.contain` when you want users to interact with or receive information about each component individualy. It's particularly useful in
+complex UIs where different elements have distinct function or information, such as a form with multiple input fields or a layout with various
+interactive components.
+
+```swift
+VStack {
+    Text("Settings")
+        .accessibilityAddTraits(.isHeader)
+    Slider(value: $sliderValue, in: 0...100)
+        .accessibilityLabel("this will be read to the user")
+        .accessibilityValue("\(Int(sliderValue))")
+    Toggle("Enable Feature", isOn: $isToggleOn)
+}
+.accessibilityElement(children: .contain)
+.accessbilityLabel("This will be read to the user too")
+```
+
+Use `.combine` behaviour merges all child elements of the container into a single accessible element.
+
+Use `.combine` when the elements of a container are closely related and should be considered as a single interactive entity.
+This is often used in simpler or smaller UI components where grouping elements can make understanding and interactive with the
+content easier, such as single button with both icon and text that shuold be read as one element.
+
+```swift
+VStack {
+    Text("Main content")
+    Divider()
+    Text("Additional information")
+}
+.accessibilityElement(children: .combine)
+.accessibilityLabel("This will be read to the user for all child elements")
+```
