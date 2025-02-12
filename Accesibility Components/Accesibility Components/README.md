@@ -24,7 +24,7 @@ Button("Submit") {
 }
 .accessibilityLabel("Submit details")
 ```
-### Vaue -
+### Value -
 This parameter allows describing the value represented by a view, but only if that's different than the view's label. As an example
 for a slider that you would label as `Volume`, you cna provide the current volume setting as a value, like `60%`.
 
