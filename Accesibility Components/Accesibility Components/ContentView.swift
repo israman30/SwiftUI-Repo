@@ -27,6 +27,18 @@ struct ContentView: View {
                     ]
                 )
             
+            Button {
+                
+            } label: {
+                Text("Tap")
+            }
+            .accessibility(
+                options: [
+                    .traits([.isButton])
+                ]
+            )
+            .buttonStyle(.borderedProminent)
+            
             Slider(value: $volumeValue, in: 0...100)
                 .accessibility(
                     options: [
