@@ -9,17 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showAlert = false
+    @State private var isPresented = false
+    @State private var alert: AlertImplementation? = nil
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Prsente First Method!")
                 .padding()
                 .background(Color.blue)
                 .foregroundStyle(.white)
                 .onTapGesture {
                     self.showAlert = true
+                }
+            Text("Prsente Second Method!")
+                .padding()
+                .background(Color.green)
+                .foregroundStyle(.white)
+                .onTapGesture {
+                    self.isPresented = true
                 }
         }
         .padding()
@@ -28,6 +37,8 @@ struct ContentView: View {
         } confirmAction: {
             // Action
         }
+        .alertPresent($alert,title: "Some message",  isPresented: $isPresented)
+        
 
     }
 }
@@ -76,5 +87,46 @@ extension View {
             cancelAction: cacelAction,
             confirmAction: confirmAction
         ))
+    }
+}
+
+// MARK: - Second method of reusable alert
+protocol AlertProtocol {
+    var button: AnyView { get }
+}
+
+extension View {
+    func alertPresent<T: AlertProtocol>(_ alert: Binding<T?>, title: String = "", message: String = "", isPresented: Binding<Bool>) -> some View {
+        self.alert("\(title)\n", isPresented: isPresented, actions: {
+            alert.wrappedValue?.button
+        }, message: {
+            Text(message)
+        })
+    }
+}
+
+enum AlertImplementation: AlertProtocol {
+    case actions(cancel: () -> Void)
+    case state(state: () -> Void)
+    
+    var button: AnyView {
+        AnyView(setButton())
+    }
+    
+    @ViewBuilder
+    func setButton() -> some View {
+        switch self {
+        case .actions(let cancel):
+            Button("Message 1", role: .cancel, action: {
+                cancel()
+            })
+            Button("Cancel", role: .destructive, action: {
+                cancel()
+            })
+        case .state(let state):
+            Button("Message 2", action: {
+                state()
+            })
+        }
     }
 }
