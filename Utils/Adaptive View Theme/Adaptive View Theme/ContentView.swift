@@ -12,8 +12,10 @@ struct ContentView: View {
         VStack {
             AdaptiveView {
                 Text("Hello, world!")
+                    .font(.largeTitle)
             } dark: {
                 Text("Hello, world!")
+                    .font(.largeTitle)
             }
 
             Image(systemName: "globe")
