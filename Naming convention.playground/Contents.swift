@@ -74,3 +74,14 @@ class NSBatchDeleteRequest {}
 /// `Core Animation`
 class CAMediaTimingFunctionName {}
 protocol CALayerDelegate {}
+
+/**
+ 1. `Self-documentation:` The name itself provides a clear indication of what the type does or represents.
+ 2.` Improved code readability:` Even without looking at the implementation, developers can often understand the purpose of a type from its name.
+ 3. `Reduced ambiguity:` Longer, more specific names help to distinguish between similar but distinct concepts.
+ */
+// When applying this principle in your own code, consider the similar pattern:
+struct EnvironmentFriendlyVehicleChargingStation {}
+protocol UserAuthenticationServiceDelegate {}
+class NetworkConnectivityMonitor {}
+enum PaymentProcessingStatus {}
