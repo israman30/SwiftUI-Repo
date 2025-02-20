@@ -174,3 +174,35 @@ let sameCar = Car(type: .sedan)
 /**
  This convention is particularly common in SwiftUI, where it’s used extensively for styling and configuration. It’s not limited to enums; it’s also used with static properties of structs or classes. The key is that the type can be inferred from the context, allowing for more concise code.
  **/
+
+/// `Dictionary with Enum as the Key`
+enum FontWeight {
+    case regular, bold, light
+}
+
+let fontWeights: [FontWeight: CGFloat] = [
+    .regular: 400,
+    .bold: 700,
+    .light: 300
+]
+
+/// `methods`
+func application(
+  _ application: UIApplication,
+  didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+) -> Bool {}
+
+/// `usage`
+let launched = application(app, didFinishLaunchingWithOptions: [.url: "https://uwaisalqadri.com"])
+
+
+enum RoomType {
+    case bedroom, livingRoom, kitchen, bathroom
+}
+
+let roomSizes: [RoomType: Double] = [
+    .bedroom: 150.0,
+    .livingRoom: 200.0,
+    .kitchen: 100.0,
+    .bathroom: 50.0
+]
