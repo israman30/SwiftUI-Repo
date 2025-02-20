@@ -42,3 +42,35 @@ class Door {
         isOpen = true
     }
 }
+
+/**
+ `Don’t Care About Type Name Length, Clear the Intention`
+  Many debate on this, but Apple clearly does this:
+ */
+/// `SwiftUI`
+class UICollectionViewCompositionalLayoutConfiguration {}
+protocol UIViewControllerTransitioningDelegate {}
+class UIDocumentBrowserViewController {}
+class UIPresentationController {}
+class UIAccessibilityCustomAction {}
+
+/// `UIKit`
+struct NavigationViewStyleConfiguration {}
+protocol PreferenceKey {}
+struct EnvironmentValues {}
+struct GeometryProxy {}
+
+/// `Foundation`
+class JSONDecoder {}
+struct DateComponentsFormatter {}
+protocol URLSessionTaskDelegate {}
+class FileManager {}
+
+/// `CoreData`
+class NSPersistentStoreCoordinator {}
+class NSFetchedResultsControllerDelegate {}
+class NSBatchDeleteRequest {}
+
+/// `Core Animation`
+class CAMediaTimingFunctionName {}
+protocol CALayerDelegate {}
