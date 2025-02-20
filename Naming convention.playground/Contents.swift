@@ -150,3 +150,27 @@ Text("text")
 // Apple prefers this:
 Text("text")
     .foregroundColor(.red)
+
+/**
+ Apple prefers to use static properties or enum cases to represent an object or customization.
+ This approach makes the code more concise and readable. It also allows for better type inference and can make APIs more flexible.
+ */
+/// `emun`
+enum CarType {
+    case sedan
+    case suv
+    case truck
+}
+
+struct Car {
+    let type: CarType
+}
+
+// Instead of this:
+let myCar = Car(type: CarType.sedan)
+
+// Apple's style would prefer this:
+let sameCar = Car(type: .sedan)
+/**
+ This convention is particularly common in SwiftUI, where it’s used extensively for styling and configuration. It’s not limited to enums; it’s also used with static properties of structs or classes. The key is that the type can be inferred from the context, allowing for more concise code.
+ **/
