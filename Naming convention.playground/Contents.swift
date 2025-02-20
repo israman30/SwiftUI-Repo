@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 /**
  In computer programming, a naming convention is a set of rules for choosing the character sequence to be used for `identifiers` which denote `variables`, `types`, `functions`, and other entities in source code and `documentation`.
@@ -85,3 +86,67 @@ struct EnvironmentFriendlyVehicleChargingStation {}
 protocol UserAuthenticationServiceDelegate {}
 class NetworkConnectivityMonitor {}
 enum PaymentProcessingStatus {}
+
+/**
+ `Past Tense for Method, Present Tense or Verb for Closure`
+  The Apple usage of that convention with code sample:
+ */
+
+/// `Methods`
+func messaging(
+  _ messaging: Messaging,
+  didReceiveRegistrationToken fcmToken: String?
+) {}
+
+func viewDidLoad() {}
+
+func application(
+  _ application: UIApplication,
+  didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+) -> Bool {}
+
+
+/// `Closures`
+let onValueChanged: ((Int) -> Void)? = { newValue in
+    // Handle value change
+}
+
+let onReceive: (() -> Void)? = {
+    // Handle download completion
+}
+
+let onComplete: (() -> Void)? = {
+    // Handle tap event
+}
+
+/**
+ `Apple uses past tense for method name or arguments from delegates, and present tense or a verb for closure properties, both used to describe ongoing or potential actions.`
+ */
+
+// MARK: - Object
+class CoffeeMachine {
+    func brewButtonTapped() {/* code */ }
+    
+    var onCupFilled: (() -> Void)?
+}
+
+/**
+ `Avoid Directly Specifying Object, Use Enum or Static to Declare Type`
+  `Apple usage:`
+ */
+// Instead of this:
+Button("title") {}
+    .buttonStyle(PlainButtonStyle())
+
+// Apple prefers this:
+Button("title") {}
+    .buttonStyle(.plain)
+
+// Another example:
+// Instead of this:
+Text("text")
+    .foregroundColor(Color.red)
+
+// Apple prefers this:
+Text("text")
+    .foregroundColor(.red)
