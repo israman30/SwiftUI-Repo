@@ -19,6 +19,9 @@ struct ContentView: View {
                     ForEach(viewModel.animes) { anime in
                         AnimeCard(anime: anime)
                             .padding()
+                            .task {
+                                await viewModel.shouldLoadPagination(id: anime.id)
+                            }
                     }
                 }
             }
