@@ -8,17 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var viewModel: MyViewModel = .init()
+    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    
+                }
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
+}
+
+class MyViewModel: ObservableObject {
+    @Published var animes: [Anime] = []
 }
