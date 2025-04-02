@@ -29,6 +29,9 @@ struct ContentView: View {
             .task {
                 await viewModel.loadAnimes()
             }
+            .refreshable {
+                await viewModel.refresh()
+            }
         }
     }
 }
@@ -70,5 +73,13 @@ class MyViewModel: ObservableObject {
         if animes.last?.id == id && lastPageVisited >= page {
             await loadAnimes()
         }
+    }
+    
+    func refresh() async {
+        page = 1
+        lastPageVisited = -1
+        animes.removeAll()
+        
+        await loadAnimes()
     }
 }
