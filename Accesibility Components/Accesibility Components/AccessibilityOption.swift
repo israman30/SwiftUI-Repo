@@ -76,6 +76,7 @@ struct AccessibilityOptionModifier: ViewModifier {
             .modifierIf(value != nil) { $0.accessibilityValue(Text(value!)) }
             .modifierIf(hint != nil) { $0.accessibilityHint(Text(hint!)) }
             .modifierIf(accessibilityHidden) { $0.accessibilityHidden(true) }
+            .modifierIf(heading != nil) { $0.accessibilityHeading(heading!) }
     }
 }
 
