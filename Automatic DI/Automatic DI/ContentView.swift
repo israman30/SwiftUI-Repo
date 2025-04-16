@@ -23,10 +23,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
             Text("\(vm.count)")
                 .font(.largeTitle)
             
@@ -43,15 +39,15 @@ struct ContentView: View {
     ContentView()
 }
 
+/**
+ `3. Provide the dependencies.`
+ Now we have the dependencies in our hand, we have to provide the dependencies so that it can be injected later. To provide the dependencies, we can create a module, and provide all the dependencies that our app uses. In this case, I only create one App Module, but you can just adjust with your app needs, let’s say if there are a lot of dependencies, you can split it into multiple module.
+ */
 protocol Counter {
     func increment() -> Int
     func reset()
 }
 
-/**
- `3. Provide the dependencies.`
- Now we have the dependencies in our hand, we have to provide the dependencies so that it can be injected later. To provide the dependencies, we can create a module, and provide all the dependencies that our app uses. In this case, I only create one App Module, but you can just adjust with your app needs, let’s say if there are a lot of dependencies, you can split it into multiple module.
- */
 class SingleCounter: Counter {
     private var count: Int = 0
     
@@ -64,7 +60,6 @@ class SingleCounter: Counter {
         count = 0
     }
 }
-
 
 struct AppModule {
     @MainActor
