@@ -13,7 +13,7 @@ public enum AccessibilityOption {
     case value(_ value: String)
     case hint(_ hint: String)
     case accessibilityHidden
-    case behaviour(_ behaviour: AccessibilityChildBehavior)
+    case behaviour(children: AccessibilityChildBehavior)
 }
 
 // MARK: - Single use of Modifier

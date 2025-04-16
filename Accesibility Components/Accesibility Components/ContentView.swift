@@ -45,7 +45,7 @@ struct ContentView: View {
                         .labels("Volume"),
                         .value("\(Int(volumeValue)) %"),
                         .hint("Adjust the volume"),
-                        .behaviour(.combine)
+                        .behaviour(children: .combine)
                     ]
                 )
         }
@@ -80,7 +80,7 @@ struct AnotherView: View {
         }
         .accessibility(
             options: [
-                .behaviour(.contain),
+                .behaviour(children: .contain),
                 .labels("This will be read by VoiceOver")
             ]
         )
