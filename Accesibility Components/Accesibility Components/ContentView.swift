@@ -93,10 +93,11 @@ struct AnotherView: View {
 struct AccessibilityAnnouncement: ViewModifier {
     let notification: UIAccessibility.Notification
     var argument: Any?
+    var delay: CGFloat = 0.1
     func body(content: Content) -> some View {
         content
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                     UIAccessibility.post(notification: notification, argument: argument)
                 }
             }
@@ -104,7 +105,7 @@ struct AccessibilityAnnouncement: ViewModifier {
 }
 
 extension View {
-    public func accessibilityAnnouncement(_ notification: UIAccessibility.Notification, argument: Any? = nil) -> some View {
-        modifier(AccessibilityAnnouncement(notification: notification, argument: argument))
+    public func accessibilityAnnouncement(_ notification: UIAccessibility.Notification, argument: Any? = nil, delay: CGFloat = 0.1) -> some View {
+        modifier(AccessibilityAnnouncement(notification: notification, argument: argument, delay: delay))
     }
 }
