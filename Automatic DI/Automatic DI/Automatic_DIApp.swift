@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct Automatic_DIApp: App {
+    
+    init() {
+        AppModule.inject() // Provides all the dependencies
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
