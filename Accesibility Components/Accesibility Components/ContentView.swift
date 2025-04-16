@@ -44,7 +44,8 @@ struct ContentView: View {
                     options: [
                         .labels("Volume"),
                         .value("\(Int(volumeValue)) %"),
-                        .hint("Adjust the volume")
+                        .hint("Adjust the volume"),
+                        .behaviour(.combine)
                     ]
                 )
         }
