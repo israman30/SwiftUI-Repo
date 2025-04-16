@@ -13,9 +13,17 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
+            Form {
+                Section {
+                    Text("Some components")
+                } header: {
+                    Text("This is a header")
+                        .accessibility(options: [
+                            .traits([.isHeader]),
+                            .heading(level: .h1)
+                        ])
+                }
+            }
             
             Text("Hello, world!")
                 .onTapGesture {

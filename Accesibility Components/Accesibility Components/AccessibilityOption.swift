@@ -14,6 +14,7 @@ public enum AccessibilityOption {
     case hint(_ hint: String)
     case accessibilityHidden
     case behaviour(children: AccessibilityChildBehavior)
+    case heading(level: AccessibilityHeadingLevel)
 }
 
 // MARK: - Single use of Modifier
@@ -24,6 +25,7 @@ struct AccessibilityOptionModifier: ViewModifier {
     private let traits: AccessibilityTraits?
     private let accessibilityHidden: Bool
     private let behaviour: AccessibilityChildBehavior?
+    private let heading: AccessibilityHeadingLevel?
     
     public init(options: [AccessibilityOption]) {
         var label: String? = nil
@@ -33,6 +35,7 @@ struct AccessibilityOptionModifier: ViewModifier {
         var traitSet = false
         var accessibilityHidden: Bool = false
         var behaviour: AccessibilityChildBehavior? = nil
+        var heading: AccessibilityHeadingLevel? = nil
         
         for option in options {
             switch option {
@@ -44,12 +47,14 @@ struct AccessibilityOptionModifier: ViewModifier {
                 hint = hintValue
             case .traits(let traitsValue):
                 traitSet = true
-                let traitsToAdd = traitsValue.reduce(AccessibilityTraits()) {$0.union($1)}
+                let traitsToAdd = traitsValue.reduce(AccessibilityTraits()) { $0.union($1) }
                 combinedTraits.formUnion(traitsToAdd)
             case .accessibilityHidden:
                 accessibilityHidden = true
             case .behaviour(let behaviourValue):
                 behaviour = behaviourValue
+            case .heading(let headingLevel):
+                heading = headingLevel
             }
         }
         
@@ -59,6 +64,7 @@ struct AccessibilityOptionModifier: ViewModifier {
         self.traits = traitSet ? combinedTraits : nil
         self.accessibilityHidden = accessibilityHidden
         self.behaviour = behaviour
+        self.heading = heading
         
     }
     
