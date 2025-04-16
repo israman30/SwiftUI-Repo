@@ -83,7 +83,27 @@ struct AnotherView: View {
                 .labels("This will be read by VoiceOver")
             ]
         )
+        .accessibilityAnnouncement(.layoutChanged)
         
     }
         
+}
+
+struct AccessibilityAnnouncement: ViewModifier {
+    let notification: UIAccessibility.Notification
+    var argument: Any?
+    func body(content: Content) -> some View {
+        content
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    UIAccessibility.post(notification: notification, argument: argument)
+                }
+            }
+    }
+}
+
+extension View {
+    public func accessibilityAnnouncement(_ notification: UIAccessibility.Notification, argument: Any? = nil) -> some View {
+        modifier(AccessibilityAnnouncement(notification: notification, argument: argument))
+    }
 }
