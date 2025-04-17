@@ -5,6 +5,11 @@
 //  Created by Israel Manzo on 4/17/25.
 //
 
+/**
+`Architecture`
+Server -> JSON -> UI Models -> Components -> View
+ */
+
 import SwiftUI
 
 struct ContentView: View {
