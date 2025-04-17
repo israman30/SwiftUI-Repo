@@ -11,3 +11,11 @@ protocol UIComponent {
     var uniqueID: String { get }
     func render() -> AnyView
 }
+
+struct FeatureImage: UIComponent {
+    var uniqueID: String = "feature-image"
+    
+    func render() -> AnyView {
+        AnyView(Image("feature-image"))
+    }
+}
