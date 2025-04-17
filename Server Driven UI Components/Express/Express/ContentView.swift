@@ -13,14 +13,21 @@ Server -> JSON -> UI Models -> Components -> View
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var vm = UIListViewModel(networkManager: NetworkManager())
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            ScrollView {
+                ForEach(vm.compoennts, id: \.uniqueID) { component in
+                    component.render()
+                }
+                .navigationTitle("UI Component")
+            }
+            .task {
+                await vm.fetchUIList()
+            }
         }
-        .padding()
     }
 }
 

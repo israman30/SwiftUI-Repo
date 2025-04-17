@@ -12,7 +12,7 @@ enum ComponentType: String, Decodable {
 }
 
 struct ComponentModel: Decodable {
-    let type: String
+    let type: ComponentType
     let data: [String:String]
 }
 
@@ -22,15 +22,17 @@ struct Template: Decodable {
 }
 
 extension Template {
-    func buildComponents() -> [UIComponent] {
-        return components.compactMap { component in
+    func buildComponents() throws -> [UIComponent] {
+        var components: [UIComponent] = []
+        
+        for component in self.components {
             switch component.type {
-            case ComponentType.featuredImage.rawValue:
-                return try? FeaturedImageComponent(data: component.data)
-            default:
-                return nil
+            case .featuredImage:
+                guard let uiModel: FeatureImageUIModel = component.data.decode() else { continue }
+                components.append(FeatureImage(uiModel: uiModel))
             }
         }
+        return components
     }
 }
 

@@ -9,7 +9,7 @@ import Foundation
 
 struct Endpoint {
     static let baseURL = "https://localhost:3000/"
-    static let uiList = "ui-list"
+    static let uiList = "/ui-list"
 }
 
 class NetworkManager {
@@ -24,8 +24,10 @@ class NetworkManager {
     }
 }
 
+@MainActor
 class UIListViewModel: ObservableObject {
     private let networkManager: NetworkManager
+    @Published var compoennts: [UIComponent] = []
     
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
@@ -34,6 +36,7 @@ class UIListViewModel: ObservableObject {
     func fetchUIList() async {
         do {
             let template = try await networkManager.fetchData(urlString: Endpoint.baseURL + Endpoint.uiList)
+            compoennts = try template.buildComponents()
         } catch {
             print("Error fetching data: \(error)")
         }
