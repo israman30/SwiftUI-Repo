@@ -23,3 +23,19 @@ class NetworkManager {
         return try JSONDecoder().decode(Template.self, from: data)
     }
 }
+
+class UIListViewModel: ObservableObject {
+    private let networkManager: NetworkManager
+    
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
+    
+    func fetchUIList() async {
+        do {
+            let template = try await networkManager.fetchData(urlString: Endpoint.baseURL + Endpoint.uiList)
+        } catch {
+            print("Error fetching data: \(error)")
+        }
+    }
+}

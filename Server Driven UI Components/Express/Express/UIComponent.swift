@@ -13,9 +13,31 @@ protocol UIComponent {
 }
 
 struct FeatureImage: UIComponent {
-    var uniqueID: String = "feature-image"
+    
+    let uiModel: FeatureImageUIModel
+    
+    var uniqueID: String  {
+        ComponentType.featuredImage.rawValue
+    }
     
     func render() -> AnyView {
-        AnyView(Image("feature-image"))
+        AsyncImage(url: uiModel.url) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        } placeholder: {
+            ProgressView()
+        }
+        .toAnyView()
+    }
+}
+
+struct FeatureImageUIModel: Decodable {
+    let url: URL
+}
+
+extension View {
+    func toAnyView() -> AnyView {
+        AnyView(self)
     }
 }
