@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+enum Router {
+    case home
+    case login
+    
+    @ViewBuilder
+    var destination: some View {
+        switch self {
+        case .home:
+            Text("Home")
+        case .login:
+            Text("Login")
+        }
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
