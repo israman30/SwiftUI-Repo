@@ -22,6 +22,15 @@ enum Router {
     }
 }
 
+struct NavigateAction {
+    typealias Action = (Router) -> Void
+    let action: Action
+    
+    func callAsFunction(_ router: Router) {
+        action(router)
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
