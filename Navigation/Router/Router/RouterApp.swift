@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct RouterApp: App {
+    @State var routers = [Router]()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $routers) {
+                ContentView()
+                    .navigationDestination(for: Router.self) { route in
+                        route.destination
+                    }
+            }.environment(\.navigate, NavigateAction(action: { route in
+                routers.append(route)
+            }))
         }
     }
 }

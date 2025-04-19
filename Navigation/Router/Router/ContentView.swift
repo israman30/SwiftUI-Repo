@@ -31,14 +31,21 @@ struct NavigateAction {
     }
 }
 
+extension EnvironmentValues {
+    @Entry var navigate = NavigateAction { _ in }
+}
+
 struct ContentView: View {
+    
+    @Environment(\.navigate) var navigate
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
             Button {
-                
+                Task {
+                    try! await Task.sleep(for: .seconds(2.0))
+                    navigate(.home)
+                }
             } label: {
                 Text("Login")
                     .padding(.horizontal)
@@ -51,5 +58,13 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    @Previewable @State var routers = [Router]()
+    NavigationStack(path: $routers) {
+        ContentView()
+            .navigationDestination(for: Router.self) { route in
+                route.destination
+            }
+    }.environment(\.navigate, NavigateAction(action: { route in
+        routers.append(route)
+    }))
 }
