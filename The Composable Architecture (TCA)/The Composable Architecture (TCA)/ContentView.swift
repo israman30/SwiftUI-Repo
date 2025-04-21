@@ -49,8 +49,6 @@ struct ContentView: View {
 }
 
 // MARK: - TCA
-/**
- ```swift
 struct Feature {
  let store: Store<State, Action, Environment>
 }
@@ -77,9 +75,6 @@ let reducer = Reducer<State, Action, Environment> { state, action, environment i
  return .effect(environment.someEffect())
  }
 }
- ```
- */
-
 /**
  `How TCA Works:
  `Initialization:
