@@ -121,3 +121,22 @@ struct SearchPageView: View {
         }
     }
 }
+
+/**
+ `Intent
+ It is an interaction on the View. The intent is propagated to the SearchPageViewModel which consequently alters it’s state. Example: Pressing the search icon after entering the query is an Intent to load the matching movies.
+ */
+struct SearchPageView: View {
+  // ...
+  // ...
+  var body: some View {
+    // ..
+    // ..
+      // Enter the keyword here and when commited fire an Intent to load the movies
+      TextField("search movies", text: $query, onCommit: {
+          // Fires an Intent to load the movies for the keyword
+          self.vm.loadMovies(query: self.query) /// `is an Intent
+      })
+  }
+
+}
