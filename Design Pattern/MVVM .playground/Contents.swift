@@ -13,11 +13,13 @@ import SwiftUI
  - `Model: `This is only your model, nothing much here. It’s the same model as in MVC. It is used by VM and updates whenever VM sends new updates
  */
 
+// MARK: - Model
 struct User: Codable {
     let name: String
     let email: String
 }
 
+// MARK: - Network Layer
 protocol NetworkLayerProtocol {
     func fetchUserData() -> User?
 }
@@ -28,6 +30,7 @@ class NetworkLayer: NetworkLayerProtocol {
     }
 }
 
+// MARK: - View Model
 class ViewModel: ObservableObject {
     var users = [User]()
     let netwokLayer: NetworkLayerProtocol
@@ -41,6 +44,8 @@ class ViewModel: ObservableObject {
     }
 }
 
+
+// MARK: - View
 struct RootView: View {
     /// Injecting User Object once
     @StateObject private var viewModel: ViewModel = .init(NetworkLayer())
