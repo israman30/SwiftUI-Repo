@@ -1,4 +1,4 @@
-import UIKit
+import SwiftUI
 
 /**
  `MVVM` `(Model-View-ViewModel)` is a software design pattern that separates an application into three interconnected parts: the `Model`,
@@ -12,3 +12,45 @@ import UIKit
  - `View Model`: It receives information from VC, handles all this information, and sends it back to VC.
  - `Model: `This is only your model, nothing much here. It’s the same model as in MVC. It is used by VM and updates whenever VM sends new updates
  */
+
+struct User: Codable {
+    let name: String
+    let email: String
+}
+
+class NetworkLayer {
+    func fetchUserData() -> User? {
+        return User(name: "John", email: "john@example.com")
+    }
+}
+
+class ViewModel: ObservableObject {
+    var users = [User]()
+    let netwokLayer: NetworkLayer
+    
+    init(_ netwokLayer: NetworkLayer) {
+        self.netwokLayer = netwokLayer
+    }
+    
+    func fetchUser() {
+        // fetch data
+    }
+}
+
+struct RootView: View {
+    @StateObject private var viewModel: ViewModel = .init(NetworkLayer())
+    
+    var body: some View {
+        VStack {
+            ChildView(viewModel: viewModel)
+        }
+    }
+}
+
+struct ChildView: View {
+    @ObservedObject var viewModel: ViewModel
+    
+    var body: some View {
+        Text("Child View")
+    }
+}
