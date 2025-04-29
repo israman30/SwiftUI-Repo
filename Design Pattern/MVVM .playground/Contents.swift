@@ -18,7 +18,11 @@ struct User: Codable {
     let email: String
 }
 
-class NetworkLayer {
+protocol NetworkLayerProtocol {
+    func fetchUserData() -> User?
+}
+
+class NetworkLayer: NetworkLayerProtocol {
     func fetchUserData() -> User? {
         return User(name: "John", email: "john@example.com")
     }
@@ -26,9 +30,9 @@ class NetworkLayer {
 
 class ViewModel: ObservableObject {
     var users = [User]()
-    let netwokLayer: NetworkLayer
+    let netwokLayer: NetworkLayerProtocol
     
-    init(_ netwokLayer: NetworkLayer) {
+    init(_ netwokLayer: NetworkLayerProtocol) {
         self.netwokLayer = netwokLayer
     }
     
@@ -38,7 +42,16 @@ class ViewModel: ObservableObject {
 }
 
 struct RootView: View {
+    /// Injecting User Object once
     @StateObject private var viewModel: ViewModel = .init(NetworkLayer())
+    
+    /// or Injecting like:
+     /**
+      ```
+      init(viewModel: ViewModel) {
+          self._viewModel = .init(wrappedValue: viewModel)
+      }
+     */
     
     var body: some View {
         VStack {
