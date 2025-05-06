@@ -1,168 +1,100 @@
 import UIKit
 
-/**
- `Actors guarantee that their mutable state is accessed by only one thread at a time. This prevents data corruption and ensures integrity.
- `When Should You Use Actors?`
- Use actors when your app needs to handle shared data across multiple concurrent tasks. They’re especially helpful in highly asynchronous environments, where class-based managers can be replaced with actors that safely mutate state.
+// MARK: - What Are Actors?
+// Actors are Swift’s new concurrency model that ensures your data stays thread-safe, even in the wildest multi-threaded environments. Think of them as guardians of mutable state. They control how and when code interacts with the data they manage, protecting it from being accessed simultaneously by multiple threads.
 
- `Why Not Use Structs?`
+// In simple terms, actors are like a club bouncer. They ensure that only one “person” (thread) interacts with the “party” (shared data) at a time. No chaos, no drama, just order.
 
- Structs are value types, and copying them avoids shared state. The real concurrency issues happen with reference types like classes. That’s why actors matter.
+// MARK: - Why Use Actors?
+/** Alright, let’s talk about why you should care:
 
-
- */
-
-class Dinner {
-    var value = 0
-
-    func eat() {
-        value += 1
-    }
-}
-
-let dinner = Dinner()
-
-// Simulate concurrent access
-Task {
-    await withTaskGroup(of: Void.self) { group in
-        for i in 0..<30 {
-            if i % 2 == 0 { dinner.value -= 1 }
-            group.addTask {
-                //await dinner.eat() // ⚠️ Not thread-safe!
-            }
-        }
-    }
-    print("Final value (class): \(dinner.value)")
-}
+- `Thread Safety
+    No more worrying about those pesky race conditions. Actors ensure that your data isn’t accessed simultaneously by multiple threads.
+- `Cleaner Code`
+   With actors, you don’t need to sprinkle DispatchQueue calls everywhere. Your code stays tidy and readable.
+- `Less Debugging`
+  Since actors handle concurrency for you, you’ll spend less time tracking down weird bugs and more time building awesome features.
+*/
 
 /**
- `How Actors Solve This`
- With actors, this problem goes away. You simply can’t access the actor’s internal state directly from outside. The compiler won’t let you
+ `What Do Actors Replace?`
+  Actors step in where we’d traditionally use locks, semaphores, or DispatchQueue. Say goodbye to boilerplate and hello to a more declarative way of handling concurrency. Here’s a comparison:
  */
-actor SafeDinner {
-    var value = 0
+
+class Counter {
+    private var count = 0
+    private let lock = NSLock()
     
-    func eat() {
-        value += 1
+    func increment() {
+        lock.lock()
+        defer {
+            lock.unlock()
+        }
+        count += 1
     }
     
-    func getValue() async -> Int {
-        value
-    }
-}
-
-let meal = SafeDinner()
-
-Task {
-    await withTaskGroup(of: Void.self) { group in
-        for i in 0..<30 {
-            if i % 2 == 0 {
-                group.addTask {
-                    await meal.eat() // ✅ Safe access
-                }
-            }
+    func getValue() -> Int {
+        lock.lock()
+        defer {
+            lock.unlock()
         }
+        return count
     }
 }
 
-
-/// `A More Advanced Example: Chat Server`
-
-struct Message {
-    let user: String
-    let content: String
-    let timestamp: Date
-}
-
-actor ChatServer {
-    private var messages: [Message] = []
-
-    func postMessage(from user: String, content: String) {
-        let message = Message(user: user, content: content, timestamp: Date())
-        messages.append(message)
+// Actors
+actor CounterActor {
+    private var count = 0
+    
+    func increment() {
+        count += 1
     }
-
-    func getMessages() -> [Message] {
-        return messages.sorted { $0.timestamp < $1.timestamp }
+    
+    func getValue() -> Int {
+        count
     }
 }
-
-struct Main {
-    static func chat() async {
-        let server = ChatServer()
-        let users = ["Alice", "Bob", "Charlie", "Diana"]
-
-        print("Starting to post messages...")
-
-        await withTaskGroup(of: Void.self) { group in
-            for user in users {
-                group.addTask {
-                    for i in 1...5 {
-                        print("Posting message \(i) from \(user)")
-                        await server.postMessage(from: user, content: "Message \(i) from \(user)")
-                        try? await Task.sleep(nanoseconds: UInt64.random(in: 10_000_000...50_000_000))
-                    }
-                }
-            }
-        }
-
-        print("Finished posting messages. Retrieving all messages...")
-
-        let allMessages = await server.getMessages()
-        for message in allMessages {
-            print("[\(message.timestamp)] \(message.user): \(message.content)")
-        }
-
-        print("All messages printed.")
-    }
-}
-
 /**
- `In this example, the actor ensures that messages are updated safely, even when multiple users are posting at the same time.`
- 
- Starting to post messages...
- Posting message 1 from Alice
- Posting message 1 from Bob
- Posting message 1 from Charlie
- Posting message 1 from Diana
- Posting message 2 from Alice
- Posting message 2 from Bob
- Posting message 2 from Diana
- Posting message 2 from Charlie
- Posting message 3 from Alice
- Posting message 3 from Bob
- Posting message 3 from Charlie
- Posting message 3 from Diana
- Posting message 4 from Charlie
- Posting message 4 from Diana
- Posting message 4 from Bob
- Posting message 4 from Alice
- Posting message 5 from Diana
- Posting message 5 from Charlie
- Posting message 5 from Bob
- Posting message 5 from Alice
- Finished posting messages. Retrieving all messages...
- [2025-04-17 19:14:11 +0000] Alice: Message 1 from Alice
- [2025-04-17 19:14:11 +0000] Bob: Message 1 from Bob
- [2025-04-17 19:14:11 +0000] Charlie: Message 1 from Charlie
- [2025-04-17 19:14:11 +0000] Diana: Message 1 from Diana
- [2025-04-17 19:14:11 +0000] Alice: Message 2 from Alice
- [2025-04-17 19:14:11 +0000] Bob: Message 2 from Bob
- [2025-04-17 19:14:11 +0000] Diana: Message 2 from Diana
- [2025-04-17 19:14:11 +0000] Charlie: Message 2 from Charlie
- [2025-04-17 19:14:11 +0000] Alice: Message 3 from Alice
- [2025-04-17 19:14:11 +0000] Bob: Message 3 from Bob
- [2025-04-17 19:14:11 +0000] Charlie: Message 3 from Charlie
- [2025-04-17 19:14:11 +0000] Diana: Message 3 from Diana
- [2025-04-17 19:14:11 +0000] Charlie: Message 4 from Charlie
- [2025-04-17 19:14:11 +0000] Diana: Message 4 from Diana
- [2025-04-17 19:14:11 +0000] Bob: Message 4 from Bob
- [2025-04-17 19:14:11 +0000] Alice: Message 4 from Alice
- [2025-04-17 19:14:11 +0000] Diana: Message 5 from Diana
- [2025-04-17 19:14:11 +0000] Charlie: Message 5 from Charlie
- [2025-04-17 19:14:11 +0000] Bob: Message 5 from Bob
- [2025-04-17 19:14:11 +0000] Alice: Message 5 from Alice
- All messages printed.
+ `Actors vs Singletons: A Major Upgrade`
+ Here’s something exciting: actors make singletons largely unnecessary. You know the singleton pattern, right? It’s a way to ensure there’s only one instance of a class throughout your app. But, singletons have a reputation for being hard to manage in multi-threaded environments. They’re prone to race conditions and can lead to messy code.
+
+ With actors, you get the same benefits — a single, shared instance managing state — without the headaches. An actor’s isolated state ensures that only one thread accesses its properties or methods at a time, solving the concurrency issues inherent in singletons.
  */
+
+actor UserManager {
+    private var loggedInUser = false
+    
+    func login() {
+        loggedInUser = true
+    }
+    
+    func logout() {
+        loggedInUser = false
+    }
+    
+    func checkUserStatus() -> Bool {
+        loggedInUser
+    }
+}
+// usage
+let user = UserManager()
+await user.login()
+//print("Logged in: \(await user.checkUserStatus())")
+
+actor BankAccount {
+    private var balance: Double = 0
+    
+    func deposit(_ amount: Double) {
+        balance += amount
+    }
+    
+    func getBalance() -> Double {
+        balance
+    }
+}
+let account = BankAccount()
+await account.deposit(100.0)
+let currentBalance = await account.getBalance()
+print("Balance: \(currentBalance)")
 
 
