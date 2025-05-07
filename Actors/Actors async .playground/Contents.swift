@@ -138,3 +138,34 @@ Task {
     let logs = await logger.getLogs()
     print("All logs: \(logs)")
 }
+
+/**
+` Combining Actors with Structured Concurrency
+ `Swift’s structured concurrency allows actors to work seamlessly with tasks and async functions. Here’s an example of how actors can handle concurrent updates safely.
+ */
+actor Counter {
+    private var count: Int = 0
+    
+    func increment() {
+        count += 1
+    }
+    
+    func getCount() -> Int {
+        count
+    }
+}
+
+let counter = Counter()
+
+await withTaskGroup(of: Void.self) { group in
+    for _ in 0..<1000 {
+        group.addTask {
+            await counter.increment()
+        }
+    }
+}
+print("Count: \(await counter.getCount())")
+
+/**
+ `The code above creates a Counter actor, and using withTaskGroup, it runs 100 concurrent increments on the Counter. The Counter actor safely handles concurrent updates, guaranteeing that each increment is performed sequentially.
+ */
