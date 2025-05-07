@@ -16,12 +16,13 @@ actor BankingApp {
         balance += amount
     }
     
-    func withdraw(_ amount: Double) {
+    func withdraw(_ amount: Double) -> Bool {
         guard balance >= amount else {
             print("Insuficient balance")
-            return
+            return false
         }
         balance -= amount
+        return true
     }
     
     func getBalance() -> Double {
@@ -33,4 +34,107 @@ actor BankingApp {
 
  `- The BankAccount actor holds a private balance variable.
  `- The deposit, withdraw, and getBalance methods provide safe access to the balance property.
+ 
+ `Using Actors Safely with Asynchronous Code
+ `One important thing to note about actors is that interacting with an actor’s properties and methods may require an awaitkeyword. This is because access to the actor is controlled asynchronously to maintain safety across threads.
  */
+let account = BankingApp()
+
+Task {
+    await account.deposit(100.0)
+    print("Deposited 100.0. Current balance: \(await account.getBalance())")
+    
+    if await account.withdraw(50.0) {
+        print("Withdrew 50.0. Current balance: \(await account.getBalance())")
+    } else {
+        print("Withdrawal failed. Current balance: \(await account.getBalance())")
+    }
+    let currentBalance = await account.getBalance()
+    print("Current balance: \(currentBalance)")
+}
+
+/**
+ `Here:
+
+ `- We use await to access the actor’s methods, ensuring safe, asynchronous access to the actor’s properties.
+ `- Task is used to create an asynchronous context where we can call await on actor methods.
+ 
+ `Actor Isolation Rules
+ When working with actors, there are specific isolation rules to be aware of:
+
+ `1. Immutable Data: You can access immutable data (let constants) from outside the actor without await.
+ `2. Async Access: To access mutable data, you must use await.
+ `3. Sendable Types: Data passed into an actor must conform to the Sendable protocol, ensuring thread safety.
+ */
+
+
+/**
+ `Actors vs. Classes
+ `To understand why you’d use an actor instead of a class, consider the following example where we try to manage state with a class and DispatchQueue.
+ */
+
+class BankAccountWithClass {
+    private var balance: Double = 0.0
+    private let queue = DispatchQueue(label: "BankAccountQueue")
+    
+    func deposit(amount: Double) {
+        queue.sync {
+            balance += amount
+        }
+    }
+    
+    func withdraw(amount: Double) -> Bool {
+        return queue.sync {
+            guard balance >= amount else {
+                print("Insufficient funds.")
+                return false
+            }
+            balance -= amount
+            return true
+        }
+    }
+    
+    func getBalance() -> Double {
+        return queue.sync {
+            return balance
+        }
+    }
+}
+
+/**
+ `Advanced Example: Actor Isolation in a Shared Resource
+ `To illustrate the advantages of actors further, consider an actor that logs user activity in an app.
+ */
+actor ActivityLogger {
+    private var log: [String] = []
+    
+    func add(_ message: String) {
+        log.append(message)
+    }
+    
+    func getLogs() -> [String] {
+        log
+    }
+}
+
+/**
+ `Now, let’s use ActivityLogger from multiple tasks:
+ **/
+let logger = ActivityLogger()
+
+Task {
+    await logger.add("User logged in")
+}
+
+Task {
+    await logger.add("User updated profile")
+}
+
+Task {
+    await logger.add("User logged out")
+}
+
+Task {
+    let logs = await logger.getLogs()
+    print("All logs: \(logs)")
+}
