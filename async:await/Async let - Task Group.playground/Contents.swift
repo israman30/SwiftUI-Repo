@@ -88,3 +88,59 @@ await withTaskGroup(of: ResultType.self) { group in
     }
     return results
 }
+
+// Just sample like async let
+func loadImage(from url: URL) async throws -> UIImage {
+    let (data, _) = try await URLSession.shared.data(from: url)
+    guard let image = UIImage(data: data) else {
+        throw URLError(.badServerResponse)
+    }
+    return image
+}
+
+struct ContentView: View {
+    @State private var images: [UIImage] = []
+    let imageURLs = [
+        URL(string: "https://example.com/image1.jpg")!,
+        URL(string: "https://example.com/image2.jpg")!,
+        URL(string: "https://example.com/image3.jpg")!
+    ]
+    
+    var body: some View {
+        VStack {
+            ForEach(images, id: \.self) { image in
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+            }
+            Button("Load Images") {
+                Task {
+                    do {
+                        images = try await withTaskGroup(of: UIImage.self) { group in
+                            for url in imageURLs {
+                                group.addTask {
+                                    do {
+                                        return try await loadImage(from: url)
+                                    } catch {
+                                        print("Failed to load image from \(url): \(error)")
+                                        return UIImage() // Fallback or handle error
+                                    }
+                                }
+                            }
+                            var loadedImages: [UIImage] = []
+                            for await image in group {
+                                if !image.size.equalTo(.zero) { // Skip failed images
+                                    loadedImages.append(image)
+                                }
+                            }
+                            return loadedImages
+                        }
+                    } catch {
+                        print("Task group error: \(error)")
+                    }
+                }
+            }
+        }
+    }
+}
