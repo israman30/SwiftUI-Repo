@@ -60,3 +60,31 @@ struct ContentView: View {
         }
     }
 }
+
+/**
+ `2. TaskGroup
+ Overview:
+ - TaskGroup (or withTaskGroup) is a more flexible and powerful API for managing a dynamic group of concurrent asynchronous tasks.
+ - It allows you to create, manage, and collect results from a variable number of tasks, making it suitable for scenarios where the number of tasks is determined at runtime.
+ - It is ideal for dynamic, iterative, or complex concurrency scenarios.
+ */
+struct ResultType {
+    
+}
+
+let items: [Int] = [1, 2, 3, 4, 5]
+
+func someAsyncFunction(_ int: Int) { sleep(1) }
+
+await withTaskGroup(of: ResultType.self) { group in
+    for item in items {
+        group.addTask {
+            return await someAsyncFunction(item)
+        }
+    }
+    var results: [ResultType] = []
+    for await result in group {
+        results.append(result)
+    }
+    return results
+}
