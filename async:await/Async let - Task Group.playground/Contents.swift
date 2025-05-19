@@ -144,3 +144,16 @@ struct ContentView: View {
         }
     }
 }
+
+/**
+ `1. Use async let:
+ - If you have a fixed number of images to process (e.g., always loading exactly two thumbnails for a preview).
+ - Example: Loading a primary and secondary image for a gallery item concurrently.
+ - In your image picker scenario, async let could be used if you’re processing a small, fixed set of selected images (e.g., resizing two images):
+ 
+ `2. Use TaskGroup:
+
+ - If the number of images is dynamic (e.g., the user selects 1 to 100 images in the PHPickerViewController).
+ - Example: Processing all selected images (e.g., resizing, uploading, or converting) in parallel.
+ - In your image picker scenario, TaskGroup is ideal for handling multiple images selected via PHPickerViewController:
+ */
