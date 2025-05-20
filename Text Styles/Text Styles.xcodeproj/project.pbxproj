@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D09A25F2DDD4AF6005DB408 /* EnumDrivenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09A25E2DDD4AF6005DB408 /* EnumDrivenTextField.swift */; };
 		4D3FAABF2C0809FB00E7F215 /* Text_StylesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3FAABE2C0809FB00E7F215 /* Text_StylesApp.swift */; };
 		4D3FAAC12C0809FB00E7F215 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3FAAC02C0809FB00E7F215 /* ContentView.swift */; };
 		4D3FAAC32C0809FE00E7F215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D3FAAC22C0809FE00E7F215 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D09A25E2DDD4AF6005DB408 /* EnumDrivenTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDrivenTextField.swift; sourceTree = "<group>"; };
 		4D3FAABB2C0809FB00E7F215 /* Text Styles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Text Styles.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D3FAABE2C0809FB00E7F215 /* Text_StylesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text_StylesApp.swift; sourceTree = "<group>"; };
 		4D3FAAC02C0809FB00E7F215 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				4D3FAABE2C0809FB00E7F215 /* Text_StylesApp.swift */,
 				4D3FAAC02C0809FB00E7F215 /* ContentView.swift */,
 				4D7EA4AD2D4DA7BD00DB9B4F /* TextFieldEnum.swift */,
+				4D09A25E2DDD4AF6005DB408 /* EnumDrivenTextField.swift */,
 				4D3FAAC22C0809FE00E7F215 /* Assets.xcassets */,
 				4D3FAAC42C0809FE00E7F215 /* Preview Content */,
 			);
@@ -142,6 +145,7 @@
 			files = (
 				4D3FAAC12C0809FB00E7F215 /* ContentView.swift in Sources */,
 				4D7EA4AE2D4DA7BD00DB9B4F /* TextFieldEnum.swift in Sources */,
+				4D09A25F2DDD4AF6005DB408 /* EnumDrivenTextField.swift in Sources */,
 				4D3FAABF2C0809FB00E7F215 /* Text_StylesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
