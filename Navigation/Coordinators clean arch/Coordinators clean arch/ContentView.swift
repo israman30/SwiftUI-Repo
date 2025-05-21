@@ -16,7 +16,8 @@ struct Article: Identifiable {
 }
 
 enum ViewState {
-    case loading, loaded
+    case loading
+    case loaded
     case error
 }
 
@@ -31,7 +32,11 @@ class ArticleListRouter {
 
 class MyViewModel: ObservableObject {
     @Published var viewState: ViewState = .loading
-    @Published var articles: [Article] = []
+    @Published var articles: [Article] = [
+        .init(title: "First one"),
+        .init(title: "Second"),
+        .init(title: "Third")
+    ]
     @Published var showErrorAlert: Bool = false
     private var router: ArticleListRouter?
     
@@ -49,23 +54,26 @@ struct ContentView: View {
     @ObservedObject var viewModel: MyViewModel
     
     var body: some View {
-        List(viewModel.articles, id: \.id) { article in
-            ArticleCell(article: article)
-                .listRowSeparator(.hidden)
-                .onTapGesture {
-                    viewModel.perform(action: .didTapOnArticle(article))
-                }
-        }
-        .listStyle(.plain)
-        .overlay(content: {
-            if viewModel.viewState == .loading {
-                ProgressView()
+        NavigationView {
+            List(viewModel.articles, id: \.id) { article in
+                ArticleCell(article: article)
+                    .listRowSeparator(.hidden)
+                    .onTapGesture {
+                        viewModel.perform(action: .didTapOnArticle(article))
+                    }
             }
-        })
-        .onAppear(perform: {
-            viewModel.perform(action: .didAppear)
-        })
-        .navigationBarBackButtonHidden(true)
+            .listStyle(.plain)
+            .overlay(content: {
+                if viewModel.viewState == .loading {
+                    ProgressView()
+                }
+            })
+            .onAppear(perform: {
+                viewModel.perform(action: .didAppear)
+            })
+            .navigationTitle("Coordinator clean arch")
+            .navigationBarBackButtonHidden(true)
+        }
     }
 }
 
