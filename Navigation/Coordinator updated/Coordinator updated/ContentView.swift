@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Observation
 
 // MARK: - Coordinatable
 typealias Coordinatable = View & Identifiable & Hashable
