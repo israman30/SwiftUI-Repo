@@ -13,7 +13,52 @@ typealias Coordinatable = View & Identifiable & Hashable
 // MARK: - Coordinator
 @Observable
 class Coordinator<CoordinatorPage: Coordinatable> {
-    @State var path = NavigationPath()
+    var path = NavigationPath()
+    var sheet: CoordinatorPage?
+    var fullScreen: CoordinatorPage?
+    
+    enum PushType {
+        case link
+        case popToRoot
+        case sheet
+        case fullScreen
+    }
+    
+    enum PopType {
+        case link(_ last: Int)
+        case sheet
+        case fullScreen
+    }
+    
+    func push(_ page: CoordinatorPage, type: PushType = .link) {
+        switch type {
+        case .link:
+            path.append(page.id)
+        case .sheet:
+            sheet = page
+        case .fullScreen:
+            fullScreen = page
+        default:
+            break
+        }
+    }
+    
+    func pop(_ type: PopType = .link(1)) {
+        switch type {
+        case .link(let last):
+            guard last >= 0 else { return }
+            path.removeLast(last)
+        case .sheet:
+            sheet = nil
+        case .fullScreen:
+            fullScreen = nil
+        }
+    }
+    
+    func popToRoot() {
+        path.removeLast(path.count)
+    }
+    
 }
 
 struct ContentView: View {
