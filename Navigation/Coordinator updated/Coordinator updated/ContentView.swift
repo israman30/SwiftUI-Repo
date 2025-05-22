@@ -62,7 +62,7 @@ class Coordinator<CoordinatorPage: Coordinatable> {
 }
 
 // MARK: - Coordinator Stack
-struct CoorinatorStack<CoordinatorPage: Coordinatable>: View {
+struct CoordinatorStack<CoordinatorPage: Coordinatable>: View {
     @State private var coordinator: Coordinator<CoordinatorPage> = .init()
     let root: CoordinatorPage
     
@@ -81,13 +81,56 @@ struct CoorinatorStack<CoordinatorPage: Coordinatable>: View {
     }
 }
 
+// MARK: - Coordinator pages
+enum MainCoorinatorPage: Coordinatable {
+    var id: UUID { .init() }
+    
+    case root
+    case login(data: String)
+    case signUp
+    
+    var body: some View {
+        switch self {
+        case .root:
+            ContentView()
+        case .login(let data):
+            CoordinatorStack(LoginCoorinator.root(data: data))
+        case .signUp:
+            SignupView()
+        }
+    }
+}
+
+enum LoginCoorinator: Coordinatable {
+    var id: UUID { .init() }
+    
+    case root(data: String)
+    case forgotPasswrod
+    
+    var body: some View {
+        switch self {
+        case .root(let data):
+            LoginView(data: data)
+        case .forgotPasswrod:
+            ForgetPasswordView()
+        }
+    }
+}
+
+// MARK: - Views
 struct ContentView: View {
+    
+    @Environment(Coordinator<MainCoorinatorPage>.self) private var mainCoordinator
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Button("Sign Up") {
+                mainCoordinator.push(.signUp)
+            }
+            
+            Button("Log In") {
+                mainCoordinator.push(.login(data: "Hello World"), type: .sheet)
+            }
         }
         .padding()
     }
@@ -95,4 +138,23 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+struct LoginView: View {
+    let data: String
+    var body: some View {
+        Text(data)
+    }
+}
+
+struct ForgetPasswordView: View {
+    var body: some View {
+        Text("Forget password view")
+    }
+}
+
+struct SignupView: View {
+    var body: some View {
+        Text("Signup view")
+    }
 }

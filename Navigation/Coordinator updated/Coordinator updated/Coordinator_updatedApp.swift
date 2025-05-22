@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct Coordinator_updatedApp: App {
+    let rootView: MainCoorinatorPage = .root
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CoordinatorStack(rootView)
         }
     }
 }
