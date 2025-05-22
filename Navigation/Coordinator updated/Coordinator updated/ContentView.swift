@@ -61,6 +61,22 @@ class Coordinator<CoordinatorPage: Coordinatable> {
     
 }
 
+// MARK: - Coordinator Stack
+struct CoorinatorStack<CoordinatorPage: Coordinatable>: View {
+    @State private var coordinator: Coordinator<CoordinatorPage> = .init()
+    let root: CoordinatorPage
+    
+    init(_ root: CoordinatorPage) {
+        self.root = root
+    }
+    
+    var body: some View {
+        NavigationStack(path: $coordinator.path) {
+            root
+        }
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
