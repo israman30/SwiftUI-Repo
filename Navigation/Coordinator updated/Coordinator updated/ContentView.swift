@@ -73,7 +73,11 @@ struct CoorinatorStack<CoordinatorPage: Coordinatable>: View {
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             root
+                .navigationDestination(for: CoordinatorPage.self) { $0 }
+                .sheet(item: $coordinator.sheet) { $0 }
+                .fullScreenCover(item: $coordinator.fullScreen) { $0 }
         }
+        .environment(coordinator)
     }
 }
 
