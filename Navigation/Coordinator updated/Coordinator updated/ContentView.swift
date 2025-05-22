@@ -141,9 +141,22 @@ struct ContentView: View {
 }
 
 struct LoginView: View {
+    @Environment(Coordinator<LoginCoorinator>.self) private var loginCoordinator
+    @Environment(Coordinator<MainCoorinatorPage>.self) private var mainCoordinator
     let data: String
+    
     var body: some View {
-        Text(data)
+        VStack {
+            Text(data)
+            Button("Forgot password") {
+                loginCoordinator.push(.forgotPasswrod)
+            }
+            
+            Button("Pop") {
+                mainCoordinator.pop(.sheet)
+            }
+             
+        }
     }
 }
 
