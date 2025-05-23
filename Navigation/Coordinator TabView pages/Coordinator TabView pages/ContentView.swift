@@ -23,7 +23,7 @@ enum VendorRoutes: Hashable {
     var destination: some View {
         switch self {
         case .list:
-            Text("Vendor List")
+           VendorListView()
         case .create:
             Text("Create Vendor")
         case .detail(let vendor):
@@ -95,8 +95,28 @@ class CoordinatorRoute {
 
 // MARK: - Views
 struct VendorView: View {
+    @Environment(CoordinatorRoute.self) private var coordinator
+    
     var body: some View {
-        Text("Vendor View")
+        VStack {
+            Text("Vendor View")
+            Button("Go to list") {
+                coordinator.push(.vendor(.list))
+            }
+        }
+    }
+}
+
+struct VendorListView: View {
+    @Environment(CoordinatorRoute.self) private var coordinator
+    
+    var body: some View {
+        VStack {
+            Text("Vendor List View")
+            Button("Go to list view") {
+                coordinator.push(.vendor(.create))
+            }
+        }
     }
 }
 
