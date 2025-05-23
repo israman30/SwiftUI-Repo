@@ -114,6 +114,9 @@ struct ContentView: View {
         TabView {
             NavigationStack(path: $coordinator[.vendor]) {
                 VendorView()
+                    .navigationDestination(for: Route.self) { route in
+                        route.destination
+                    }
             }
             .tabItem {
                 Label("Vendor", systemImage: "house")
@@ -121,6 +124,9 @@ struct ContentView: View {
             
             NavigationStack(path: $coordinator[.customer]) {
                 CustomerView()
+                    .navigationDestination(for: Route.self) { route in
+                        route.destination
+                    }
             }
             .tabItem {
                 Label("Customer", systemImage: "person")
