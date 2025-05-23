@@ -110,15 +110,16 @@ struct ContentView: View {
     @Environment(CoordinatorRoute.self) private var coordinator
     
     var body: some View {
+        @Bindable var coordinator = coordinator
         TabView {
-            NavigationStack {
+            NavigationStack(path: $coordinator[.vendor]) {
                 VendorView()
             }
             .tabItem {
                 Label("Vendor", systemImage: "house")
             }
             
-            NavigationStack {
+            NavigationStack(path: $coordinator[.customer]) {
                 CustomerView()
             }
             .tabItem {
