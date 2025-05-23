@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Observation
 
 // MARK: - Model
 struct Vendor: Hashable {
@@ -59,6 +60,36 @@ enum Route: Hashable {
             customerRoutes.destination
         }
     }
+    
+    var tap: AppTap {
+        switch self {
+        case .vendor:
+            return .vendor
+        case .customer:
+            return .customer
+        }
+    }
+}
+
+enum AppTap: Hashable {
+    case vendor
+    case customer
+}
+
+// MARK: - Coordinator
+@Observable
+class CoordinatorRoute {
+    var routes: [AppTap:[Route]] = [:]
+    
+    func push(_ route: Route) {
+        routes[route.tap, default: []].append(route)
+    }
+    
+    subscript (tap: AppTap) -> [Route] {
+        get { routes[tap] ?? [] }
+        set { routes[tap] = newValue }
+    }
+    
 }
 
 
@@ -76,6 +107,8 @@ struct CustomerView: View {
 }
 
 struct ContentView: View {
+    @Environment(CoordinatorRoute.self) private var coordinator
+    
     var body: some View {
         TabView {
             NavigationStack {
@@ -97,4 +130,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(CoordinatorRoute())
 }
