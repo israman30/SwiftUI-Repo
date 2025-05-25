@@ -29,7 +29,7 @@ struct TimerModifier: ViewModifier {
 extension View {
     typealias PerformanceClosure = (Date) -> Void
     
-    func onTimer(every interval: TimeInterval, tolerance: TimeInterval? = nil, cancelTrigger: AnyHashable? = nil, perform: @escaping PerformanceClosure) {
+    func onTimer(every interval: TimeInterval, tolerance: TimeInterval? = nil, cancelTrigger: AnyHashable? = nil, perform: @escaping PerformanceClosure) -> some View {
         self.modifier(
             TimerModifier(every: interval, tolerance: tolerance, cancelTrigger: cancelTrigger, perform: perform)
         )
@@ -37,6 +37,14 @@ extension View {
 }
 
 // usage
+var currentDate = Date()
+
+Text(Date.now.formatted(date: .numeric, time: .standard))
+    .onTimer(every: 1, tolerance: 0.05) { date in
+        currentDate = date
+    }
+
+// usage in view
 struct MyView: View {
     @State private var currentDate = Date.now
     @State private var cancelTimer = false
@@ -54,9 +62,4 @@ struct MyView: View {
     }
 }
 
-var currentDate = Date()
 
-Text(Date.now.formatted(date: .numeric, time: .standard))
-    .onTimer(every: 1, tolerance: 0.05) { date in
-        currentDate = date
-    }
