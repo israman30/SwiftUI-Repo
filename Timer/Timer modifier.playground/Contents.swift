@@ -17,3 +17,11 @@ struct TimerModifier: ViewModifier {
             }
     }
 }
+
+extension View {
+    func onTimer(every interval: TimeInterval, tolerance: TimeInterval? = nil, perform: @escaping (Date) -> Void) {
+        self.modifier(
+            TimerModifier(every: interval, tolerance: tolerance, perform: perform)
+        )
+    }
+}
