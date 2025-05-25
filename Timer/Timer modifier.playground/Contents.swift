@@ -37,6 +37,23 @@ extension View {
 }
 
 // usage
+struct MyView: View {
+    @State private var currentDate = Date.now
+    @State private var cancelTimer = false
+    
+    var body: some View {
+        VStack {
+            Text(Date.now.formatted(date: .numeric, time: .standard))
+            Button("Stop Timer") {
+                cancelTimer = true
+            }
+        }
+        .onTimer(every: 1, cancelTrigger: cancelTimer) { date in
+            currentDate = date
+        }
+    }
+}
+
 var currentDate = Date()
 
 Text(Date.now.formatted(date: .numeric, time: .standard))
