@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Coordinator_TabView_pagesApp: App {
+    @State var coordinator = CoordinatorRoute()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.coordinator, coordinator)
         }
     }
 }

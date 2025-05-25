@@ -92,10 +92,14 @@ class CoordinatorRoute {
     
 }
 
+extension EnvironmentValues {
+    @Entry var coordinator: CoordinatorRoute = .init()
+}
 
 // MARK: - Views
 struct VendorView: View {
-    @Environment(CoordinatorRoute.self) private var coordinator
+//    @Environment(CoordinatorRoute.self) private var coordinator
+    @Environment(\.coordinator) private var coordinator
     
     var body: some View {
         VStack {
@@ -108,7 +112,8 @@ struct VendorView: View {
 }
 
 struct VendorListView: View {
-    @Environment(CoordinatorRoute.self) private var coordinator
+//    @Environment(CoordinatorRoute.self) private var coordinator
+    @Environment(\.coordinator) private var coordinator
     
     var body: some View {
         VStack {
@@ -127,7 +132,8 @@ struct CustomerView: View {
 }
 
 struct ContentView: View {
-    @Environment(CoordinatorRoute.self) private var coordinator
+//    @Environment(CoordinatorRoute.self) private var coordinator
+    @Environment(\.coordinator) private var coordinator
     
     var body: some View {
         @Bindable var coordinator = coordinator
