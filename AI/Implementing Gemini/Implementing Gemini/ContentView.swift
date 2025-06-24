@@ -11,7 +11,7 @@ import GoogleGenerativeAI
 struct ContentView: View {
     let model = GenerativeModel(name: "gemini-pro", apiKey: APIKey.key)
     @State var userprompt: String = ""
-    @State var response: String = "How can I help you?"
+    @State var response: LocalizedStringKey = "How can I help you?"
     @State var isLoading: Bool = false
     
     var body: some View {
@@ -52,10 +52,10 @@ struct ContentView: View {
             do {
                 let result = try await model.generateContent(userprompt)
                 isLoading = false
-                response = result.text ?? "No response found."
+                response = LocalizedStringKey(result.text ?? "No response found.")
                 userprompt = ""
             } catch {
-                response = "An error occurred: \(error)"
+                response = "An error occurred: \(error.localizedDescription)"
                 isLoading = false
             }
         }
