@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4D04C9B32E0B3CB80051456E /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 4D04C9B22E0B3CB80051456E /* GoogleGenerativeAI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		4D04C99F2E0B39670051456E /* Implementing Gemini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Implementing Gemini.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D04C9B32E0B3CB80051456E /* GoogleGenerativeAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "Implementing Gemini";
 			packageProductDependencies = (
+				4D04C9B22E0B3CB80051456E /* GoogleGenerativeAI */,
 			);
 			productName = "Implementing Gemini";
 			productReference = 4D04C99F2E0B39670051456E /* Implementing Gemini.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 4D04C9962E0B39670051456E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4D04C9B12E0B3CB80051456E /* XCRemoteSwiftPackageReference "deprecated-generative-ai-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4D04C9A02E0B39670051456E /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4D04C9B12E0B3CB80051456E /* XCRemoteSwiftPackageReference "deprecated-generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google-gemini/deprecated-generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4D04C9B22E0B3CB80051456E /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D04C9B12E0B3CB80051456E /* XCRemoteSwiftPackageReference "deprecated-generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4D04C9972E0B39670051456E /* Project object */;
 }

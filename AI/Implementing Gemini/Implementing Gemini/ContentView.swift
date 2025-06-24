@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import GoogleGenerativeAI
 
 struct ContentView: View {
+    let model = GenerativeModel(name: "gemini-pro", apiKey: APIKey.key)
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
