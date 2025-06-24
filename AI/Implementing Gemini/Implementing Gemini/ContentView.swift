@@ -10,15 +10,55 @@ import GoogleGenerativeAI
 
 struct ContentView: View {
     let model = GenerativeModel(name: "gemini-pro", apiKey: APIKey.key)
+    @State var userprompt: String = ""
+    @State var response: String = "How can I help you?"
+    @State var isLoading: Bool = false
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Gemini AI")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundStyle(.indigo)
+            
+            ZStack {
+                ScrollView {
+                    Text(response)
+                        .font(.title)
+                }
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .indigo))
+                        .scaleEffect(4)
+                }
+            }
+            
+            TextField("Ask for something..", text: $userprompt, axis: .vertical)
+                .lineLimit(5)
+                .padding()
+                .font(.title)
+                .background(Color.indigo.opacity(0.2), in: Capsule())
+                .onSubmit {
+                    responsePrompt()
+                }
         }
         .padding()
+    }
+    
+    func responsePrompt() {
+        isLoading = true
+        response = ""
+        Task {
+            do {
+                let result = try await model.generateContent(userprompt)
+                isLoading = false
+                response = result.text ?? "No response found."
+                userprompt = ""
+            } catch {
+                response = "An error occurred: \(error)"
+                isLoading = false
+            }
+        }
     }
 }
 
