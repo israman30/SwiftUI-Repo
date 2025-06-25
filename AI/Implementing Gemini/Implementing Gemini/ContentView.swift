@@ -7,12 +7,15 @@
 
 import SwiftUI
 import GoogleGenerativeAI
+import KeychainSwift
 
 struct ContentView: View {
     let model = GenerativeModel(name: "gemini-pro", apiKey: APIKey.key)
     @State var userprompt: String = ""
     @State var response: LocalizedStringKey = "How can I help you?"
     @State var isLoading: Bool = false
+    
+    let keychain = KeychainSwift()
     
     var body: some View {
         VStack {

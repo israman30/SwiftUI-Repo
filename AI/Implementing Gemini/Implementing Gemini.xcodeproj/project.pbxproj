@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D04C9B32E0B3CB80051456E /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 4D04C9B22E0B3CB80051456E /* GoogleGenerativeAI */; };
+		4D04C9B62E0B7B220051456E /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D04C9B52E0B7B220051456E /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D04C9B62E0B7B220051456E /* KeychainSwift in Frameworks */,
 				4D04C9B32E0B3CB80051456E /* GoogleGenerativeAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = "Implementing Gemini";
 			packageProductDependencies = (
 				4D04C9B22E0B3CB80051456E /* GoogleGenerativeAI */,
+				4D04C9B52E0B7B220051456E /* KeychainSwift */,
 			);
 			productName = "Implementing Gemini";
 			productReference = 4D04C99F2E0B39670051456E /* Implementing Gemini.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				4D04C9B12E0B3CB80051456E /* XCRemoteSwiftPackageReference "deprecated-generative-ai-swift" */,
+				4D04C9B42E0B7B220051456E /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4D04C9A02E0B39670051456E /* Products */;
@@ -343,6 +347,14 @@
 				minimumVersion = 0.5.6;
 			};
 		};
+		4D04C9B42E0B7B220051456E /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -350,6 +362,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4D04C9B12E0B3CB80051456E /* XCRemoteSwiftPackageReference "deprecated-generative-ai-swift" */;
 			productName = GoogleGenerativeAI;
+		};
+		4D04C9B52E0B7B220051456E /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D04C9B42E0B7B220051456E /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
