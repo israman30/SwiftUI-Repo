@@ -38,7 +38,7 @@ Temporary Items
 xcuserdata/
 
 ## key ##
-Generate-Ai
+*Generate-Ai.plist
 ## Xcode 8 and earlier
 *.xcscmblueprint
 *.xccheckout
