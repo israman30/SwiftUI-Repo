@@ -10,10 +10,6 @@
 # Icon must end with two \r
 Icon
 
-# api_key
-/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/AI/Implementing\ Gemini/Implementing\ Gemini/Generate-Ai.plist/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/AI/Implementing\ Gemini/Implementing\ Gemini/Generate-Ai.plist
-
-
 # Thumbnails
 ._*
 
@@ -40,6 +36,9 @@ Temporary Items
 ### Xcode ###
 ## User settings
 xcuserdata/
+
+## key ##
+/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/AI/Implementing\ Gemini/Implementing\ Gemini/Generate-Ai.plist/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/AI/Implementing\ Gemini/Implementing\ Gemini/Generate-Ai.plist
 
 ## Xcode 8 and earlier
 *.xcscmblueprint
