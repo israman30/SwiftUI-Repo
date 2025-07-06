@@ -15,6 +15,11 @@ struct ContentView: View {
                 Spacer()
                 ScaleButton()
             }
+            HStack {
+                Text("Scale Button")
+                Spacer()
+                MatchedCardTransition()
+            }
         }
     }
 }
@@ -35,5 +40,37 @@ struct ScaleButton: View {
             .onTapGesture {
                 isPressed.toggle()
             }
+    }
+}
+
+struct MatchedCardTransition: View {
+    @Namespace private var namespace
+    @State private var showDetail = false
+
+    var body: some View {
+        VStack {
+            if !showDetail {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.blue)
+                    .matchedGeometryEffect(id: "card", in: namespace)
+                    .frame(height: 100)
+                    .onTapGesture {
+                        withAnimation(.easeInOut) {
+                            showDetail.toggle()
+                        }
+                    }
+            } else {
+                RoundedRectangle(cornerRadius: 24)
+                    .fill(.blue)
+                    .matchedGeometryEffect(id: "card", in: namespace)
+                    .frame(height: 300)
+                    .onTapGesture {
+                        withAnimation(.easeInOut) {
+                            showDetail.toggle()
+                        }
+                    }
+            }
+        }
+        .padding()
     }
 }
