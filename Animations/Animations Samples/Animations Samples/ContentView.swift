@@ -35,6 +35,11 @@ struct ContentView: View {
                 Spacer()
                 DraggableCard()
             }
+            HStack {
+                Text("Wave Animation")
+                Spacer()
+                WaveAnimation()
+            }
         }
     }
 }
@@ -168,5 +173,60 @@ struct DraggableCard: View {
                     }
             )
             .animation(.spring(), value: dragOffset)
+    }
+}
+
+/**
+ `Timing Curves and Chaining
+ `Control the flow of your animations step by step:
+ ```
+ withAnimation(.easeOut(duration: 0.5)) {
+     scale = 1.2
+ }
+ DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+     withAnimation(.easeIn(duration: 0.3)) {
+         scale = 1.0
+     }
+ }
+ */
+
+/**
+ `Animating Shapes & Paths
+ `Animating custom shapes:
+ */
+struct AnimatedWave: Shape {
+    var phase: CGFloat
+
+    var animatableData: CGFloat {
+        get { phase }
+        set { phase = newValue }
+    }
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let height = rect.height / 2
+        path.move(to: .zero)
+        
+        for x in stride(from: 0, through: rect.width, by: 1) {
+            let y = height + sin((x / rect.width + phase) * .pi * 2) * 20
+            path.addLine(to: CGPoint(x: x, y: y))
+        }
+
+        return path
+    }
+}
+
+struct WaveAnimation: View {
+    @State private var phase: CGFloat = 0
+
+    var body: some View {
+        AnimatedWave(phase: phase)
+            .stroke(Color.blue, lineWidth: 2)
+            .frame(height: 100)
+            .onAppear {
+                withAnimation(.linear(duration: 2).repeatForever(autoreverses: false)) {
+                    phase = 1
+                }
+            }
     }
 }
