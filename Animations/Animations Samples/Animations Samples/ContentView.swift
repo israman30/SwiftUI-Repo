@@ -20,6 +20,11 @@ struct ContentView: View {
                 Spacer()
                 MatchedCardTransition()
             }
+            HStack {
+                Text("Scale Button")
+                Spacer()
+                BouncyScaleView()
+            }
         }
     }
 }
@@ -43,6 +48,16 @@ struct ScaleButton: View {
     }
 }
 
+/**
+ - Explicit Animations with `withAnimation`
+ You can use this for grouped animations, conditional flows, or gesture-based updates.
+ 
+ ```
+ withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+     self.isPressed.toggle()
+ }
+
+ */
 struct MatchedCardTransition: View {
     @Namespace private var namespace
     @State private var showDetail = false
@@ -72,5 +87,28 @@ struct MatchedCardTransition: View {
             }
         }
         .padding()
+    }
+}
+
+/**
+ `iOS 18: `KeyframeAnimator` for Timeline Animations
+ New in iOS 18, `KeyframeAnimator` lets you create smooth, timeline-based animations.
+ */
+struct BouncyScaleView: View {
+    @State private var isActive = false
+
+    var body: some View {
+        KeyframeAnimator(initialValue: 1.0, trigger: isActive) { value in
+            Circle()
+                .scaleEffect(value)
+                .frame(width: 100, height: 100)
+                .onTapGesture { isActive.toggle() }
+        } keyframes: { _ in
+            KeyframeTrack {
+                SpringKeyframe(1.5, duration: 0.2)
+                SpringKeyframe(0.9, duration: 0.15)
+                SpringKeyframe(1.0, duration: 0.1)
+            }
+        }
     }
 }
