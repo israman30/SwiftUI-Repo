@@ -16,14 +16,19 @@ struct ContentView: View {
                 ScaleButton()
             }
             HStack {
-                Text("Scale Button")
+                Text("Matched Card Transition")
                 Spacer()
                 MatchedCardTransition()
             }
             HStack {
-                Text("Scale Button")
+                Text("Bound Bouncy Scale")
                 Spacer()
                 BouncyScaleView()
+            }
+            HStack {
+                Text("Dot Loader")
+                Spacer()
+                DotsLoader()
             }
         }
     }
@@ -110,5 +115,31 @@ struct BouncyScaleView: View {
                 SpringKeyframe(1.0, duration: 0.1)
             }
         }
+    }
+}
+
+/**
+ Animated Content with `PhaseAnimator`
+ Perfect for animating through multiple states with clean separation.
+ */
+struct DotsLoader: View {
+    @State private var trigger = UUID()
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            ForEach(0..<3) { index in
+                Circle()
+                    .frame(width: 10, height: 10)
+                    .foregroundStyle(.blue)
+                    .opacity(0.5)
+            }
+        }
+        .phaseAnimator([0, 1, 2], trigger: trigger) { view, phase in
+            view
+                .opacity(phase == 0 ? 1 : 0.3)
+                .scaleEffect(phase == 0 ? 1.3 : 1)
+        }
+        .animation(.easeInOut(duration: 0.4).repeatForever(autoreverses: true), value: trigger)
+        .onAppear { trigger = UUID() }
     }
 }
