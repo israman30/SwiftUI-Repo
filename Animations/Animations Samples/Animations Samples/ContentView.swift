@@ -230,3 +230,20 @@ struct WaveAnimation: View {
             }
     }
 }
+
+/**
+ `Accessibility-Aware Animations
+ ```
+ @Environment(\.accessibilityReduceMotion) var reduceMotion
+
+ .animation(reduceMotion ? nil : .easeInOut, value: trigger)
+ */
+
+/**
+ `Best Practices
+ `✅ Use .animation(_:value:) instead of deprecated modifiers
+ `✅ Separate logic into reusable views/modifiers
+ `✅ Prefer PhaseAnimator or KeyframeAnimator for multi-stage animations
+ `✅ Combine gestures with animation states
+ `✅ Test with Accessibility > Reduce Motion
+ */
