@@ -30,6 +30,11 @@ struct ContentView: View {
                 Spacer()
                 DotsLoader()
             }
+            HStack {
+                Text("Draggable Card")
+                Spacer()
+                DraggableCard()
+            }
         }
     }
 }
@@ -141,5 +146,27 @@ struct DotsLoader: View {
         }
         .animation(.easeInOut(duration: 0.4).repeatForever(autoreverses: true), value: trigger)
         .onAppear { trigger = UUID() }
+    }
+}
+
+/**
+ Gesture-Driven Animations with State + Logic
+ Combine `@GestureState` and `DragGesture` with custom logic.
+ */
+struct DraggableCard: View {
+    @GestureState private var dragOffset = CGSize.zero
+
+    var body: some View {
+        RoundedRectangle(cornerRadius: 16)
+            .fill(.orange)
+            .frame(width: 150, height: 150)
+            .offset(dragOffset)
+            .gesture(
+                DragGesture()
+                    .updating($dragOffset) { value, state, _ in
+                        state = value.translation
+                    }
+            )
+            .animation(.spring(), value: dragOffset)
     }
 }
