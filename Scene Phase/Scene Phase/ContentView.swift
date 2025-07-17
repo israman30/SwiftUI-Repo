@@ -15,18 +15,22 @@ struct ContentView: View {
         VStack {
             Text("Scene Phase App")
                 .onChange(of: scenePhase) { oldState, newValue in
-                    if newValue == .inactive {
-                        print(">>> Scene is inactive <<<")
-                    } else if newValue == .active {
-                        print(">>> Scene is active <<<")
-                    } else if newValue == .background {
-                        print(">> Scene is in background")
-                    } else {
-                        print(">> Unknown scene phase: \(newValue)")
-                    }
+                    printScenePhase(newValue)
                 }
         }
         .padding()
+    }
+    
+    private func printScenePhase(_ scenePhase: ScenePhase?) {
+        if scenePhase == .inactive {
+            print(">>> Scene is inactive <<<")
+        } else if scenePhase == .active {
+            print(">>> Scene is active <<<")
+        } else if scenePhase == .background {
+            print(">> Scene is in background")
+        } else {
+            print(">> Unknown scene phase: \(String(describing: scenePhase))")
+        }
     }
 }
 
