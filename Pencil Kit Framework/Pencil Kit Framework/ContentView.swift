@@ -22,10 +22,11 @@ struct CanvasView: UIViewRepresentable {
 }
 
 struct ContentView: View {
-    @State private var canvas: PKCanvasView = .init()
+    @State private var canvas = PKCanvasView()
     @State private var toolPicker = PKToolPicker()
+    
     var body: some View {
-        VStack {
+        ZStack {
             CanvasView(canvas: $canvas)
                 .onAppear {
                     if let window = UIApplication.shared.connectedScenes.first {
@@ -34,6 +35,16 @@ struct ContentView: View {
                         canvas.becomeFirstResponder()
                     }
                 }
+            VStack {
+                HStack {
+                    Spacer()
+                    Button("Clear") {
+                        canvas.drawing = .init()
+                    }
+                }
+                .padding(.horizontal)
+                Spacer()
+            }
         }
     }
 }
