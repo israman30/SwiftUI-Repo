@@ -29,7 +29,7 @@ struct ContentView: View {
         ZStack {
             CanvasView(canvas: $canvas)
                 .onAppear {
-                    if let window = UIApplication.shared.connectedScenes.first {
+                    if let _ = UIApplication.shared.connectedScenes.first {
                         toolPicker.setVisible(true, forFirstResponder: canvas)
                         toolPicker.addObserver(canvas)
                         canvas.becomeFirstResponder()
