@@ -8,15 +8,33 @@
 import SwiftUI
 import PencilKit
 
+struct CanvasView: UIViewRepresentable {
+    @Binding var canvas: PKCanvasView
+    
+    func makeUIView(context: Context) -> PKCanvasView {
+        canvas.drawingPolicy = .anyInput
+        return canvas
+    }
+    
+    func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        
+    }
+}
+
 struct ContentView: View {
+    @State private var canvas: PKCanvasView = .init()
+    @State private var toolPicker = PKToolPicker()
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            CanvasView(canvas: $canvas)
+                .onAppear {
+                    if let window = UIApplication.shared.connectedScenes.first {
+                        toolPicker.setVisible(true, forFirstResponder: canvas)
+                        toolPicker.addObserver(canvas)
+                        canvas.becomeFirstResponder()
+                    }
+                }
         }
-        .padding()
     }
 }
 
