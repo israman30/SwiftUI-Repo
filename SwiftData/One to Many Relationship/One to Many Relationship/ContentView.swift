@@ -10,7 +10,25 @@ import SwiftData
 
 @Model
 class Owner {
+    var name: String
+    var cars: [Car] = []
     
+    init(name: String) {
+        self.name = name
+    }
+}
+
+@Model
+class Car {
+    var make: String
+    var registrationNumber: String
+    var owner: Owner?
+    
+    init(make: String, registrationNumber: String, owner: Owner? = nil) {
+        self.make = make
+        self.registrationNumber = registrationNumber
+        self.owner = owner
+    }
 }
 
 struct ContentView: View {
