@@ -31,50 +31,73 @@ class Car {
     }
 }
 
-struct ContentView: View {
+struct CarList: View {
+    // Access the SwiftData model context (used for saving/deleting data)
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    
+    // The specific Owner whose cars we are displaying
+    var owner: Owner?
+    
+    // Form input states
+    @State private var make = ""
+    @State private var registrationNumber = ""
+    @State private var selectedCar: Car?
+    
+    // Computed property: true if editing an existing car
+    var isEditing: Bool {
+        selectedCar != nil
+    }
+    
+    @Query private var cars: [Car]
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        GroupBox {
+            VStack {
+                TextField("Car Model", text: $make)
+                    .textFieldStyle(.roundedBorder)
+                
+                TextField("Registration number", text: $registrationNumber)
+                    .textFieldStyle(.roundedBorder)
+                
+                HStack {
+                    // Show cancel button only if editing
+                    if isEditing {
+                        Button("Cancel") {
+                            selectedCar = nil
+                        }
+                        .buttonStyle(.bordered)
                     }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    
+                    Button(isEditing ? "Update" : "Add") {
+                        if isEditing {
+                            // Update the selected car's details
+                            selectedCar?.make = make
+                            selectedCar?.registrationNumber = registrationNumber
+                        } else {
+                            // Create a new car and attach it to the owner
+                            let car = Car(make: make, registrationNumber: registrationNumber, owner: owner)
+                            owner?.cars.append(car)
+                        }
                     }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(make.isEmpty || registrationNumber.isEmpty)
+                    
                 }
             }
-        } detail: {
-            Text("Select an item")
         }
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
+    
+    private func resetForm() {
+        make = ""
+        registrationNumber = ""
+        selectedCar = nil
     }
+}
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+struct ContentView: View {
+    
+    var body: some View {
+        CarList()
     }
 }
 
