@@ -27,6 +27,6 @@ struct One_to_Many_RelationshipApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(for: Owner.self)
     }
 }
