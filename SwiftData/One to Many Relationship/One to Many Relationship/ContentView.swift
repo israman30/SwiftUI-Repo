@@ -11,12 +11,18 @@ import SwiftData
 @Model
 class Owner {
     var name: String
+    @Relationship(deleteRule: .cascade) // Ensures cars get deleted with the owner
     var cars: [Car] = []
     
     init(name: String) {
         self.name = name
     }
 }
+/**
+ `- .cascade → Deleting Owner deletes all their Car objects from the database.
+ `- .nullify (default) → Deleting Owner leaves Car in the DB, but without an owner.
+ `- .deny → Prevents deleting Owner if cars exist.
+ */
 
 @Model
 class Car {
