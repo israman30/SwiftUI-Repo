@@ -51,39 +51,72 @@ struct CarList: View {
     @Query private var cars: [Car]
     
     var body: some View {
-        GroupBox {
-            VStack {
-                TextField("Car Model", text: $make)
-                    .textFieldStyle(.roundedBorder)
-                
-                TextField("Registration number", text: $registrationNumber)
-                    .textFieldStyle(.roundedBorder)
-                
-                HStack {
-                    // Show cancel button only if editing
-                    if isEditing {
-                        Button("Cancel") {
-                            selectedCar = nil
-                        }
-                        .buttonStyle(.bordered)
-                    }
+        VStack {
+            GroupBox {
+                VStack {
+                    TextField("Car Model", text: $make)
+                        .textFieldStyle(.roundedBorder)
                     
-                    Button(isEditing ? "Update" : "Add") {
+                    TextField("Registration number", text: $registrationNumber)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    HStack {
+                        // Show cancel button only if editing
                         if isEditing {
-                            // Update the selected car's details
-                            selectedCar?.make = make
-                            selectedCar?.registrationNumber = registrationNumber
-                        } else {
-                            // Create a new car and attach it to the owner
-                            let car = Car(make: make, registrationNumber: registrationNumber, owner: owner)
-                            owner?.cars.append(car)
+                            Button("Cancel") {
+                                selectedCar = nil
+                            }
+                            .buttonStyle(.bordered)
                         }
+                        
+                        // Add or update button based on mode
+                        Button(isEditing ? "Update" : "Add") {
+                            if isEditing {
+                                // Update the selected car's details
+                                selectedCar?.make = make
+                                selectedCar?.registrationNumber = registrationNumber
+                            } else {
+                                // Create a new car and attach it to the owner
+                                let car = Car(make: make, registrationNumber: registrationNumber, owner: owner)
+                                owner?.cars.append(car)
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .disabled(make.isEmpty || registrationNumber.isEmpty)
+                        
                     }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(make.isEmpty || registrationNumber.isEmpty)
-                    
                 }
             }
+            .padding()
+        }
+        
+        List {
+            ForEach(owner?.cars ?? []) { car in
+                VStack(alignment: .leading) {
+                    Text(car.make)
+                        .font(.headline)
+                    Text(car.registrationNumber)
+                        .foregroundStyle(.secondary)
+                }
+                .onTapGesture {
+                    // Populate form with existing car data for editing
+                    selectedCar = car
+                    make = car.make
+                    registrationNumber = car.registrationNumber
+                }
+                
+            } // Handle delete action from swipe gesture
+            .onDelete { indexSet in
+                indexSet.forEach { index in
+                    if let car = owner?.cars[index] {
+                        // Remove from owner's array
+                        owner?.cars.removeAll { $0.id == car.id }
+                        // Remove from database
+                        modelContext.delete(car)
+                    }
+                }
+            }
+            
         }
     }
     
