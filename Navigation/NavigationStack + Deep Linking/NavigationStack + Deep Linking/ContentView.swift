@@ -73,6 +73,58 @@ struct RootView: View {
     }
 }
 
+// CUSTOM SCHEME
+/// `Custom scheme like flightdeck://flight/<UUID>
+/// `Universal link like https://flightdeck.example.com/seat/<flightUUID>/<seat>
+
+/// `Parser`
+struct DeepLinkParser {
+    static func route(from url: URL) -> [FlightRoute]? {
+        let components = url.pathComponents.filter { $0 != "/" }
+        
+        // Handle custom scheme URLs: flightdeck://flight/UUID
+        if url.scheme == "flightdeck" {
+            switch url.host {
+            case "flight":
+                if components.count == 1 {
+                    let id = UUID(uuidString: components[0])!
+                    return [.home, .flight, .flightDetail(id: id)]
+                }
+            case "seat":
+                if components.count == 2 {
+                    let id = UUID(uuidString: components[0])!
+                    let seat = components[1]
+                    return [.home, .flight, .checkout(fligthId: id, seat: seat)]
+                }
+            case "setList":
+                if components.count == 1 {
+                    let city = components[0]
+                    return [.home, .setList(city: city)]
+                }
+            default:
+                return nil
+            }
+        } else if url.scheme == "https" {  // Handle web URLs: https://flightdeck.example.com/flight/UUID
+            if components.first == "flight" && components.count == 2 {
+                let id = UUID(uuidString: components[1])!
+                return [.home, .flight, .flightDetail(id: id)]
+            }
+            
+            if components.first == "seat" && components.count == 3 {
+                let id = UUID(uuidString: components[1])!
+                let seat = components[2]
+                return [.home, .flight, .flightDetail(id: id), .seatSelected(flightId: id), .checkout(fligthId: id, seat: seat)]
+            }
+            
+            if components.first == "setList" && components.count == 2 {
+                return [.home, .setList(city: components[1])]
+            }
+        }
+        return nil
+    }
+}
+
+
 /// `View`
 struct ContentView: View {
     
