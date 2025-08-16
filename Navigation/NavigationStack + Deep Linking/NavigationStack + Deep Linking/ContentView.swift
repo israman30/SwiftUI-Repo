@@ -45,6 +45,35 @@ final class NavigationModel {
     }
 }
 
+struct RootView: View {
+    @Environment(NavigationModel.self) private var navigation
+    
+    var body: some View {
+        @Bindable var navigation = navigation
+        NavigationStack(path: $navigation.stack) {
+            ContentView()
+                .navigationDestination(for: FlightRoute.self) { route in
+                    switch route {
+                    case .home:
+                        ContentView()
+                    case .flight:
+                        Text("Flight View")
+                    case .flightDetail(let id):
+                        Text("Flight Detail \(id)")
+                    case .seatSelected(let flightId):
+                        Text("Seat selected \(flightId)")
+                    case .checkout(let flightID, let seat):
+                        Text("Checkout with \(flightID) and \(seat)")
+                    case .setList(let city):
+                        Text("City \(city)")
+                    }
+                }
+        }
+        .environment(navigation)
+    }
+}
+
+/// `View`
 struct ContentView: View {
     
     var body: some View {
