@@ -8,11 +8,41 @@
 import SwiftUI
 import Observation
 
-enum FlightRoute: String, Identifiable {
+enum FlightRoute: Hashable, Codable {
     case home
-    case destination
+    case flight
+    case flightDetail(id: UUID)
+    case seatSelected(flightId: UUID)
+    case checkout(fligthId: UUID, seat: String)
+    case setList(city: String)
+}
+
+@Observable
+final class NavigationModel {
+    var stack: [FlightRoute] = []
     
-    var id: String { rawValue }
+    func reset() {
+        stack.removeAll()
+    }
+    
+    func push(_ route: FlightRoute) {
+        stack.append(route)
+    }
+    
+    func pop() {
+        guard !stack.isEmpty else { return }
+        stack.removeLast()
+    }
+    
+    func replace(_ route: [FlightRoute]) {
+        guard !stack.isEmpty else { return }
+        stack = route
+    }
+    
+    func replaceLast(_ route: FlightRoute) {
+        guard !stack.isEmpty else { return }
+        stack[stack.count - 1] = route
+    }
 }
 
 struct ContentView: View {
