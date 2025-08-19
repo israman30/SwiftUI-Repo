@@ -115,3 +115,75 @@ publisher
  `- .sink { value in ... } → A subscriber that prints the value.
  `- .store(in: &cancellables) → Keeps the subscription alive.
  */
+
+
+/**
+ `What is a Subscriber?
+ A `subscriber` is responsible for:
+
+ `1. Receiving values from a publisher.
+ `2. Handling completion events (success or failure).
+ `3. Controlling how much demand it has for values.
+ 
+ Formally, a subscriber conforms to the Subscriber protocol:
+ ```
+ protocol Subscriber {
+     associatedtype Input
+     associatedtype Failure: Error
+     
+     func receive(subscription: Subscription)
+     func receive(_ input: Input) -> Subscribers.Demand
+     func receive(completion: Subscribers.Completion<Failure>)
+ }
+ ```
+ */
+
+/**
+ `Built-in Subscribers
+ `1. sink
+ The most commonly used subscriber.
+ It lets you provide two closures:
+
+ `- One for handling values.
+ `- One for handling completion.
+ */
+numbers.sink(
+    receiveCompletion: { completion in
+        print("Completed with: \(completion)")
+    },
+    receiveValue: { value in
+        print("Received value: \(value)")
+    }
+)
+.store(in: &cancellable)
+
+/**
+ `Demand and Backpressure
+ One unique aspect of Combine is `backpressure handling`.
+ Subscribers can control how many values they want to receive at a time, using `demand`.
+
+ For example, if you implement a custom subscriber:
+ */
+final class IntSubscriber: Subscriber {
+    typealias Input = Int
+    typealias Failure = Never
+    
+    func receive(subscription: Subscription) {
+        print("Subscribed!")
+        subscription.request(.max(2)) // Request only 2 values
+    }
+    
+    func receive(_ input: Int) -> Subscribers.Demand {
+        print("Received \(input)")
+        return .none
+    }
+    
+    func receive(completion: Subscribers.Completion<Never>) {
+        print("Completed")
+    }
+}
+
+let newPublisher = [10, 20, 30, 40, 50].publisher
+let subscriber = IntSubscriber()
+
+newPublisher.subscribe(subscriber)
