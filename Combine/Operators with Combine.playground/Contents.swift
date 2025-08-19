@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 /**
  In the earlier parts of this series, we explored `Publishers`, `Subscribers`, and how data flows in Combine. Now, it’s time to dive into one of the most powerful aspects of Combine: Operators.
@@ -28,3 +29,28 @@ import UIKit
  `Error-Handling Operators` → Handle failures gracefully.
  `catch`, `retry`, `replaceError`.
  */
+/// Example 1: Transforming with `map`
+let numbers = [1, 2, 3, 4, 5, 6, 5].publisher
+var cancellables: AnyCancellable?
+
+cancellables = numbers
+    .map { $0 * 10 } // transform values
+    .sink { print($0) }
+
+/// Example 2: Filtering with `filter`
+cancellables = numbers
+    .filter { $0 % 2 == 0 }   // only even numbers
+    .sink { print($0) }
+
+/// Example 3: Combining with `combineLatest`
+let publisher1 = PassthroughSubject<String, Never>()
+let publisher2 = PassthroughSubject<Int, Never>()
+
+cancellables = publisher1
+    .combineLatest(publisher2)
+    .sink { print("Received: \($0), \($1)") }
+
+publisher1.send("A")
+publisher2.send(1)
+publisher1.send("B")
+publisher2.send(2)
