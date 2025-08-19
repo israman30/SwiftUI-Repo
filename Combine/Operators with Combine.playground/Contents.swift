@@ -54,3 +54,28 @@ publisher1.send("A")
 publisher2.send(1)
 publisher1.send("B")
 publisher2.send(2)
+
+/// Example 4: Time-Based with `debounce`
+let searchTextPublisher = PassthroughSubject<String, Never>()
+
+cancellables = searchTextPublisher
+    .debounce(for: .seconds(1), scheduler: RunLoop.main)
+    .sink { print("Searching for: \($0)") }
+
+searchTextPublisher.send("S")
+searchTextPublisher.send("Sw")
+searchTextPublisher.send("Swi")
+searchTextPublisher.send("Swift")
+
+/// Example 5: Error Handling with `catch`
+enum MyError: Error {
+    case somethingWentWrong
+}
+
+let failingPublisher = Fail<String, MyError>(error: .somethingWentWrong)
+
+cancellables = failingPublisher
+    .catch { _ in
+        Just("Fallback Value")
+    }
+    .sink { print($0) }
