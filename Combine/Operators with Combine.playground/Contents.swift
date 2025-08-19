@@ -2,6 +2,23 @@ import UIKit
 import Combine
 
 /**
+ `What is Combine?
+ Combine is Apple’s reactive programming framework. It allows you to:
+
+ - `Define publishers that emit values over time.
+ - `Define subscribers that react to those values.
+ - `Use operators to transform and manipulate data streams.
+ Think of Combine as a pipeline:
+ `Publisher → Operator(s) → Subscriber`
+ 
+ `Core Concepts
+ Before writing code, let’s break down the `4 key building blocks` of Combine:
+
+ `1. Publisher → Emits values over time.
+ `2. Subscriber → Receives and reacts to values.
+ `3. Operator → Transforms or filters values between publisher and subscriber.
+ `4. Cancellable → A token to stop the subscription.
+ 
  In the earlier parts of this series, we explored `Publishers`, `Subscribers`, and how data flows in Combine. Now, it’s time to dive into one of the most powerful aspects of Combine: Operators.
 
  Operators are the transformers in Combine’s pipeline. They allow you to modify, filter, combine, and handle data as it travels from `Publisher → Operator(s) → Subscriber`.
@@ -79,3 +96,22 @@ cancellables = failingPublisher
         Just("Fallback Value")
     }
     .sink { print($0) }
+
+
+/// `More sample with Combine`
+// Publisher
+let publisher = Just("Hello, Combine!")
+var cancellable = Set<AnyCancellable>()
+
+// Subscriber
+publisher
+    .sink { value in
+        print("Received value: \(value)")
+    }
+    .store(in: &cancellable)
+/**
+ `Explanation:
+ `- Just("Hello, Combine!") → A publisher that emits one string.
+ `- .sink { value in ... } → A subscriber that prints the value.
+ `- .store(in: &cancellables) → Keeps the subscription alive.
+ */
