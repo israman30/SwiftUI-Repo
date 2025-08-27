@@ -35,15 +35,53 @@ class NetworkManager {
     }
 }
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+@MainActor
+class UserViewModel: ObservableObject {
+    @Published var users: [User] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String?
+    func loadUsers() {
+        isLoading = true
+        Task {
+            do {
+                let fetchedUsers = try await NetworkManager.shared.fetchUsers()
+                users = fetchedUsers
+                errorMessage = nil
+            } catch {
+                errorMessage = error.localizedDescription
+            }
+            isLoading = false
         }
-        .padding()
+    }
+}
+
+struct ContentView: View {
+    @StateObject private var viewModel = UserViewModel()
+    var body: some View {
+        NavigationView {
+            Group {
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                } else if let error = viewModel.errorMessage {
+                    Text("Error: \(error)")
+                        .foregroundColor(.red)
+                } else {
+                    List(viewModel.users) { user in
+                        VStack(alignment: .leading) {
+                            Text(user.name)
+                                .font(.headline)
+                            Text(user.email)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Users")
+            .onAppear {
+                viewModel.loadUsers()
+            }
+        }
     }
 }
 
