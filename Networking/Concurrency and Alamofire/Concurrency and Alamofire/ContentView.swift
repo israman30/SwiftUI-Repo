@@ -88,3 +88,26 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+// Simplify Reusable Continuation Pattern
+//To avoid repetition, you can create a helper to wrap any Alamofire response in a Task
+extension DataRequest {
+    func serializingDecodable<T: Decodable>(_ type: T.Type) async throws -> T {
+        try await withCheckedThrowingContinuation { continuation in
+            self.validate().responseDecodable(of: T.self) { response in
+                switch response.result {
+                case .success(let value):
+                    continuation.resume(returning: value)
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+}
+
+// Now you can use it like this:
+func fetchUsers() async throws -> [User] {
+    let url = "https://jsonplaceholder.typicode.com/users"
+    return try await AF.request(url).serializingDecodable([User].self)
+}
