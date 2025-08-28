@@ -24,8 +24,15 @@ final class KeychainService {
         var query = makePrimaryDictionary(for: account)
         query[kSecValueData as String] = passwordData
         
-        let status = SecItemAdd(query as CFDictionary, nil)
+        var status = SecItemAdd(query as CFDictionary, nil)
         
+        // item already exists. Updating instead
+        if status == errSecDuplicateItem {
+            print("item exists. Updating")
+            status = SecItemUpdate(query as CFDictionary, [kSecValueData: passwordData] as CFDictionary)
+        }
+        
+        print("status: \(status.string)")
         if status != errSecSuccess {
             throw KeychainError.saveError(status)
         }
