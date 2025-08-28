@@ -9,3 +9,33 @@ import UIKit
  `- Fetching data from a REST API while showing a loading indicator.
  `- Processing files while letting users interact with UI.
  */
+/**
+ `Async & Await
+ The `async` and `await` keywords make asynchronous code look synchronous, improving readability.
+ */
+
+struct User: Decodable {
+    let name: String
+}
+
+func fetchUserData() async throws -> User {
+    let url = URL(string: "https://api.example.com/user")!
+    let (data, _) = try await URLSession.shared.data(from: url)
+    return try JSONDecoder().decode(User.self, from: data)
+}
+
+// usage
+Task {
+    do {
+        let user = try await fetchUserData()
+        print("User: \(user.name)")
+    } catch {
+        print("Error: \(error)")
+    }
+}
+/**
+ Here:
+ `async → marks the function as asynchronous.
+ `await → suspends execution until the async task completes.
+ `Task allows you to start asynchronous operations.
+ */
