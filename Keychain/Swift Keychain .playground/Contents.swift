@@ -40,6 +40,37 @@ final class KeychainService {
             kSecAttrService as String: services
         ]
     }
+    
+    
+    func retrieveGenericPAssword(for account: String = "someaccount") async throws -> String {
+        var query = makePrimaryDictionary(for: account)
+        query[kSecReturnData as String] = true
+        query[kSecReturnAttributes as String] = true
+        query[kSecMatchLimit as String] = kSecMatchLimitOne
+        
+        // initiate the search
+        var item: CFTypeRef?
+        let status = SecItemCopyMatching(query as CFDictionary, &item)
+        
+        print("status: \(status.string)")
+        
+        guard status == errSecSuccess else {
+            throw KeychainError.retrieveError(status)
+        }
+        
+        guard let resultItem = item as? [String: Any] else {
+            throw KeychainError.failToExtractInfo
+        }
+        
+        guard let existingItem = item as? [String:Any],
+              let passwordData = existingItem[kSecValueData as String] as? Data,
+              let password = String(data: passwordData, encoding: String.Encoding.utf8),
+              let retrievedAccount = existingItem[kSecAttrAccount as String] as? String, // same as the account we pass in
+              retrievedAccount == account else {
+            throw KeychainError.failToExtractInfo
+        }
+        return password
+    }
 }
 
 extension OSStatus {
@@ -48,3 +79,4 @@ extension OSStatus {
         return string as? String ?? "code: \(self)"
     }
 }
+
