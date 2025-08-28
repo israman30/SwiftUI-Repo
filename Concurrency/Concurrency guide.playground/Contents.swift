@@ -87,3 +87,31 @@ Task {
     print(await counter.getValue())
 }
 // Actors ensure that only one task accesses mutable state at a time.
+
+/**
+ `Benefits of Swift Concurrency
+ ✅ Cleaner, more readable code with async/await.
+ ✅ Automatic thread management (no manual GCD juggling).
+ ✅ Built-in error handling.
+ ✅ Actors prevent race conditions.
+ ✅ More maintainable and scalable for complex apps.
+ */
+
+// Example: Image Downloader with Swift Concurrency
+func downloadImage(from url: String) async throws -> UIImage {
+    guard let imageURL = URL(string: url) else { throw URLError(.badURL) }
+    let (data, _) = try await URLSession.shared.data(from: imageURL)
+    guard let image = UIImage(data: data) else { throw URLError(.cannotDecodeContentData) }
+    return image
+}
+// usage
+Task {
+    do {
+        let image = try await downloadImage(from: "https://picsum.photos/200")
+        DispatchQueue.main.async {
+            imageView.image = image
+        }
+    } catch {
+        print("Download failed: \(error)")
+    }
+}
