@@ -37,5 +37,53 @@ Task {
  Here:
  `async → marks the function as asynchronous.
  `await → suspends execution until the async task completes.
- `Task allows you to start asynchronous operations.
  */
+
+/**
+ `Task:
+ `allows you to start asynchronous operations.
+ */
+Task {
+    try! await fetchUserData()
+}
+/**
+ `- Runs asynchronously without blocking the main thread.
+ `- Tasks can be child tasks (automatically cancelled when parent task is cancelled).
+ */
+
+/**
+ `3. Task Groups:
+ `Used for parallel execution of multiple tasks.
+ */
+await withTaskGroup(of: User.self) { group in
+    group.addTask { try! await fetchUserData() } // API 1
+    group.addTask { try! await fetchUserData() } // API 2
+    
+    for await result in group {
+        print("Result: \(result)")
+    }
+}
+// Here, both API requests run in parallel and results are collected as they finish.
+
+/**
+ `4. Actors
+ `actor is a new reference type that protects its mutable state.
+ `It ensures thread safety without using locks.
+ */
+actor Counter {
+    private var value = 0
+    
+    func increment() {
+        value += 1
+    }
+    
+    func getValue() -> Int {
+        value
+    }
+}
+let counter = Counter()
+Task {
+    await counter.increment()
+    print(await counter.getValue())
+}
+// Actors ensure that only one task accesses mutable state at a time.
