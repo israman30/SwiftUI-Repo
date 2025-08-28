@@ -6,6 +6,14 @@ import Security
  
  If you have created the cryptographic key with `SecKeyCreateRandomKey(_:_:)` and specify the `kSecAttrIsPermanent` in the attributes dictionary to true, it will be stored in the default keychain automatically while creating!
  */
+
+extension OSStatus {
+    var string: String {
+        let string = SecCopyErrorMessageString(self, nil)
+        return string as? String ?? "code: \(self)"
+    }
+}
+
 final class KeychainService {
     enum KeychainError: Error {
         case saveError(OSStatus)
@@ -48,7 +56,6 @@ final class KeychainService {
         ]
     }
     
-    
     func retrieveGenericPAssword(for account: String = "someaccount") async throws -> String {
         var query = makePrimaryDictionary(for: account)
         query[kSecReturnData as String] = true
@@ -78,12 +85,18 @@ final class KeychainService {
         }
         return password
     }
-}
-
-extension OSStatus {
-    var string: String {
-        let string = SecCopyErrorMessageString(self, nil)
-        return string as? String ?? "code: \(self)"
+    
+    func deleteGenericPassword(for account: String = "someaccount") async throws {
+        let query = makePrimaryDictionary(for: account) as CFDictionary
+        let status = SecItemDelete(query)
+        
+        // status will be errSecItemNotFound if the item is not found for the given query
+        // However, since the final goal: removing the password is achieved, it is not really an error app-wise
+        print(status.string)
+        if status != noErr && status != errSecItemNotFound {
+            throw KeychainError.deleteError(status)
+        }
     }
 }
+
 
