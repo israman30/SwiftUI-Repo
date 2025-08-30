@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Namespace private var namespace
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            NavigationLink {
+                Text("Destination View")
+                    .navigationTransition(.zoom(sourceID: "2", in: namespace))
+            } label: {
+                Text("Go to Destination")
+                    .matchedTransitionSource(id: "1", in: namespace)
+            }
         }
-        .padding()
     }
 }
 
