@@ -15,8 +15,17 @@ enum Segment: String, CaseIterable, Identifiable {
     var id: String { self.rawValue}
 }
 
+enum Car: String, CaseIterable, Identifiable {
+    case jaguar
+    case ferrari
+    case ducati
+    
+    var id: String { self.rawValue}
+}
+
 struct ContentView: View {
     @State private var selectedSegment: Segment = .swift
+    @State private var selectedCar: Car = .jaguar
     @Namespace var nameSpace
     
     var body: some View {
