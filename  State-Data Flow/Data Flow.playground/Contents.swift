@@ -143,3 +143,87 @@ struct ContentView: View {
         }
     }
 }
+
+/**
+ `@AppStorage & @SceneStorage: Persistence Made Simple
+ @AppStorage is a property wrapper that connects a SwiftUI view directly to `UserDefaults`, allowing you to persist small pieces of data across app launches (like settings, preferences, or login state).
+ */
+struct SettingsView: View {
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+
+    var body: some View {
+        Toggle("Dark Mode", isOn: $isDarkMode)
+            .padding()
+    }
+}
+/**
+ `@SceneStorage` is a property wrapper for preserving UI state tied to a specific scene (window or tab). Unlike `@AppStorag`e, it does not persist across app launches but remembers values while the app is running or when a scene becomes inactive (like when multitasking on iPad).
+ */
+struct ProfileView: View {
+    @SceneStorage("username") private var username: String = ""
+
+    var body: some View {
+        TextField("Enter your name", text: $username)
+            .padding()
+    }
+}
+// Mini Example: Task Manager App
+class TaskManager: ObservableObject {
+    @Published var tasks: [String] = []
+    
+    func addTask(_ task: String) {
+        tasks.append(task)
+    }
+}
+struct AddTaskView: View {
+    @State private var newTask = ""
+    @EnvironmentObject var manager: TaskManager
+    
+    var body: some View {
+        VStack {
+            TextField("New Task", text: $newTask)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Button("Add") {
+                manager.addTask(newTask)
+                newTask = ""
+            }
+        }
+        .padding()
+    }
+}
+struct TaskListView: View {
+    @EnvironmentObject var manager: TaskManager
+    
+    var body: some View {
+        List(manager.tasks, id: \.self) { task in
+            Text(task)
+        }
+    }
+}
+
+//@main
+struct TaskApp: App {
+    @StateObject private var manager = TaskManager()
+    
+    var body: some Scene {
+        WindowGroup {
+            VStack {
+                AddTaskView()
+                TaskListView()
+            }
+            .environmentObject(manager)
+        }
+    }
+}
+
+/**
+ `Completion Block
+ `- SwiftUI’s UI is driven by data & state.
+ `- Use the correct property wrapper depending on ownership:
+ `- @State → Local
+ `- @Binding → Pass to child
+ `- @ObservedObject → External model
+ `- @StateObject → Lifecycle owner
+ `- @EnvironmentObject → Shared across the app
+ `- @AppStorage makes persistence effortless.
+ */
