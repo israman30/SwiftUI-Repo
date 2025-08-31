@@ -8,7 +8,7 @@ import SwiftUI
 
  When a @State variable changes, `SwiftUI automatically re-renders the view` to reflect the new value. This makes building reactive UIs simple and declarative.
  */
-struct CounterView: View {
+struct Counter: View {
     @State private var count = 0   // Local UI state
     
     var body: some View {
@@ -61,3 +61,51 @@ struct ChildSwitchView: View {
         .cornerRadius(8)
     }
 }
+
+/**
+ `@ObservedObject & @Published– Observing Models
+ While `@State` and `@Bindin`g are great for local view state or parent-child communication, they’re not ideal for shared or complex data models used across multiple views.
+
+ That’s where `@ObservedObject` and `@Published` come in.
+
+ `@ObservedObject`: A property wrapper for referencing an `external model` (a class conforming to ObservableObject).
+ `@Published`: Marks properties inside that model so that when they change, `all observing views automatically update`.
+ */
+// Model
+class CounterModel: ObservableObject {
+    @Published var count: Int = 0   // Any change triggers view updates
+}
+
+// View
+struct CounterView: View {
+    @ObservedObject var counter = CounterModel()
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Count: \(counter.count)")
+                .font(.largeTitle)
+            
+            HStack {
+                Button("Increment") {
+                    counter.count += 1
+                }
+                Button("Decrement") {
+                    counter.count -= 1
+                }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+    }
+}
+/**
+ `@Published = notify changes in the model.
+
+ `@ObservedObject = observe those changes inside a view.
+ */
+
+/**
+ `@StateObject vs @ObservedObject
+ @StateObject → The `view creates and owns` the object.
+ @ObservedObject → The object is `passed in from outside.`
+ */
