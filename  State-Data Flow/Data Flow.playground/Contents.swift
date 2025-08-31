@@ -109,3 +109,37 @@ struct CounterView: View {
  @StateObject → The `view creates and owns` the object.
  @ObservedObject → The object is `passed in from outside.`
  */
+
+/**
+ `@EnvironmentObject: App-Wide Data
+ @EnvironmentObject is a property wrapper that lets you share a single instance of data across multiple views in your app without manually passing it through each view’s initializer.
+ It’s designed for `global or app-wide state.`
+ */
+class SessionManager: ObservableObject {
+    @Published var isLoggedIn: Bool = false
+}
+
+// @main
+struct MyApp: App {
+    @StateObject private var session = SessionManager()
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(session) // Provide once
+        }
+    }
+}
+
+struct ContentView: View {
+    @EnvironmentObject var session: SessionManager
+
+    var body: some View {
+        VStack {
+            Text(session.isLoggedIn ? "Welcome back!" : "Please log in")
+            Button("Toggle Login") {
+                session.isLoggedIn.toggle()
+            }
+        }
+    }
+}
