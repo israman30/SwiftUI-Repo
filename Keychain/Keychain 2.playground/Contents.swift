@@ -43,4 +43,13 @@ struct Keychain<T: Codable> {
         }
         return nil
     }
+    
+    static func delete(_ key: String) -> Bool {
+        let query: [CFString:Any] = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: key
+        ]
+        let status = SecItemDelete(query as CFDictionary)
+        return status == errSecSuccess
+    }
 }
