@@ -21,7 +21,7 @@ struct LoginScreen: View {
             TextField("Email", text: $registrationForm.email)
             SecureField("Password", text: $registrationForm.password)
             Button("Signup") {
-                // errors = registrationForm.valdidate()
+// errors = registrationForm.valdidate()
                 Task {
                     await signup()
                 }
@@ -37,8 +37,9 @@ struct LoginScreen: View {
     private func signup() async {
         do {
             let response = try await auth.signUp(name: registrationForm.name, email: registrationForm.email, password: registrationForm.password)
+            message = "✅ Signup for: \(response.name) completed"
         } catch {
-            message = error.localizedDescription
+            message = "❎ Error: \(error.localizedDescription)"
         }
         
     }
