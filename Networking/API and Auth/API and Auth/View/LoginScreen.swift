@@ -14,37 +14,81 @@ struct LoginScreen: View {
     @Environment(\.authController) private var auth
     @State private var registrationForm: RegistrationForm = .init()
     @State private var message: String?
+    @State private var isLoading = false
     
     var body: some View {
-        Form {
-            TextField("Name", text: $registrationForm.name)
-            TextField("Email", text: $registrationForm.email)
-            SecureField("Password", text: $registrationForm.password)
-            Button("Signup") {
-                Task {
-                    await signup()
+        VStack(spacing: 20) {
+            Text("Create Account")
+                .font(.largeTitle.bold())
+                .padding(.top)
+            
+            Form {
+                Section(header: Text("Your Details")) {
+                    TextField("Name", text: $registrationForm.name)
+                        .textContentType(.name)
+                        .autocapitalization(.words)
+                        .disableAutocorrection(true)
+                    
+                    TextField("Email", text: $registrationForm.email)
+                        .textContentType(.emailAddress)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                    
+                    SecureField("Password", text: $registrationForm.password)
+                        .textContentType(.newPassword)
                 }
-            }.disabled(!registrationForm.isValid)
+                
+                Section {
+                    Button(action: {
+                        Task { await signup() }
+                    }) {
+                        HStack {
+                            if isLoading {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                            }
+                            Text(isLoading ? "Signing up..." : "Sign Up")
+                                .bold()
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    .disabled(!registrationForm.isValid || isLoading)
+                    .buttonStyle(.borderedProminent)
+                }
+            }
+            .scrollContentBackground(.hidden)
             
             if let message = message {
                 Text(message)
                     .foregroundStyle(message.contains("❌") ? .red : .green)
                     .multilineTextAlignment(.center)
+                    .padding()
+                    .transition(.opacity.combined(with: .slide))
+                    .animation(.easeInOut, value: message)
             }
         }
+        .padding()
     }
     
     private func signup() async {
+        isLoading = true
+        defer { isLoading = false }
+        
         do {
-            let response = try await auth.signUp(name: registrationForm.name, email: registrationForm.email, password: registrationForm.password)
-            message = "✅ Signup for: \(response.name) completed"
+            let response = try await auth.signUp(
+                name: registrationForm.name,
+                email: registrationForm.email,
+                password: registrationForm.password
+            )
+            message = "✅ Signup for \(response.name) completed!"
+            registrationForm = .init() // clear form
         } catch {
             message = "❌ Error: \(error.localizedDescription)"
         }
-        
     }
-    
 }
+
 
 #Preview {
     LoginScreen()
