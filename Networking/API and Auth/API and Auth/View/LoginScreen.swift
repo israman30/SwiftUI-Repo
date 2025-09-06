@@ -21,20 +21,14 @@ struct LoginScreen: View {
             TextField("Email", text: $registrationForm.email)
             SecureField("Password", text: $registrationForm.password)
             Button("Signup") {
-// errors = registrationForm.valdidate()
                 Task {
                     await signup()
                 }
             }.disabled(!registrationForm.isValid)
             
-            // appreach for displaying view messaged when empty fields, toggle errors = registrationForm.valdidate()
-//            if !errors.isEmpty {
-//                ValidationSummaryView(errors: errors)
-//            }
-            
             if let message = message {
                 Text(message)
-                    .foregroundStyle(message.contains("❎") ? .red : .green)
+                    .foregroundStyle(message.contains("❌") ? .red : .green)
                     .multilineTextAlignment(.center)
             }
         }
@@ -45,7 +39,7 @@ struct LoginScreen: View {
             let response = try await auth.signUp(name: registrationForm.name, email: registrationForm.email, password: registrationForm.password)
             message = "✅ Signup for: \(response.name) completed"
         } catch {
-            message = "❎ Error: \(error.localizedDescription)"
+            message = "❌ Error: \(error.localizedDescription)"
         }
         
     }
@@ -73,9 +67,9 @@ extension String {
 
 extension LoginScreen {
     private struct RegistrationForm {
-        var name: String = ""
-        var email: String = ""
-        var password: String = ""
+        var name: String = "John Doe"
+        var email: String = "johndoe@gmail.com"
+        var password: String = "password1234"
         
         var isValid: Bool {
             valdidate().isEmpty
