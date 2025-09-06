@@ -11,6 +11,7 @@
 import SwiftUI
 
 struct LoginScreen: View {
+    @Environment(\.authController) private var auth
     @State private var registrationForm: RegistrationForm = .init()
     @State private var errors = [String]()
     
