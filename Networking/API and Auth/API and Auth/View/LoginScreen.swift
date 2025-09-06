@@ -4,6 +4,9 @@
 //
 //  Created by Israel Manzo on 9/5/25.
 //
+/**
+ using " https://fakeapi.platzi.com/en/rest/users/ for crud users
+ */
 
 import SwiftUI
 
@@ -17,10 +20,10 @@ struct LoginScreen: View {
             TextField("Email", text: $registrationForm.email)
             SecureField("Password", text: $registrationForm.password)
             Button("Signup") {
-                // error event
-                errors = registrationForm.valdidate()
+                // errors = registrationForm.valdidate()
             }.disabled(!registrationForm.isValid)
             
+            // appreach for displaying view messaged when empty fields, toggle errors = registrationForm.valdidate()
 //            if !errors.isEmpty {
 //                ValidationSummaryView(errors: errors)
 //            }
