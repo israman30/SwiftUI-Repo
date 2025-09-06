@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @State private var registrationForm: RegistrationForm = .init()
+    @State private var errors = [String]()
     
     var body: some View {
         Form {
@@ -16,7 +17,8 @@ struct LoginView: View {
             TextField("Email", text: $registrationForm.email)
             SecureField("Password", text: $registrationForm.password)
             Button("Signup") {
-                // event
+                // error event
+                errors = registrationForm.valdidate()
             }
             .disabled(!registrationForm.isValid)
         }
@@ -54,7 +56,7 @@ extension LoginView {
             valdidate().isEmpty
         }
         
-        private func valdidate() -> [String] {
+        func valdidate() -> [String] {
             var errors = [String]()
             
             if name.isEmptyOrWhitespace {
