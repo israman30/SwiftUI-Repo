@@ -15,4 +15,11 @@ struct AuthController {
         let response = try await networkClient.signUp(name: name, email: email, password: password, avatar: URL(string: "https://picsum.photos/800")!)
         return response
     }
+    
+    func login(with email: String, password: String) async throws -> Bool {
+        let response = try await networkClient.login(with: email, password: password)
+        
+        // save access toke in keychain
+        return response.accessToken != nil
+    }
 }
