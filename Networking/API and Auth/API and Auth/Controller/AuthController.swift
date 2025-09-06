@@ -11,7 +11,8 @@ struct AuthController {
     
     let networkClient: NetworkClient
     
-    init(networkClient: NetworkClient = .init()) {
-        self.networkCl ient = networkClient
+    func signUp(name: String, email: String, password: String) async throws -> SignupResponse {
+        let response = try await networkClient.signUp(name: name, email: email, password: password, avatar: URL(string: "https://picsum.photos/800")!)
+        return response
     }
 }
