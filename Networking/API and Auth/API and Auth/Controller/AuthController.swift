@@ -20,6 +20,9 @@ struct AuthController {
         let response = try await networkClient.login(with: email, password: password)
         
         // save access toke in keychain
-        return response.accessToken != nil
+        Keychain.set(response.accessToken, forKey: "accessToken")
+        Keychain.set(response.refreshToken, forKey: "refreshToken")
+        
+        return false
     }
 }
