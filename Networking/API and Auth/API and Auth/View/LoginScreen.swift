@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct LoginScreen: View {
     @State private var registrationForm: RegistrationForm = .init()
     @State private var errors = [String]()
     
@@ -28,7 +28,7 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginScreen()
 }
 
 extension String {
@@ -46,7 +46,7 @@ extension String {
     }
 }
 
-extension LoginView {
+extension LoginScreen {
     private struct RegistrationForm {
         var name: String = ""
         var email: String = ""
