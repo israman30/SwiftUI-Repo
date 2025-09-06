@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AuthLoginScreen: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var email: String = "John Doe"
+    @State private var password: String = "password1234"
     @AppStorage("isAuthed") private var isAuthed: Bool = false
     
     @Environment(\.authController) private var auth
