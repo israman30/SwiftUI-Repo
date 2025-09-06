@@ -10,7 +10,7 @@
 
 import SwiftUI
 
-struct LoginScreen: View {
+struct RegisterScreen: View {
     @Environment(\.authController) private var auth
     @State private var registrationForm: RegistrationForm = .init()
     @State private var message: String?
@@ -91,7 +91,7 @@ struct LoginScreen: View {
 
 
 #Preview {
-    LoginScreen()
+    RegisterScreen()
 }
 
 extension String {
@@ -109,7 +109,7 @@ extension String {
     }
 }
 
-extension LoginScreen {
+extension RegisterScreen {
     private struct RegistrationForm {
         var name: String = "John Doe"
         var email: String = "johndoe@gmail.com"

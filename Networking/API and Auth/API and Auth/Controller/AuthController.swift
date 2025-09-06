@@ -19,6 +19,9 @@ struct AuthController {
     func login(with email: String, password: String) async throws -> Bool {
         let response = try await networkClient.login(with: email, password: password)
         
+        debugPrint(response.accessToken)
+        debugPrint(response.refreshToken)
+        
         // save access toke in keychain
         Keychain.set(response.accessToken, forKey: "accessToken")
         Keychain.set(response.refreshToken, forKey: "refreshToken")

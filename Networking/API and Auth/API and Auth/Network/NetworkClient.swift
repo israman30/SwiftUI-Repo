@@ -51,7 +51,7 @@ struct NetworkClient {
         urlRequest.httpBody = try! JSONEncoder().encode(request)
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
         let logingResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
         return logingResponse
     }
