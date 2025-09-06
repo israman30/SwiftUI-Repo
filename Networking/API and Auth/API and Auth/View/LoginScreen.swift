@@ -13,7 +13,7 @@ import SwiftUI
 struct LoginScreen: View {
     @Environment(\.authController) private var auth
     @State private var registrationForm: RegistrationForm = .init()
-    @State private var message = ""
+    @State private var message: String?
     
     var body: some View {
         Form {
@@ -31,6 +31,12 @@ struct LoginScreen: View {
 //            if !errors.isEmpty {
 //                ValidationSummaryView(errors: errors)
 //            }
+            
+            if let message = message {
+                Text(message)
+                    .foregroundStyle(message.contains("❎") ? .red : .green)
+                    .multilineTextAlignment(.center)
+            }
         }
     }
     
