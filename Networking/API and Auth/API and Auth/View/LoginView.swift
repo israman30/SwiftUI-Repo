@@ -24,6 +24,7 @@ struct LoginView: View {
             Button("Signup") {
                 // event
             }
+            .disabled(!isValid)
         }
     }
     
@@ -32,19 +33,21 @@ struct LoginView: View {
         
         if name.isEmptyOrWhitespace {
             errors.append("Name is required")
-        } else if email.isEmptyOrWhitespace {
-            errors.append("Email is required")
-        } else if password.isEmptyOrWhitespace {
-            errors.append("Password is required")
-        } else {
-            errors.append("All fields are required")
         }
         
-        if !password.isEmpty, !password.isValidpassword {
+        if email.isEmptyOrWhitespace {
+            errors.append("Email is required")
+        }
+        
+        if password.isEmptyOrWhitespace {
+            errors.append("Password is required")
+        }
+        
+        if !password.isValidpassword {
             errors.append("Password must be at least 8 characters long")
         }
         
-        if !email.isEmpty, !email.isEmailValid {
+        if !email.isEmailValid {
             errors.append("Email is invalid")
         }
         
@@ -62,7 +65,7 @@ extension String {
     }
     
     var isValidpassword: Bool {
-        count >= 8
+        count > 8
     }
     
     var isEmailValid: Bool {
