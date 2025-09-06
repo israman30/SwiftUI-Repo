@@ -13,7 +13,7 @@ import SwiftUI
 struct LoginScreen: View {
     @Environment(\.authController) private var auth
     @State private var registrationForm: RegistrationForm = .init()
-    @State private var errors = [String]()
+    @State private var message = ""
     
     var body: some View {
         Form {
@@ -22,6 +22,9 @@ struct LoginScreen: View {
             SecureField("Password", text: $registrationForm.password)
             Button("Signup") {
                 // errors = registrationForm.valdidate()
+                Task {
+                    await signup()
+                }
             }.disabled(!registrationForm.isValid)
             
             // appreach for displaying view messaged when empty fields, toggle errors = registrationForm.valdidate()
@@ -31,6 +34,14 @@ struct LoginScreen: View {
         }
     }
     
+    private func signup() async {
+        do {
+            let response = try await auth.signUp(name: registrationForm.name, email: registrationForm.email, password: registrationForm.password)
+        } catch {
+            message = error.localizedDescription
+        }
+        
+    }
     
 }
 
