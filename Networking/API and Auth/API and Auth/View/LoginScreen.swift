@@ -19,8 +19,11 @@ struct LoginScreen: View {
             Button("Signup") {
                 // error event
                 errors = registrationForm.valdidate()
-            }
-            .disabled(!registrationForm.isValid)
+            }.disabled(!registrationForm.isValid)
+            
+//            if !errors.isEmpty {
+//                ValidationSummaryView(errors: errors)
+//            }
         }
     }
     
