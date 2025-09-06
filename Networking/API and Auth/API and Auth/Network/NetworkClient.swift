@@ -43,4 +43,16 @@ struct NetworkClient {
         let decoded = try JSONDecoder().decode(SignupResponse.self, from: data)
         return decoded
     }
+    
+    func login(with email: String, password: String) async throws -> LoginResponse {
+        let request = LoginRequest(email: email, password: password)
+        var urlRequest = URLRequest(url: Constants.Urls.login)
+        urlRequest.httpMethod = "POST"
+        urlRequest.httpBody = try! JSONEncoder().encode(request)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        let logingResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+        return logingResponse
+    }
 }
