@@ -12,6 +12,10 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
+    private var isValid: Bool {
+        valdidate().isEmpty
+    }
+    
     var body: some View {
         Form {
             TextField("Name", text: $name)
@@ -36,6 +40,13 @@ struct LoginView: View {
             errors.append("All fields are required")
         }
         
+        if !password.isEmpty, !password.isValidpassword {
+            errors.append("Password must be at least 8 characters long")
+        }
+        
+        if !email.isEmpty, !email.isEmailValid {
+            errors.append("Email is invalid")
+        }
         
         return errors
     }
