@@ -47,11 +47,13 @@ struct CardStackView: View {
             startAutoPop()
         }
     }
+    
     private func startAutoPop() {
         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { _ in
             swipeTopCard()
         }
     }
+    
     private func swipeTopCard() {
         isSwiping = true
         isAnimatingOut = true
@@ -69,6 +71,7 @@ struct CardStackView: View {
             fadeOut = false
         }
     }
+    
     private func scale(for index: Int) -> CGFloat {
         switch index {
         case 0: return 1.0
@@ -77,6 +80,7 @@ struct CardStackView: View {
         default: return 0.9
         }
     }
+    
     private func offset(for index: Int) -> CGSize {
         switch index {
         case 0: return .zero
@@ -86,6 +90,7 @@ struct CardStackView: View {
         }
     }
 }
+
 struct CardView: View {
     let imageName: String
     var body: some View {
@@ -95,6 +100,7 @@ struct CardView: View {
             .frame(width: 240, height: 300)
     }
 }
+
 #Preview{
     CardStackView()
         .background(.gray)
