@@ -25,6 +25,7 @@ struct CardStackView: View {
     @State private var isAnimatingOut = false
     @State private var animateTopCardOut = false
     @State private var fadeOut = false
+    
     var body: some View {
         ZStack {
             ForEach(Array(cards.enumerated()), id: \.element) { index, imageName in
@@ -32,8 +33,8 @@ struct CardStackView: View {
                     .scaleEffect(scale(for: index))
                     .offset(offset(for: index))
                     .zIndex(Double(cards.count - index))
-                    .opacity(index == 0 ? (fadeOut ? 0 : 1) : 1)
-                    .rotationEffect(Angle(degrees: Double(index == 0 ? 2.5 : index == 1 ? -5 : 5)))
+                    .opacity(opacity(Double(index)))
+                    .rotationEffect(angle(Double(index)))
                     .animation(.linear(duration: 0.4), value: dragOffset)
                     .animation(.easeInOut(duration: 0.4), value: animateTopCardOut)
                     .animation(.easeOut(duration: 0.4), value: fadeOut)
@@ -46,6 +47,14 @@ struct CardStackView: View {
         .onAppear {
             startAutoPop()
         }
+    }
+    
+    private func opacity(_ index: Double) -> Double {
+        index == 0 ? (fadeOut ? 0 : 1) : 1
+    }
+    
+    private func angle(_ index: Double) -> Angle {
+        Angle(degrees: index == 0 ? 2.5 : index == 1 ? -5 : 5)
     }
     
     private func startAutoPop() {
