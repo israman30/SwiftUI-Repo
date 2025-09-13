@@ -12,11 +12,19 @@ struct ContentView: View {
         TooltipModel(title: "Hello World")
     ]
     
+    var list2: [TooltipModel] = [
+        TooltipModel(icon: "heart.fill", title: "31")
+    ]
+    
+    var list3: [TooltipModel] = [
+        TooltipModel(icon: "bubble.fill", title: "31")
+    ]
+    
     var body: some View {
         VStack(spacing: 50) {
             Tooltip(items: list, type: .bottom)
-            Tooltip(items: list, type: .top)
-            Tooltip(items: list, type: .left)
+            Tooltip(items: list2, type: .top)
+            Tooltip(items: list3, type: .left)
             Tooltip(items: list, type: .right)
         }
         .padding()
@@ -100,8 +108,9 @@ struct Tooltip: View {
     private func ActivityItem(item: TooltipModel) -> some View {
         HStack(spacing: 2) {
             if let icon = item.icon {
-                Image(icon)
+                Image(systemName: icon)
                     .resizable()
+                    .foregroundStyle(.white)
                     .frame(width: 16, height: 16)
             }
             
