@@ -27,7 +27,6 @@ struct ContentView: View {
             Tooltip(items: list3, type: .left)
             Tooltip(items: list, type: .right)
         }
-        .padding()
     }
 }
 
@@ -69,8 +68,7 @@ enum TooltipDirection {
     case top, left, right, bottom
 }
 
-struct Tooltip: View {
-    
+public struct Tooltip: View {
     var items: [TooltipModel]
     var type: TooltipDirection
     
@@ -126,6 +124,7 @@ struct Tooltip: View {
             .fill(Color.red.opacity(0.5))
             .frame(width: 20, height: 10)
     }
+    
     private func alignment() -> Alignment{
         switch type {
         case .top:
