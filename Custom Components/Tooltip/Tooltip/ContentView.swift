@@ -53,7 +53,6 @@ struct Triangle: Shape {
         )
         
         path.addLine(to: bottomLeft)
-        
         return path
     }
 }
@@ -125,7 +124,7 @@ public struct Tooltip: View {
             .frame(width: 20, height: 10)
     }
     
-    private func alignment() -> Alignment{
+    private func alignment() -> Alignment {
         switch type {
         case .top:
             return .top
