@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+/**
+ The `containerRelativeFrame` modifier we will be looking at in this article, a modifier for sizing a view relative to the nearest container, was actually added from iOS 17(almost 2 years ago?), but I didn’t realize that it exists and started using it until recently!
+ 
+ We can use this modifier to specify the relative size of a view in relation to the size of the nearest container view such as a `VStack`, `HStack`, `ScrollView`, `List`, and etc.
+ 
+ `Multiple Items`
+ What if we want multiple cards per page?
+
+ Simply use the containerRelativeFrame(_:count:span:spacing:alignment:) variation to specify
+
+ - count: the total number of views, ie: rows or columns, in the specified axis,
+ - span: the number of rows or columns that the modified view should actually occupy
+ - spacing: the spacing between each view
+
+ */
+
 struct ContentView: View {
     var body: some View {
         VStack {
