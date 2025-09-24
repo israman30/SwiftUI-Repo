@@ -1,0 +1,34 @@
+//
+//  ContentView.swift
+//  Container Relative Frame
+//
+//  Created by Israel Manzo on 9/23/25.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            ContainerRelativeFrameDemo()
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
+
+struct ContainerRelativeFrameDemo: View {
+    var body: some View {
+        ScrollView(.vertical) {
+            VStack(spacing: 8) {
+                ForEach(0..<10, id: \.self) { _ in
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(.blue.opacity(0.8))
+                }
+            }
+            .padding()
+        }
+    }
+}
