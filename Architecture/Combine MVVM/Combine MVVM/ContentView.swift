@@ -40,3 +40,24 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+class SomeViewController:UIViewController {
+    var viewModel: SomeViewModel!
+    private var cancellable = Set<AnyCancellable>()
+    
+    lazy var someLabel = UILabel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewModel = .init()
+    }
+    
+    func mutateData() {
+        viewModel.$someStringData
+            .sink { [weak self] value in
+                self?.someLabel.text = value
+            }
+            .store(in: &cancellable)
+    }
+}
