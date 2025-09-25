@@ -14,6 +14,7 @@ struct SomeModel {
     var text: String
 }
 
+/** `SwiftUI support **/
 class SomeViewModel: ObservableObject {
     @Published var someStringData: String = "Hello, world!"
     
@@ -41,6 +42,8 @@ struct ContentView: View {
     ContentView()
 }
 
+/** `UIKit support */
+
 class SomeViewController:UIViewController {
     var viewModel: SomeViewModel!
     private var cancellable = Set<AnyCancellable>()
@@ -51,6 +54,8 @@ class SomeViewController:UIViewController {
         super.viewDidLoad()
         
         viewModel = .init()
+        // calling for mutating data
+        mutateData()
     }
     
     func mutateData() {
