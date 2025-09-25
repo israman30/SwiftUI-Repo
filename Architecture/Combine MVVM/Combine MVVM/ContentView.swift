@@ -6,16 +6,32 @@
 //
 
 import SwiftUI
+import Combine
 
 /** `[ View ] <----binds to----> [ ViewModel ] <----calls----> [ Model ] */
 
+struct SomeModel {
+    var text: String
+}
+
+class SomeViewModel: ObservableObject {
+    @Published var someStringData: String = "Hello, world!"
+    
+    func manage(string data: String) {
+        // Business logic goes here
+        someStringData = "\(data)"
+    }
+}
+
 struct ContentView: View {
+    @StateObject var viewModel: SomeViewModel = .init()
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text(viewModel.someStringData)
+            Button("Tap here") {
+                let newData = SomeModel(text: "Data mutated!")
+                viewModel.manage(string: newData.text)
+            }
         }
         .padding()
     }
