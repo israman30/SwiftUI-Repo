@@ -6,6 +6,7 @@
 // https://jsonplaceholder.typicode.com/users
 
 import SwiftUI
+internal import Combine
 
 struct User: Decodable {
     var id: Int
@@ -21,15 +22,34 @@ final class NetworkManager {
     }
 }
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+extension EnvironmentValues {
+    @Entry var api = NetworkManager()
+}
+
+final class UserViewModel: ObservableObject {
+    @Environment(\.api) private var api
+    @Published var users: [User] = []
+    
+    func load() async {
+        do {
+            users = try await api.fetch()
+        } catch {
+            print(error.localizedDescription)
         }
-        .padding()
+    }
+}
+
+struct ContentView: View {
+    
+    @StateObject private var viewModel = UserViewModel()
+    
+    var body: some View {
+        List(viewModel.users, id: \.id) { user in
+            Text(user.name)
+        }
+        .task {
+            await viewModel.load()
+        }
     }
 }
 
