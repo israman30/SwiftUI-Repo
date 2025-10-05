@@ -20,6 +20,8 @@ struct ResponsiveScrollView: View {
             }
             
             ModalView()
+            
+            SomeGridView()
         }
         .padding(.vertical)
     }
@@ -54,6 +56,30 @@ struct ModalView: View {
             min(width * 0.9, 500) // Modal content scales with modal size
         }
         .padding()
+    }
+}
+
+struct SomeGridView: View {
+    var body: some View {
+        LazyVGrid(columns: [
+            GridItem(.adaptive(minimum: 120))
+        ]) {
+            ForEach(0..<10) { product in
+                ProductCard(product: product)
+                    .containerRelativeFrame(.horizontal) { width, _ in
+                        // Each card takes appropriate width within its grid cell
+                        width * 0.95
+                    }
+                    .aspectRatio(1, contentMode: .fit)
+            }
+        }
+    }
+}
+
+struct ProductCard: View {
+    let product: Int
+    var body: some View {
+        Text("Some: \(product)")
     }
 }
 
