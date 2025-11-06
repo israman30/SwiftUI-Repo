@@ -9,42 +9,72 @@ import SwiftUI
 import PencilKit
 
 struct CanvasView: UIViewRepresentable {
-    @Binding var canvas: PKCanvasView
+    @Binding var drawing: PKDrawing
+    @Binding var showToolPicker: Bool
+    
+    private let canvasView = PKCanvasView()
+    private let toolPicker = PKToolPicker()
     
     func makeUIView(context: Context) -> PKCanvasView {
-        canvas.drawingPolicy = .anyInput
-        return canvas
+        canvasView.drawingPolicy = .anyInput
+        
+        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        toolPicker.addObserver(canvasView)
+        if showToolPicker {
+            canvasView.becomeFirstResponder()
+        }
+        return canvasView
     }
     
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        toolPicker.setVisible(showToolPicker, forFirstResponder: canvasView)
+        toolPicker.addObserver(canvasView)
+        if showToolPicker {
+            canvasView.becomeFirstResponder()
+        } else {
+            canvasView.resignFirstResponder()
+        }
         
+        if drawing != canvasView.drawing {
+            canvasView.drawing = drawing
+        }
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(drawing: $drawing)
+    }
+    
+    class Coordinator: NSObject, PKCanvasViewDelegate {
+        var drawing: Binding<PKDrawing>
+        init(drawing: Binding<PKDrawing>) {
+            self.drawing = drawing
+        }
+        
+        func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+            drawing.wrappedValue = canvasView.drawing
+        }
     }
 }
 
 struct ContentView: View {
-    @State private var canvas = PKCanvasView()
-    @State private var toolPicker = PKToolPicker()
+    @State private var showToolPicker: Bool = false
+    @State private var drawing = PKDrawing()
     
     var body: some View {
-        ZStack {
-            CanvasView(canvas: $canvas)
-                .onAppear {
-                    if let _ = UIApplication.shared.connectedScenes.first {
-                        toolPicker.setVisible(true, forFirstResponder: canvas)
-                        toolPicker.addObserver(canvas)
-                        canvas.becomeFirstResponder()
+        NavigationView {
+            CanvasView(drawing: $drawing, showToolPicker: $showToolPicker)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Erase all", systemImage: "trash") {
+                            drawing = PKDrawing()
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Paint", systemImage: "brush") {
+                            showToolPicker.toggle()
+                        }
                     }
                 }
-            VStack {
-                HStack {
-                    Spacer()
-                    Button("Clear") {
-                        canvas.drawing = .init()
-                    }
-                }
-                .padding(.horizontal)
-                Spacer()
-            }
         }
     }
 }
