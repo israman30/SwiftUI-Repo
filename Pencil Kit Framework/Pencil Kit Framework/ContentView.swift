@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PencilKit
+import SwiftData
 
 struct CanvasView: UIViewRepresentable {
     @Binding var drawing: PKDrawing
@@ -74,11 +75,17 @@ struct ContentView: View {
                             showToolPicker.toggle()
                         }
                     }
+//                    ToolbarItem(placement: .topBarLeading) {
+//                        Button("Save drawing", systemImage: "arrow.down.doc") {
+//                            Task {
+//                                try await drawing.savePhotoLibrary()
+//                            }
+//                        }
+//                    }
+                    
                     ToolbarItem(placement: .topBarLeading) {
-                        Button("Save drawing", systemImage: "arrow.down.doc") {
-                            Task {
-                                try await drawing.savePhotoLibrary()
-                            }
+                        ShareLink(item: drawing.image(), subject: Text("Drawing"), message: Text("Drawing something cool!"), preview: SharePreview("Drawing", image: drawing.image())) {
+                            Label("Share", systemImage: "square.and.arrow.up")
                         }
                     }
                 }
@@ -94,5 +101,43 @@ extension PKDrawing {
     func savePhotoLibrary() async throws {
         let uiImage = self.image(from: self.bounds, scale: 1)
         UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
+    }
+}
+
+// PERSISTENCE
+@Model
+class DrawingnModel {
+    private var drawingData: Data
+    
+    var drawing: PKDrawing {
+        get {
+            (try? PKDrawing(data: drawingData)) ?? PKDrawing()
+        }
+        set {
+            drawingData = newValue.dataRepresentation()
+        }
+    }
+    
+    init(drawingData: Data) {
+        self.drawingData = drawingData
+    }
+    
+    init(drawing: PKDrawing) {
+        self.drawingData = drawing.dataRepresentation()
+    }
+    
+    init() {
+        drawingData = Data()
+    }
+}
+
+extension PKDrawing {
+    func savePhotoLibrary() {
+        
+    }
+    
+    func image() -> Image {
+        let uiImage = self.image(from: self.bounds, scale: 1)
+        return Image(uiImage: uiImage)
     }
 }
