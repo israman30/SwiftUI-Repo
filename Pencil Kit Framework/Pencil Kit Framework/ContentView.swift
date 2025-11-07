@@ -74,6 +74,13 @@ struct ContentView: View {
                             showToolPicker.toggle()
                         }
                     }
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Save drawing", systemImage: "arrow.down.doc") {
+                            Task {
+                                try await drawing.savePhotoLibrary()
+                            }
+                        }
+                    }
                 }
         }
     }
@@ -81,4 +88,11 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+extension PKDrawing {
+    func savePhotoLibrary() async throws {
+        let uiImage = self.image(from: self.bounds, scale: 1)
+        UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
+    }
 }
