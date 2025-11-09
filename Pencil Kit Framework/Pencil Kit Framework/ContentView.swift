@@ -75,13 +75,6 @@ struct ContentView: View {
                             showToolPicker.toggle()
                         }
                     }
-//                    ToolbarItem(placement: .topBarLeading) {
-//                        Button("Save drawing", systemImage: "arrow.down.doc") {
-//                            Task {
-//                                try await drawing.savePhotoLibrary()
-//                            }
-//                        }
-//                    }
                     
                     ToolbarItem(placement: .topBarLeading) {
                         ShareLink(item: drawing.image(), subject: Text("Drawing"), message: Text("Drawing something cool!"), preview: SharePreview("Drawing", image: drawing.image())) {
