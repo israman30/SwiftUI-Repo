@@ -13,6 +13,12 @@ import SwiftUI
  - app.identifier and urlschema/path
  */
 
+// NOTE: For testing the app add the schema on the reminder app in the simulator to navigate
+// exampple:
+//  - myappscheme://profile
+//  - myappscheme://home
+// tap on the link to navigate to your app to the designated schema path
+
 extension URL {
     var isDeepLink: Bool {
         // NOTE: make sure this scheme is equal to the scheme shared with the user
