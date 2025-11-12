@@ -7,8 +7,15 @@
 
 import SwiftUI
 
+/**
+ Add URL schema:
+ - Target -> Info -> URL Types
+ - app.identifier and urlschema/path
+ */
+
 extension URL {
     var isDeepLink: Bool {
+        // NOTE: make sure this scheme is equal to the scheme shared with the user
         scheme == "Deeplinkapp"
     }
     
