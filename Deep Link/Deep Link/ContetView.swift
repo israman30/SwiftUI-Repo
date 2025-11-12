@@ -9,7 +9,7 @@ import SwiftUI
 
 extension URL {
     var isDeepLink: Bool {
-        scheme == "deeplinkapp"
+        scheme == "Deeplinkapp"
     }
     
     var selection: Selection? {
@@ -46,7 +46,7 @@ struct ContentView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-                .tag(Selection.home.hashValue)
+                .tag(Selection.home)
             
             Text("Profile")
                 .foregroundStyle(.red)
@@ -55,16 +55,16 @@ struct ContentView: View {
                     Image(systemName: "person")
                     Text("Profile")
                 }
-                .tag(Selection.profile.hashValue)
+                .tag(Selection.profile)
             
-            Text("Settings")
+            Text("Books")
                 .foregroundStyle(.cyan)
                 .font(.largeTitle)
                 .tabItem {
                     Image(systemName: "book")
                     Text("Books")
                 }
-                .tag(Selection.books.hashValue)
+                .tag(Selection.books)
         }
         .onOpenURL { url in
             guard let tab = url.selection else { return }
