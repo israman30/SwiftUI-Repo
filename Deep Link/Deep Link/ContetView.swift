@@ -9,6 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        TabView {
+            Text("Home")
+                .foregroundStyle(.blue)
+                .font(.largeTitle)
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            
+            Text("Profile")
+                .foregroundStyle(.red)
+                .font(.largeTitle)
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Profile")
+                }
+            
+            Text("Settings")
+                .foregroundStyle(.cyan)
+                .font(.largeTitle)
+                .tabItem {
+                    Image(systemName: "book")
+                    Text("Books")
+                }
+        }
     }
+}
+
+#Preview {
+    ContentView()
 }
