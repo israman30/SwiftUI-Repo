@@ -57,7 +57,7 @@ struct LinePaperBackground: View {
 }
 
 struct GridPaperBackgroung: View {
-    private let lineColor = Color.gray.opacity(0.3)
+    private let lineColor = Color.blue.opacity(0.3)
     private let gridSpacing: CGFloat = 20
     var body: some View {
         GeometryReader { proxy in
