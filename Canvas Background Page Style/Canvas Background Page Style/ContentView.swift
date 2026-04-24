@@ -19,6 +19,10 @@ struct ContentView: View {
     ContentView()
 }
 
+#Preview {
+    GridPaperBackgroung()
+}
+
 struct LinePaperBackground: View {
     private let lineSpacing: CGFloat = 28
     private let redMarginColor = Color.red.opacity(0.5)
@@ -46,6 +50,40 @@ struct LinePaperBackground: View {
                     marginPath.move(to: CGPoint(x: marginWidth, y: 0))
                     marginPath.addLine(to: CGPoint(x: marginWidth, y: height))
                     context.stroke(marginPath, with: .color(redMarginColor), lineWidth: 1)
+                }
+            }
+        }
+    }
+}
+
+struct GridPaperBackgroung: View {
+    private let lineColor = Color.gray.opacity(0.3)
+    private let gridSpacing: CGFloat = 20
+    var body: some View {
+        GeometryReader { proxy in
+            let width = proxy.size.width
+            let height = proxy.size.height
+            ZStack {
+                Color.white
+                Canvas { context, size in
+                    // vertical line
+                    var x: CGFloat = 0
+                    while x <= width {
+                        var path = Path()
+                        path.move(to: CGPoint(x: x, y: 0))
+                        path.addLine(to: CGPoint(x: x, y: height))
+                        context.stroke(path, with: .color(lineColor), lineWidth: 0.5)
+                        x += gridSpacing
+                    }
+                    // horizontal lines
+                    var y: CGFloat = 0
+                    while y <= height {
+                        var path = Path()
+                        path.move(to: CGPoint(x: 0,y: y))
+                        path.addLine(to: CGPoint(x: width,y: y))
+                        context.stroke(path, with: .color(lineColor), lineWidth: 0.5)
+                        y += gridSpacing
+                    }
                 }
             }
         }
