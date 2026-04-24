@@ -21,9 +21,10 @@ struct ContentView: View {
 
 struct LinePaperBackground: View {
     private let lineSpacing: CGFloat = 28
-    private let marginColor = Color.red.opacity(0.5)
-    private let lineMarginColor = Color.blue.opacity(0.5)
+    private let redMarginColor = Color.red.opacity(0.5)
+    private let blueMarginColor = Color.blue.opacity(0.5)
     private let marginWidth: CGFloat = 40
+    private let redMarginWidth: CGFloat = 10
     
     var body: some View {
         GeometryReader { proxy in
@@ -35,16 +36,16 @@ struct LinePaperBackground: View {
                     var y: CGFloat = lineSpacing
                     while y < height {
                         var path = Path()
-                        path.move(to: CGPoint(x: marginWidth, y: y))
+                        path.move(to: CGPoint(x: redMarginWidth, y: y))
                         path.addLine(to: CGPoint(x: size.width, y: y))
-                        context.stroke(path, with: .color(marginColor), lineWidth: 0.5)
+                        context.stroke(path, with: .color(blueMarginColor), lineWidth: 0.5)
                         y += lineSpacing
                     }
                     // left margin line
                     var marginPath = Path()
                     marginPath.move(to: CGPoint(x: marginWidth, y: 0))
                     marginPath.addLine(to: CGPoint(x: marginWidth, y: height))
-                    context.stroke(marginPath, with: .color(lineMarginColor), lineWidth: 1)
+                    context.stroke(marginPath, with: .color(redMarginColor), lineWidth: 1)
                 }
             }
         }
