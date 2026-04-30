@@ -36,7 +36,7 @@ class ProductNetwork: PostServiceProtocol {
         
         let body = try JSONEncoder().encode(payload)
         request.httpBody = body
-        request.setValue("Content-Type", forHTTPHeaderField: "application.json")
+        request.setValue("application.json", forHTTPHeaderField: "Content-Type")
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
@@ -45,6 +45,8 @@ class ProductNetwork: PostServiceProtocol {
         }
         
         guard 200..<300 ~= httpResponse.statusCode else {
+            let bodyString = String(data: data, encoding: .utf8) ?? "<non-UTF8 body>"
+            print("Body Failed: \(httpResponse.statusCode) - \(bodyString)")
             throw URLError(.badServerResponse)
         }
         
@@ -61,6 +63,6 @@ class MockProductNetwork: PostServiceProtocol {
     }
     
     func post(_ payload: CreatedPost) async throws -> Post {
-        Post(userId: 1, id: 1, title: "Post", body: "Post body")
+        Post(userId: 3, id: 3, title: "Post", body: "Post body")
     }
 }
