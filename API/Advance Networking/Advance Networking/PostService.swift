@@ -15,10 +15,10 @@ protocol PostServiceProtocol {
 class ProductNetwork: PostServiceProtocol {
     static var shared = ProductNetwork()
     
-    private let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+    private let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/posts")!
     
     func fetchPost() async throws -> [Post] {
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await URLSession.shared.data(from: baseUrl)
         
         guard let httpResponse = response as? HTTPURLResponse else {
             throw URLError(.badServerResponse)
@@ -31,7 +31,24 @@ class ProductNetwork: PostServiceProtocol {
     }
     
     func post(_ payload: CreatedPost) async throws -> Post {
-        Post(userId: 1, id: 1, title: "Post", body: "Post body")
+        var request = URLRequest(url: baseUrl)
+        request.httpMethod = "POST"
+        
+        let body = try JSONEncoder().encode(payload)
+        request.httpBody = body
+        request.setValue("Content-Type", forHTTPHeaderField: "application.json")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw URLError(.badServerResponse)
+        }
+        
+        guard 200..<300 ~= httpResponse.statusCode else {
+            throw URLError(.badServerResponse)
+        }
+        
+        return try JSONDecoder().decode(Post.self, from: data)
     }
 }
 

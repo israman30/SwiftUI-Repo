@@ -24,5 +24,13 @@ class MyViewModel: ObservableObject {
             print("DEBUG: something went wrong: \(error)")
         }
     }
+    
+    func createPost(_ payload: CreatedPost) async {
+        do {
+            let newProduct = try await service.post(payload)
+        } catch {
+            print("DEBUG: something went wrong creating a post: \(error)")
+        }
+    }
 }
 
