@@ -80,6 +80,21 @@ class ProductNetwork: PostServiceProtocol {
     }
     
     func delete(_ id: Int) async throws {
+        let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!
+        var request = URLRequest(url: baseUrl)
+        request.httpMethod = "DELETE"
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw URLError(.badServerResponse)
+        }
+        
+        guard 200..<300 ~= httpResponse.statusCode else {
+            let bodyString = String(data: data, encoding: .utf8) ?? "<non-UTF8 body>"
+            print("Body Failed: \(httpResponse.statusCode) - \(bodyString)")
+            throw URLError(.badServerResponse)
+        }
         
     }
 }

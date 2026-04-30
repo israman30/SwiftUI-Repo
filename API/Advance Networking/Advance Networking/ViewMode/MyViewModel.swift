@@ -45,5 +45,37 @@ class MyViewModel: ObservableObject {
             print("DEBUG: something went wrong creating a post: \(error)")
         }
     }
+    
+    func delete(_ id: Int) async {
+        guard let index = self.posts.firstIndex(where: { $0.id == id }) else { return }
+        do {
+            try await service.delete(id)
+            posts.remove(at: index)
+        } catch {
+            print("DEBUG: something went wrong deleting a post: \(error)")
+        }
+    }
 }
 
+enum Intent {
+    case create
+    case update(Post)
+    
+    var navigationTitle: String {
+        switch self {
+        case .create:
+            return "Create"
+        case .update(let post):
+            return "Update \(post)"
+        }
+    }
+    
+    var submitTitle: String {
+        switch self {
+        case .create:
+            return "Create"
+        case .update(let post):
+            return "Update \(post)"
+        }
+    }
+}

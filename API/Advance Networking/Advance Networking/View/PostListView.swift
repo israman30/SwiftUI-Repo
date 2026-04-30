@@ -12,6 +12,7 @@ import Combine
 
 struct PostListView: View {
     @StateObject var vm = MyViewModel(service: ProductNetwork())
+    
     var body: some View {
         NavigationView {
             List(vm.posts) { item in
