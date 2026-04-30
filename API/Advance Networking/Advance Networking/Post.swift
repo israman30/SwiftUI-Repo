@@ -21,3 +21,10 @@ struct Post: Codable, Identifiable, Hashable {
     var body: String
 }
 
+struct CreatedPost: Encodable {
+    var userId: Int
+    var id: Int
+    var title: String
+    var body: String
+}
+
