@@ -28,6 +28,8 @@ class MyViewModel: ObservableObject {
     func createPost(_ payload: CreatedPost) async {
         do {
             let newProduct = try await service.post(payload)
+            print("New post: \(newProduct)")
+            self.posts.insert(newProduct, at: 0)
         } catch {
             print("DEBUG: something went wrong creating a post: \(error)")
         }
