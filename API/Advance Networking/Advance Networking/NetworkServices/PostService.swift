@@ -17,10 +17,13 @@ protocol PostServiceProtocol {
 class ProductNetwork: PostServiceProtocol {
     static var shared = ProductNetwork()
     
-    private let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+    private let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/")!
     
     func fetchPost() async throws -> [Post] {
-        let (data, response) = try await URLSession.shared.data(from: baseUrl)
+        let requestModel = APIRequest<Post>(method: .get, path: "posts")
+        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
             throw URLError(.badServerResponse)
@@ -33,7 +36,7 @@ class ProductNetwork: PostServiceProtocol {
     }
     
     func post(_ payload: CreatedPost) async throws -> Post {
-        let requestModel = try APIRequest<Post>(method: .post, path: "", body: payload)
+        let requestModel = try APIRequest<Post>(method: .post, path: "posts", body: payload)
         let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -52,7 +55,7 @@ class ProductNetwork: PostServiceProtocol {
     }
     
     func update(_ id: Int, payload: UpdatePost) async throws -> Post {
-        let requestModel = try APIRequest<Post>(method: .put, path: "\(id)", body: payload)
+        let requestModel = try APIRequest<Post>(method: .put, path: "posts/\(id)", body: payload)
         let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -71,7 +74,7 @@ class ProductNetwork: PostServiceProtocol {
     }
     
     func delete(_ id: Int) async throws {
-        let requestModel = APIRequest<EmptyRespons>(method: .delete, path: "\(id)")
+        let requestModel = APIRequest<EmptyRespons>(method: .delete, path: "posts/\(id)")
         let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         
         let (data, response) = try await URLSession.shared.data(for: request)
