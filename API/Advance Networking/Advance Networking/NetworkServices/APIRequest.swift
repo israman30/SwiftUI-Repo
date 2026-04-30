@@ -14,6 +14,10 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
+struct EmptyRespons: Decodable {
+    
+}
+
 struct APIRequest<Response: Decodable> {
     let method: HTTPMethod
     let path: String
@@ -41,7 +45,7 @@ struct APIRequest<Response: Decodable> {
         }
     }
     
-    func makeUrlRequest(baseURL: URL, defaultHeaders: [String:String]) throws -> URLRequest {
+    func makeUrlRequest(baseURL: URL, defaultHeaders: [String:String] = [:]) throws -> URLRequest {
         guard var components = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: true) else {
             throw URLError(.badURL)
         }

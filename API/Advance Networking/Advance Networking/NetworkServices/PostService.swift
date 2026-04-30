@@ -33,12 +33,8 @@ class ProductNetwork: PostServiceProtocol {
     }
     
     func post(_ payload: CreatedPost) async throws -> Post {
-        var request = URLRequest(url: baseUrl)
-        request.httpMethod = "POST"
-        
-        let body = try JSONEncoder().encode(payload)
-        request.httpBody = body
-        request.setValue("application.json", forHTTPHeaderField: "Content-Type")
+        let requestModel = try APIRequest<Post>(method: .post, path: "", body: payload)
+        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
@@ -56,13 +52,8 @@ class ProductNetwork: PostServiceProtocol {
     }
     
     func update(_ id: Int, payload: UpdatePost) async throws -> Post {
-        let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!
-        var request = URLRequest(url: baseUrl)
-        request.httpMethod = "PUT"
-        
-        let body = try JSONEncoder().encode(payload)
-        request.httpBody = body
-        request.setValue("application.json", forHTTPHeaderField: "Content-Type")
+        let requestModel = try APIRequest<Post>(method: .put, path: "\(id)", body: payload)
+        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
@@ -80,9 +71,8 @@ class ProductNetwork: PostServiceProtocol {
     }
     
     func delete(_ id: Int) async throws {
-        let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!
-        var request = URLRequest(url: baseUrl)
-        request.httpMethod = "DELETE"
+        let requestModel = APIRequest<EmptyRespons>(method: .delete, path: "\(id)")
+        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
