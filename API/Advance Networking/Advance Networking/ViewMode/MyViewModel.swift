@@ -34,5 +34,16 @@ class MyViewModel: ObservableObject {
             print("DEBUG: something went wrong creating a post: \(error)")
         }
     }
+    
+    func update(_ id: Int, payload: UpdatePost) async {
+        guard let index = self.posts.firstIndex(where: { $0.id == id }) else { return }
+        do {
+            let updatedProduct = try await service.update(id, payload: payload)
+            print("Updated post: \(updatedProduct)")
+            self.posts[index] = updatedProduct
+        } catch {
+            print("DEBUG: something went wrong creating a post: \(error)")
+        }
+    }
 }
 

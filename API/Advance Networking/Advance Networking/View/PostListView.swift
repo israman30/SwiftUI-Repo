@@ -34,8 +34,13 @@ struct PostListView: View {
     }
     
     func submit() async {
-        let newPost = CreatedPost(userId: 100, id: 6090909, title: "Post Added", body: "This is teh body of a new post")
+        let newPost = CreatedPost(id: 6090909, title: "Post Added", body: "This is teh body of a new post")
         await vm.createPost(newPost)
+    }
+    
+    func update(_ id: Int) async {
+        let updatedPost = UpdatePost(title: "Upated post", body: "New bddy")
+        await vm.update(id, payload: updatedPost)
     }
 }
 
