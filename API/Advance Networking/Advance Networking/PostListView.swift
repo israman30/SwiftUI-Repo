@@ -11,7 +11,7 @@ import Combine
 // https://jsonplaceholder.typicode.com/posts
 
 struct PostListView: View {
-    @StateObject var vm = MyViewModel()
+    @StateObject var vm = MyViewModel(service: ProductNetwork())
     var body: some View {
         List(vm.posts) { item in
             Text(item.title)

@@ -26,22 +26,3 @@ class MyViewModel: ObservableObject {
     }
 }
 
-protocol PostServiceProtocol {
-    func fetchPost() async throws -> [Post]
-}
-
-class ProductNetwork: PostServiceProtocol {
-    static var shared = ProductNetwork()
-    func fetchPost() async throws -> [Post] {
-        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
-        let (data, _) = try await URLSession.shared.data(from: url)
-        
-        return try JSONDecoder().decode([Post].self, from: data)
-    }
-}
-
-class MockProductNetwork: PostServiceProtocol {
-    func fetchPost() async throws -> [Post] {
-        return []
-    }
-}
