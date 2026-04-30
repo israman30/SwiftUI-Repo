@@ -15,7 +15,7 @@ import SwiftUI
  */
 
 struct Post: Codable, Identifiable, Hashable {
-    var userId: String
+    var userId: Int
     var id: Int
     var title: String
     var body: String

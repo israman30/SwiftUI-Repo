@@ -35,7 +35,7 @@ class MyViewModel: ObservableObject {
 }
 
 struct PostListView: View {
-    var vm = MyViewModel()
+    @StateObject var vm = MyViewModel()
     var body: some View {
         List(vm.posts) { item in
             Text(item.title)
