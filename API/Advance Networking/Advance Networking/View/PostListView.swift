@@ -30,8 +30,15 @@ struct PostListView: View {
             }
         }
         .task {
-            await vm.fetchPost()
+            await render()
         }
+        .refreshable {
+            await render()
+        }
+    }
+    
+    func render() async {
+        await vm.fetchPost()
     }
     
     func submit() async {

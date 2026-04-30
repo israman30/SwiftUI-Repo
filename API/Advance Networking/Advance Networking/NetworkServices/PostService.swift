@@ -20,61 +20,26 @@ class ProductNetwork: PostServiceProtocol {
     private let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/")!
     
     func fetchPost() async throws -> [Post] {
-        let requestModel = APIRequest<Post>(method: .get, path: "posts")
-        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw URLError(.badServerResponse)
-        }
-        
-        guard 200..<300 ~= httpResponse.statusCode else {
-            throw URLError(.badServerResponse)
-        }
-        return try JSONDecoder().decode([Post].self, from: data)
+        let requestModel = APIRequest<[Post]>(method: .get, path: "posts")
+        return try await execute(requestModel)
     }
     
     func post(_ payload: CreatedPost) async throws -> Post {
         let requestModel = try APIRequest<Post>(method: .post, path: "posts", body: payload)
-        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw URLError(.badServerResponse)
-        }
-        
-        guard 200..<300 ~= httpResponse.statusCode else {
-            let bodyString = String(data: data, encoding: .utf8) ?? "<non-UTF8 body>"
-            print("Body Failed: \(httpResponse.statusCode) - \(bodyString)")
-            throw URLError(.badServerResponse)
-        }
-        
-        return try JSONDecoder().decode(Post.self, from: data)
+        return try await execute(requestModel)
     }
     
     func update(_ id: Int, payload: UpdatePost) async throws -> Post {
         let requestModel = try APIRequest<Post>(method: .put, path: "posts/\(id)", body: payload)
-        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw URLError(.badServerResponse)
-        }
-        
-        guard 200..<300 ~= httpResponse.statusCode else {
-            let bodyString = String(data: data, encoding: .utf8) ?? "<non-UTF8 body>"
-            print("Body Failed: \(httpResponse.statusCode) - \(bodyString)")
-            throw URLError(.badServerResponse)
-        }
-        
-        return try JSONDecoder().decode(Post.self, from: data)
+        return try await execute(requestModel)
     }
     
     func delete(_ id: Int) async throws {
         let requestModel = APIRequest<EmptyRespons>(method: .delete, path: "posts/\(id)")
+        let _ = try await execute(requestModel)
+    }
+    
+    private func execute<Response>(_ requestModel: APIRequest<Response>) async throws -> Response {
         let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -85,10 +50,10 @@ class ProductNetwork: PostServiceProtocol {
         
         guard 200..<300 ~= httpResponse.statusCode else {
             let bodyString = String(data: data, encoding: .utf8) ?? "<non-UTF8 body>"
-            print("Body Failed: \(httpResponse.statusCode) - \(bodyString)")
+            print("Failed: \(httpResponse.statusCode) - \(bodyString)")
             throw URLError(.badServerResponse)
         }
-        
+        return try JSONDecoder().decode(Response.self, from: data)
     }
 }
 
