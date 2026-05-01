@@ -13,13 +13,16 @@ import Foundation
 /// relative URL path (no scheme/host) used by `APIRequest.makeUrlRequest(baseURL:)`.
 enum APIRoutes {
     /// Posts feature routes.
-    case post(PostEndpointPath)
+    case post(PostEndpoint)
+    case users(UserEndpoint)
     
     /// Resolved relative URL path for the selected route.
     var path: String {
         switch self {
-        case .post(let endpointPath):
-            endpointPath.path
+        case .post(let endpoint):
+            endpoint.path
+        case .users(let endpoint):
+            endpoint.path
         }
     }
 }

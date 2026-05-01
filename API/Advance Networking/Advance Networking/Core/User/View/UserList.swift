@@ -17,17 +17,13 @@ import SwiftUI
  */
 
 struct UserList: View {
-    @StateObject var vm = UserViewModel()
+    @StateObject var vm = UserViewModel(service: UserService())
     var body: some View {
         List(vm.users) { user in
             Text(user.name)
         }
         .task {
-            do {
-                try await vm.fetchUser()
-            } catch {
-                
-            }
+            await vm.loadUsers()
         }
     }
     

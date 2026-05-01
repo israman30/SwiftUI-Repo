@@ -13,3 +13,16 @@ struct User: Codable, Identifiable, Hashable {
     let username: String
     let email: String
 }
+
+struct UpdateUser: Encodable {
+    let name: String?
+    let email: String?
+}
+
+struct CheckEmailAvailability {
+    let email: String
+}
+
+struct CheckEmailAvailabilityResponse {
+    let isAvailable: Bool
+}

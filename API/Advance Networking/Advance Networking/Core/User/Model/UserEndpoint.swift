@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum UserEndpointPath {
+enum UserEndpoint {
     case list
     case byId(Int)
     case emailAvailable
