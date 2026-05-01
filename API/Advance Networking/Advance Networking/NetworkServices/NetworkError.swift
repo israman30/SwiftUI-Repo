@@ -100,3 +100,23 @@ enum NetworkError: Error, LocalizedError {
         userMessage
     }
 }
+
+enum NetworkErrorMapper {
+    static func map(_ error: Error) -> NetworkError {
+        if let networkError = error as? NetworkError {
+            return networkError
+        }
+        if let urlError = error as? URLError {
+            return .transport(urlError)
+        }
+        return .unknown(error)
+    }
+    
+    static func httpStatu(_ code: Int) -> NetworkError {
+        .httpStatus(code: code)
+    }
+    
+    static func decodeFailure(_ error: Error) -> NetworkError {
+        .decodingFailed(error)
+    }
+}
