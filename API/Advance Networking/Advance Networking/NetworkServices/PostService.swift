@@ -25,29 +25,39 @@ class ProductNetwork: PostServiceProtocol {
     static var shared = ProductNetwork()
     
     /// Base URL for all requests in this service.
+    ///
+    /// API host: `https://jsonplaceholder.typicode.com`
     private let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/")!
     
     /// Fetches all posts.
+    ///
+    /// Route: `GET /posts`
     func fetchPost() async throws -> [Post] {
-        let requestModel = APIRequest<[Post]>(method: .get, path: "posts")
+        let requestModel = APIRequest<[Post]>(method: .get, path: .post(.list))
         return try await execute(requestModel)
     }
     
     /// Creates a new post (JSON body + `Content-Type: application/json`).
+    ///
+    /// Route: `POST /posts`
     func post(_ payload: CreatedPost) async throws -> Post {
-        let requestModel = try APIRequest<Post>(method: .post, path: "posts", body: payload)
+        let requestModel = try APIRequest<Post>(method: .post, path: .post(.list), body: payload)
         return try await execute(requestModel)
     }
     
     /// Updates an existing post by id.
+    ///
+    /// Route: `PUT /posts/{id}`
     func update(_ id: Int, payload: UpdatePost) async throws -> Post {
-        let requestModel = try APIRequest<Post>(method: .put, path: "posts/\(id)", body: payload)
+        let requestModel = try APIRequest<Post>(method: .put, path: .post(.byId(id)), body: payload)
         return try await execute(requestModel)
     }
     
     /// Deletes an existing post by id.
+    ///
+    /// Route: `DELETE /posts/{id}`
     func delete(_ id: Int) async throws {
-        let requestModel = APIRequest<EmptyRespons>(method: .delete, path: "posts/\(id)")
+        let requestModel = APIRequest<EmptyRespons>(method: .delete, path: .post(.byId(id)))
         let _ = try await execute(requestModel)
     }
     

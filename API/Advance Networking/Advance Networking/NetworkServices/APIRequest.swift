@@ -31,13 +31,17 @@ struct EmptyRespons: Decodable {
 /// - straightforward to extend (auth headers, retries, etc.)
 struct APIRequest<Response: Decodable> {
     let method: HTTPMethod
-    let path: String
+    /// Typed route for the endpoint (resolved into a relative path string via `APIRoutes.path`).
+    ///
+    /// The returned `path` string should NOT include the host and typically does NOT start with `/`,
+    /// since it will be appended to the `baseURL` using `appendingPathComponent`.
+    let path: APIRoutes
     var queryItems: [URLQueryItem]
     var header: [String: String] = [:]
     var body: Data?
     
     /// Creates a request with a pre-encoded HTTP body.
-    init(method: HTTPMethod, path: String, queryItems: [URLQueryItem] = [], header: [String : String] = [:], body: Data? = nil) {
+    init(method: HTTPMethod, path: APIRoutes, queryItems: [URLQueryItem] = [], header: [String : String] = [:], body: Data? = nil) {
         self.method = method
         self.path = path
         self.queryItems = queryItems
@@ -48,7 +52,7 @@ struct APIRequest<Response: Decodable> {
     /// Creates a request with an `Encodable` body encoded as JSON.
     ///
     /// If the caller didn't specify `"Content-Type"`, this initializer sets it to `"application/json"`.
-    init<Body: Encodable>(method: HTTPMethod, path: String, queryItems: [URLQueryItem] = [], header: [String : String] = [:], encoder: JSONEncoder = JSONEncoder(), body: Body) throws {
+    init<Body: Encodable>(method: HTTPMethod, path: APIRoutes, queryItems: [URLQueryItem] = [], header: [String : String] = [:], encoder: JSONEncoder = JSONEncoder(), body: Body) throws {
         self.method = method
         self.path = path
         self.queryItems = queryItems
@@ -67,7 +71,8 @@ struct APIRequest<Response: Decodable> {
     ///   - defaultHeaders: Headers applied to all requests (e.g. auth), overridden by request-specific headers.
     /// - Returns: A fully-formed `URLRequest` ready to be executed by `URLSession`.
     func makeUrlRequest(baseURL: URL, defaultHeaders: [String:String] = [:]) throws -> URLRequest {
-        guard var components = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: true) else {
+        // Final URL = baseURL + route path + optional query items.
+        guard var components = URLComponents(url: baseURL.appendingPathComponent(path.path), resolvingAgainstBaseURL: true) else {
             throw URLError(.badURL)
         }
         if !queryItems.isEmpty {
