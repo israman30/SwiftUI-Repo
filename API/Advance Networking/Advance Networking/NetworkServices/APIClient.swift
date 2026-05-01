@@ -18,6 +18,27 @@ import Foundation
 /// Injectability:
 /// - `session` can be swapped for tests
 /// - `decoder` can be customized (date strategies, key decoding, etc.)
+///
+/// Errors you may see:
+/// - `URLError(.badURL)`: request URL couldn’t be constructed (invalid base URL/path/components)
+/// - `URLError`: connectivity / transport issues thrown by `URLSession` (offline, timeout, etc.)
+/// - `URLError(.badServerResponse)`: non-2xx HTTP status code or invalid HTTP response
+/// - `DecodingError`: response body didn't match the expected `Decodable` type
+///
+/// Usage example:
+///
+/// ```swift
+/// let client = APIClient(baseUrl: APIConstants.baseURL)
+/// let request = APIRequest<[Post]>(method: .get, path: .post(.list))
+/// do {
+///     let posts = try await client.execute(request)
+///     // update UI state
+/// } catch let error as DecodingError {
+///     // handle mapping/contract mismatch
+/// } catch {
+///     // handle network/HTTP errors
+/// }
+/// ```
 struct APIClient {
     /// Base URL (scheme + host) used to resolve `APIRequest.path` into a full URL.
     let baseUrl: URL

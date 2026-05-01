@@ -7,8 +7,27 @@
 
 import Foundation
 
-struct URLConstants {
-    static let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/")!
+/// Centralized constants for the API layer.
+///
+/// Keep values that are shared across services here (base URL, common header keys, etc.) to avoid
+/// duplicating strings and to make future changes safer (single source of truth).
+enum APIConstants {
+    /// Base API host used by the sample services.
+    ///
+    /// API host: `https://jsonplaceholder.typicode.com`
+    static let baseURL = URL(string: "https://jsonplaceholder.typicode.com/")!
+    
+    /// Common HTTP header field keys.
+    enum HeaderField {
+        static let contentType = "Content-Type"
+        static let accept = "Accept"
+        static let authorization = "Authorization"
+    }
+    
+    /// Common header values.
+    enum HeaderValue {
+        static let json = "application/json"
+    }
 }
 
 /// Top-level typed routes for the API.
