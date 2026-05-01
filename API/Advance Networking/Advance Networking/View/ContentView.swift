@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Root view of the sample. Delegates to the Posts list screen.
 struct ContentView: View {
     var body: some View {
         PostListView()

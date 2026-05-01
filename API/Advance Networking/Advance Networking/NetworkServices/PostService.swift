@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Abstraction for the "Posts" remote data source.
+///
+/// The protocol makes the view model testable by allowing a mock implementation to be injected.
 protocol PostServiceProtocol {
     func fetchPost() async throws -> [Post]
     func post(_ payload: CreatedPost) async throws -> Post
@@ -14,31 +17,47 @@ protocol PostServiceProtocol {
     func delete(_ id: Int) async throws
 }
 
+/// Concrete network-backed implementation of `PostServiceProtocol`.
+///
+/// This sample uses `jsonplaceholder.typicode.com` to demonstrate GET/POST/PUT/DELETE patterns
+/// with a small request model (`APIRequest`) and a single execution pipeline (`execute`).
 class ProductNetwork: PostServiceProtocol {
     static var shared = ProductNetwork()
     
+    /// Base URL for all requests in this service.
     private let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/")!
     
+    /// Fetches all posts.
     func fetchPost() async throws -> [Post] {
         let requestModel = APIRequest<[Post]>(method: .get, path: "posts")
         return try await execute(requestModel)
     }
     
+    /// Creates a new post (JSON body + `Content-Type: application/json`).
     func post(_ payload: CreatedPost) async throws -> Post {
         let requestModel = try APIRequest<Post>(method: .post, path: "posts", body: payload)
         return try await execute(requestModel)
     }
     
+    /// Updates an existing post by id.
     func update(_ id: Int, payload: UpdatePost) async throws -> Post {
         let requestModel = try APIRequest<Post>(method: .put, path: "posts/\(id)", body: payload)
         return try await execute(requestModel)
     }
     
+    /// Deletes an existing post by id.
     func delete(_ id: Int) async throws {
         let requestModel = APIRequest<EmptyRespons>(method: .delete, path: "posts/\(id)")
         let _ = try await execute(requestModel)
     }
     
+    /// Executes an `APIRequest` and decodes the response into the requested type.
+    ///
+    /// Pipeline:
+    /// - Build `URLRequest` from base URL + path/query/headers/body
+    /// - Perform the request via `URLSession`
+    /// - Validate HTTP status code (2xx success)
+    /// - Decode JSON into `Response`
     private func execute<Response>(_ requestModel: APIRequest<Response>) async throws -> Response {
         let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         
@@ -49,6 +68,7 @@ class ProductNetwork: PostServiceProtocol {
         }
         
         guard 200..<300 ~= httpResponse.statusCode else {
+            // For debugging: capture server-provided error payload if it’s UTF-8.
             let bodyString = String(data: data, encoding: .utf8) ?? "<non-UTF8 body>"
             print("Failed: \(httpResponse.statusCode) - \(bodyString)")
             throw URLError(.badServerResponse)
@@ -57,6 +77,7 @@ class ProductNetwork: PostServiceProtocol {
     }
 }
 
+/// In-memory fake implementation used for previews/tests without hitting the network.
 class MockProductNetwork: PostServiceProtocol {
     func fetchPost() async throws -> [Post] {
         return [
