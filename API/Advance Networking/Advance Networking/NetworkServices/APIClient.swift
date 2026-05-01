@@ -33,20 +33,22 @@ struct APIClient {
     /// - Note: On non-2xx responses, this sample prints the response body (when UTF-8) to aid debugging
     ///   and throws `URLError(.badServerResponse)`.
     func execute<Response>(_ requestModel: APIRequest<Response>) async throws -> Response {
-        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
-        
-        let (data, response) = try await session.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw URLError(.badServerResponse)
+        do {
+            let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
+            
+            let (data, response) = try await session.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw NetworkError.invalidResponse
+            }
+            
+            guard 200..<300 ~= httpResponse.statusCode else {
+                throw NetworkError.httpStatus(code: httpResponse.statusCode)
+            }
+            return try decoder.decode(Response.self, from: data)
+        } catch {
+            let mappedError = NetworkErrorMapper.map(error)
+            throw mappedError
         }
-        
-        guard 200..<300 ~= httpResponse.statusCode else {
-            // For debugging: capture server-provided error payload if it’s UTF-8.
-            let bodyString = String(data: data, encoding: .utf8) ?? "<non-UTF8 body>"
-            print("Failed: \(httpResponse.statusCode) - \(bodyString)")
-            throw URLError(.badServerResponse)
-        }
-        return try decoder.decode(Response.self, from: data)
     }
 }
