@@ -13,7 +13,7 @@ import Foundation
 /// relative URL path (no scheme/host) used by `APIRequest.makeUrlRequest(baseURL:)`.
 enum APIRoutes {
     /// Posts feature routes.
-    case post(EndpointPath)
+    case post(PostEndpointPath)
     
     /// Resolved relative URL path for the selected route.
     var path: String {

@@ -11,7 +11,7 @@ import Foundation
 ///
 /// These strings are appended to a base URL (for example `https://jsonplaceholder.typicode.com/`)
 /// to build the final request URL.
-enum EndpointPath {
+enum PostEndpointPath {
     /// Route: `GET /posts` (also used for `POST /posts`)
     case list
     /// Route: `GET/PUT/DELETE /posts/{id}`
