@@ -29,12 +29,18 @@ class ProductNetwork: PostServiceProtocol {
     /// API host: `https://jsonplaceholder.typicode.com`
     private let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/")!
     
+    private let client: APIClient
+    
+    init() {
+        self.client = APIClient(baseUrl: baseUrl)
+    }
+    
     /// Fetches all posts.
     ///
     /// Route: `GET /posts`
     func fetchPost() async throws -> [Post] {
         let requestModel = APIRequest<[Post]>(method: .get, path: .post(.list))
-        return try await execute(requestModel)
+        return try await client.execute(requestModel)
     }
     
     /// Creates a new post (JSON body + `Content-Type: application/json`).
@@ -42,7 +48,7 @@ class ProductNetwork: PostServiceProtocol {
     /// Route: `POST /posts`
     func post(_ payload: CreatedPost) async throws -> Post {
         let requestModel = try APIRequest<Post>(method: .post, path: .post(.list), body: payload)
-        return try await execute(requestModel)
+        return try await client.execute(requestModel)
     }
     
     /// Updates an existing post by id.
@@ -50,7 +56,7 @@ class ProductNetwork: PostServiceProtocol {
     /// Route: `PUT /posts/{id}`
     func update(_ id: Int, payload: UpdatePost) async throws -> Post {
         let requestModel = try APIRequest<Post>(method: .put, path: .post(.byId(id)), body: payload)
-        return try await execute(requestModel)
+        return try await client.execute(requestModel)
     }
     
     /// Deletes an existing post by id.
@@ -58,32 +64,7 @@ class ProductNetwork: PostServiceProtocol {
     /// Route: `DELETE /posts/{id}`
     func delete(_ id: Int) async throws {
         let requestModel = APIRequest<EmptyRespons>(method: .delete, path: .post(.byId(id)))
-        let _ = try await execute(requestModel)
-    }
-    
-    /// Executes an `APIRequest` and decodes the response into the requested type.
-    ///
-    /// Pipeline:
-    /// - Build `URLRequest` from base URL + path/query/headers/body
-    /// - Perform the request via `URLSession`
-    /// - Validate HTTP status code (2xx success)
-    /// - Decode JSON into `Response`
-    private func execute<Response>(_ requestModel: APIRequest<Response>) async throws -> Response {
-        let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw URLError(.badServerResponse)
-        }
-        
-        guard 200..<300 ~= httpResponse.statusCode else {
-            // For debugging: capture server-provided error payload if it’s UTF-8.
-            let bodyString = String(data: data, encoding: .utf8) ?? "<non-UTF8 body>"
-            print("Failed: \(httpResponse.statusCode) - \(bodyString)")
-            throw URLError(.badServerResponse)
-        }
-        return try JSONDecoder().decode(Response.self, from: data)
+        let _ = try await client.execute(requestModel)
     }
 }
 
