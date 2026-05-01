@@ -27,7 +27,7 @@ class ProductNetwork: PostServiceProtocol {
     private let client: APIClient
     
     init() {
-        self.client = APIClient(baseUrl: APIConstants.baseURL)
+        self.client = APIClient(baseUrl: URLConstants.baseUrl)
     }
     
     /// Fetches all posts.

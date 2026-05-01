@@ -57,8 +57,8 @@ struct APIRequest<Response: Decodable> {
         self.header = header
         self.body = try encoder.encode(body)
         
-        if self.header[APIConstants.HeaderField.contentType] == nil {
-            self.header[APIConstants.HeaderField.contentType] = APIConstants.HeaderValue.json
+        if self.header["Content-Type"] == nil {
+            self.header["Content-Type"] = "application/json"
         }
     }
     

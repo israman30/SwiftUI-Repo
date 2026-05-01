@@ -27,7 +27,7 @@ struct UserService: UserServiceProtocol {
     private let client: APIClient
     
     init() {
-        self.client = APIClient(baseUrl: APIConstants.baseURL)
+        self.client = APIClient(baseUrl: URLConstants.baseUrl)
     }
     
     func fetchUser() async throws -> [User] {
