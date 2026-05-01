@@ -7,13 +7,29 @@
 
 import Foundation
 
+/// Domain error type for the networking layer.
+///
+/// This enum separates common failure categories so higher layers can decide how to react:
+/// - show a friendly UI message (`errorDescription` / `userMessage`)
+/// - log developer-focused details (`debugMessage`)
+/// - optionally branch on HTTP status (`statusCode`)
+///
+/// Conforms to `LocalizedError` so SwiftUI alerts and other UI surfaces can display
+/// `errorDescription` directly.
 enum NetworkError: Error, LocalizedError {
+    /// A transport-level failure from `URLSession` before an HTTP response was produced
+    /// (offline, timeout, DNS failure, etc.).
     case transport(URLError)
+    /// The request completed but the response wasn't an `HTTPURLResponse`.
     case invalidResponse
+    /// The server returned a non-2xx HTTP status code.
     case httpStatus(code: Int)
+    /// The server returned data, but decoding into the expected model failed.
     case decodingFailed(Error)
+    /// A catch-all for unexpected errors that don't fit the other categories.
     case unknown(Error)
     
+    /// Extracts an HTTP status code when the error is `.httpStatus`.
     var statusCode: Int? {
         guard case .httpStatus(let code) = self else {
             return nil
@@ -21,6 +37,9 @@ enum NetworkError: Error, LocalizedError {
         return code
     }
     
+    /// User-facing message intended for UI surfaces (alerts, toasts, inline errors).
+    ///
+    /// This intentionally hides low-level details and focuses on actionable guidance.
     var userMessage: String {
         switch self {
         case .transport(let urlError):
@@ -58,6 +77,9 @@ enum NetworkError: Error, LocalizedError {
         }
     }
     
+    /// Developer-facing message intended for logs/analytics.
+    ///
+    /// This is useful during debugging because it preserves the underlying error and context.
     var debugMessage: String {
         switch self {
         case .transport(let uRLError):
@@ -73,6 +95,7 @@ enum NetworkError: Error, LocalizedError {
         }
     }
     
+    /// `LocalizedError` hook used by many UI presentation APIs.
     var errorDescription: String? {
         userMessage
     }
