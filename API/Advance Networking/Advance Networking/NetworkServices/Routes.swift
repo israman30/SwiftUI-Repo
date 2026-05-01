@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct URLConstants {
+    static let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/")!
+}
+
 /// Top-level typed routes for the API.
 ///
 /// Each case represents a route group (e.g. posts, users, comments). The resolved `path` is a
@@ -14,6 +18,7 @@ import Foundation
 enum APIRoutes {
     /// Posts feature routes.
     case post(PostEndpoint)
+    /// Users feature routes.
     case users(UserEndpoint)
     
     /// Resolved relative URL path for the selected route.

@@ -14,7 +14,7 @@ import Foundation
 enum PostEndpoint {
     /// Route: `GET /posts` (also used for `POST /posts`)
     case list
-    /// Route: `GET/PUT/DELETE /posts/{id}`
+    /// Route: `/posts/{id}` (used by this sample for `PUT`/`DELETE`, and can also support `GET` by id)
     case byId(Int)
     
     /// Relative path string (no leading host, typically no leading `/`).

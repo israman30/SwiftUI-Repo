@@ -7,19 +7,31 @@
 
 import Foundation
 
+/// Minimal URLSession-based API client responsible for executing `APIRequest` values.
+///
+/// Responsibilities:
+/// - Build a `URLRequest` from `APIRequest` (base URL + typed route + query + headers + body)
+/// - Execute the request using `URLSession`
+/// - Validate HTTP status codes (treat 2xx as success)
+/// - Decode JSON responses into `Decodable` models
+///
+/// Injectability:
+/// - `session` can be swapped for tests
+/// - `decoder` can be customized (date strategies, key decoding, etc.)
 struct APIClient {
-    /// Executes an `APIRequest` and decodes the response into the requested type.
-    ///
-    /// Pipeline:
-    /// - Build `URLRequest` from base URL + path/query/headers/body
-    /// - Perform the request via `URLSession`
-    /// - Validate HTTP status code (2xx success)
-    /// - Decode JSON into `Response`
-    
+    /// Base URL (scheme + host) used to resolve `APIRequest.path` into a full URL.
     let baseUrl: URL
+    
+    /// Underlying transport. Defaults to `URLSession.shared` for this sample.
     var session: URLSession = .shared
+    
+    /// Decoder used for all responses executed by this client.
     var decoder: JSONDecoder = .init()
     
+    /// Executes an `APIRequest` and decodes the response into the requested `Response` type.
+    ///
+    /// - Note: On non-2xx responses, this sample prints the response body (when UTF-8) to aid debugging
+    ///   and throws `URLError(.badServerResponse)`.
     func execute<Response>(_ requestModel: APIRequest<Response>) async throws -> Response {
         let request = try requestModel.makeUrlRequest(baseURL: baseUrl)
         

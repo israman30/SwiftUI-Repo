@@ -20,19 +20,14 @@ protocol PostServiceProtocol {
 /// Concrete network-backed implementation of `PostServiceProtocol`.
 ///
 /// This sample uses `jsonplaceholder.typicode.com` to demonstrate GET/POST/PUT/DELETE patterns
-/// with a small request model (`APIRequest`) and a single execution pipeline (`execute`).
+/// with a small request model (`APIRequest`) and a shared execution pipeline in `APIClient`.
 class ProductNetwork: PostServiceProtocol {
     static var shared = ProductNetwork()
-    
-    /// Base URL for all requests in this service.
-    ///
-    /// API host: `https://jsonplaceholder.typicode.com`
-    private let baseUrl = URL(string: "https://jsonplaceholder.typicode.com/")!
-    
+        
     private let client: APIClient
     
     init() {
-        self.client = APIClient(baseUrl: baseUrl)
+        self.client = APIClient(baseUrl: URLConstants.baseUrl)
     }
     
     /// Fetches all posts.
