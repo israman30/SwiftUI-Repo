@@ -19,9 +19,7 @@ enum HTTPMethod: String {
 ///
 /// Note: If an endpoint returns a truly empty body (`0` bytes), decoding may fail unless the caller
 /// special-cases that scenario. This sample targets APIs that return `{}` for "empty" responses.
-struct EmptyRespons: Decodable {
-    
-}
+struct EmptyRespons: Decodable { }
 
 /// A lightweight description of an HTTP request that can be converted into `URLRequest`.
 ///

@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-// https://jsonplaceholder.typicode.com/users
-
-/**
- "id": 1,
- "name": "Leanne Graham",
- "username": "Bret",
- "email": "Sincere@april.biz",
- */
-
 struct UserList: View {
     @StateObject var vm = UserViewModel(service: UserService())
     var body: some View {
