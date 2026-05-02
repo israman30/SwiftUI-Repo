@@ -8,16 +8,13 @@
 import SwiftUI
 import Combine
 
-@MainActor
 /// UI-facing state + intent handlers for the Users feature.
 ///
 /// `loadingState` is the single source of truth for the screen rendering:
 /// - set to `.loading` when a request starts
 /// - set to `.loaded([User])` / `.empty` on success
 /// - set to `.error(message)` on failure
-
-extension UserViewModel: @MainActor ListMutatingProtocol { }
-
+@MainActor
 class UserViewModel: ObservableObject {
     
     /// Publishes screen state so SwiftUI can re-render automatically.
@@ -62,3 +59,7 @@ class UserViewModel: ObservableObject {
     }
     
 }
+
+/// Reuses shared list-mutation helpers (`insertOrStart`, `updateItemIfLoaded`) so the UI can update
+/// immediately after create/update without a full refetch.
+extension UserViewModel: ListMutatingProtocol { }

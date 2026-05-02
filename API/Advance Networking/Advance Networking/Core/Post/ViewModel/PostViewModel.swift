@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-@MainActor
 /// UI-facing state + intent handlers for the Posts feature.
 ///
 /// `loadingState` is the single source of truth for the screen rendering:
@@ -17,9 +16,7 @@ import Combine
 /// - set to `.error(message)` on failure
 ///
 /// Marked `@MainActor` so mutations to `@Published` properties are always performed on the main thread.
-
-extension PostViewModel: @MainActor ListMutatingProtocol { }
-
+@MainActor
 class PostViewModel: ObservableObject {
     /// Publishes screen state so SwiftUI can re-render automatically.
     @Published var loadingState: LoadingState<[Post]> = .idle
@@ -77,6 +74,10 @@ class PostViewModel: ObservableObject {
         }
     }
 }
+
+/// Reuses shared list-mutation helpers (`insertOrStart`, `updateItemIfLoaded`, `deleteIfLoaded`)
+/// so the UI can update immediately after create/update/delete without a full refetch.
+extension PostViewModel: ListMutatingProtocol { }
 
 /// Represents which user intent is being performed (create vs update).
 ///
