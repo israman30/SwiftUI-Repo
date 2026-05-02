@@ -13,17 +13,19 @@ import Combine
 @MainActor
 final class AuthStore: ObservableObject {
     @Published private(set) var token: String?
+    @Published private(set) var refreshToken: String?
     @Published private(set) var claims: JWTClaims?
     @Published var isLoading = false
     @Published var errorMessage: String?
     
     // For a real app, store tokens in Keychain (UserDefaults is fine for a mock/demo token).
-    static let tokenDefaultsKey = "auth.jwt.token"
+    // Kept for backward compatibility with earlier demo iterations.
+    static let tokenDefaultsKey = "auth.jwt.accessToken"
+    
+    private var refreshLoopTask: Task<Void, Never>?
     
     init() {
-        let saved = UserDefaults.standard.string(forKey: Self.tokenDefaultsKey)
-        setToken(saved)
-        validateAndNormalize()
+        Task { await bootstrap() }
     }
     
     var isAuthenticated: Bool {
@@ -41,47 +43,87 @@ final class AuthStore: ObservableObject {
             // from your backend (and handle non-200s, MFA, lockouts, etc).
             try await Task.sleep(nanoseconds: 350_000_000) // simulate network latency
             let displayName = username.isEmpty ? "Mock User" : username
-            let token = try JWT.makeMockToken(userId: UUID().uuidString, name: displayName)
-            setToken(token)
-            validateAndNormalize()
+            let userId = UUID().uuidString
+            let accessToken = try JWT.makeMockToken(userId: userId, name: displayName)
+            let refreshToken = try JWT.makeMockToken(
+                userId: userId,
+                name: displayName,
+                issuer: "com.israelmanzo.jwt-auth.mock.refresh",
+                audience: "jwt-auth-demo-refresh",
+                expiresIn: 60 * 60 * 24 * 7
+            )
+            await TokenManager.shared.setTokens(AuthTokens(accessToken: accessToken, refreshToken: refreshToken))
+            await syncFromTokenManager()
         } catch {
             errorMessage = "Login failed."
         }
     }
     
     func logout() {
-        setToken(nil)
+        refreshLoopTask?.cancel()
+        refreshLoopTask = nil
+        Task { await TokenManager.shared.clear() }
+        setLocalTokens(access: nil, refresh: nil)
         errorMessage = nil
     }
     
-    private func setToken(_ newValue: String?) {
-        token = newValue
-        if let newValue, !newValue.isEmpty {
-            UserDefaults.standard.set(newValue, forKey: Self.tokenDefaultsKey)
-        } else {
-            UserDefaults.standard.removeObject(forKey: Self.tokenDefaultsKey)
-        }
-        
-        claims = nil
-        if let newValue, !newValue.isEmpty {
-            claims = try? JWT.decodeClaims(from: newValue)
+    func refreshSession() async {
+        errorMessage = nil
+        do {
+            _ = try await TokenManager.shared.refresh()
+            await syncFromTokenManager()
+        } catch {
+            logout()
+            errorMessage = "Session expired."
         }
     }
     
-    private func validateAndNormalize() {
-        guard let token else { return }
-        guard let claims else {
+    private func bootstrap() async {
+        await syncFromTokenManager()
+        // Trigger a refresh at launch if needed (expired or near-expiry).
+        do {
+            _ = try await TokenManager.shared.validAccessToken(minValidity: 60)
+            await syncFromTokenManager()
+        } catch {
+            // If we can't produce a valid token, clear state.
             logout()
-            errorMessage = "Invalid token."
-            return
         }
-        if claims.isExpired {
-            // Small UX choice: clear the saved token so the app returns to a clean logged-out state.
-            logout()
-            errorMessage = "Session expired."
-            return
+    }
+    
+    private func syncFromTokenManager() async {
+        let tokens = await TokenManager.shared.currentTokens()
+        setLocalTokens(access: tokens?.accessToken, refresh: tokens?.refreshToken)
+        scheduleRefreshLoop()
+    }
+    
+    private func setLocalTokens(access: String?, refresh: String?) {
+        token = access
+        refreshToken = refresh
+        
+        claims = nil
+        if let access, !access.isEmpty {
+            claims = try? JWT.decodeClaims(from: access)
         }
-        // keep token as-is if it decodes and isn't expired
-        _ = token
+        
+        if token == nil || token?.isEmpty == true {
+            refreshLoopTask?.cancel()
+            refreshLoopTask = nil
+        }
+    }
+    
+    private func scheduleRefreshLoop() {
+        refreshLoopTask?.cancel()
+        guard let claims, !claims.isExpired else { return }
+        
+        // Refresh a bit before expiry to avoid 401s during requests.
+        let refreshSkew: TimeInterval = 60
+        let secondsUntilExpiry = TimeInterval(claims.exp) - Date().timeIntervalSince1970
+        let delay = max(0, secondsUntilExpiry - refreshSkew)
+        
+        refreshLoopTask = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+            guard let self, !Task.isCancelled else { return }
+            await self.refreshSession()
+        }
     }
 }

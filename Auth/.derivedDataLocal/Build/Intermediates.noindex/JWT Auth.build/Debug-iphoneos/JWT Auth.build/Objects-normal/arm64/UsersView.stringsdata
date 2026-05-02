@@ -1,0 +1,64 @@
+{
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/View/UsersView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Authenticated",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "Token claims",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 18
+        }
+      },
+      {
+        "comment": "",
+        "key": "Users",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Name",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "sub",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 20
+        }
+      },
+      {
+        "comment": "",
+        "key": "exp",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "Logout",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 46
+        }
+      }
+    ]
+  },
+  "version": 1
+}

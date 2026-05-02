@@ -16,19 +16,11 @@ enum APIError: Error {
 // https://jsonplaceholder.typicode.com/users
 struct NetworkManager {
     func fetchUsers() async throws -> [User] {
-        // Keeping token access local makes the demo lightweight.
-        // In a larger app, prefer injecting a token provider (or URLSession/transport) for testability.
-        guard let token = UserDefaults.standard.string(forKey: AuthStore.tokenDefaultsKey),
-              !token.isEmpty else {
-            throw APIError.unauthorized
-        }
-        
         let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await authorizedData(for: request, retryOnUnauthorized: true)
         
         guard let response = response as? HTTPURLResponse,
               (200...300).contains(response.statusCode) else {
@@ -36,5 +28,22 @@ struct NetworkManager {
         }
         
         return try JSONDecoder().decode([User].self, from: data)
+    }
+    
+    private func authorizedData(for request: URLRequest, retryOnUnauthorized: Bool) async throws -> (Data, URLResponse) {
+        var request = request
+        let token = try await TokenManager.shared.validAccessToken(minValidity: 60)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        if let http = response as? HTTPURLResponse,
+           http.statusCode == 401,
+           retryOnUnauthorized {
+            _ = try await TokenManager.shared.refresh()
+            return try await authorizedData(for: request, retryOnUnauthorized: false)
+        }
+        
+        return (data, response)
     }
 }
