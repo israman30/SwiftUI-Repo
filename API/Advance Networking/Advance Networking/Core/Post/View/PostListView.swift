@@ -10,10 +10,15 @@ import Combine
 
 // https://jsonplaceholder.typicode.com/posts
 
-/// SwiftUI screen that renders a list of posts and demonstrates basic CRUD actions.
+/// Displays posts and demonstrates basic CRUD actions.
 ///
-/// The view owns a `@StateObject` view model so the model is created once per view lifecycle and
-/// survives SwiftUI view redraws.
+/// The UI renders solely from `vm.loadingState`:
+/// - `idle`/`loading`: show `ProgressView`
+/// - `empty`: show empty message
+/// - `loaded([Post])`: show list
+/// - `error`: show error message
+///
+/// `PostViewModel.loadingState` is `@Published`, so SwiftUI automatically re-renders when it changes.
 struct PostListView: View {
     // In production code, you may prefer injecting this from above (App/Coordinator) to avoid
     // constructing concrete services directly inside the view.

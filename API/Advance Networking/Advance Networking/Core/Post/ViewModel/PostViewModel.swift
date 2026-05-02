@@ -1,5 +1,5 @@
 //
-//  MyViewModel.swift
+//  PostViewModel.swift
 //  Advance Networking
 //
 //  Created by Israel Manzo on 4/30/26.
@@ -11,11 +11,14 @@ import Combine
 @MainActor
 /// UI-facing state + intent handlers for the Posts feature.
 ///
+/// `loadingState` is the single source of truth for the screen rendering:
+/// - set to `.loading` when a request starts
+/// - set to `.loaded([Post])` / `.empty` on success
+/// - set to `.error(message)` on failure
+///
 /// Marked `@MainActor` so mutations to `@Published` properties are always performed on the main thread.
 class PostViewModel: ObservableObject {
-    /// Renderable list of posts consumed by SwiftUI views.
-//    @Published var posts = [Post]()
-    
+    /// Publishes screen state so SwiftUI can re-render automatically.
     @Published var loadingState: LoadingState<[Post]> = .idle
     
     /// Service dependency (real network in app, mock in previews/tests).

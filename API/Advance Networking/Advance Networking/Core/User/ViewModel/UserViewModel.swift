@@ -9,8 +9,15 @@ import SwiftUI
 import Combine
 
 @MainActor
+/// UI-facing state + intent handlers for the Users feature.
+///
+/// `loadingState` is the single source of truth for the screen rendering:
+/// - set to `.loading` when a request starts
+/// - set to `.loaded([User])` / `.empty` on success
+/// - set to `.error(message)` on failure
 class UserViewModel: ObservableObject {
     
+    /// Publishes screen state so SwiftUI can re-render automatically.
     @Published var loadingState: LoadingState<[User]> = .idle
     
     private let service: UserServiceProtocol
@@ -19,6 +26,7 @@ class UserViewModel: ObservableObject {
         self.service = service
     }
     
+    /// Loads users and updates `loadingState` for the view to render.
     func loadUsers() async {
         loadingState = .loading
         do {
@@ -30,6 +38,7 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /// Creates a user and inserts it into the loaded list (or starts a new loaded list).
     func createUser(_ payload: User) async {
         do {
             let newUser = try await service.create(payload)
@@ -39,10 +48,11 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /// Updates a user and replaces the local copy when the list is loaded.
     func updateUser(_ id: Int, payload: UpdateUser) async {
         do {
             let updatedUser = try await service.update(id, payload: payload)
-            updatePostIfLoaded(updatedUser)
+            updateUserIfLoaded(updatedUser)
         } catch {
             print("DEBUG: updating users \(error)")
         }
@@ -58,7 +68,7 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    private func updatePostIfLoaded(_ user: User) {
+    private func updateUserIfLoaded(_ user: User) {
         guard case .loaded(var users) = loadingState else {
             return
         }
