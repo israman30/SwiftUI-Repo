@@ -12,9 +12,11 @@ import Combine
 /// UI-facing state + intent handlers for the Posts feature.
 ///
 /// Marked `@MainActor` so mutations to `@Published` properties are always performed on the main thread.
-class MyViewModel: ObservableObject {
+class PostViewModel: ObservableObject {
     /// Renderable list of posts consumed by SwiftUI views.
-    @Published var posts = [Post]()
+//    @Published var posts = [Post]()
+    
+    @Published var loadingState: LoadingState<[Post]> = .idle
     
     /// Service dependency (real network in app, mock in previews/tests).
     private var service: PostServiceProtocol
@@ -29,9 +31,12 @@ class MyViewModel: ObservableObject {
     /// Errors are logged for debugging in this sample; a production app would typically surface an
     /// error state (alert/toast/retry) instead of only printing.
     func fetchPost() async {
+        loadingState = .loading
         do {
-            self.posts = try await service.fetchPost()
+            let posts = try await service.fetchPost()
+            loadingState = posts.isEmpty ? .empty : .loaded(posts)
         } catch {
+            loadingState = .error(error.localizedDescription)
             print("DEBUG: something went wrong: \(error)")
         }
     }
@@ -39,9 +44,8 @@ class MyViewModel: ObservableObject {
     /// Creates a new post and prepends it into the list so the UI updates immediately.
     func createPost(_ payload: CreatedPost) async {
         do {
-            let newProduct = try await service.post(payload)
-            print("New post: \(newProduct)")
-            self.posts.insert(newProduct, at: 0)
+            let newPost = try await service.post(payload)
+            insertOrStart(newPost)
         } catch {
             print("DEBUG: something went wrong creating a post: \(error)")
         }
@@ -49,11 +53,9 @@ class MyViewModel: ObservableObject {
     
     /// Updates a post both remotely and locally (in-place replacement by id).
     func update(_ id: Int, payload: UpdatePost) async {
-        guard let index = self.posts.firstIndex(where: { $0.id == id }) else { return }
         do {
             let updatedProduct = try await service.update(id, payload: payload)
-            print("Updated post: \(updatedProduct)")
-            self.posts[index] = updatedProduct
+            updatePostIfLoaded(updatedProduct)
         } catch {
             print("DEBUG: something went wrong creating a post: \(error)")
         }
@@ -61,13 +63,40 @@ class MyViewModel: ObservableObject {
     
     /// Deletes a post remotely, then removes it from the local list to keep UI and server in sync.
     func delete(_ id: Int) async {
-        guard let index = self.posts.firstIndex(where: { $0.id == id }) else { return }
         do {
             try await service.delete(id)
-            posts.remove(at: index)
+            deleteIfLoaded(id)
         } catch {
             print("DEBUG: something went wrong deleting a post: \(error)")
         }
+    }
+    
+    private func insertOrStart(_ post: Post) {
+        switch loadingState {
+        case .loaded(var posts):
+            posts.insert(post, at: 0)
+            loadingState = .loaded(posts)
+        default:
+            loadingState = .loaded([post])
+        }
+    }
+    
+    private func updatePostIfLoaded(_ post: Post) {
+        guard case .loaded(var posts) = loadingState else {
+            return
+        }
+        guard let index = posts.firstIndex(where: { $0.id == post.id }) else { return }
+        posts[index] = post
+        loadingState = .loaded(posts)
+    }
+    
+    private func deleteIfLoaded(_ id: Int) {
+        guard case .loaded(var posts) = loadingState else {
+            return
+        }
+        guard let index = posts.firstIndex(where: { $0.id == id }) else { return }
+        posts.remove(at: index)
+        loadingState = .loaded(posts)
     }
 }
 

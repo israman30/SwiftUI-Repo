@@ -17,12 +17,28 @@ import Combine
 struct PostListView: View {
     // In production code, you may prefer injecting this from above (App/Coordinator) to avoid
     // constructing concrete services directly inside the view.
-    @StateObject var vm = MyViewModel(service: ProductNetwork())
+    @StateObject var vm = PostViewModel(service: ProductNetwork())
     
     var body: some View {
         NavigationView {
-            List(vm.posts) { item in
-                Text(item.title)
+            Group {
+                switch vm.loadingState {
+                case .idle, .loading:
+                    ProgressView()
+                case .empty:
+                    Text("No post to display")
+                case .error(let errorMessage):
+                    Text(errorMessage)
+                case .loaded(let posts):
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: 10) {
+                            ForEach(posts) { post in
+                                Text(post.title)
+                            }
+                        }
+                        .padding()
+                    }
+                }
             }
             .navigationTitle("Post")
             .toolbar {

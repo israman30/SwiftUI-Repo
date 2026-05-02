@@ -10,7 +10,7 @@ import Foundation
 enum LoadingState<Value: Decodable> {
     case idle
     case loading
-    case loaded
+    case empty
+    case loaded(Value)
     case error(String)
-    case empty(Value)
 }

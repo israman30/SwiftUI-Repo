@@ -12,7 +12,7 @@ import Combine
 class UserViewModel: ObservableObject {
     @Published var users = [User]()
     
-    var loadingState: LoadingState<[User]> = .idle
+    @Published var loadingState: LoadingState<[User]> = .idle
     
     private let service: UserServiceProtocol
     
@@ -23,7 +23,9 @@ class UserViewModel: ObservableObject {
     func loadUsers() async {
         loadingState = .loading
         do {
-            self.users = try await service.fetchUser()
+            let users = try await service.fetchUser()
+            self.users = users
+            loadingState = users.isEmpty ? .empty : .loaded(users)
         } catch {
             loadingState = .error(error.localizedDescription)
             print("DEBUG: fetching users \(error)")
