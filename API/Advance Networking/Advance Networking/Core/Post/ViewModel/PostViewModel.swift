@@ -17,6 +17,9 @@ import Combine
 /// - set to `.error(message)` on failure
 ///
 /// Marked `@MainActor` so mutations to `@Published` properties are always performed on the main thread.
+
+extension PostViewModel: @MainActor ListMutatingProtocol { }
+
 class PostViewModel: ObservableObject {
     /// Publishes screen state so SwiftUI can re-render automatically.
     @Published var loadingState: LoadingState<[Post]> = .idle
@@ -58,7 +61,7 @@ class PostViewModel: ObservableObject {
     func update(_ id: Int, payload: UpdatePost) async {
         do {
             let updatedProduct = try await service.update(id, payload: payload)
-            updatePostIfLoaded(updatedProduct)
+            updateItemIfLoaded(updatedProduct)
         } catch {
             print("DEBUG: something went wrong creating a post: \(error)")
         }
@@ -72,34 +75,6 @@ class PostViewModel: ObservableObject {
         } catch {
             print("DEBUG: something went wrong deleting a post: \(error)")
         }
-    }
-    
-    private func insertOrStart(_ post: Post) {
-        switch loadingState {
-        case .loaded(var posts):
-            posts.insert(post, at: 0)
-            loadingState = .loaded(posts)
-        default:
-            loadingState = .loaded([post])
-        }
-    }
-    
-    private func updatePostIfLoaded(_ post: Post) {
-        guard case .loaded(var posts) = loadingState else {
-            return
-        }
-        guard let index = posts.firstIndex(where: { $0.id == post.id }) else { return }
-        posts[index] = post
-        loadingState = .loaded(posts)
-    }
-    
-    private func deleteIfLoaded(_ id: Int) {
-        guard case .loaded(var posts) = loadingState else {
-            return
-        }
-        guard let index = posts.firstIndex(where: { $0.id == id }) else { return }
-        posts.remove(at: index)
-        loadingState = .loaded(posts)
     }
 }
 

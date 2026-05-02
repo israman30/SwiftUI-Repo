@@ -15,6 +15,9 @@ import Combine
 /// - set to `.loading` when a request starts
 /// - set to `.loaded([User])` / `.empty` on success
 /// - set to `.error(message)` on failure
+
+extension UserViewModel: @MainActor ListMutatingProtocol { }
+
 class UserViewModel: ObservableObject {
     
     /// Publishes screen state so SwiftUI can re-render automatically.
@@ -52,29 +55,10 @@ class UserViewModel: ObservableObject {
     func updateUser(_ id: Int, payload: UpdateUser) async {
         do {
             let updatedUser = try await service.update(id, payload: payload)
-            updateUserIfLoaded(updatedUser)
+            updateItemIfLoaded(updatedUser)
         } catch {
             print("DEBUG: updating users \(error)")
         }
-    }
-    
-    private func insertOrStart(_ user: User) {
-        switch loadingState {
-        case .loaded(var users):
-            users.insert(user, at: 0)
-            loadingState = .loaded(users)
-        default:
-            loadingState = .loaded([user])
-        }
-    }
-    
-    private func updateUserIfLoaded(_ user: User) {
-        guard case .loaded(var users) = loadingState else {
-            return
-        }
-        guard let index = users.firstIndex(where: { $0.id == user.id }) else { return }
-        users[index] = user
-        loadingState = .loaded(users)
     }
     
 }
