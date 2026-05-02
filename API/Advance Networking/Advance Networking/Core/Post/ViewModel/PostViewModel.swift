@@ -21,6 +21,8 @@ class PostViewModel: ObservableObject {
     /// Publishes screen state so SwiftUI can re-render automatically.
     @Published var loadingState: LoadingState<[Post]> = .idle
     
+    @Published var mutatingState: MutationState = .idle
+    
     /// Service dependency (real network in app, mock in previews/tests).
     private var service: PostServiceProtocol
     
@@ -40,38 +42,47 @@ class PostViewModel: ObservableObject {
             loadingState = posts.isEmpty ? .empty : .loaded(posts)
         } catch {
             loadingState = .error(error.localizedDescription)
-            print("DEBUG: something went wrong: \(error)")
         }
     }
     
     /// Creates a new post and prepends it into the list so the UI updates immediately.
     func createPost(_ payload: CreatedPost) async {
+        mutatingState = .inProgress(.create)
         do {
             let newPost = try await service.post(payload)
             insertOrStart(newPost)
+            mutatingState = .success(.create)
         } catch {
-            print("DEBUG: something went wrong creating a post: \(error)")
+            mutatingState = .failed(.create, error.localizedDescription)
         }
     }
     
     /// Updates a post both remotely and locally (in-place replacement by id).
     func update(_ id: Int, payload: UpdatePost) async {
+        mutatingState = .inProgress(.update)
         do {
             let updatedProduct = try await service.update(id, payload: payload)
             updateItemIfLoaded(updatedProduct)
+            mutatingState = .success(.update)
         } catch {
-            print("DEBUG: something went wrong creating a post: \(error)")
+            mutatingState = .failed(.update, error.localizedDescription)
         }
     }
     
     /// Deletes a post remotely, then removes it from the local list to keep UI and server in sync.
     func delete(_ id: Int) async {
+        mutatingState = .inProgress(.delete)
         do {
             try await service.delete(id)
             deleteIfLoaded(id)
+            mutatingState = .success(.delete)
         } catch {
-            print("DEBUG: something went wrong deleting a post: \(error)")
+            mutatingState = .failed(.delete, error.localizedDescription)
         }
+    }
+    
+    func resetMutationState() {
+        mutatingState = .idle
     }
 }
 

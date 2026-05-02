@@ -23,6 +23,7 @@ struct PostListView: View {
     // In production code, you may prefer injecting this from above (App/Coordinator) to avoid
     // constructing concrete services directly inside the view.
     @StateObject var vm = PostViewModel(service: ProductNetwork())
+    @State var mutationErrorMessage = ""
     
     var body: some View {
         NavigationView {
@@ -78,12 +79,38 @@ struct PostListView: View {
     func submit() async {
         let newPost = CreatedPost(id: 6090909, title: "Post Added", body: "This is teh body of a new post")
         await vm.createPost(newPost)
+        
+        switch vm.mutatingState {
+        case .success(let operation):
+            if operation == .create {
+                // Do something after update
+            }
+            vm.resetMutationState()
+        case .failed( _, let errorMessage):
+            mutationErrorMessage = errorMessage
+        default:
+            break
+        }
+        vm.resetMutationState()
     }
     
     /// Demo update call. (Not currently wired into the UI.)
     func update(_ id: Int) async {
         let updatedPost = UpdatePost(title: "Upated post", body: "New bddy")
         await vm.update(id, payload: updatedPost)
+        
+        switch vm.mutatingState {
+        case .success(let operation):
+            if operation == .update {
+                // Do something after update
+            }
+            vm.resetMutationState()
+        case .failed( _, let errorMessage):
+            mutationErrorMessage = errorMessage
+        default:
+            break
+        }
+        vm.resetMutationState()
     }
 }
 
