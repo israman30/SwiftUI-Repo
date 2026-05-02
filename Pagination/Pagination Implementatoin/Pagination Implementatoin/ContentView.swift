@@ -18,7 +18,9 @@ struct ContentView: View {
                         .onAppear {
                             // When the last row becomes visible, request the next page.
                             // `Task {}` keeps the view body synchronous and hands the work to async context.
-                            Task { await vm.loadMoreIfNeeded(currentPost: post) }
+                            Task {
+                                await vm.loadMoreIfNeeded(currentPost: post)
+                            }
                         }
                 }
                 
