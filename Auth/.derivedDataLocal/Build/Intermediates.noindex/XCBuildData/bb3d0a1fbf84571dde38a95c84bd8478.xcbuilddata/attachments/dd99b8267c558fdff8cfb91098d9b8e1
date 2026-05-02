@@ -1,0 +1,119 @@
+{
+  "" : {
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT Auth-primary.dia",
+    "emit-module-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT Auth-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT Auth-primary-emit-module.dia",
+    "pch" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT Auth-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT Auth-primary.swiftdeps"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/JWT_AuthApp.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT_AuthApp.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT_AuthApp.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT_AuthApp.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT_AuthApp.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT_AuthApp.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT_AuthApp.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT_AuthApp.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT_AuthApp~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/Models/User.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/User.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/User.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/User.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/User.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/User.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/User.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/User.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/User~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/NetworkManager/AuthStore.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/AuthStore.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/AuthStore.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/AuthStore.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/AuthStore.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/AuthStore.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/AuthStore.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/AuthStore.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/AuthStore~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/NetworkManager/JWT.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/JWT~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/NetworkManager/NetworkManager.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/NetworkManager.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/NetworkManager.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/NetworkManager.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/NetworkManager.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/NetworkManager.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/NetworkManager.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/NetworkManager.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/NetworkManager~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/NetworkManager/TokenManager.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/TokenManager.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/TokenManager.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/TokenManager.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/TokenManager.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/TokenManager.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/TokenManager.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/TokenManager.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/TokenManager~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/View/ContentView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/View/LoginView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/LoginView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/LoginView.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/LoginView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/LoginView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/View/UsersView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/UsersView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/UsersView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/UsersView.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/UsersView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/UsersView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/UsersView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/UsersView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/UsersView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/ViewModels/ViewModel.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ViewModel.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ViewModel.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ViewModel.dia",
+    "index-unit-output-path" : "/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ViewModel.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ViewModel.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ViewModel.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ViewModel.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/.derivedDataLocal/Build/Intermediates.noindex/JWT Auth.build/Debug-iphoneos/JWT Auth.build/Objects-normal/arm64/ViewModel~partial.swiftmodule"
+  }
+}

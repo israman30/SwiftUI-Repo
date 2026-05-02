@@ -1,0 +1,112 @@
+{
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/JWT Auth/JWT Auth/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "JWT Auth",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 284
+        }
+      },
+      {
+        "comment": "",
+        "key": "Sign in",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 254
+        }
+      },
+      {
+        "comment": "",
+        "key": "Username",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 255
+        }
+      },
+      {
+        "comment": "",
+        "key": "Password",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 258
+        }
+      },
+      {
+        "comment": "",
+        "key": "Sign In (Mock JWT)",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 278
+        }
+      },
+      {
+        "comment": "",
+        "key": "Signing in…",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 275
+        }
+      },
+      {
+        "comment": "",
+        "key": "Authenticated",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 322
+        }
+      },
+      {
+        "comment": "",
+        "key": "Token claims",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 297
+        }
+      },
+      {
+        "comment": "",
+        "key": "Users",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 311
+        }
+      },
+      {
+        "comment": "",
+        "key": "Name",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 298
+        }
+      },
+      {
+        "comment": "",
+        "key": "sub",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 299
+        }
+      },
+      {
+        "comment": "",
+        "key": "exp",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 300
+        }
+      },
+      {
+        "comment": "",
+        "key": "Logout",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 325
+        }
+      }
+    ]
+  },
+  "version": 1
+}
