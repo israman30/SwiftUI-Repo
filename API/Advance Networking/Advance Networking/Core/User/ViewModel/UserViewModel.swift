@@ -62,4 +62,4 @@ class UserViewModel: ObservableObject {
 
 /// Reuses shared list-mutation helpers (`insertOrStart`, `updateItemIfLoaded`) so the UI can update
 /// immediately after create/update without a full refetch.
-extension UserViewModel: ListMutatingProtocol { }
+extension UserViewModel: @MainActor ListMutatingProtocol { }
