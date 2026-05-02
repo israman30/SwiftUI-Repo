@@ -3,7 +3,8 @@
 This sample shows a clean, testable way to do **pagination in SwiftUI** using:
 
 - A **service layer** (`PostsServicing`) that knows how to fetch a single page
-- A **paging view model** (`PostsViewModel`) that owns paging state and loading/error flags
+- A **pagination state model** (`PaginationState`) that owns paging/loading/error state
+- A **paging view model** (`PostsViewModel`) that coordinates the state model + service calls
 - A **SwiftUI `List`** that triggers “load more” when the last row appears
 
 The demo API is [JSONPlaceholder](https://jsonplaceholder.typicode.com/) using:
@@ -60,6 +61,8 @@ This is important because SwiftUI can call `onAppear` more than once during list
 - **`Pagination Implementatoin/APIClient.swift`**
   - `JSONPlaceholderPostsService` (fetches a page)
   - `Post` model
+- **`Pagination Implementatoin/PaginationState.swift`**
+  - `PaginationState` (page/hasMore/loading/error in one place)
 - **`Pagination Implementatoin/PostsViewModel.swift`**
   - paging state + `loadInitial`, `refresh`, `loadMore`
 - **`Pagination Implementatoin/ContentView.swift`**

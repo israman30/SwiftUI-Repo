@@ -7,7 +7,7 @@
         "key": "Pagination",
         "location": {
           "startingColumn": 30,
-          "startingLine": 53
+          "startingLine": 55
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Error",
         "location": {
           "startingColumn": 20,
-          "startingLine": 54
+          "startingLine": 56
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "No more posts",
         "location": {
           "startingColumn": 30,
-          "startingLine": 34
+          "startingLine": 36
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Loading…",
         "location": {
           "startingColumn": 34,
-          "startingLine": 50
+          "startingLine": 52
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Retry",
         "location": {
           "startingColumn": 24,
-          "startingLine": 58
+          "startingLine": 60
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "OK",
         "location": {
           "startingColumn": 24,
-          "startingLine": 61
+          "startingLine": 63
         }
       }
     ]

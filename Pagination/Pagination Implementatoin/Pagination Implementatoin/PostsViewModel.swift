@@ -3,25 +3,24 @@ import Combine
 
 @MainActor
 final class PostsViewModel: ObservableObject {
-    // Paging state lives in the view model so the view stays declarative:
-    // Pagination type: offset/page-number pagination (a.k.a. `limit` + `page`).
-    // - `page` tracks what to request next
-    // - `pageSize` controls batch size
-    // - `hasMore` prevents useless requests once the server returns a short page
-    @Published private(set) var posts: [Post] = []
-    @Published private(set) var isLoadingInitial = false
-    @Published private(set) var isLoadingMore = false
-    @Published var errorMessage: String?
-    @Published private(set) var hasMore = true
+    // Single source of truth for pagination:
+    // offset/page-number pagination (a.k.a. `limit` + `page`) + loading/error flags.
+    @Published private var state: PaginationState<Post>
     
     private let service: PostsServicing
-    private let pageSize: Int
-    /// The next page to request (1-based).
-    private var page = 1
+    
+    var posts: [Post] { state.items }
+    var isLoadingInitial: Bool { state.isLoadingInitial }
+    var isLoadingMore: Bool { state.isLoadingMore }
+    var hasMore: Bool { state.hasMore }
+    var errorMessage: String? {
+        get { state.errorMessage }
+        set { state.errorMessage = newValue }
+    }
     
     init(service: PostsServicing, pageSize: Int = 20) {
         self.service = service
-        self.pageSize = pageSize
+        self.state = PaginationState(pageSize: pageSize)
     }
     
     func loadInitial() async {
@@ -32,21 +31,15 @@ final class PostsViewModel: ObservableObject {
     
     func refresh() async {
         // A refresh resets paging to the first page.
-        page = 1
-        hasMore = true
-        errorMessage = nil
-        isLoadingInitial = true
-        
-        defer { isLoadingInitial = false }
+        state.resetForRefresh()
+        state.beginInitialLoad()
+        defer { state.endInitialLoad() }
         
         do {
-            let newPosts = try await service.fetchPosts(page: page, limit: pageSize)
-            posts = newPosts
-            // If the server returns fewer than `pageSize` items, we assume we've hit the end.
-            hasMore = newPosts.count == pageSize
-            page = 2
+            let newPosts = try await service.fetchPosts(page: state.page, limit: state.pageSize)
+            state.replaceItems(newPosts)
         } catch {
-            errorMessage = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+            state.errorMessage = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
         }
     }
     
@@ -61,23 +54,17 @@ final class PostsViewModel: ObservableObject {
     
     func loadMore() async {
         // Defensive gates prevent duplicate concurrent page loads caused by repeated onAppear calls.
-        guard hasMore, !isLoadingInitial, !isLoadingMore else { return }
+        guard state.hasMore, !state.isLoadingInitial, !state.isLoadingMore else { return }
         
-        errorMessage = nil
-        isLoadingMore = true
-        defer { isLoadingMore = false }
+        state.errorMessage = nil
+        state.beginLoadMore()
+        defer { state.endLoadMore() }
         
         do {
-            let newPosts = try await service.fetchPosts(page: page, limit: pageSize)
-            posts.append(contentsOf: newPosts)
-            
-            if newPosts.count < pageSize {
-                hasMore = false
-            } else {
-                page += 1
-            }
+            let newPosts = try await service.fetchPosts(page: state.page, limit: state.pageSize)
+            state.appendItems(newPosts)
         } catch {
-            errorMessage = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+            state.errorMessage = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
         }
     }
     
