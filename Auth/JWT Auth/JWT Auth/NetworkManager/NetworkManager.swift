@@ -32,6 +32,8 @@ struct NetworkManager {
     
     private func authorizedData(for request: URLRequest, retryOnUnauthorized: Bool) async throws -> (Data, URLResponse) {
         var request = request
+        // Attach a token that is expected to remain valid for at least 60 seconds, so long-running
+        // requests are less likely to fail mid-flight due to expiry.
         let token = try await TokenManager.shared.validAccessToken(minValidity: 60)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
@@ -40,6 +42,8 @@ struct NetworkManager {
         if let http = response as? HTTPURLResponse,
            http.statusCode == 401,
            retryOnUnauthorized {
+            // Retry at most once: avoids infinite loops when refresh is invalid/revoked or when
+            // the backend returns 401 for reasons unrelated to token expiry.
             _ = try await TokenManager.shared.refresh()
             return try await authorizedData(for: request, retryOnUnauthorized: false)
         }

@@ -21,11 +21,15 @@ actor TokenManager {
         var exp: Int
     }
     
-    // UserDefaults is fine for this demo. For production, use Keychain.
+    // Storage:
+    // - Demo uses UserDefaults for simplicity.
+    // - Production should use Keychain (and consider device migration/biometrics, if needed).
     private let accessTokenKey = "auth.jwt.accessToken"
     private let refreshTokenKey = "auth.jwt.refreshToken"
     
     private var cached: AuthTokens?
+    // Single-flight refresh: avoids stampeding the refresh endpoint when multiple requests
+    // hit an expired access token at the same time.
     private var inFlightRefresh: Task<AuthTokens, Error>?
     
     init() {
@@ -86,10 +90,10 @@ actor TokenManager {
         let refresh = tokens.refreshToken
         
         let task = Task<AuthTokens, Error> {
-            // Demo refresh:
-            // - Validate refresh token expiry if it's JWT-shaped
-            // - Mint a new access token using the refresh token's claims (sub/name) when possible
-            // - Rotate refresh token
+            // Demo refresh (replace with a real network call):
+            // - Refresh tokens are validated via expiry (in real systems: also verify signature, issuer, etc.).
+            // - New access token is minted from refresh claims to tolerate expired access tokens.
+            // - Refresh token is rotated to model best-practice refresh flows.
             let refreshClaims = try? await decodeClaims(refresh)
             if let refreshClaims,
                secondsUntilExpiry(exp: refreshClaims.exp) <= 0 {
@@ -134,6 +138,8 @@ actor TokenManager {
     }
     
     private func decodeClaims(_ token: String) async throws -> DecodedClaims {
+        // The module uses "default isolation = MainActor". Rather than making the whole token
+        // pipeline main-thread-bound, we hop only for the decode and then return a Sendable DTO.
         try await MainActor.run(body: {
             let claims = try JWT.decodeClaims(from: token)
             return DecodedClaims(sub: claims.sub, name: claims.name, exp: claims.exp)

@@ -25,6 +25,8 @@ final class AuthStore: ObservableObject {
     private var refreshLoopTask: Task<Void, Never>?
     
     init() {
+        // Auth bootstraps asynchronously to avoid doing token work during init and to keep the
+        // main-thread responsive (especially once the refresh becomes a real network call).
         Task { await bootstrap() }
     }
     
@@ -60,6 +62,8 @@ final class AuthStore: ObservableObject {
     }
     
     func logout() {
+        // Logout is authoritative: cancel any scheduled refresh and clear persisted tokens so the
+        // app doesn't silently re-authenticate on next launch.
         refreshLoopTask?.cancel()
         refreshLoopTask = nil
         Task { await TokenManager.shared.clear() }
@@ -80,7 +84,8 @@ final class AuthStore: ObservableObject {
     
     private func bootstrap() async {
         await syncFromTokenManager()
-        // Trigger a refresh at launch if needed (expired or near-expiry).
+        // Trigger a refresh at launch if needed (expired or near-expiry). This prevents a common
+        // UX issue: app shows "authenticated" UI briefly, then the first request 401s.
         do {
             _ = try await TokenManager.shared.validAccessToken(minValidity: 60)
             await syncFromTokenManager()
@@ -116,6 +121,7 @@ final class AuthStore: ObservableObject {
         guard let claims, !claims.isExpired else { return }
         
         // Refresh a bit before expiry to avoid 401s during requests.
+        // (In real apps you may also refresh on "app became active" or after network reachability changes.)
         let refreshSkew: TimeInterval = 60
         let secondsUntilExpiry = TimeInterval(claims.exp) - Date().timeIntervalSince1970
         let delay = max(0, secondsUntilExpiry - refreshSkew)
