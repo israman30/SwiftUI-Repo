@@ -10,8 +10,19 @@ import SwiftUI
 struct UserList: View {
     @StateObject var vm = UserViewModel(service: UserService())
     var body: some View {
-        List(vm.users) { user in
-            Text(user.name)
+        Group {
+            switch vm.loadingState {
+            case .idle, .loading:
+                ProgressView()
+            case .empty:
+                Text("No users to display")
+            case .loaded(let users):
+                List(users) { user in
+                    Text(user.name)
+                }
+            case .error(let errorMessage):
+                Text(errorMessage)
+            }
         }
         .task {
             await vm.loadUsers()
