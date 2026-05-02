@@ -6,72 +6,86 @@
 //
 
 import SwiftUI
-import Combine
-
-// https://jsonplaceholder.typicode.com/users
-
-struct Constants {
-    static let endpoint = "https://jsonplaceholder.typicode.com"
-}
-
-enum APIError: Error {
-    case errorResponse
-}
-
-struct User: Decodable, Identifiable {
-    var id: Int
-    var name: String
-    var username: String
-    var email: String
-}
-
-class NetworkManager {
-    func fetchUsers() async throws -> [User] {
-        let url = URL(string: Constants.endpoint.appending("/users"))
-        let (data, response) = try await URLSession.shared.data(from: url!)
-        
-        guard let response = response as? HTTPURLResponse,
-              (200...300).contains(response.statusCode) else {
-            throw APIError.errorResponse
-        }
-        
-        return try JSONDecoder().decode([User].self, from: data)
-    }
-}
-
-class ViewModel: ObservableObject {
-    @Published var users = [User]()
-    private let service: NetworkManager
-    
-    init(_ service: NetworkManager) {
-        self.service = service
-    }
-    
-    func load() async {
-        do {
-            self.users = try await service.fetchUsers()
-        } catch {
-            print("Somethign went wrong: \(error)")
-        }
-    }
-    
-}
 
 struct ContentView: View {
-    @StateObject var vm = ViewModel(NetworkManager())
+    @StateObject private var vm = PostsViewModel(service: JSONPlaceholderPostsService())
+    
     var body: some View {
         NavigationView {
-            List(vm.users) { user in
-                Text(user.name)
+            List {
+                ForEach(vm.posts) { post in
+                    PostRow(post: post)
+                        .onAppear {
+                            // When the last row becomes visible, request the next page.
+                            // `Task {}` keeps the view body synchronous and hands the work to async context.
+                            Task { await vm.loadMoreIfNeeded(currentPost: post) }
+                        }
+                }
+                
+                if vm.isLoadingMore {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                        Spacer()
+                    }
+                } else if !vm.hasMore, !vm.posts.isEmpty {
+                    HStack {
+                        Spacer()
+                        Text("No more posts")
+                            .foregroundStyle(.secondary)
+                        Spacer()
+                    }
+                }
             }
             .task {
-                await vm.load()
+                // Initial load is separate from pull-to-refresh.
+                await vm.loadInitial()
+            }
+            .refreshable {
+                // Pull-to-refresh resets paging and reloads page 1.
+                await vm.refresh()
+            }
+            .overlay {
+                if vm.isLoadingInitial, vm.posts.isEmpty {
+                    ProgressView("Loading…")
+                }
             }
             .navigationTitle("Pagination")
+            .alert("Error", isPresented: Binding(
+                get: { vm.errorMessage != nil },
+                set: { if !$0 { vm.errorMessage = nil } }
+            ), actions: {
+                Button("Retry") {
+                    Task { await vm.retry() }
+                }
+                Button("OK", role: .cancel) {
+                    vm.errorMessage = nil
+                }
+            }, message: {
+                Text(vm.errorMessage ?? "Something went wrong.")
+            })
         }
     }
 }
 
-#Preview {
-    ContentView()
+private struct PostRow: View {
+    let post: Post
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(post.title)
+                .font(.headline)
+            Text(post.body)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .lineLimit(3)
+        }
+        .padding(.vertical, 4)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
