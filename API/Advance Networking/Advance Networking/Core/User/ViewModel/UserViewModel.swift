@@ -10,7 +10,6 @@ import Combine
 
 @MainActor
 class UserViewModel: ObservableObject {
-    @Published var users = [User]()
     
     @Published var loadingState: LoadingState<[User]> = .idle
     
@@ -24,7 +23,6 @@ class UserViewModel: ObservableObject {
         loadingState = .loading
         do {
             let users = try await service.fetchUser()
-            self.users = users
             loadingState = users.isEmpty ? .empty : .loaded(users)
         } catch {
             loadingState = .error(error.localizedDescription)
@@ -35,19 +33,38 @@ class UserViewModel: ObservableObject {
     func createUser(_ payload: User) async {
         do {
             let newUser = try await service.create(payload)
-            self.users.insert(newUser, at: 0)
+            insertOrStart(newUser)
         } catch {
             print("DEBUG: updating users \(error)")
         }
     }
     
     func updateUser(_ id: Int, payload: UpdateUser) async {
-        guard let index = users.firstIndex(where: { $0.id == id}) else { return }
         do {
-            let newUser = try await service.update(id, payload: payload)
-            self.users[index] = newUser
+            let updatedUser = try await service.update(id, payload: payload)
+            updatePostIfLoaded(updatedUser)
         } catch {
             print("DEBUG: updating users \(error)")
         }
     }
+    
+    private func insertOrStart(_ user: User) {
+        switch loadingState {
+        case .loaded(var users):
+            users.insert(user, at: 0)
+            loadingState = .loaded(users)
+        default:
+            loadingState = .loaded([user])
+        }
+    }
+    
+    private func updatePostIfLoaded(_ user: User) {
+        guard case .loaded(var users) = loadingState else {
+            return
+        }
+        guard let index = users.firstIndex(where: { $0.id == user.id }) else { return }
+        users[index] = user
+        loadingState = .loaded(users)
+    }
+    
 }
