@@ -4,6 +4,7 @@ import Combine
 @MainActor
 final class PostsViewModel: ObservableObject {
     // Paging state lives in the view model so the view stays declarative:
+    // Pagination type: offset/page-number pagination (a.k.a. `limit` + `page`).
     // - `page` tracks what to request next
     // - `pageSize` controls batch size
     // - `hasMore` prevents useless requests once the server returns a short page

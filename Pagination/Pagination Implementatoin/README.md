@@ -10,6 +10,11 @@ The demo API is [JSONPlaceholder](https://jsonplaceholder.typicode.com/) using:
 
 - `GET /posts?_page=<page>&_limit=<limit>`
 
+### Pagination type implemented
+
+This project implements **offset/page-number pagination** (a.k.a. **`limit` + `page`**), with an
+**infinite-scroll UI** that loads the next page when the last row appears.
+
 ### How pagination works here
 
 Pagination is implemented using **page numbers** and a **page size**:
