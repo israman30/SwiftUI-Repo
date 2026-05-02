@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+Target 'Pagination Implementatoin' in project 'Pagination Implementatoin' (no dependencies)
