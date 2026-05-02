@@ -12,13 +12,14 @@ import Combine
 
 /// Displays posts and demonstrates basic CRUD actions.
 ///
-/// The UI renders solely from `vm.loadingState`:
+/// The main UI renders from `vm.loadingState`:
 /// - `idle`/`loading`: show `ProgressView`
 /// - `empty`: show empty message
 /// - `loaded([Post])`: show list
 /// - `error`: show error message
 ///
-/// `PostViewModel.loadingState` is `@Published`, so SwiftUI automatically re-renders when it changes.
+/// Write operations (create/update/delete) are tracked separately via `vm.mutatingState` so the view
+/// can show transient feedback (success/failure) without affecting list rendering.
 struct PostListView: View {
     // In production code, you may prefer injecting this from above (App/Coordinator) to avoid
     // constructing concrete services directly inside the view.
@@ -80,10 +81,12 @@ struct PostListView: View {
         let newPost = CreatedPost(id: 6090909, title: "Post Added", body: "This is teh body of a new post")
         await vm.createPost(newPost)
         
+        // In a real app, you'd typically observe `vm.mutatingState` and present an alert/toast.
+        // Here we read it immediately after the mutation and reset it back to `.idle`.
         switch vm.mutatingState {
         case .success(let operation):
             if operation == .create {
-                // Do something after update
+                // Hook for post-create side effects (dismiss sheet, analytics, etc.)
             }
             vm.resetMutationState()
         case .failed( _, let errorMessage):
@@ -102,7 +105,7 @@ struct PostListView: View {
         switch vm.mutatingState {
         case .success(let operation):
             if operation == .update {
-                // Do something after update
+                // Hook for post-update side effects.
             }
             vm.resetMutationState()
         case .failed( _, let errorMessage):

@@ -15,12 +15,18 @@ import Combine
 /// - set to `.loaded([Post])` / `.empty` on success
 /// - set to `.error(message)` on failure
 ///
+/// `mutatingState` tracks write operations (create/update/delete) so the UI can show transient
+/// side-effects (disable controls, show alerts/toasts) without disturbing the list rendering state.
+///
 /// Marked `@MainActor` so mutations to `@Published` properties are always performed on the main thread.
 @MainActor
 class PostViewModel: ObservableObject {
     /// Publishes screen state so SwiftUI can re-render automatically.
     @Published var loadingState: LoadingState<[Post]> = .idle
     
+    /// Tracks create/update/delete progress + result for transient UI.
+    ///
+    /// The view typically resets this back to `.idle` after it consumes a success/failure event.
     @Published var mutatingState: MutationState = .idle
     
     /// Service dependency (real network in app, mock in previews/tests).
@@ -81,6 +87,7 @@ class PostViewModel: ObservableObject {
         }
     }
     
+    /// Resets `mutatingState` back to `.idle` after the UI consumes it.
     func resetMutationState() {
         mutatingState = .idle
     }
@@ -88,7 +95,7 @@ class PostViewModel: ObservableObject {
 
 /// Reuses shared list-mutation helpers (`insertOrStart`, `updateItemIfLoaded`, `deleteIfLoaded`)
 /// so the UI can update immediately after create/update/delete without a full refetch.
-extension PostViewModel: @MainActor ListMutatingProtocol { }
+extension PostViewModel: ListMutatingProtocol { }
 
 /// Represents which user intent is being performed (create vs update).
 ///
