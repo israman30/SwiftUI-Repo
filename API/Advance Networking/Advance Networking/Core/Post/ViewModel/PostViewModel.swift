@@ -77,7 +77,7 @@ class PostViewModel: ObservableObject {
 
 /// Reuses shared list-mutation helpers (`insertOrStart`, `updateItemIfLoaded`, `deleteIfLoaded`)
 /// so the UI can update immediately after create/update/delete without a full refetch.
-extension PostViewModel: ListMutatingProtocol { }
+extension PostViewModel: @MainActor ListMutatingProtocol { }
 
 /// Represents which user intent is being performed (create vs update).
 ///
