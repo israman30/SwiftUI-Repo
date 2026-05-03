@@ -1,0 +1,32 @@
+{
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Pagination/Pagination Simple Sample/Pagination Simple Sample/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Loading...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "Couldn’t load users",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "Retry",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 55
+        }
+      }
+    ]
+  },
+  "version": 1
+}
