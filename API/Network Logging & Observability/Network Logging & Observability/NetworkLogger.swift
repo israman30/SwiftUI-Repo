@@ -16,12 +16,21 @@ enum LogLevel: String {
     case warning = "WARNING"
 }
 
+/// A lightweight, app-local network logger used for debugging and observability.
+///
+/// `NetworkLogger` formats request/response details (URL, method, status, and optionally body/headers)
+/// and emits them to both the Xcode console (via `print` in `DEBUG`) and to the unified logging system
+/// (`OSLog`) so logs are visible in Console.app.
+///
+/// - Important: Avoid logging sensitive values (tokens, cookies, PII). If you pass headers or body
+///   content, prefer to sanitize/redact them at the call site.
 class NetworkLogger {
     static let shared = NetworkLogger()
     private init() { }
     
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "app", category: "Network")
     
+    /// Logs an outgoing request with the URL, method, and optional (preferably redacted) headers.
     func logRequest(_ url: URL?, method: String = "GET", header: [String:String]? = nil) {
         guard let url = url else {
             log(level: .warning, message: "Attempted request with nil URL")
@@ -44,6 +53,10 @@ class NetworkLogger {
         
     }
     
+    /// Logs an HTTP response summary, including status code and an optional body.
+    ///
+    /// If the body is JSON, it is pretty-printed; otherwise a best-effort UTF-8 string is logged.
+    /// Large bodies are truncated to keep logs readable.
     func logResponse(_ response: URLResponse?, data: Data?, url: URL?) {
         guard let httpResponse = response as? HTTPURLResponse else {
             log(level: .warning, message: "Non-HTTP response received for: \(url?.absoluteString ?? "unknown")")
@@ -54,7 +67,7 @@ class NetworkLogger {
         
         var output = """
         \(separator())
-        \(LogLevel.request.rawValue)
+        \(LogLevel.response.rawValue)
         URL: \(url?.absoluteString ?? "unknown")
         Status: \(statusCode) \(HTTPURLResponse.localizedString(forStatusCode: statusCode).capitalized)
         """
@@ -68,6 +81,7 @@ class NetworkLogger {
         log(level: level, message: output)
     }
     
+    /// Logs a networking failure associated with a URL (when available).
     func logError(_ error: Error, url: URL?) {
         let output = """
         \(separator())
@@ -79,6 +93,7 @@ class NetworkLogger {
         log(level: .error, message: output)
     }
     
+    /// Convenience log for successful decoding, optionally including item count.
     func logDecoder<T: Decodable>(_ type: T.Type, count: Int? = nil) {
         var message = "Decoded -> \(String(describing: type))"
         if let count {
@@ -87,6 +102,7 @@ class NetworkLogger {
         log(level: .success, message: message)
     }
     
+    /// Routes a formatted message to both console output (in DEBUG) and `OSLog`.
     private func log(level: LogLevel, message: String) {
         #if DEBUG
         print(message)
