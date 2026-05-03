@@ -19,21 +19,6 @@ struct User: Decodable, Identifiable {
     var email: String
 }
 
-final class NetworkServices {
-    
-    func fetchUsers() async throws -> [User] {
-        let url = URL(string: Constants.endopint.appending("/users"))
-        let (data, response) = try await URLSession.shared.data(from: url!)
-        
-        guard let response = response as? HTTPURLResponse,
-              (200...300).contains(response.statusCode) else {
-            throw URLError(.badURL)
-        }
-                
-        return try JSONDecoder().decode([User].self, from: data)
-    }
-}
-
 class ViewModel: ObservableObject {
     @Published var users: [User] = []
     
