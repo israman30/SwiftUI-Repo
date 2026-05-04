@@ -7,6 +7,12 @@
 
 import Foundation
 
+/// The decoded (unencrypted) JWT claims we care about in the UI.
+///
+/// Notes:
+/// - This payload is **not** trusted for authorization decisions by itself.
+/// - We decode it only to show user-facing metadata (email, roles, expiration).
+/// - Signature validation must be done server-side (or via a proper JWT verifier).
 struct JWTPayload: Codable {
     let sub: String?
     let email: String?
@@ -25,6 +31,10 @@ struct JWTPayload: Codable {
     }
 }
 
+/// A token bundle returned by the auth server.
+///
+/// We persist the whole token object in the Keychain (not `UserDefaults`) because
+/// access/refresh tokens are secrets.
 struct JWToken: Codable {
     let accessToken: String
     let refreshToken: String?
@@ -52,6 +62,10 @@ struct JWToken: Codable {
         decodePayload()
     }
     
+    /// Decodes the middle JWT segment (payload) using Base64URL rules.
+    ///
+    /// This intentionally does **not** validate the signature. It is meant for display
+    /// and convenience checks (e.g., show email, estimate expiry) only.
     private func decodePayload() -> JWTPayload? {
         let parts = accessToken.split(separator: ".")
         guard parts.count == 3 else { return nil }

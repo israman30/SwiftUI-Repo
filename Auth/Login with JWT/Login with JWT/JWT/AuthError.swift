@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Auth/session errors that the UI can present to the user.
 enum AuthError: LocalizedError {
     case invalidCredentials
     case noRefreshToken

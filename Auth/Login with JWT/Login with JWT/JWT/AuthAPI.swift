@@ -7,10 +7,12 @@
 
 import Foundation
 
+/// Configure your API base URL here (example: `"https://api.myapp.com"`).
 struct Constants {
     static let endpoint = ""
 }
 
+/// Expected JSON shape for your auth endpoints.
 struct AuthResponse: Codable {
     let accessToken: String
     let refreshToken: String?
@@ -25,9 +27,14 @@ struct AuthResponse: Codable {
     }
 }
 
+/// Thin API layer for the auth endpoints that mint/refresh JWTs.
+///
+/// This returns a `JWToken` so callers can persist it (Keychain) and compute expiry.
 enum AuthApi {
     static func login(email: String, password: String) async throws -> JWToken {
-        let url = URL(string: Constants.endpoint.appending("/auth/login"))!
+        guard let url = URL(string: Constants.endpoint.appending("/auth/login")) else {
+            throw URLError(.badURL)
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -61,7 +68,9 @@ enum AuthApi {
     }
     
     static func refresh(refreshToken: String) async throws -> JWToken {
-        let url = URL(string: Constants.endpoint.appending("/auth/refresh"))!
+        guard let url = URL(string: Constants.endpoint.appending("/auth/refresh")) else {
+            throw URLError(.badURL)
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

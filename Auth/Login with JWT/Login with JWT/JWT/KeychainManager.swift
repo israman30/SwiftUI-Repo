@@ -8,6 +8,7 @@
 import Foundation
 import Security
 
+/// Errors surfaced by `KeychainManager` operations.
 enum KeychainError: LocalizedError {
     case saveFailed(OSStatus)
     case readFailed(OSStatus)
@@ -31,12 +32,21 @@ enum KeychainError: LocalizedError {
     }
 }
 
+/// Minimal Keychain wrapper for storing small pieces of sensitive data (like JWTs).
+///
+/// Design choices:
+/// - Values are JSON-encoded so we can store structs like `JWToken`.
+/// - Uses a per-app `service` to avoid collisions with other apps.
+/// - Uses `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` so tokens:
+///   - aren't readable while the device is locked
+///   - don't sync to iCloud Keychain (common requirement for auth tokens)
 final class KeychainManager {
     static let shared = KeychainManager()
     private init() { }
     
     private let service = Bundle.main.bundleIdentifier ?? "com.app.default"
     
+    /// Saves (overwrites) a value for a given key.
     func save<T: Encodable>(_ value: T, forKey key: String) throws {
         guard let data = try? JSONEncoder().encode(value) else {
             throw KeychainError.encodingFailed
@@ -82,6 +92,7 @@ final class KeychainManager {
         return value
     }
     
+    /// Deletes a value for a given key.
     func delete(forKey key: String) throws {
         let query: [CFString: Any] = [
             kSecClass:        kSecClassGenericPassword,
@@ -94,6 +105,7 @@ final class KeychainManager {
         }
     }
     
+    /// Convenience check to see if an item exists.
     func exists(forKey key: String) -> Bool {
         (try? read(Data.self, forKey: key)) != nil
     }

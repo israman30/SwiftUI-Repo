@@ -7,7 +7,7 @@
         "key": "Home",
         "location": {
           "startingColumn": 30,
-          "startingLine": 29
+          "startingLine": 67
         }
       },
       {
@@ -20,10 +20,58 @@
       },
       {
         "comment": "",
+        "key": "Access token (truncated): %@…",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "Email: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "User ID: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "Expires: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Token is near expiry (will refresh).",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Refresh Session",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
         "key": "Logout",
         "location": {
           "startingColumn": 26,
-          "startingLine": 22
+          "startingLine": 60
         }
       }
     ]

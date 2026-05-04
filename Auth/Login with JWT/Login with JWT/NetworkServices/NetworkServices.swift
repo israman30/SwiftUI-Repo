@@ -8,15 +8,21 @@
 import Foundation
 
 struct NetworkServices {
-    private func authorizedRequest(for url: URL) throws -> URLRequest {
-        // Auto-refresh token if near expiry
-        guard TokenManager.shared.isAuthenticated else {
+    /// Builds a request with an `Authorization: Bearer ...` header.
+    ///
+    /// This refreshes the token *opportunistically* if it's near expiry, so callers
+    /// don't have to remember to do it before every API call.
+    private func authorizedRequest(for url: URL) async throws -> URLRequest {
+        try await TokenManager.shared.refreshTokenIfNeeded()
+
+        guard TokenManager.shared.isAuthenticated,
+              let bearer = TokenManager.shared.bearerHeader else {
             throw AuthError.tokenExpired
         }
 
         var request = URLRequest(url: url)
         request.setValue(
-            TokenManager.shared.bearerHeader,
+            bearer,
             forHTTPHeaderField: "Authorization"
         )
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -35,7 +41,7 @@ struct NetworkServices {
         }
 
         // ── Authorized request with Bearer token
-        let request = try authorizedRequest(for: url)
+        let request = try await authorizedRequest(for: url)
         let (data, response) = try await URLSession.shared.data(for: request)
         // ... rest of implementation
     }

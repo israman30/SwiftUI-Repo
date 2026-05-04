@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Login screen bound to `LoginViewModel`.
+///
+/// The view model performs the network call and persists tokens via `TokenManager`.
 struct LoginView: View {
     @ObservedObject var vm: LoginViewModel
     var body: some View {

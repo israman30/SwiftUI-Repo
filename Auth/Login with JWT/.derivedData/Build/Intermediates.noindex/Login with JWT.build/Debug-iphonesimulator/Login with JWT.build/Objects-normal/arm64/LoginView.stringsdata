@@ -7,7 +7,7 @@
         "key": "Login",
         "location": {
           "startingColumn": 30,
-          "startingLine": 47
+          "startingLine": 50
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Credentials",
         "location": {
           "startingColumn": 25,
-          "startingLine": 15
+          "startingLine": 18
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Email",
         "location": {
           "startingColumn": 31,
-          "startingLine": 16
+          "startingLine": 19
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Password",
         "location": {
           "startingColumn": 33,
-          "startingLine": 21
+          "startingLine": 24
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Login",
         "location": {
           "startingColumn": 34,
-          "startingLine": 37
+          "startingLine": 40
         }
       }
     ]
