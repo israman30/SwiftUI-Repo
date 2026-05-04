@@ -15,6 +15,13 @@ class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var isAuthenticated: Bool = false
+    
+    private let tokenManager = TokenManager.shared
+    
+    init() {
+        isAuthenticated = tokenManager.isAuthenticated
+    }
     
     func login() async {
         errorMessage = nil
@@ -23,9 +30,32 @@ class LoginViewModel: ObservableObject {
 
         do {
             let token = try await AuthAPI.login(email: email, password: password)
-            jwt = token
+            try tokenManager.saveToken(token)
+            isAuthenticated = true
+            clearFields()
         } catch {
             errorMessage = (error as? LocalizedError)?.errorDescription ?? "Login failed."
+            isAuthenticated = false
         }
+    }
+    
+    func logout() {
+        try? tokenManager.clearToken()
+        isAuthenticated = false
+        clearFields()
+    }
+    
+    func refreshIfNeeded() async {
+        do {
+            try await tokenManager.refreshTokenIfNeeded()
+        } catch {
+            // Refresh failed — force re-login
+            logout()
+        }
+    }
+    
+    private func clearFields() {
+        email = ""
+        password = ""
     }
 }
