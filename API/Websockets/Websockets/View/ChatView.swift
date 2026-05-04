@@ -1,68 +1,11 @@
 //
-//  ContentView.swift
+//  ChatView.swift
 //  Websockets
 //
 //  Created by Israel Manzo on 5/4/26.
 //
 
 import SwiftUI
-import Combine
-
-struct ContentView: View {
-    @StateObject private var viewModel = ChatViewModel()
-    
-    var body: some View {
-        NavigationStack {
-            ChatView(viewModel: viewModel)
-                .navigationTitle("Chat")
-                .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-}
-
-enum ChatSender: Hashable {
-    case me
-    case bot
-}
-
-struct ChatMessage: Identifiable, Equatable {
-    let id: UUID
-    let text: String
-    let sender: ChatSender
-    let sentAt: Date
-    
-    init(id: UUID = UUID(), text: String, sender: ChatSender, sentAt: Date = Date()) {
-        self.id = id
-        self.text = text
-        self.sender = sender
-        self.sentAt = sentAt
-    }
-}
-
-@MainActor
-final class ChatViewModel: ObservableObject {
-    @Published var draft: String = ""
-    @Published private(set) var messages: [ChatMessage] = [
-        ChatMessage(text: "Hey! Type a message below.", sender: .bot)
-    ]
-    
-    func sendDraft() {
-        let trimmed = draft.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        
-        draft = ""
-        messages.append(ChatMessage(text: trimmed, sender: .me))
-        
-        Task { [weak self] in
-            try? await Task.sleep(nanoseconds: 650_000_000)
-            await self?.receive(text: "Echo: \(trimmed)")
-        }
-    }
-    
-    private func receive(text: String) {
-        messages.append(ChatMessage(text: text, sender: .bot))
-    }
-}
 
 struct ChatView: View {
     @ObservedObject var viewModel: ChatViewModel
@@ -162,11 +105,5 @@ struct ChatBubble: View {
                     .opacity(0.85)
             }
             .frame(maxWidth: 280, alignment: message.sender == .me ? .trailing : .leading)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
