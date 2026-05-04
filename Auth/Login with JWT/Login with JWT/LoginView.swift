@@ -8,27 +8,21 @@
 import SwiftUI
 
 struct LoginView: View {
-    @AppStorage("jwt") private var jwt: String = ""
-
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var isLoading: Bool = false
-    @State private var errorMessage: String?
-
+    @StateObject var vm = LoginViewModel()
     var body: some View {
         NavigationView {
             Form {
                 Section("Credentials") {
-                    TextField("Email", text: $email)
+                    TextField("Email", text: $vm.email)
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled(true)
 
-                    SecureField("Password", text: $password)
+                    SecureField("Password", text: $vm.password)
                         .textInputAutocapitalization(.never)
                 }
 
-                if let errorMessage {
+                if let errorMessage = vm.errorMessage {
                     Section {
                         Text(errorMessage)
                             .foregroundStyle(.red)
@@ -37,34 +31,20 @@ struct LoginView: View {
 
                 Section {
                     Button {
-                        Task { await login() }
+                        Task { await vm.login() }
                     } label: {
                         HStack {
                             Text("Login")
                             Spacer()
-                            if isLoading {
+                            if vm.isLoading {
                                 ProgressView()
                             }
                         }
                     }
-                    .disabled(isLoading || email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || password.isEmpty)
+                    .disabled(vm.isLoading || vm.email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.password.isEmpty)
                 }
             }
             .navigationTitle("Login")
-        }
-    }
-
-    @MainActor
-    private func login() async {
-        errorMessage = nil
-        isLoading = true
-        defer { isLoading = false }
-
-        do {
-            let token = try await AuthAPI.login(email: email, password: password)
-            jwt = token
-        } catch {
-            errorMessage = (error as? LocalizedError)?.errorDescription ?? "Login failed."
         }
     }
 }
