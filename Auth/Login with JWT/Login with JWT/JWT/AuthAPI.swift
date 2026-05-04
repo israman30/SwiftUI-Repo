@@ -7,29 +7,28 @@
 
 import Foundation
 
-enum AuthError: LocalizedError {
-    case invalidCredentials
-    case noRefreshToken
-    case tokenExpired
-    case unauthorized
+struct Constants {
+    static let endpoint = ""
+}
 
-    var errorDescription: String? {
-        switch self {
-        case .invalidCredentials:
-            return "Invalid email or password."
-        case .noRefreshToken:
-            return "No refresh token available. Please log in again."
-        case .tokenExpired:
-            return "Your session has expired. Please log in again."
-        case .unauthorized:
-            return "Unauthorized. Please log in again."
-        }
+struct AuthResponse: Codable {
+    let accessToken: String
+    let refreshToken: String?
+    let expiresIn: TimeInterval
+    let tokenType: String
+
+    enum CodingKeys: String, CodingKey {
+        case accessToken  = "access_token"
+        case refreshToken = "refresh_token"
+        case expiresIn    = "expires_in"
+        case tokenType    = "token_type"
     }
 }
 
-struct AuthAPI {
+enum AuthApi {
     static func login(email: String, password: String) async throws -> JWToken {
         let url = URL(string: Constants.endpoint.appending("/auth/login"))!
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -43,6 +42,7 @@ struct AuthAPI {
         guard let http = response as? HTTPURLResponse else {
             throw URLError(.badServerResponse)
         }
+        
         switch http.statusCode {
         case 200...299:
             let decoded = try JSONDecoder().decode(AuthResponse.self, from: data)
@@ -62,7 +62,6 @@ struct AuthAPI {
     
     static func refresh(refreshToken: String) async throws -> JWToken {
         let url = URL(string: Constants.endpoint.appending("/auth/refresh"))!
-        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -85,4 +84,3 @@ struct AuthAPI {
         )
     }
 }
-
