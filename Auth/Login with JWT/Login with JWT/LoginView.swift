@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject var vm = LoginViewModel()
+    @ObservedObject var vm: LoginViewModel
     var body: some View {
         NavigationView {
             Form {
@@ -49,6 +49,8 @@ struct LoginView: View {
     }
 }
 
-#Preview {
-    LoginView()
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView(vm: LoginViewModel())
+    }
 }

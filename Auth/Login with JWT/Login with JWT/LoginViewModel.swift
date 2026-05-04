@@ -29,7 +29,7 @@ class LoginViewModel: ObservableObject {
         defer { isLoading = false }
 
         do {
-            let token = try await AuthAPI.login(email: email, password: password)
+            let token = try await AuthApi.login(email: email, password: password)
             try tokenManager.saveToken(token)
             isAuthenticated = true
             clearFields()

@@ -1,0 +1,129 @@
+{
+  "" : {
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login with JWT-primary.dia",
+    "emit-module-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login with JWT-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login with JWT-primary-emit-module.dia",
+    "pch" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login with JWT-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login with JWT-primary.swiftdeps"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/ContentView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/JWT/AuthAPI.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthAPI.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthAPI.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthAPI.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthAPI.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthAPI.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthAPI.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthAPI.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthAPI~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/JWT/AuthError.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthError.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthError.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthError.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthError.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthError.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthError.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthError.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/AuthError~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/JWT/JWToken.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/JWToken.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/JWToken.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/JWToken.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/JWToken.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/JWToken.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/JWToken.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/JWToken.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/JWToken~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/JWT/KeychainManager.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/KeychainManager.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/KeychainManager.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/KeychainManager.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/KeychainManager.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/KeychainManager.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/KeychainManager.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/KeychainManager.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/KeychainManager~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/JWT/TokenManager.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/TokenManager.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/TokenManager.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/TokenManager.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/TokenManager.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/TokenManager.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/TokenManager.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/TokenManager.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/TokenManager~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/LoginView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginView.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/LoginViewModel.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginViewModel.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginViewModel.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginViewModel.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginViewModel.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginViewModel.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginViewModel.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginViewModel.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/LoginViewModel~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/Login_with_JWTApp.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login_with_JWTApp.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login_with_JWTApp.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login_with_JWTApp.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login_with_JWTApp.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login_with_JWTApp.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login_with_JWTApp.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login_with_JWTApp.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/Login_with_JWTApp~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/NetworkServices/NetworkServices.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/NetworkServices.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/NetworkServices.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/NetworkServices.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/NetworkServices.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/NetworkServices.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/NetworkServices.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/NetworkServices.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/NetworkServices~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/Login with JWT/RootView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/RootView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/RootView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/RootView.dia",
+    "index-unit-output-path" : "/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/RootView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/RootView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/RootView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/RootView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login with JWT/.derivedData/Build/Intermediates.noindex/Login with JWT.build/Debug-iphonesimulator/Login with JWT.build/Objects-normal/arm64/RootView~partial.swiftmodule"
+  }
+}

@@ -8,20 +8,25 @@
 import SwiftUI
 
 struct RootView: View {
-    @AppStorage("jwt") private var jwt: String = ""
+    @StateObject private var viewModel = LoginViewModel()
 
     var body: some View {
         Group {
-            if jwt.isEmpty {
-                LoginView()
+            if viewModel.isAuthenticated {
+                ContentView(onLogout: viewModel.logout)
             } else {
-                ContentView()
+                LoginView(vm: viewModel)
             }
+        }
+        .task {
+            await viewModel.refreshIfNeeded()
         }
     }
 }
 
-#Preview {
-    RootView()
+struct RootView_Previews: PreviewProvider {
+    static var previews: some View {
+        RootView()
+    }
 }
 

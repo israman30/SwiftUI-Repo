@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("jwt") private var jwt: String = ""
+    var onLogout: () -> Void
 
     var body: some View {
         NavigationView {
@@ -16,16 +16,8 @@ struct ContentView: View {
                 Text("Home Screen")
                     .font(.title2)
 
-                if !jwt.isEmpty {
-                    Text("JWT: \(jwt)")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                        .textSelection(.enabled)
-                }
-
                 Button(role: .destructive) {
-                    jwt = ""
+                    onLogout()
                 } label: {
                     Text("Logout")
                         .frame(maxWidth: .infinity)
@@ -39,6 +31,8 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(onLogout: { })
+    }
 }
