@@ -1,0 +1,179 @@
+{
+  "" : {
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login Flow-primary.dia",
+    "emit-module-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login Flow-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login Flow-primary-emit-module.dia",
+    "pch" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login Flow-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login Flow-primary.swiftdeps"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/API/AuthAPI.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthAPI.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthAPI.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthAPI.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthAPI.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthAPI.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthAPI.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthAPI.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthAPI~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/ContentView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-81d4a17af5965173bd091cc860deee73.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-81d4a17af5965173bd091cc860deee73.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-81d4a17af5965173bd091cc860deee73.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-81d4a17af5965173bd091cc860deee73.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-81d4a17af5965173bd091cc860deee73.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-81d4a17af5965173bd091cc860deee73.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-81d4a17af5965173bd091cc860deee73.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-81d4a17af5965173bd091cc860deee73~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/Coordinator/AppCoordinator.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AppCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AppCoordinator.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AppCoordinator.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AppCoordinator.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AppCoordinator.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AppCoordinator.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AppCoordinator.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AppCoordinator~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/Coordinator/TokenManager.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/TokenManager.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/TokenManager.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/TokenManager.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/TokenManager.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/TokenManager.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/TokenManager.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/TokenManager.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/TokenManager~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/Login_FlowApp.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login_FlowApp.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login_FlowApp.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login_FlowApp.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login_FlowApp.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login_FlowApp.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login_FlowApp.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login_FlowApp.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/Login_FlowApp~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/Utils/AuthButton.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthButton.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthButton.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthButton.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthButton.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthButton.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthButton.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthButton.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AuthButton~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/Utils/AutheTextField.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AutheTextField.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AutheTextField.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AutheTextField.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AutheTextField.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AutheTextField.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AutheTextField.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AutheTextField.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/AutheTextField~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/Utils/ErrorBanner.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ErrorBanner.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ErrorBanner.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ErrorBanner.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ErrorBanner.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ErrorBanner.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ErrorBanner.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ErrorBanner.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ErrorBanner~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/View/ContentView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-1c7938d91cbefd4caeda6cc7444ee3c8.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-1c7938d91cbefd4caeda6cc7444ee3c8.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-1c7938d91cbefd4caeda6cc7444ee3c8.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-1c7938d91cbefd4caeda6cc7444ee3c8.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-1c7938d91cbefd4caeda6cc7444ee3c8.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-1c7938d91cbefd4caeda6cc7444ee3c8.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-1c7938d91cbefd4caeda6cc7444ee3c8.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/ContentView-1c7938d91cbefd4caeda6cc7444ee3c8~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/View/LoginView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginView.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/View/MainView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/MainView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/MainView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/MainView.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/MainView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/MainView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/MainView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/MainView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/MainView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/View/PasswordStrengthView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/PasswordStrengthView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/PasswordStrengthView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/PasswordStrengthView.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/PasswordStrengthView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/PasswordStrengthView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/PasswordStrengthView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/PasswordStrengthView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/PasswordStrengthView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/View/SignUpView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpView.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/View/SplashView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SplashView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SplashView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SplashView.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SplashView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SplashView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SplashView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SplashView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SplashView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/ViewModel/LoginViewModel.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginViewModel.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginViewModel.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginViewModel.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginViewModel.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginViewModel.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginViewModel.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginViewModel.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/LoginViewModel~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/ViewModel/SignUpViewModel.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpViewModel.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpViewModel.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpViewModel.dia",
+    "index-unit-output-path" : "/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpViewModel.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpViewModel.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpViewModel.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpViewModel.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/Login Flow.build/Debug-iphoneos/Login Flow.build/Objects-normal/arm64/SignUpViewModel~partial.swiftmodule"
+  }
+}

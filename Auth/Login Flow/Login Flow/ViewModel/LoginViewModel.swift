@@ -8,6 +8,15 @@
 import SwiftUI
 import Combine
 
+/// View model backing `LoginView`.
+///
+/// ## Responsibilities
+/// - Holds form input (`email`, `password`) and derived validation (`isFormValid`).
+/// - Exposes UI state for progress/error rendering (`isLoading`, `errorMessage`).
+/// - Performs async sign-in via `AuthAPI` and flips `isAuthenticated` on success.
+///
+/// ## Usage
+/// Call `await login()` from UI actions (button tap or keyboard submit).
 @MainActor
 final class LoginViewModel: ObservableObject {
     @Published var email: String = ""
@@ -24,6 +33,11 @@ final class LoginViewModel: ObservableObject {
         email.contains("@") && email.contains(".")
     }
     
+    /// Attempts to authenticate with the provided email/password.
+    ///
+    /// On success:
+    /// - `AuthAPI` stores a token via `TokenManager`
+    /// - `isAuthenticated` becomes `true` (the view can then navigate)
     func login() async {
         guard isFormValid else {
             errorMessage = "Please enter a valid email and password."

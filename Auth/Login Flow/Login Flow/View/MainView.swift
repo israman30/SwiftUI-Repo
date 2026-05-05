@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// Example “authenticated area” shown after a successful login.
+///
+/// In a real app, this would be your tab bar / home screen.
+/// This sample includes a single “Log out” action that clears the token via `AppCoordinator`.
 struct MainView: View {
     @EnvironmentObject private var coordinator: AppCoordinator
     

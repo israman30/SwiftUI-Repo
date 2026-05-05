@@ -8,6 +8,23 @@
 import SwiftUI
 // MARK: - Auth Text Field
 
+/// Reusable text field used across auth screens.
+///
+/// ## Features
+/// - Optional secure entry with an “eye” reveal toggle.
+/// - Supports keyboard type, text content type, and submit behavior.
+///
+/// ## Usage
+/// ```swift
+/// AuthTextField(
+///   title: "Email",
+///   placeholder: "you@example.com",
+///   text: $viewModel.email,
+///   keyboardType: .emailAddress,
+///   contentType: .emailAddress,
+///   submitLabel: .next
+/// ) { focusedField = .password }
+/// ```
 struct AuthTextField: View {
 
     let title: String

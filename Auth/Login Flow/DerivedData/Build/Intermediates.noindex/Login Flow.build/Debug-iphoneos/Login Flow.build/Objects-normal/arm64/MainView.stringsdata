@@ -7,7 +7,7 @@
         "key": "Home",
         "location": {
           "startingColumn": 30,
-          "startingLine": 43
+          "startingLine": 47
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "You're signed in",
         "location": {
           "startingColumn": 22,
-          "startingLine": 20
+          "startingLine": 24
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "This is your main app screen.",
         "location": {
           "startingColumn": 22,
-          "startingLine": 23
+          "startingLine": 27
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Log out",
         "location": {
           "startingColumn": 26,
-          "startingLine": 30
+          "startingLine": 34
         }
       }
     ]

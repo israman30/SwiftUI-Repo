@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// Primary call-to-action button used across the auth flow.
+///
+/// Displays a loading spinner when `isLoading == true` and disables itself when either
+/// loading or `isEnabled == false`.
 struct AuthButton: View {
     let title: String
     let isLoading: Bool

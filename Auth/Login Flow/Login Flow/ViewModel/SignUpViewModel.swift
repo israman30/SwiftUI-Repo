@@ -8,6 +8,9 @@
 import Foundation
 import Combine
 
+/// Coarse password strength categories used by `PasswordStrengthView`.
+///
+/// This sample uses simple heuristics (length + character classes) to compute strength.
 enum PasswordStrength: Int {
     case `weak` = 1
     case fair = 2
@@ -43,6 +46,16 @@ enum PasswordStrength: Int {
 
 
 @MainActor
+/// View model backing `SignUpView`.
+///
+/// ## Responsibilities
+/// - Holds registration form input and validation (`isFormValid`).
+/// - Computes `passwordStrength` for live feedback while typing.
+/// - Performs async registration via `AuthAPI` and flips `isRegistered` on success.
+///
+/// ## Usage
+/// Call `await signUp()` from UI actions. `SignUpView` observes `isRegistered` and
+/// routes back to sign-in once registration succeeds.
 final class SignUpViewModel: ObservableObject {
     @Published var fullName: String = ""
     @Published var email: String = ""
@@ -88,6 +101,9 @@ final class SignUpViewModel: ObservableObject {
         }
     }
     
+    /// Attempts to register a new user with the current form fields.
+    ///
+    /// On success, `isRegistered` becomes `true` so the view can transition back to login.
     func signUp() async {
         guard isFormValid else {
             errorMessage = "Please fill in all fields correctly."

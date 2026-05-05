@@ -7,7 +7,7 @@
         "key": "Sign In",
         "location": {
           "startingColumn": 26,
-          "startingLine": 63
+          "startingLine": 72
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Create account",
         "location": {
           "startingColumn": 18,
-          "startingLine": 79
+          "startingLine": 88
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Start organizing your life",
         "location": {
           "startingColumn": 18,
-          "startingLine": 82
+          "startingLine": 91
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Already have an account?",
         "location": {
           "startingColumn": 18,
-          "startingLine": 163
+          "startingLine": 172
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Sign in",
         "location": {
           "startingColumn": 20,
-          "startingLine": 165
+          "startingLine": 174
         }
       }
     ]

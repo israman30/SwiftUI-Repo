@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// Visual indicator for password quality based on a `PasswordStrength` value.
+///
+/// ## Usage
+/// Used by `SignUpView` to provide immediate feedback while the user creates a password:
+/// `PasswordStrengthView(strength: viewModel.passwordStrength)`.
 struct PasswordStrengthView: View {
     
     let strength: PasswordStrength
@@ -16,7 +21,7 @@ struct PasswordStrengthView: View {
         case .weak:       return .red
         case .fair:       return .orange
         case .strong:     return .blue
-        case .verystrong: return .green
+        case .veryStrong: return .green
         }
     }
 

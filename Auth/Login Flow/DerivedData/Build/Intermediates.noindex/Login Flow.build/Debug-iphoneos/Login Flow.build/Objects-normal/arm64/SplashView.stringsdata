@@ -7,7 +7,7 @@
         "key": "The Chalkboard",
         "location": {
           "startingColumn": 22,
-          "startingLine": 25
+          "startingLine": 28
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Stay organized. Stay ahead.",
         "location": {
           "startingColumn": 22,
-          "startingLine": 29
+          "startingLine": 32
         }
       }
     ]

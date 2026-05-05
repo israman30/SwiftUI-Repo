@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Inline banner used to surface validation/network errors in auth screens.
+///
+/// Typically shown conditionally when a view model provides a non-nil `errorMessage`.
 struct ErrorBanner: View {
 
     let message: String

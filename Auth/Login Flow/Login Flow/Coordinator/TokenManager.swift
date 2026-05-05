@@ -7,6 +7,11 @@
 
 import Foundation
 
+/// Minimal persistence for the sample auth token.
+///
+/// ## Notes
+/// - Uses `UserDefaults` for simplicity (fine for demos, not recommended for production tokens).
+/// - `AppCoordinator.checkAuthState()` uses `isAuthenticated` to pick the initial route.
 final class TokenManager {
     static let shared = TokenManager()
     

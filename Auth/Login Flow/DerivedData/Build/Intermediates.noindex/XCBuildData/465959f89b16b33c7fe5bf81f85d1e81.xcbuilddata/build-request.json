@@ -1,0 +1,74 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildOnly"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "7cbfd42ba2fcf10a12049627be8ffe48b90fccc5133c00c3bf1df6f72634b357"
+    }
+  ],
+  "containerPath" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "undefined_arch",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : true,
+      "hostTargetedPlatform" : null,
+      "platform" : "iphoneos",
+      "sdk" : "iphoneos26.4",
+      "sdkVariant" : "iphoneos",
+      "supportedArchitectures" : [
+        "armv4t",
+        "armv5",
+        "armv6",
+        "armv7",
+        "armv7f",
+        "armv7s",
+        "armv7k",
+        "arm64",
+        "arm64e"
+      ],
+      "targetArchitecture" : "undefined_arch"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Products",
+      "derivedDataPath" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+          "CODE_SIGNING_ALLOWED" : "NO",
+          "CODE_SIGNING_REQUIRED" : "NO"
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ACTION" : "build",
+          "CLANG_COVERAGE_MAPPING" : "YES",
+          "CLANG_PROFILE_DATA_DIRECTORY" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/DerivedData/Build/ProfileData",
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "YES",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

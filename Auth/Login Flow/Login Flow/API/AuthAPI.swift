@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// Errors surfaced by the demo auth implementation.
+///
+/// In a real app, your API layer would map backend errors to user-friendly messages.
 enum AuthAPIError: LocalizedError, Equatable {
     case invalidEmail
     case weakPassword
@@ -27,9 +30,20 @@ enum AuthAPIError: LocalizedError, Equatable {
     }
 }
 
+/// Minimal, demo-only auth “API”.
+///
+/// ## Important
+/// This is **not** real authentication. It exists to make the UI flow interactive without
+/// introducing networking or backend dependencies.
+///
+/// ## Behavior
+/// - `signUp(...)` stores the email in `UserDefaults` as “registered”.
+/// - `login(...)` succeeds only for previously registered emails and stores a token via `TokenManager`.
+/// - A short `Task.sleep` simulates network latency.
 struct AuthAPI {
     private static let registeredEmailsKey = "login_flow.registered_emails"
     
+    /// Simulates a login call. Returns a token string on success.
     static func login(email: String, password: String) async throws -> String {
         try await Task.sleep(nanoseconds: 700_000_000)
         
@@ -48,6 +62,9 @@ struct AuthAPI {
         return token
     }
     
+    /// Simulates a registration call.
+    ///
+    /// Registration does not automatically sign in; it only marks the email as registered.
     static func signUp(fullName: String, email: String, password: String) async throws {
         try await Task.sleep(nanoseconds: 900_000_000)
         

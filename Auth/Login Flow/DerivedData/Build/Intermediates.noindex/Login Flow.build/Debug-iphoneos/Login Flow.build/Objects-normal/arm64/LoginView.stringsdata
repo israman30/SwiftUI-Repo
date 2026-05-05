@@ -7,7 +7,7 @@
         "key": "Welcome back",
         "location": {
           "startingColumn": 18,
-          "startingLine": 61
+          "startingLine": 70
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Sign in to your account",
         "location": {
           "startingColumn": 18,
-          "startingLine": 64
+          "startingLine": 73
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Forgot password?",
         "location": {
           "startingColumn": 20,
-          "startingLine": 99
+          "startingLine": 108
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Don't have an account?",
         "location": {
           "startingColumn": 18,
-          "startingLine": 132
+          "startingLine": 141
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Sign up",
         "location": {
           "startingColumn": 20,
-          "startingLine": 134
+          "startingLine": 143
         }
       }
     ]

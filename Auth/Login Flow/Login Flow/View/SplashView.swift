@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Simple splash screen shown while `AppCoordinator` decides the initial route.
+///
+/// This view is purely visual; the actual routing happens in `AppCoordinator.checkAuthState()`.
 struct SplashView: View {
     @State var scale: CGFloat = 0.7
     @State var opacity: CGFloat = 0.0

@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+/// Sign-in screen for the login flow.
+///
+/// ## Implementation notes
+/// - Uses `LoginViewModel` for validation and async sign-in.
+/// - Observes `viewModel.isAuthenticated` and routes to `.main` via `AppCoordinator`.
+/// - Uses shared UI components (`AuthTextField`, `AuthButton`, `ErrorBanner`) for consistent styling.
+///
+/// ## Usage
+/// Presented by `ContentView` when `AppCoordinator.route == .login`.
 struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
     @EnvironmentObject private var coordinator: AppCoordinator

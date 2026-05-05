@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+/// Registration screen for the login flow.
+///
+/// ## Implementation notes
+/// - Uses `SignUpViewModel` for validation and async registration.
+/// - Shows a live `PasswordStrengthView` once the user starts typing a password.
+/// - On successful registration, routes back to `.login` (user can then sign in).
+///
+/// ## Usage
+/// Presented by `ContentView` when `AppCoordinator.route == .signup`.
 struct SignUpView: View {
     @StateObject private var viewModel = SignUpViewModel()
     @EnvironmentObject var coordinator: AppCoordinator

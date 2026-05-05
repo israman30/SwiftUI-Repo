@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+/// App root for the sample login flow.
+///
+/// ## Responsibilities
+/// - Owns a single `AppCoordinator` instance.
+/// - Switches between `SplashView`, `LoginView`, `SignUpView`, and `MainView` based on `route`.
+///
+/// ## Usage
+/// This is the entry view used by `Login_FlowApp`.
 struct ContentView: View {
     @StateObject private var coordinator = AppCoordinator()
     
