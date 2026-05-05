@@ -40,7 +40,7 @@ final class ChatViewModel: ObservableObject {
     private var typingTask: Task<Void, Never>?
     private var isTyping = false
     
-    init(roomId: String, service: WebSocketServiceProtocol) {
+    init(roomId: String = "", service: WebSocketServiceProtocol = LegacyWebSocketService()) {
         self.roomId = roomId
         self.service = service
         bindService()

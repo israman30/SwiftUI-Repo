@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = ChatViewModel()
+    @StateObject private var viewModel = ChatViewModel(roomId: <#String#>, service: <#any WebSocketServiceProtocol#>)
     
     var body: some View {
         NavigationStack {
