@@ -10,16 +10,16 @@ This folder contains multiple small Xcode projects and playgrounds that demonstr
 
 ### Projects in this folder
 
-- **Classic Networking (completion handlers)**: `Networking/`
-- **Networking with async/await**: `Networking with async/`
-- **Networking with Combine**: `Networking with Combine/`
-- **Advanced Networking (typed routes + request model + error mapping)**: `Advance Networking/`
-- **Network Logging & Observability (OSLog)**: `Network Logging & Observability/`
-- **WebSockets (URLSessionWebSocketTask)**: `Websockets/`
-- **Concurrency patterns playground**: `Concurrency and Multiple APIs calls.playground/`
-- **Mastering Networking (CoinGecko example)**: `Mastering Networking/`
+- **Classic Networking (completion handlers)**: [`Networking/`](Networking/)
+- **Networking with async/await**: [`Networking with async/`](Networking%20with%20async/)
+- **Networking with Combine**: [`Networking with Combine/`](Networking%20with%20Combine/)
+- **Advanced Networking (typed routes + request model + error mapping)**: [`Advance Networking/`](Advance%20Networking/)
+- **Network Logging & Observability (OSLog)**: [`Network Logging & Observability/`](Network%20Logging%20%26%20Observability/)
+- **WebSockets (URLSessionWebSocketTask)**: [`Websockets/`](Websockets/)
+- **Concurrency patterns playground**: [`Concurrency and Multiple APIs calls.playground/`](Concurrency%20and%20Multiple%20APIs%20calls.playground/)
+- **Mastering Networking (CoinGecko example)**: [`Mastering Networking/`](Mastering%20Networking/)
 
-To run any sample, open the corresponding `.xcodeproj` inside its folder (for example: `Websockets/Websockets.xcodeproj`) and run the app target.
+To run any sample, open the corresponding `.xcodeproj` inside its folder (for example: [`Websockets/Websockets.xcodeproj`](Websockets/Websockets.xcodeproj)) and run the app target.
 
 ---
 
@@ -27,7 +27,7 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 
 ### `URLSession` + JSON decoding (completion handler style)
 
-- **Used in**: `Networking/Networking/NetworkServices/NetworkServices.swift`
+- **Used in**: [`Networking/Networking/NetworkServices/NetworkServices.swift`](Networking/Networking/NetworkServices/NetworkServices.swift)
 - **Key components**:
   - `URLSession.shared.dataTask(with:)`
   - `JSONDecoder().decode(...)`
@@ -36,7 +36,7 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 
 ### `URLSession` + JSON decoding (async/await style)
 
-- **Used in**: `Networking with async/Networking with async/Utils/NetworkServices.swift`
+- **Used in**: [`Networking with async/Networking with async/Utils/NetworkServices.swift`](Networking%20with%20async/Networking%20with%20async/Utils/NetworkServices.swift)
 - **Key components**:
   - `URLSession.shared.data(from:)`
   - `async throws` API surface
@@ -45,31 +45,31 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 
 ### “Advanced Networking” building blocks (typed request + shared execution)
 
-- **Used in**: `Advance Networking/Advance Networking/NetworkServices/`
+- **Used in**: [`Advance Networking/Advance Networking/NetworkServices/`](Advance%20Networking/Advance%20Networking/NetworkServices/)
 - **Request model**: `APIRequest<Response>`
-  - **File**: `Advance Networking/Advance Networking/NetworkServices/APIRequest.swift`
+  - **File**: [`Advance Networking/Advance Networking/NetworkServices/APIRequest.swift`](Advance%20Networking/Advance%20Networking/NetworkServices/APIRequest.swift)
   - **Key components**:
     - `HTTPMethod` enum for verbs
-    - `APIRoutes` for typed routing (`Advance Networking/Advance Networking/NetworkServices/Routes.swift`)
+    - `APIRoutes` for typed routing ([`Advance Networking/Advance Networking/NetworkServices/Routes.swift`](Advance%20Networking/Advance%20Networking/NetworkServices/Routes.swift))
     - `URLComponents` + `URLQueryItem` for query construction
     - header merging (`defaultHeaders` + per-request headers)
     - JSON body encoding via `JSONEncoder` (generic `Encodable` initializer)
 - **Executor**: `APIClient`
-  - **File**: `Advance Networking/Advance Networking/NetworkServices/APIClient.swift`
+  - **File**: [`Advance Networking/Advance Networking/NetworkServices/APIClient.swift`](Advance%20Networking/Advance%20Networking/NetworkServices/APIClient.swift)
   - **Key components**:
     - `URLSession.data(for:)` for `URLRequest` execution
     - `JSONDecoder` for response decoding
     - HTTP status validation (2xx success)
     - dependency injection for `URLSession` and `JSONDecoder` (testability)
 - **Error modeling**: `NetworkError` + mapping
-  - **File**: `Advance Networking/Advance Networking/NetworkServices/NetworkError.swift`
+  - **File**: [`Advance Networking/Advance Networking/NetworkServices/NetworkError.swift`](Advance%20Networking/Advance%20Networking/NetworkServices/NetworkError.swift)
   - **Key components**:
     - `LocalizedError` conformance for UI-friendly messages
     - mapping from `URLError` → `.transport(...)`
     - separation of **user-facing** (`userMessage`) vs **debug** (`debugMessage`)
 - **Feature services** (build request + call client)
-  - **User service**: `Advance Networking/Advance Networking/Core/User/Service/UserService.swift`
-  - **Post service**: `Advance Networking/Advance Networking/Core/Post/Service/PostService.swift`
+  - **User service**: [`Advance Networking/Advance Networking/Core/User/Service/UserService.swift`](Advance%20Networking/Advance%20Networking/Core/User/Service/UserService.swift)
+  - **Post service**: [`Advance Networking/Advance Networking/Core/Post/Service/PostService.swift`](Advance%20Networking/Advance%20Networking/Core/Post/Service/PostService.swift)
 
 ---
 
@@ -77,7 +77,7 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 
 ### Grand Central Dispatch (GCD)
 
-- **Used in**: `Concurrency and Multiple APIs calls.playground/Contents.swift`
+- **Used in**: [`Concurrency and Multiple APIs calls.playground/Contents.swift`](Concurrency%20and%20Multiple%20APIs%20calls.playground/Contents.swift)
 - **Key components**:
   - `DispatchGroup` to coordinate multiple `URLSession.dataTask` calls
   - `DispatchSemaphore` to block an `OperationQueue` `BlockOperation` until a request finishes
@@ -85,7 +85,7 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 
 ### `OperationQueue`
 
-- **Used in**: `Concurrency and Multiple APIs calls.playground/Contents.swift`
+- **Used in**: [`Concurrency and Multiple APIs calls.playground/Contents.swift`](Concurrency%20and%20Multiple%20APIs%20calls.playground/Contents.swift)
 - **Key components**:
   - `OperationQueue.maxConcurrentOperationCount` to limit concurrency
   - `BlockOperation` + dependencies to run a completion operation after all requests
@@ -93,10 +93,10 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 ### Swift Concurrency (`async/await`)
 
 - **Used in**:
-  - `Networking with async/Networking with async/Utils/NetworkServices.swift`
-  - `Concurrency and Multiple APIs calls.playground/Contents.swift`
-  - `Websockets/Websockets/ViewModel/ChatViewModel.swift`
-  - `Websockets/Websockets/WebsocketServices.swift`
+  - [`Networking with async/Networking with async/Utils/NetworkServices.swift`](Networking%20with%20async/Networking%20with%20async/Utils/NetworkServices.swift)
+  - [`Concurrency and Multiple APIs calls.playground/Contents.swift`](Concurrency%20and%20Multiple%20APIs%20calls.playground/Contents.swift)
+  - [`Websockets/Websockets/ViewModel/ChatViewModel.swift`](Websockets/Websockets/ViewModel/ChatViewModel.swift)
+  - [`Websockets/Websockets/WebsocketServices.swift`](Websockets/Websockets/WebsocketServices.swift)
 - **Key components**:
   - `async throws` functions
   - `Task { ... }` for structured background work
@@ -110,7 +110,7 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 
 ### Combine + `URLSession.dataTaskPublisher`
 
-- **Used in**: `Networking with Combine/Networking with Combine/Utils/NetworkServices.swift`
+- **Used in**: [`Networking with Combine/Networking with Combine/Utils/NetworkServices.swift`](Networking%20with%20Combine/Networking%20with%20Combine/Utils/NetworkServices.swift)
 - **Key components**:
   - `URLSession.shared.dataTaskPublisher(for:)`
   - `.receive(on: RunLoop.main)` for UI updates
@@ -121,14 +121,14 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 
 ### Combine for coordinating many requests
 
-- **Used in**: `Concurrency and Multiple APIs calls.playground/Contents.swift`
+- **Used in**: [`Concurrency and Multiple APIs calls.playground/Contents.swift`](Concurrency%20and%20Multiple%20APIs%20calls.playground/Contents.swift)
 - **Key components**:
   - `Publishers.MergeMany` to run many publishers in parallel
   - `.collect()` to wait for all values before producing an array
 
 ### Combine bridging for WebSocket state + events
 
-- **Used in**: `Websockets/Websockets/WebsocketServices.swift`
+- **Used in**: [`Websockets/Websockets/WebsocketServices.swift`](Websockets/Websockets/WebsocketServices.swift)
 - **Key components**:
   - `CurrentValueSubject<ConnectionState, Never>` for latest connection state
   - `PassthroughSubject<WebsocketEvent, Never>` for incoming events stream
@@ -140,7 +140,7 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 
 ### `URLSessionWebSocketTask` service (connect / send / receive / ping / reconnect)
 
-- **Used in**: `Websockets/Websockets/WebsocketServices.swift`
+- **Used in**: [`Websockets/Websockets/WebsocketServices.swift`](Websockets/Websockets/WebsocketServices.swift)
 - **Key components**:
   - `URLSession(configuration:delegate:delegateQueue:)`
   - `URLSession.webSocketTask(with:)`
@@ -151,19 +151,19 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
     - `didCloseWith` to handle closure + trigger reconnect
   - reconnect with bounded retries + exponential backoff (`Task.sleep`)
   - message modeling:
-    - `WebsocketEvent: Codable` for typed events (`Websockets/Websockets/Websocket.swift`)
-    - `ChatMessage` and simple `TokenManager` placeholder (`Websockets/Websockets/Model/Chat.swift`)
+    - `WebsocketEvent: Codable` for typed events ([`Websockets/Websockets/Websocket.swift`](Websockets/Websockets/Websocket.swift))
+    - `ChatMessage` and simple `TokenManager` placeholder ([`Websockets/Websockets/Model/Chat.swift`](Websockets/Websockets/Model/Chat.swift))
 
 ### SwiftUI integration (view model)
 
-- **Used in**: `Websockets/Websockets/ViewModel/ChatViewModel.swift`
+- **Used in**: [`Websockets/Websockets/ViewModel/ChatViewModel.swift`](Websockets/Websockets/ViewModel/ChatViewModel.swift)
 - **Key components**:
   - `ObservableObject` + `@Published` state for messages, typing, and connection state
   - Combine subscriptions to `connectionState` + `receivedEvents`
   - `@MainActor` to keep UI mutations consistent
   - typing indicator debounce implemented with a cancellable `Task`
 
-> Note: the WebSocket endpoint string in `WebsocketServices.swift` currently uses a placeholder (`"constants.wsEndpoint"`). Replace it with your real `wss://...` endpoint (or wire it to a `Constants` type) before running against a backend.
+> Note: the WebSocket endpoint string in [`WebsocketServices.swift`](Websockets/Websockets/WebsocketServices.swift) currently uses a placeholder (`"constants.wsEndpoint"`). Replace it with your real `wss://...` endpoint (or wire it to a `Constants` type) before running against a backend.
 
 ---
 
@@ -172,8 +172,8 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 ### Request/response logging with `OSLog`
 
 - **Used in**:
-  - `Network Logging & Observability/Network Logging & Observability/NetworkLogger.swift`
-  - `Network Logging & Observability/Network Logging & Observability/NetworkManager.swift`
+  - [`Network Logging & Observability/Network Logging & Observability/NetworkLogger.swift`](Network%20Logging%20%26%20Observability/Network%20Logging%20%26%20Observability/NetworkLogger.swift)
+  - [`Network Logging & Observability/Network Logging & Observability/NetworkManager.swift`](Network%20Logging%20%26%20Observability/Network%20Logging%20%26%20Observability/NetworkManager.swift)
 - **Key components**:
   - `OSLog` via `Logger(subsystem:category:)`
   - structured log levels (`request`, `response`, `success`, `warning`, `error`)
