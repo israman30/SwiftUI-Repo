@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            ChatView(viewModel: viewModel)
+            ChatView(roomId: viewModel)
                 .navigationTitle("Chat")
                 .navigationBarTitleDisplayMode(.inline)
         }
