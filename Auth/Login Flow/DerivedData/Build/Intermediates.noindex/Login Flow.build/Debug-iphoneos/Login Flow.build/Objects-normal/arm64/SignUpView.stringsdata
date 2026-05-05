@@ -1,0 +1,48 @@
+{
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/SignUpView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Sign In",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create account",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start organizing your life",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 80
+        }
+      },
+      {
+        "comment": "",
+        "key": "Already have an account?",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 161
+        }
+      },
+      {
+        "comment": "",
+        "key": "Sign in",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 163
+        }
+      }
+    ]
+  },
+  "version": 1
+}

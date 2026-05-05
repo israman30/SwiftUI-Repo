@@ -1,0 +1,24 @@
+{
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/SplashView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "The Chalkboard",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "Stay organized. Stay ahead.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 29
+        }
+      }
+    ]
+  },
+  "version": 1
+}
