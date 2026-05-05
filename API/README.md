@@ -13,6 +13,8 @@ This folder contains multiple small Xcode projects and playgrounds that demonstr
 - **Classic Networking (completion handlers)**: [`Networking/`](Networking/)
 - **Networking with async/await**: [`Networking with async/`](Networking%20with%20async/)
 - **Networking with Combine**: [`Networking with Combine/`](Networking%20with%20Combine/)
+- **Network Layer (simple request builder + `Result`-based service)**: [`Network Layer/`](Network%20Layer/)
+- **Network layer playground (async/await + status-code mapping)**: [`NetworkLayer2.playground/`](NetworkLayer2.playground/)
 - **Advanced Networking (typed routes + request model + error mapping)**: [`Advance Networking/`](Advance%20Networking/)
 - **Network Logging & Observability (OSLog)**: [`Network Logging & Observability/`](Network%20Logging%20%26%20Observability/)
 - **WebSockets (URLSessionWebSocketTask)**: [`Websockets/`](Websockets/)
@@ -20,6 +22,13 @@ This folder contains multiple small Xcode projects and playgrounds that demonstr
 - **Mastering Networking (CoinGecko example)**: [`Mastering Networking/`](Mastering%20Networking/)
 
 To run any sample, open the corresponding `.xcodeproj` inside its folder (for example: [`Websockets/Websockets.xcodeproj`](Websockets/Websockets.xcodeproj)) and run the app target.
+
+### Generated folders you can ignore/delete
+
+Some samples may contain Xcode-generated output folders that aren’t part of the example code:
+
+- `Websockets/DerivedData/`
+- `Websockets/BuildDerivedData/`
 
 ---
 
@@ -70,6 +79,21 @@ To run any sample, open the corresponding `.xcodeproj` inside its folder (for ex
 - **Feature services** (build request + call client)
   - **User service**: [`Advance Networking/Advance Networking/Core/User/Service/UserService.swift`](Advance%20Networking/Advance%20Networking/Core/User/Service/UserService.swift)
   - **Post service**: [`Advance Networking/Advance Networking/Core/Post/Service/PostService.swift`](Advance%20Networking/Advance%20Networking/Core/Post/Service/PostService.swift)
+
+### Simple “network layer” (request builder + `Result` return type)
+
+- **Used in**: [`Network Layer/Network Layer/ContentView.swift`](Network%20Layer/Network%20Layer/ContentView.swift)
+- **Key components**:
+  - `NetworkAPIRequest` (resource + method + headers + query params)
+  - `NetworkServices.doTask(api:)` returning `Result<T, Error>`
+  - `URLSession.data(for:)` execution with `JSONDecoder` decoding
+
+### Async/await network manager (playground)
+
+- **Used in**: [`NetworkLayer2.playground/Contents.swift`](NetworkLayer2.playground/Contents.swift)
+- **Key components**:
+  - `NetworkManager.fectch<T>(...) async throws -> T`
+  - HTTP status validation with custom `NetworkError` mapping
 
 ---
 
