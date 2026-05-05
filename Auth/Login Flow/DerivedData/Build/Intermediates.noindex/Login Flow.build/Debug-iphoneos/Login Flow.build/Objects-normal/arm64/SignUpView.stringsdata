@@ -1,5 +1,5 @@
 {
-  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/SignUpView.swift",
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/View/SignUpView.swift",
   "tables": {
     "Localizable": [
       {
@@ -7,7 +7,7 @@
         "key": "Sign In",
         "location": {
           "startingColumn": 26,
-          "startingLine": 61
+          "startingLine": 63
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Create account",
         "location": {
           "startingColumn": 18,
-          "startingLine": 77
+          "startingLine": 79
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Start organizing your life",
         "location": {
           "startingColumn": 18,
-          "startingLine": 80
+          "startingLine": 82
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Already have an account?",
         "location": {
           "startingColumn": 18,
-          "startingLine": 161
+          "startingLine": 163
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Sign in",
         "location": {
           "startingColumn": 20,
-          "startingLine": 163
+          "startingLine": 165
         }
       }
     ]

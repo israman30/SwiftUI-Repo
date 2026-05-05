@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     @StateObject private var viewModel = SignUpViewModel()
-    @EnvironmentObject private var coordinator: AppCoordinator
+    @EnvironmentObject var coordinator: AppCoordinator
     @FocusState private var focusedField: Field?
     
     private enum Field { case name, email, password, confirm }
@@ -47,7 +47,9 @@ struct SignUpView: View {
         .scrollBounceBehavior(.basedOnSize)
         .scrollDismissesKeyboard(.interactively)
         .onChange(of: viewModel.isRegistered) { _, registered in
-            if registered { coordinator.goToLogin() }
+            if registered {
+                coordinator.goToLogin()
+            }
         }
     }
     

@@ -112,7 +112,9 @@ struct LoginView: View {
             isEnabled: viewModel.isFormValid
         ) {
             focusedField = nil
-            Task { await viewModel.login() }
+            Task {
+                await viewModel.login()
+            }
         }
     }
     

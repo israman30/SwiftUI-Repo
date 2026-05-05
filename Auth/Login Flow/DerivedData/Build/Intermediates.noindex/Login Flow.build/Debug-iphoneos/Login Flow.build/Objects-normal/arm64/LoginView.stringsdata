@@ -1,5 +1,5 @@
 {
-  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/LoginView.swift",
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/Auth/Login Flow/Login Flow/View/LoginView.swift",
   "tables": {
     "Localizable": [
       {
@@ -31,7 +31,7 @@
         "key": "Don't have an account?",
         "location": {
           "startingColumn": 18,
-          "startingLine": 130
+          "startingLine": 132
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Sign up",
         "location": {
           "startingColumn": 20,
-          "startingLine": 132
+          "startingLine": 134
         }
       }
     ]
