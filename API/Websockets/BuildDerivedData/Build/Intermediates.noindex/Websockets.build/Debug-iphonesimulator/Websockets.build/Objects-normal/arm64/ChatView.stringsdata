@@ -1,0 +1,40 @@
+{
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/Websockets/View/ChatView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Disconnect",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Connect",
+        "location": {
+          "startingColumn": 65,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Message…",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "Send message",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 102
+        }
+      }
+    ]
+  },
+  "version": 1
+}

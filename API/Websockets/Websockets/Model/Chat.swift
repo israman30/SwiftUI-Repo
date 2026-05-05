@@ -7,21 +7,51 @@
 
 import Foundation
 
-enum ChatSender: Hashable {
-    case me
-    case bot
+struct TokenManager {
+    static let shared = TokenManager()
+    var currentId = ""
+    var currentUserEmail = ""
+    var accessToken = ""
+    var bearerHeader = ""
+    var currentUserId = ""
 }
 
-struct ChatMessage: Identifiable, Equatable {
-    let id: UUID
-    let text: String
-    let sender: ChatSender
-    let sentAt: Date
+enum MessageStatus: String, Codable {
+    case sending
+    case sent
+    case delivered
+    case failed
+}
+
+enum MessageType: String, Codable {
+    case text
+    case image
+    case typing
+    case system
+}
+
+struct ChatMessage: Codable, Identifiable, Equatable {
+    let id: String
+    let senderId: String
+    let senderName: String
+    let content: String
+    let type: MessageType
+    let timestamp: Date
+    var status: MessageStatus
     
-    init(id: UUID = UUID(), text: String, sender: ChatSender, sentAt: Date = Date()) {
-        self.id = id
-        self.text = text
-        self.sender = sender
-        self.sentAt = sentAt
+    var isFromCurrentUser: Bool {
+        false
+    }
+    
+    static func outgoing(content: String, type: MessageType = .text) -> ChatMessage {
+        ChatMessage(
+            id: UUID().uuidString,
+            senderId: TokenManager.shared.currentId,
+            senderName: TokenManager.shared.currentUserEmail,
+            content: content,
+            type: type,
+            timestamp: Date(),
+            status: .sending
+        )
     }
 }

@@ -1,0 +1,79 @@
+{
+  "" : {
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Websockets-primary.dia",
+    "emit-module-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Websockets-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Websockets-primary-emit-module.dia",
+    "pch" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Websockets-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Websockets-primary.swiftdeps"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/Websockets/Model/Chat.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Chat.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Chat.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Chat.dia",
+    "index-unit-output-path" : "/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Chat.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Chat.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Chat.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Chat.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/Chat~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/Websockets/NetworkServices.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/NetworkServices.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/NetworkServices.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/NetworkServices.dia",
+    "index-unit-output-path" : "/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/NetworkServices.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/NetworkServices.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/NetworkServices.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/NetworkServices.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/NetworkServices~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/Websockets/View/ChatView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatView.dia",
+    "index-unit-output-path" : "/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/Websockets/View/ContentView.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ContentView.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ContentView.dia",
+    "index-unit-output-path" : "/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ContentView.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ContentView.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ContentView.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ContentView~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/Websockets/ViewModel/ChatViewModel.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatViewModel.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatViewModel.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatViewModel.dia",
+    "index-unit-output-path" : "/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatViewModel.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatViewModel.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatViewModel.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatViewModel.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/ChatViewModel~partial.swiftmodule"
+  },
+  "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/Websockets/WebsocketsApp.swift" : {
+    "const-values" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/WebsocketsApp.swiftconstvalues",
+    "dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/WebsocketsApp.d",
+    "diagnostics" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/WebsocketsApp.dia",
+    "index-unit-output-path" : "/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/WebsocketsApp.o",
+    "llvm-bc" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/WebsocketsApp.bc",
+    "object" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/WebsocketsApp.o",
+    "swift-dependencies" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/WebsocketsApp.swiftdeps",
+    "swiftmodule" : "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/BuildDerivedData/Build/Intermediates.noindex/Websockets.build/Debug-iphonesimulator/Websockets.build/Objects-normal/x86_64/WebsocketsApp~partial.swiftmodule"
+  }
+}

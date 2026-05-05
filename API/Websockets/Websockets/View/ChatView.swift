@@ -8,102 +8,227 @@
 import SwiftUI
 
 struct ChatView: View {
-    @ObservedObject var viewModel: ChatViewModel
+    @StateObject var viewModel: ChatViewModel
     @FocusState private var isInputFocused: Bool
+    @Namespace private var scrollSpace
+    
+    init(roomId: String) {
+        _viewModel = StateObject(wrappedValue: ChatViewModel(roomId: roomId, service: LegacyWebSocketService()))
+    }
     
     var body: some View {
         VStack(spacing: 0) {
-            messagesList
-            Divider()
-            composer
+            connectionBanner
+            messageList
+            typingIndicator
+            inputBar
         }
-        .background(Color(.systemBackground))
+        .navigationTitle("Chat")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar { statusToolbarItem }
+        .task {
+            await viewModel.onAppear()
+        }
+        .alert("Error", isPresented: .constant(viewModel.errorMessage != nil)) {
+            Button("OK") { viewModel.errorMessage = nil }
+        } message: {
+            Text(viewModel.errorMessage ?? "")
+        }
     }
     
-    private var messagesList: some View {
+    @ViewBuilder
+    private var connectionBanner: some View {
+        switch viewModel.connectionState {
+        case .disconnected:
+            bannerView(text: "Disconnected", color: .gray)
+        case .connecting:
+            bannerView(text: "Connecting...", color: .orange)
+        case .connected:
+            EmptyView()
+        case .reconnecting(let attempt):
+            bannerView(text: "Reconnecting... (attempt \(attempt))", color: .orange)
+        case .failed(let string):
+            bannerView(text: "Connection failed. Check your network.", color: .red)
+        }
+    }
+    
+    private func bannerView(text: String, color: Color) -> some View {
+        Text(text)
+            .font(.caption)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 6)
+            .background(color)
+            .transition(.move(edge: .top).combined(with: .opacity))
+    }
+    
+    private var messageList: some View {
         ScrollViewReader { proxy in
             ScrollView {
-                LazyVStack(spacing: 10) {
+                LazyVStack(spacing: 4) {
                     ForEach(viewModel.messages) { message in
-                        ChatBubble(message: message)
-                            .id(message.id)
+                        MessageBubble(message: message) {
+                            Task { await viewModel.retry(message: message) }
+                        }
+                        .id(message.id)
                     }
                 }
                 .padding(.horizontal, 12)
-                .padding(.vertical, 12)
+                .padding(.vertical, 8)
             }
-            .scrollDismissesKeyboard(.interactively)
-            .onChange(of: viewModel.messages.count) { _, _ in
-                guard let lastID = viewModel.messages.last?.id else { return }
-                withAnimation(.easeOut(duration: 0.2)) {
-                    proxy.scrollTo(lastID, anchor: .bottom)
+            .onChange(of: viewModel.messages.count) { oldValue, newValue in
+                withAnimation {
+                    proxy.scrollTo(viewModel.messages.last?.id, anchor: .bottom)
                 }
-            }
-            .onAppear {
-                guard let lastID = viewModel.messages.last?.id else { return }
-                proxy.scrollTo(lastID, anchor: .bottom)
             }
         }
     }
     
-    private var composer: some View {
+    @ViewBuilder
+    private var typingIndicator: some View {
+        if let text = viewModel.typingIndicator {
+            HStack {
+                Text(text)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 6)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
+        }
+    }
+    
+    private var inputBar: some View {
         HStack(spacing: 10) {
-            TextField("Message…", text: $viewModel.draft, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-                .lineLimit(1...4)
+            TextField("Message...", text: $viewModel.inputText, axis: .vertical)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 10)
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 20))
                 .focused($isInputFocused)
-                .submitLabel(.send)
-                .onSubmit {
-                    viewModel.sendDraft()
+                .lineLimit(1...5)
+                .onChange(of: viewModel.inputText) { _, _ in
+                    viewModel.handleTyping()
                 }
             
             Button {
-                viewModel.sendDraft()
-                isInputFocused = true
+                Task {
+                    await viewModel.sendMessage()
+                    isInputFocused = false
+                }
             } label: {
-                Image(systemName: "paperplane.fill")
-                    .font(.system(size: 16, weight: .semibold))
-                    .padding(10)
-                    .background(Circle().fill(Color.accentColor))
-                    .foregroundStyle(.white)
+                Image(systemName: "arrow.up.circle.fill")
+                    .font(.system(size: 32))
+                    .foregroundStyle(
+                        viewModel.inputText.isEmpty || !viewModel.isConnected
+                        ? Color.gray
+                        : Color.blue
+                    )
             }
-            .accessibilityLabel("Send message")
-            .disabled(viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            .disabled(viewModel.inputText.isEmpty || !viewModel.isConnected)
         }
-        .padding(12)
-        .background(.thinMaterial)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(.bar)
+    }
+    
+    private var statusToolbarItem: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            HStack(spacing: 4) {
+                Circle()
+                    .fill(viewModel.isConnected ? Color.green : Color.red)
+                    .frame(width: 8, height: 8)
+                Text(viewModel.isConnected ? "Online" : "Offline")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
     }
 }
 
-struct ChatBubble: View {
+struct MessageBubble: View {
     let message: ChatMessage
+    let onRetry: () -> Void
     
     var body: some View {
         HStack {
-            if message.sender == .bot { bubble }
-            Spacer(minLength: 30)
-            if message.sender == .me { bubble }
+            HStack {
+                if message.isFromCurrentUser {
+                    Spacer(minLength: 60)
+                }
+                VStack(alignment: message.isFromCurrentUser ? .trailing : .leading, spacing: 3) {
+                    if !message.isFromCurrentUser {
+                        Text(message.senderName)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .padding(.leading, 4)
+                    }
+                    Text(message.content)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 10)
+                        .background(message.isFromCurrentUser ? Color.blue : Color(.systemGray5))
+                        .foregroundStyle(message.isFromCurrentUser ? .white : .primary)
+                        .clipShape(RoundedRectangle(cornerRadius: 18))
+                }
+                HStack(spacing: 4) {
+                    Text(message.timestamp.formatted(.dateTime.hour().minute()))
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                    
+                    // Status icon
+                    if message.isFromCurrentUser {
+                        statusIcon
+                    }
+                }
+                .padding(.horizontal, 4)
+            }
+            if !message.isFromCurrentUser {
+                Spacer(minLength: 60)
+            }
         }
     }
     
-    private var bubble: some View {
-        Text(message.text)
-            .font(.body)
-            .foregroundStyle(message.sender == .me ? .white : .primary)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 10)
-            .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(message.sender == .me ? Color.accentColor : Color(.secondarySystemBackground))
-            )
-            .overlay(alignment: .bottomTrailing) {
-                Text(message.sentAt, format: .dateTime.hour().minute())
-                    .font(.caption2)
-                    .foregroundStyle(message.sender == .me ? .white.opacity(0.8) : .secondary)
-                    .padding(.horizontal, 10)
-                    .padding(.bottom, 6)
-                    .opacity(0.85)
+    @ViewBuilder
+    private var statusIcon: some View {
+        switch message.status {
+        case .sending:
+            ProgressView().scaleEffect(0.5)
+        case .sent:
+            Image(systemName: "checkmark")
+                .font(.caption2).foregroundStyle(.secondary)
+        case .delivered:
+            Image(systemName: "checkmark.circle")
+                .font(.caption2).foregroundStyle(.secondary)
+        case .failed:
+            Button(action: onRetry) {
+                Image(systemName: "exclamationmark.circle.fill")
+                    .font(.caption2).foregroundStyle(.red)
             }
-            .frame(maxWidth: 280, alignment: message.sender == .me ? .trailing : .leading)
+        }
     }
 }
+
+struct TypingDotsView: View {
+
+    @State private var animate = false
+
+    var body: some View {
+        HStack(spacing: 3) {
+            ForEach(0..<3, id: \.self) { index in
+                Circle()
+                    .fill(Color.secondary)
+                    .frame(width: 6, height: 6)
+                    .scaleEffect(animate ? 1.2 : 0.8)
+                    .animation(
+                        .easeInOut(duration: 0.5)
+                            .repeatForever()
+                            .delay(Double(index) * 0.15),
+                        value: animate
+                    )
+            }
+        }
+        .onAppear { animate = true }
+    }
+}
+

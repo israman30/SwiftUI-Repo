@@ -1,0 +1,16 @@
+{
+  "source": "/Users/israelmanzo/Documents/GitHub/SwiftUI-Repo/API/Websockets/Websockets/View/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Chat",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 16
+        }
+      }
+    ]
+  },
+  "version": 1
+}
