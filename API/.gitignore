@@ -1,0 +1,10 @@
+## Xcode build artifacts (API folder only)
+**/DerivedData/
+**/BuildDerivedData/
+**/DerivedDataLocal/
+**/.derivedData/
+**/.derivedDataLocal/
+
+## Common misspellings (kept intentionally)
+**/derivatedData/
+**/derivatedDataLocal/
