@@ -46,7 +46,9 @@ final class LoginViewModel: ObservableObject {
         
         isLoading = true
         errorMessage = nil
-        defer { isLoading = false }
+        defer {
+            isLoading = false
+        }
         
         do {
             _ = try await AuthAPI.login(email: email, password: password)

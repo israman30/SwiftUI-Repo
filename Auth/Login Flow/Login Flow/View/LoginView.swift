@@ -53,7 +53,9 @@ struct LoginView: View {
         }
         .scrollBounceBehavior(.basedOnSize)
         .scrollDismissesKeyboard(.interactively)
-        .onAppear { focusedField = .email }
+        .onAppear {
+            focusedField = .email
+        }
         .onChange(of: viewModel.isAuthenticated) { _, authenticated in
             if authenticated {
                 coordinator.goToMain()
@@ -85,8 +87,10 @@ struct LoginView: View {
                 keyboardType: .emailAddress,
                 contentType: .emailAddress,
                 submitLabel: .next
-            ) { focusedField = .password }
-                .focused($focusedField, equals: .email)
+            ) {
+                focusedField = .password
+            }
+            .focused($focusedField, equals: .email)
             
             AuthTextField(
                 title: "Password",
@@ -96,7 +100,9 @@ struct LoginView: View {
                 contentType: .password,
                 submitLabel: .go
             ) {
-                Task { await viewModel.login() }
+                Task {
+                    await viewModel.login()
+                }
             }
             .focused($focusedField, equals: .password)
         }

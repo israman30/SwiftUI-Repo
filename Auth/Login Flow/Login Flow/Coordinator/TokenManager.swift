@@ -17,7 +17,7 @@ final class TokenManager {
     
     private let tokenKey = "login_flow.auth.token"
     
-    private init() {}
+    private init() { }
     
     var token: String? {
         UserDefaults.standard.string(forKey: tokenKey)

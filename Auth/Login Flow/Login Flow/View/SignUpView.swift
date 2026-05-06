@@ -102,8 +102,10 @@ struct SignUpView: View {
                 text: $viewModel.fullName,
                 contentType: .name,
                 submitLabel: .next
-            ) { focusedField = .email }
-                .focused($focusedField, equals: .name)
+            ) {
+                focusedField = .email
+            }
+            .focused($focusedField, equals: .name)
             
             AuthTextField(
                 title: "Email",
@@ -112,8 +114,10 @@ struct SignUpView: View {
                 keyboardType: .emailAddress,
                 contentType: .emailAddress,
                 submitLabel: .next
-            ) { focusedField = .password }
-                .focused($focusedField, equals: .email)
+            ) {
+                focusedField = .password
+            }
+            .focused($focusedField, equals: .email)
             
             AuthTextField(
                 title: "Password",
@@ -122,8 +126,10 @@ struct SignUpView: View {
                 isSecure: true,
                 contentType: .newPassword,
                 submitLabel: .next
-            ) { focusedField = .confirm }
-                .focused($focusedField, equals: .password)
+            ) {
+                focusedField = .confirm
+            }
+            .focused($focusedField, equals: .password)
             
             AuthTextField(
                 title: "Confirm Password",
@@ -133,7 +139,9 @@ struct SignUpView: View {
                 contentType: .newPassword,
                 submitLabel: .go
             ) {
-                Task { await viewModel.signUp() }
+                Task {
+                    await viewModel.signUp()
+                }
             }
             .focused($focusedField, equals: .confirm)
         }
@@ -154,7 +162,9 @@ struct SignUpView: View {
             isEnabled: viewModel.isFormValid
         ) {
             focusedField = nil
-            Task { await viewModel.signUp() }
+            Task {
+                await viewModel.signUp()
+            }
         }
     }
     
