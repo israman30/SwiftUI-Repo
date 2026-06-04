@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+Target 'Image Handler (Download+Cache)' in project 'Image Handler (Download+Cache)' (no dependencies)
