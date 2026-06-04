@@ -19,6 +19,13 @@ public typealias PlatformImage = NSImage
 
 import CryptoKit
 
+/// A reusable image cache with a fast memory layer and a best-effort disk layer.
+///
+/// - **Thread-safety**: Implemented as an `actor` so reads/writes are serialized.
+/// - **Storage strategy**: Memory is checked first; disk is used as a fallback and
+///   rehydrates memory on hit.
+/// - **Keying**: Uses the image URL as the logical key; disk filenames are a SHA-256
+///   of the URL string so they’re filesystem-safe and fixed-length.
 public actor ImageCacheStore {
     public static let shared = ImageCacheStore()
     
@@ -35,12 +42,17 @@ public actor ImageCacheStore {
             .urls(for: .cachesDirectory, in: .userDomainMask)[0]
             .appendingPathComponent(directoryName, isDirectory: true)
         
+        // NSCache is eviction-driven; count and cost limits are hints, not guarantees.
         memoryCache.countLimit = memoryCountLimit
         memoryCache.totalCostLimit = memoryTotalCostLimitBytes
         
+        // Cache directory creation is best-effort; failing it should not crash the app.
         try? fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
     }
     
+    /// Returns a cached image for `url` if present in memory or on disk.
+    ///
+    /// Disk hits are promoted into the memory cache to avoid repeated file reads.
     public func image(for url: URL) -> PlatformImage? {
         let key = url.absoluteString as NSString
         if let image = memoryCache.object(forKey: key) {
@@ -53,10 +65,15 @@ public actor ImageCacheStore {
             return nil
         }
         
+        // Cost uses the encoded byte size, not pixel count.
+        // This avoids touching UIKit/AppKit image sizing APIs from a non-main actor context.
         memoryCache.setObject(image, forKey: key, cost: data.count)
         return image
     }
     
+    /// Inserts image bytes for `url` into memory and disk.
+    ///
+    /// Disk writes are best-effort; callers should treat caching as an optimization.
     public func insert(_ data: Data, for url: URL) {
         let key = url.absoluteString as NSString
         if let image = PlatformImage(data: data) {
@@ -65,12 +82,14 @@ public actor ImageCacheStore {
         
         let fileURL = diskFileURL(for: url)
         do {
+            // `.atomic` minimizes partially-written files on interruption.
             try data.write(to: fileURL, options: [.atomic])
         } catch {
             // Best-effort disk cache.
         }
     }
     
+    /// Removes any cached value for `url` from memory and disk.
     public func remove(for url: URL) {
         let key = url.absoluteString as NSString
         memoryCache.removeObject(forKey: key)
@@ -79,6 +98,7 @@ public actor ImageCacheStore {
         try? fileManager.removeItem(at: fileURL)
     }
     
+    /// Clears the entire cache (memory + disk directory).
     public func clear() {
         memoryCache.removeAllObjects()
         try? fileManager.removeItem(at: directoryURL)
@@ -112,6 +132,10 @@ public enum ImageDownloadError: Error, LocalizedError {
     }
 }
 
+/// Downloads images and populates a cache, while coalescing concurrent requests.
+///
+/// If multiple callers request the same URL at the same time, they all await the same
+/// underlying network `Task` instead of triggering duplicate downloads.
 public actor ImageDownloader {
     public static let shared = ImageDownloader(cache: .shared)
     
@@ -129,6 +153,7 @@ public actor ImageDownloader {
             return cached
         }
         
+        // Coalesce concurrent requests for the same URL.
         if let task = inFlight[url] {
             return try await task.value
         }
@@ -150,6 +175,7 @@ public actor ImageDownloader {
             return image
         }
         
+        // Store the task before awaiting so other callers can join it.
         inFlight[url] = task
         do {
             let image = try await task.value
