@@ -2,6 +2,10 @@
 
 Samples, blueprints, and reusable components for iOS development—focused on modern Swift/SwiftUI methodologies and patterns used to build **applications**, **frameworks**, and **playgrounds**.
 
+### Technologies / Tags
+
+`Swift` · `iOS` · `SwiftUI` · `Combine` · `Swift Concurrency (async/await)` · `SwiftData` · `URLSession` · `Core Data` · `MapKit` · `PencilKit` · `The Composable Architecture (TCA)`
+
 ### What this repo is
 
 This repository is grounded in **samples and blueprints of iOS methodologies**, offering practical references that you can:
