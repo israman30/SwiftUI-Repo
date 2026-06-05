@@ -58,18 +58,25 @@ struct PostListView: View {
                 Text("Error: \(error.localizedDescription)")
             case .loaded(let posts):
                 List(posts, id: \.id) { post in
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(post.title)
-                            .font(.headline)
-                        Text(post.body)
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
+                    PostRow(post: post)
                 }
             }
         }
         .task {
             await viewModel.fetchPosts()
+        }
+    }
+}
+
+struct PostRow: View {
+    var post: Post
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(post.title)
+                .font(.headline)
+            Text(post.body)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
         }
     }
 }
