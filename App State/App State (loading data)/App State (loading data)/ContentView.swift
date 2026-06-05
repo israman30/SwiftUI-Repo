@@ -13,19 +13,18 @@ import Observation
 /// `LoadingState` is designed to drive a `switch` in the view so the UI can react to each phase:
 /// - `loading`: a request is in flight
 /// - `empty`: the request succeeded but returned no items
-/// - `loaded`: the request succeeded and produced items
+/// - `loaded`: the request succeeded and produced a value (for example, an array of models)
 /// - `error`: the request failed (the associated `Error` can be surfaced to the user or logged)
-
-enum LoadingState {
+enum LoadingState<Value> {
     case loading
     case empty
     case error(Error)
-    case loaded([String])
+    case loaded(Value)
 }
 
 @Observable
 class StateViewModel {
-    var loadingState: LoadingState = .empty
+    var loadingState: LoadingState<[String]> = .empty
     
     /// Loads data and updates `loadingState` to drive the UI.
     ///
