@@ -7,6 +7,14 @@
 
 import SwiftUI
 import Observation
+ 
+/// UI-facing state for an async load.
+///
+/// `LoadingState` is designed to drive a `switch` in the view so the UI can react to each phase:
+/// - `loading`: a request is in flight
+/// - `empty`: the request succeeded but returned no items
+/// - `loaded`: the request succeeded and produced items
+/// - `error`: the request failed (the associated `Error` can be surfaced to the user or logged)
 
 enum LoadingState {
     case loading
@@ -19,7 +27,15 @@ enum LoadingState {
 class StateViewModel {
     var loadingState: LoadingState = .empty
     
+    /// Loads data and updates `loadingState` to drive the UI.
+    ///
+    /// Expected transitions:
+    /// - start: `.empty`
+    /// - when loading begins: `.loading`
+    /// - success: `.loaded` (or `.empty` if the result is empty)
+    /// - failure: `.error`
     func fetchData() async {
+        loadingState = .loading
         do {
             try await Task.sleep(for: .seconds(2))
             let data = Array(1...100).map(\.description)
