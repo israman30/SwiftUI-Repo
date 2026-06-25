@@ -57,14 +57,39 @@ class UserViewModel: ObservableObject {
 
 
 struct ContentView: View {
+    @StateObject var viewModel: UserViewModel
+    
+    init() {
+        self._viewModel = .init(wrappedValue: .init(network: .init()))
+    }
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScrollView {
+            LazyVStack {
+                switch viewModel.appState {
+                case .idle:
+                    Text("ide")
+                case .loading:
+                    Text("Lading..")
+                case .loaded(let result):
+                    switch result {
+                    case .success(let users):
+                        ForEach(users, id: \.id) { user in
+                            VStack(alignment: .leading) {
+                                Text(user.title)
+                                    .font(.title)
+                                Text(user.body)
+                            }
+                            .padding()
+                        }
+                    case .failure(let error):
+                        Text("Error: \(error.localizedDescription)")
+                    }
+                }
+            }
+            .task {
+                await viewModel.loadUsers()
+            }
         }
-        .padding()
     }
 }
 
