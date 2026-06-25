@@ -11,13 +11,16 @@
  "body":
  */
 
+import SwiftUI
+import Combine
+
 struct User: Decodable {
     let id: Int
     let title: String
     let body: String
 }
 
-class networkManager {
+class NetworkManager {
     func fetchData() async throws -> [User] {
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         let (data, _ ) = try await URLSession.shared.data(from: url)
@@ -25,9 +28,33 @@ class networkManager {
     }
 }
 
+enum AppState<Value> {
+    case idle
+    case loading
+    case loaded(Result<Value, Error>)
+}
+
+@MainActor
+class UserViewModel: ObservableObject {
+    @Published var appState: AppState<[User]> = .idle
+    private let network: NetworkManager
+    
+    init(network: NetworkManager) {
+        self.network = network
+    }
+    
+    func loadUsers() async {
+        appState = .loading
+        do {
+            let users = try await network.fetchData()
+            appState = .loaded(.success(users))
+        } catch {
+            appState = .loaded(.failure(error))
+        }
+    }
+}
 
 
-import SwiftUI
 
 struct ContentView: View {
     var body: some View {
