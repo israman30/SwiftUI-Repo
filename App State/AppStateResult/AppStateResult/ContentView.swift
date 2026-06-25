@@ -74,12 +74,7 @@ struct ContentView: View {
                     switch result {
                     case .success(let users):
                         ForEach(users, id: \.id) { user in
-                            VStack(alignment: .leading) {
-                                Text(user.title)
-                                    .font(.title)
-                                Text(user.body)
-                            }
-                            .padding()
+                            UserRow(user: user)
                         }
                     case .failure(let error):
                         Text("Error: \(error.localizedDescription)")
@@ -95,4 +90,16 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+struct UserRow: View {
+    var user: User
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(user.title)
+                .font(.title)
+            Text(user.body)
+        }
+        .padding()
+    }
 }
