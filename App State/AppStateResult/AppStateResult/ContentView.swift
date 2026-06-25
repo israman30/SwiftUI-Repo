@@ -17,6 +17,14 @@ struct User: Decodable {
     let body: String
 }
 
+class networkManager {
+    func fetchData() async throws -> [User] {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+        let (data, _ ) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode([User].self, from: data)
+    }
+}
+
 
 
 import SwiftUI
