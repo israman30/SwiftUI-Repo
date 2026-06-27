@@ -44,10 +44,36 @@ class UserViewModel {
 }
 
 struct ContentView: View {
+    @State var viewModel: UserViewModel = .init(network: .init())
     var body: some View {
         NavigationStack {
             Group {
-                
+                switch viewModel.appState {
+                case .idle:
+                    Color.clear.task {
+                        await viewModel.loadData()
+                    }
+                case .loading(_):
+                    ProgressView("Fetching Articles...")
+                        .controlSize(.large)
+                case .loaded(let value):
+                    List(value, id: \.id) { user in
+                        Text(user.title)
+                    }
+                case .failed(let failure, let previous):
+                    ContentUnavailableView {
+                        Label("Couldn't Load News", systemImage: "exclamationmark.triangle")
+                    } description: {
+                        Text(failure.localizedDescription)
+                    } actions: {
+                        Button("Try Again") {
+                            Task {
+                                await viewModel.loadData()
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                }
             }
         }
     }
