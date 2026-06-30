@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum AppState: Equatable {
     case loading
@@ -65,86 +66,54 @@ class NetworkManager {
     }
 }
 
-@Observable
 @MainActor
-class PostViewModel {
-    var state: AppState = .empty
-    var posts: [Post] = []
+class UserViewModel: ObservableObject {
+    @Published var appState: AppState = .empty
     private let network: NetworkManager
+    @Published var posts = [Post]()
     
     init(network: NetworkManager) {
         self.network = network
     }
     
-    func fetchPosts() async {
-        state = .loading
+    func loadData() async {
+        appState = .loading
+        
         do {
             posts = try await network.fetchData()
-            
-            if posts.isEmpty {
-                state = .empty
-                return
-            } else {
-                state = .loaded
-            }
-            
+            appState = .loaded
         } catch {
-            state = .error(error)
+            appState = .error(error)
         }
     }
-    
 }
 
 struct ContentView: View {
-    @State var vm = PostViewModel(network: .init())
+    @StateObject var vm: UserViewModel
+    
+    init() {
+        self._vm = StateObject(wrappedValue: .init(network: .init()))
+    }
+    
     var body: some View {
         ScrollView {
-            LazyVStack {
-                switch vm.state {
+            VStack {
+                switch vm.appState {
                 case .loading:
-                    VStack {
-                        ProgressView()
-                            .scaleEffect(1.5)
-                        Text("Loasing...")
-                    }
+                    ProgressView()
+                    Text("Loading posts...")
                 case .empty:
-                    VStack {
-                        Image(systemName: "book.closed")
-                            .font(.system(size: 48))
-                            .foregroundStyle(.secondary)
-                        Text("No verses found")
-                            .font(.headline)
-                        Text("Try a different book or chapter")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text("No posts available.")
+                case .error(let error):
+                    Text("Error: \(error.localizedDescription)")
                 case .loaded:
                     List(vm.posts, id: \.id) { post in
                         Text(post.title)
                     }
-                case .error(let error):
-                    VStack {
-                        Image(systemName: "exclamationmark.triangle")
-                            .font(.system(size: 48))
-                            .foregroundStyle(.red)
-                        VStack(spacing: 8) {
-                            Text("Something went wrong")
-                                .font(.headline)
-                            Text(error.localizedDescription)
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .multilineTextAlignment(.center)
-                        }
-                        Button("Retry") {
-                            Task {
-                                await vm.fetchPosts()
-                            }
-                        }
-                    }
                 }
             }
             .task {
-                await vm.fetchPosts()
+                await vm.loadData()
             }
         }
     }
