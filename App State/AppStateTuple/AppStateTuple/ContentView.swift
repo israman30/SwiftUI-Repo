@@ -51,37 +51,97 @@ extension AppState {
     }
 }
 
-
-
-struct User: Decodable {
+struct Post: Decodable {
     let id: Int
     let title: String
     let body: String
 }
 
 class NetworkManager {
-    func fetchData() async throws -> [User] {
+    func fetchData() async throws -> [Post] {
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         let (data, _ ) = try await URLSession.shared.data(from: url)
-        return try JSONDecoder().decode([User].self, from: data)
+        return try JSONDecoder().decode([Post].self, from: data)
     }
 }
 
 @Observable
 @MainActor
 class PostViewModel {
+    var state: AppState = .empty
+    var posts: [Post] = []
+    private let network: NetworkManager
+    
+    init(network: NetworkManager) {
+        self.network = network
+    }
+    
+    func fetchPosts() async {
+        state = .loading
+        do {
+            posts = try await network.fetchData()
+            
+            if posts.isEmpty {
+                state = .empty
+                return
+            } else {
+                state = .loaded
+            }
+            
+        } catch {
+            state = .error(error)
+        }
+    }
     
 }
 
 struct ContentView: View {
+    @State var vm = PostViewModel(network: .init())
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScrollView {
+            LazyVStack {
+                switch vm.state {
+                case .loading:
+                    VStack {
+                        ProgressView()
+                            .scaleEffect(1.5)
+                        Text("Loasing...")
+                    }
+                case .empty:
+                    VStack {
+                        Image(systemName: "book.closed")
+                            .font(.system(size: 48))
+                            .foregroundStyle(.secondary)
+                        Text("No verses found")
+                            .font(.headline)
+                        Text("Try a different book or chapter")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                case .loaded:
+                    List(vm.posts, id: \.id) { post in
+                        Text(post.title)
+                    }
+                case .error(let error):
+                    VStack {
+                        Image(systemName: "exclamationmark.triangle")
+                            .font(.system(size: 48))
+                            .foregroundStyle(.red)
+                        VStack(spacing: 8) {
+                            Text("Something went wrong")
+                                .font(.headline)
+                            Text(error.localizedDescription)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.center)
+                        }
+                    }
+                }
+            }
+            .task {
+                await vm.fetchPosts()
+            }
         }
-        .padding()
     }
 }
 
