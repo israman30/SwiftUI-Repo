@@ -135,6 +135,11 @@ struct ContentView: View {
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.center)
                         }
+                        Button("Retry") {
+                            Task {
+                                await vm.fetchPosts()
+                            }
+                        }
                     }
                 }
             }
