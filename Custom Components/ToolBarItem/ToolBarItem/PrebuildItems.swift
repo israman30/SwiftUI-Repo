@@ -72,4 +72,15 @@ struct ToolbarItems {
             }
         }
     }
+    
+    // MARK: - Filter Button
+    static func filterButton(isActive: Bool = false, action: @escaping () -> Void) -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+                action()
+            } label: {
+                Image(systemName: isActive ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
+            }
+        }
+    }
 }
