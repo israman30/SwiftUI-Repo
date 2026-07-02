@@ -33,4 +33,12 @@ struct ToolbarItems {
     static func settingsButton(action: @escaping () -> Void) -> some ToolbarContent {
         ToolBarButton(placement: .navigationBarTrailing, icon: "gearshape.fill", action: action)
     }
+    
+    // MARK: - Save Button
+    static func saveButton(isEnabled: Bool = true, action: @escaping () -> Void) -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button("Save", action: action)
+                .disabled(!isEnabled)
+        }
+    }
 }
