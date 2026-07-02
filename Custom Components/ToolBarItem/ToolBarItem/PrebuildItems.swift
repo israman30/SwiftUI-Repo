@@ -14,5 +14,8 @@ struct ToolbarItems {
         ToolBarButton(placement: .navigationBarLeading, icon: "chevron.left", label: "Back", action: action)
     }
     
-    
+    // MARK: - Close Button
+    static func closeButton(action: @escaping () -> Void) -> some ToolbarContent {
+        ToolBarButton(placement: .navigationBarLeading, icon: "xmark", action: action)
+    }
 }
