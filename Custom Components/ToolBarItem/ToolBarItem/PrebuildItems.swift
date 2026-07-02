@@ -23,4 +23,9 @@ struct ToolbarItems {
     static func addButton(action: @escaping () -> Void) -> some ToolbarContent {
         ToolBarButton(placement: .navigationBarTrailing, icon: "plus", action: action)
     }
+    
+    // MARK: - Share Button
+    static func shareButton(action: @escaping () -> Void) -> some ToolbarContent {
+        ToolBarButton(placement: .navigationBarTrailing, icon: "square.and.arrow.up", label: "Share", action: action)
+    }
 }
