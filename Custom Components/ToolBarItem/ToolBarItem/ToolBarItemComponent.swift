@@ -66,3 +66,28 @@ struct ToolBarButton: ToolbarContent {
         }
     }
 }
+
+// MARK: - Menu Toolbar Item
+struct ToolBarMenu<MenuContent: View>: ToolbarContent {
+    let placement: ToolbarItemPlacement
+    let icon: String
+    let label: String
+    let menuContent: () -> MenuContent
+    
+    init(_ placement: ToolbarItemPlacement, icon: String, label: String = "More", @ViewBuilder menuContent: @escaping () -> MenuContent) {
+        self.placement = placement
+        self.icon = icon
+        self.label = label
+        self.menuContent = menuContent
+    }
+    
+    var body: some ToolbarContent {
+        ToolbarItem(placement: placement) {
+            Menu {
+                menuContent()
+            } label: {
+                Label(label, systemImage: icon)
+            }
+        }
+    }
+}
