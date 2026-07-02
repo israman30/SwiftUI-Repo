@@ -40,4 +40,29 @@ struct ToolbarItemBuilder<Content: View>: ToolbarContent {
 }
 
 // MARK: - Convenience Builders
-
+struct ToolBarButton: ToolbarContent {
+    let placement: ToolbarItemPlacement
+    let icon: String?
+    let label: String?
+    let action: () -> Void
+    init(placement: ToolbarItemPlacement, icon: String? = nil, label: String? = nil, action: @escaping () -> Void) {
+        self.placement = placement
+        self.icon = icon
+        self.label = label
+        self.action = action
+    }
+    
+    var body: some ToolbarContent {
+        ToolbarItem(placement: placement) {
+            Button(action: action) {
+                if let icon = icon, let label = label {
+                    Label(label, systemImage: icon)
+                } else if let icon = icon {
+                    Image(systemName: icon)
+                } else if let label = label {
+                    Text(label)
+                }
+            }
+        }
+    }
+}
