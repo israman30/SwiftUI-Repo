@@ -149,14 +149,14 @@ struct ToolBarActivityIndicator: ToolbarContent {
 struct ToolBarEditingToggle: ToolbarContent {
     let placement: ToolbarItemPlacement
     @Binding var isEditing: Bool
-    init(placement: ToolbarItemPlacement = .navigationBarTrailing, isEditing: Binding<Bool>) {
+    init(_ placement: ToolbarItemPlacement = .navigationBarTrailing, isEditing: Binding<Bool>) {
         self.placement = placement
         self._isEditing = isEditing
     }
     
     var body: some ToolbarContent {
         ToolbarItem(placement: placement) {
-            Button(isEditing ? "Done" : "Ecit") {
+            Button(isEditing ? "Done" : "Edit") {
                 withAnimation {
                     isEditing.toggle()
                 }
