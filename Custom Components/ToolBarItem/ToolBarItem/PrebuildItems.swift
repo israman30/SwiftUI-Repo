@@ -88,4 +88,9 @@ struct ToolbarItems {
     static func sortButton(isActive: Bool = false, action: @escaping () -> Void) -> some ToolbarContent {
         ToolBarButton(placement: .navigationBarTrailing, icon: "arrow.up.arrow.down.circle", action: action)
     }
+    
+    // MARK: - Notifications Badge
+    static func notificationsBadge(count: Int, action: @escaping () -> Void) -> some ToolbarContent {
+        ToolBarBadge(.navigationBarTrailing, icon: "bell.fill", badgeCount: count, action: action)
+    }
 }
