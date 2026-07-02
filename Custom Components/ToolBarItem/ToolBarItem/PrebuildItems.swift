@@ -83,4 +83,9 @@ struct ToolbarItems {
             }
         }
     }
+    
+    // MARK: - Sort Button
+    static func sortButton(isActive: Bool = false, action: @escaping () -> Void) -> some ToolbarContent {
+        ToolBarButton(placement: .navigationBarTrailing, icon: "arrow.up.arrow.down.circle", action: action)
+    }
 }
