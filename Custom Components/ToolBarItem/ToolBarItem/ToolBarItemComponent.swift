@@ -125,3 +125,22 @@ struct ToolBarSearchField: ToolbarContent {
         }
     }
 }
+
+// MARK: - Loading Indicator Toolbar Item
+struct ToolBarActivityIndicator: ToolbarContent {
+    let placement: ToolbarItemPlacement
+    let isLoading: Bool
+    init(placement: ToolbarItemPlacement = .navigationBarTrailing, isLoading: Bool) {
+        self.placement = placement
+        self.isLoading = isLoading
+    }
+    
+    var body: some ToolbarContent {
+        ToolbarItem(placement: placement) {
+            if isLoading {
+                ProgressView()
+                    .scaleEffect(0.8)
+            }
+        }
+    }
+}
