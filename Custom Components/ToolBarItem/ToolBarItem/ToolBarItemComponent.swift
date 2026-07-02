@@ -91,3 +91,37 @@ struct ToolBarMenu<MenuContent: View>: ToolbarContent {
         }
     }
 }
+
+// MARK: - Search Toolbar Item
+struct ToolBarSearchField: ToolbarContent {
+    let placement: ToolbarItemPlacement
+    @Binding var searchText: String
+    let placeholder: String
+    
+    init(_ placement: ToolbarItemPlacement = .navigationBarTrailing, text: Binding<String>, placeholder: String = "Search") {
+        self.placement = placement
+        self._searchText = text
+        self.placeholder = placeholder
+    }
+    
+    var body: some ToolbarContent {
+        ToolbarItem(placement: placement) {
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.secondary)
+                TextField(placeholder, text: $searchText)
+                if searchText.isEmpty {
+                    Button {
+                        searchText = ""
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            .padding(8)
+            .background(Color(.systemGray6))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+        }
+    }
+}
