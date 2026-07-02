@@ -56,4 +56,20 @@ struct ToolbarItems {
     static func helpButton(action: @escaping () -> Void) -> some ToolbarContent {
         ToolBarButton(placement: .navigationBarTrailing, icon: "questionmark.circle", action: action)
     }
+    
+    // MARK: - Refresh Button
+    static func refreshButton(isLoading: Bool = false, action: @escaping () -> Void) -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            if isLoading {
+                ProgressView()
+                    .scaleEffect(0.8)
+            } else {
+                Button {
+                    action()
+                } label: {
+                    Image(systemName: "arrow.clockwise")
+                }
+            }
+        }
+    }
 }
