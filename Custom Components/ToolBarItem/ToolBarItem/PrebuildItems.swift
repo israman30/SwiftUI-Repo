@@ -41,4 +41,9 @@ struct ToolbarItems {
                 .disabled(!isEnabled)
         }
     }
+    
+    // MARK: - Delete Button
+    static func deleteButton(isEnabled: Bool = true, action: @escaping () -> Void) -> some ToolbarContent {
+        ToolBarButton(placement: .navigationBarTrailing, icon: "trash", action: action)
+    }
 }
