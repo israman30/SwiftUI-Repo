@@ -46,4 +46,14 @@ struct ToolbarItems {
     static func deleteButton(isEnabled: Bool = true, action: @escaping () -> Void) -> some ToolbarContent {
         ToolBarButton(placement: .navigationBarTrailing, icon: "trash", action: action)
     }
+    
+    // MARK: - More Menu
+    static func moreMenu(content: @escaping () -> some View) -> some ToolbarContent {
+        ToolBarMenu(.navigationBarTrailing, icon: "ellipsis.circle", menuContent: content)
+    }
+    
+    // MARK: - Help Button
+    static func helpButton(action: @escaping () -> Void) -> some ToolbarContent {
+        ToolBarButton(placement: .navigationBarTrailing, icon: "questionmark.circle", action: action)
+    }
 }
