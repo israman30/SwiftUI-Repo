@@ -188,7 +188,7 @@ struct ToolBarBadge: ToolbarContent {
                             .font(.caption2)
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
-                            .frame(width: 18, height: 18)
+                            .frame(width: 20, height: 20)
                             .background(Color.red)
                             .clipShape(Circle())
                             .offset(x: 8, y: -8)
