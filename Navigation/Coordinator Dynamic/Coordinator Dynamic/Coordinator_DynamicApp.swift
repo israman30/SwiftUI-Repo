@@ -11,7 +11,8 @@ import SwiftUI
 struct Coordinator_DynamicApp: App {
     var body: some Scene {
         WindowGroup {
-            CoordinatorView(coordinator: Coordinator())
+//            CoordinatorView(coordinator: Coordinator())
+            AppCoordinatorView(coordinator: AppCoordinator(), route: .home)
         }
     }
 }

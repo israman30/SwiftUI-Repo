@@ -61,5 +61,5 @@ struct ReusableCoordinatorSampleView: View {
 #Preview {
     NavigationStack {
         ReusableCoordinatorSampleView()
-    }.environmentObject(Coordinator())
+    }.environmentObject(AppCoordinator())
 }
