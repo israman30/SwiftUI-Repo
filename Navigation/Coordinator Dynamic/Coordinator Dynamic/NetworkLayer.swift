@@ -9,7 +9,7 @@ import Foundation
 
 // https://jsonplaceholder.typicode.com/users
 
-struct User: Decodable {
+struct User: Decodable, Identifiable {
     var id: Int
     var name: String
     var username: String

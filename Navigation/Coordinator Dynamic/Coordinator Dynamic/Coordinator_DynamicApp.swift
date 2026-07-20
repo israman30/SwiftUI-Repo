@@ -11,7 +11,7 @@ import SwiftUI
 struct Coordinator_DynamicApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CoordinatorView(coordinator: Coordinator())
         }
     }
 }
