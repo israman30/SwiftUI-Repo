@@ -9,7 +9,6 @@ import SwiftUI
 import  Combine
 
 enum Pages: Hashable {
-    
     case home
     case detail(user: User)
     case settings
@@ -66,7 +65,8 @@ struct CoordinatorView: View {
                 .navigationDestination(for: Pages.self) { page in
                     coordinator.build(page)
                 }
-        }.environmentObject(coordinator)
+        }
+        .environmentObject(coordinator)
     }
 }
 
@@ -98,6 +98,7 @@ struct ContentView: View {
                 DetailView(user: user)
             }
         }
+        .navigationTitle("Coordinator")
         .task {
             await vm.loadUsers()
         }
@@ -105,8 +106,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .environmentObject(Coordinator())
+    NavigationStack {
+        ContentView()
+    }.environmentObject(Coordinator())
 }
 
 struct DetailView: View {
