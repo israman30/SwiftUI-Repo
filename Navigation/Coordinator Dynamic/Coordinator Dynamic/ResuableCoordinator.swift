@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-protocol NavigationRoute: Hashable {
+public protocol NavigationRoute: Hashable {
     associatedtype Content: View
     
     @ViewBuilder
