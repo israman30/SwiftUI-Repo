@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Navigation
 
 enum AppPages: NavigationRoute {
     case home
@@ -54,6 +55,7 @@ struct ReusableCoordinatorSampleView: View {
         .navigationTitle("Usage")
         .task {
             await vm.loadUsers()
+            log()
         }
     }
 }
