@@ -41,7 +41,25 @@ class Coordinator: ObservableObject {
     
 }
 
+class UserViewModel: ObservableObject {
+    @Published var users = [User]()
+    private let network: NetworkLayer
+    
+    init(network: NetworkLayer) {
+        self.network = network
+    }
+    
+    func loadUsers() async {
+        do {
+            users = try await network.fetchUsers()
+        } catch {
+            print("Something when wrong")
+        }
+    }
+}
+
 struct ContentView: View {
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
