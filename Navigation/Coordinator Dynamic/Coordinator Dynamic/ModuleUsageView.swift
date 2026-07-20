@@ -26,8 +26,18 @@ import Navigation
  // If `User` belongs to an external library or is a protocol/class where you cannot add `Equatable` directly, you must write the `==` comparison logic yourself inside an extension of `Pages`.
  or use Equatable methods
  ```
- func hash(into hasher: inout Hasher) { ... }
- static func == (lhs: Routes, rhs: Routes) -> Bool { ... }
+ func hash(into hasher: inout Hasher) {
+     switch self {
+     case .home:
+         hasher.combine("home")
+     case .detail(let user):
+         hasher.combine("detail")
+         hasher.combine(user.id)
+     }
+ }
+ static func == (lhs: Routes, rhs: Routes) -> Bool {
+     lhs.hashValue == rhs.hashValue
+ }
 
  ```
  */
@@ -38,7 +48,6 @@ enum RoutePages: NavigationRoute {
     
     /**
      Must explicitly make your User type conform to the Equatable protocol
-     
      */
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -54,6 +63,7 @@ enum RoutePages: NavigationRoute {
         lhs.hashValue == rhs.hashValue
     }
     
+    @ViewBuilder
     func build() -> some View {
         switch self {
         case .home:
