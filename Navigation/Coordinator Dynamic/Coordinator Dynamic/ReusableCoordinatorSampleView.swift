@@ -8,8 +8,13 @@
 import SwiftUI
 
 enum AppPages: NavigationRoute {
+    var id: String {
+        UUID().uuidString
+    }
+    
     case home
     case detail(user: User)
+    case settings
     
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -18,6 +23,8 @@ enum AppPages: NavigationRoute {
         case .detail(let user):
             hasher.combine("detail")
             hasher.combine(user.id)
+        case .settings:
+            hasher.combine("settings")
         }
     }
     
@@ -32,6 +39,8 @@ enum AppPages: NavigationRoute {
             ReusableCoordinatorSampleView()
         case .detail(let user):
             DetailView(user: user)
+        case .settings:
+            DetailSheetView()
         }
     }
 }
@@ -51,6 +60,11 @@ struct ReusableCoordinatorSampleView: View {
                 DetailView(user: user)
             }
         }
+        .toolbar(content: {
+            Button("Present") {
+                coordinator.presentSheet(.settings)
+            }
+        })
         .navigationTitle("Usage")
         .task {
             await vm.loadUsers()
@@ -62,4 +76,19 @@ struct ReusableCoordinatorSampleView: View {
     NavigationStack {
         ReusableCoordinatorSampleView()
     }.environmentObject(AppCoordinator())
+}
+
+struct DetailSheetView: View {
+    @EnvironmentObject var coordinator: AppCoordinator
+    var body: some View {
+        Group {
+            Section(header: Text("Settings")) {
+                Text("Do some settings")
+            }
+            Button("Dismiss page") {
+                coordinator.dismissSheet()
+            }
+            .buttonStyle(.bordered)
+        }
+    }
 }

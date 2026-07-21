@@ -12,8 +12,8 @@ struct Coordinator_DynamicApp: App {
     var body: some Scene {
         WindowGroup {
 //            CoordinatorView(coordinator: Coordinator())
-//            AppCoordinatorView(coordinator: AppCoordinator(), route: .home)
-            CoordinatorNavigation(coordinator: SampleCoordinator(), route: .home)
+            AppCoordinatorView(coordinator: AppCoordinator(), route: .home)
+//            CoordinatorNavigation(coordinator: SampleCoordinator(), route: .home)
         }
     }
 }

@@ -43,6 +43,10 @@ import Navigation
  */
 
 enum RoutePages: NavigationRoute {
+    var id: String {
+        UUID().uuidString
+    }
+    
     case home
     case detail(user: User)
     
