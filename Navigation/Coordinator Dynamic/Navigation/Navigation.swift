@@ -16,33 +16,33 @@ public protocol NavigationRoute: Hashable {
 }
 
 @MainActor
-class ReusableCoordinator<Route: NavigationRoute>: ObservableObject {
+public class ReusableCoordinator<Route: NavigationRoute>: ObservableObject {
     @Published var path = NavigationPath()
     
-    func push(_ route: Route) {
+    public func push(_ route: Route) {
         path.append(route)
     }
     
-    func pop() {
+    public func pop() {
         guard !path.isEmpty else { return }
         path.removeLast()
     }
     
-    func replace(with route: Route) {
+    public func replace(with route: Route) {
         pop()
         push(route)
     }
     
-    var canPop: Bool {
+    public var canPop: Bool {
         !path.isEmpty
     }
 }
 
-struct CoordinatorBuilder<Route: NavigationRoute>: View {
+public struct CoordinatorBuilder<Route: NavigationRoute>: View {
     @ObservedObject var coordinator: ReusableCoordinator<Route>
     let route: Route
     
-    var body: some View {
+    public var body: some View {
         NavigationStack(path: $coordinator.path) {
             route.build()
                 .navigationDestination(for: Route.self) { route in
