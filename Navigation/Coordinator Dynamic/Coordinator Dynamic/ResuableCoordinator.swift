@@ -15,10 +15,17 @@ public protocol NavigationRoute: Hashable, Identifiable {
     func build() -> Content
 }
 
+protocol SheetNavigation: Identifiable {
+    associatedtype Content: View
+    
+    @ViewBuilder
+    func build() -> Content
+}
+
 @MainActor
 class ReusableCoordinator<Route: NavigationRoute>: ObservableObject {
     @Published var path = NavigationPath()
-    @Published var sheetRoute: Route?
+    @Published var sheetRoute: SheetRoute?
     
     func push(_ route: Route) {
         path.append(route)
@@ -39,14 +46,13 @@ class ReusableCoordinator<Route: NavigationRoute>: ObservableObject {
     }
     
     // Sheet
-    func presentSheet(_ route: Route) {
+    func presentSheet(_ route: SheetRoute) {
         sheetRoute = route
     }
     
     func dismissSheet() {
         sheetRoute = nil
     }
-    
 }
 
 struct CoordinatorBuilder<Route: NavigationRoute>: View {
@@ -64,16 +70,10 @@ struct CoordinatorBuilder<Route: NavigationRoute>: View {
                 .navigationDestination(for: Route.self) { route in
                     route.build()
                 }
+                .sheet(item: $coordinator.sheetRoute) { sheetRoute in
+                    sheetRoute.build()
+                }
         }
         .environmentObject(coordinator)
-        .sheet(item: $coordinator.sheetRoute) { sheetRoute in
-            NavigationStack(path: $coordinator.path) {
-                sheetRoute.build()
-                    .navigationDestination(for: Route.self) { route in
-                        route.build()
-                    }
-            }
-            .environmentObject(coordinator)
-        }
     }
 }

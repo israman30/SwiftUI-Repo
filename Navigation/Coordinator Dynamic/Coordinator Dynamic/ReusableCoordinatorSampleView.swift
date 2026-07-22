@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+enum SheetRoute: SheetNavigation {
+    case sheet
+    var id: Self { self }
+    
+    @ViewBuilder
+    func build() -> some View {
+        switch self {
+        case .sheet:
+            EmptyView()
+        }
+    }
+    
+}
+
 enum AppPages: NavigationRoute {
     var id: String {
         UUID().uuidString
@@ -62,7 +76,7 @@ struct ReusableCoordinatorSampleView: View {
         }
         .toolbar(content: {
             Button("Present") {
-                coordinator.presentSheet(.settings)
+                coordinator.presentSheet(.sheet)
             }
         })
         .navigationTitle("Usage")
