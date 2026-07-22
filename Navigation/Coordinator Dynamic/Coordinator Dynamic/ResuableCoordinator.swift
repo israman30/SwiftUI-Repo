@@ -8,14 +8,7 @@
 import SwiftUI
 import Combine
 
-public protocol NavigationRoute: Hashable, Identifiable {
-    associatedtype Content: View
-    
-    @ViewBuilder
-    func build() -> Content
-}
-
-protocol SheetNavigation: Identifiable {
+protocol NavigationRoute: Hashable, Identifiable {
     associatedtype Content: View
     
     @ViewBuilder
@@ -26,6 +19,7 @@ protocol SheetNavigation: Identifiable {
 class ReusableCoordinator<Route: NavigationRoute>: ObservableObject {
     @Published var path = NavigationPath()
     @Published var sheetRoute: SheetRoute?
+    @Published var coverRoute: CoverRoute?
     
     func push(_ route: Route) {
         path.append(route)
@@ -53,6 +47,15 @@ class ReusableCoordinator<Route: NavigationRoute>: ObservableObject {
     func dismissSheet() {
         sheetRoute = nil
     }
+    
+    // Cover
+    func presentCover(_ route: CoverRoute) {
+        coverRoute = route
+    }
+    
+    func dismissCover() {
+        coverRoute = nil
+    }
 }
 
 struct CoordinatorBuilder<Route: NavigationRoute>: View {
@@ -72,6 +75,9 @@ struct CoordinatorBuilder<Route: NavigationRoute>: View {
                 }
                 .sheet(item: $coordinator.sheetRoute) { sheetRoute in
                     sheetRoute.build()
+                }
+                .fullScreenCover(item: $coordinator.coverRoute) { coverRoute in
+                    coverRoute.build()
                 }
         }
         .environmentObject(coordinator)

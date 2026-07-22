@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum SheetRoute: SheetNavigation {
+enum SheetRoute: NavigationRoute {
     case sheet
     var id: Self { self }
     
@@ -15,10 +15,21 @@ enum SheetRoute: SheetNavigation {
     func build() -> some View {
         switch self {
         case .sheet:
-            EmptyView()
+            SheetView()
         }
     }
+}
+
+enum CoverRoute: NavigationRoute {
+    case cover
+    var id: Self { self }
     
+    func build() -> some View {
+        switch self {
+        case .cover:
+            CoverView()
+        }
+    }
 }
 
 enum AppPages: NavigationRoute {
@@ -75,8 +86,11 @@ struct ReusableCoordinatorSampleView: View {
             }
         }
         .toolbar(content: {
-            Button("Present") {
+            Button("Sheet") {
                 coordinator.presentSheet(.sheet)
+            }
+            Button("cover") {
+                coordinator.presentCover(.cover)
             }
         })
         .navigationTitle("Usage")
@@ -103,6 +117,30 @@ struct DetailSheetView: View {
                 coordinator.dismissSheet()
             }
             .buttonStyle(.bordered)
+        }
+    }
+}
+
+struct SheetView: View {
+    @EnvironmentObject var coordinator: AppCoordinator
+    var body: some View {
+        VStack {
+            Text("Sheet View")
+            Button("Dismiss Sheet") {
+                coordinator.dismissSheet()
+            }
+        }
+    }
+}
+
+struct CoverView: View {
+    @EnvironmentObject var coordinator: AppCoordinator
+    var body: some View {
+        VStack {
+            Text("Cover View")
+            Button("Dismiss Sheet") {
+                coordinator.dismissCover()
+            }
         }
     }
 }
